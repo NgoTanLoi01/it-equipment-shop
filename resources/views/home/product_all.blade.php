@@ -33,32 +33,32 @@
                                 <label>
                                     <input type="checkbox" name="price_range[]" value="0-3000000"
                                         class="price-range-checkbox"
-                                        {{ in_array('0-300000', request('price_range', [])) ? 'checked' : '' }}>
-                                    Dưới 300,000
+                                        {{ in_array('0-3000000', request('price_range', [])) ? 'checked' : '' }}>
+                                    Dưới 3 triệu
                                 </label>
                             </div>
                             <div>
                                 <label>
-                                    <input type="checkbox" name="price_range[]" value="300000-800000"
+                                    <input type="checkbox" name="price_range[]" value="3000000-8000000"
                                         class="price-range-checkbox"
-                                        {{ in_array('300000-800000', request('price_range', [])) ? 'checked' : '' }}>
-                                    Từ 300,000 - 800,000
+                                        {{ in_array('3000000-8000000', request('price_range', [])) ? 'checked' : '' }}>
+                                    Từ 3 đến 8 triệu
                                 </label>
                             </div>
                             <div>
                                 <label>
-                                    <input type="checkbox" name="price_range[]" value="800000-1500000"
+                                    <input type="checkbox" name="price_range[]" value="8000000-15000000"
                                         class="price-range-checkbox"
                                         {{ in_array('8000000-15000000', request('price_range', [])) ? 'checked' : '' }}>
-                                    Từ 800,000 đến 1,5 triệu
+                                    Từ 8 đến 15 triệu
                                 </label>
                             </div>
                             <div>
                                 <label>
-                                    <input type="checkbox" name="price_range[]" value="1500000-100000000"
+                                    <input type="checkbox" name="price_range[]" value="15000000-100000000"
                                         class="price-range-checkbox"
-                                        {{ in_array('1500000-100000000', request('price_range', [])) ? 'checked' : '' }}>
-                                    Trên 1,5 triệu
+                                        {{ in_array('15000000-100000000', request('price_range', [])) ? 'checked' : '' }}>
+                                    Trên 15 triệu
                                 </label>
                             </div>
                         </div>
