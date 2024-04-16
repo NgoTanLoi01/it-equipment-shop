@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-sm-6 col-lg-3">
                     <div class="widget widget-about">
-                        <img src="{{ asset('AdminLTE/dist/img/login_logo.png') }}" class="footer-logo" alt="Footer Logo"
+                        <img src="{{ asset('UserLTE/assets/images/demos/demo-3/Logo.jpg') }}" class="footer-logo" alt="Footer Logo"
                             width="105" height="25">
                         <p> NGO TAN LOI Digital Technologies Mang lại trải nghiệm mua sắm hơn cả tuyệt vời!</p>
 

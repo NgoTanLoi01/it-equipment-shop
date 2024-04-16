@@ -587,7 +587,7 @@ class CheckoutController extends Controller
                     </head>
                     <body>
                         <div class="thongtin1" >
-                            <img class="logo" src="AdminLTE/dist/img/login_logo.png" alt="Logo">
+                            <img class="logo" src="UserLTE/assets/images/demos/demo-3/Logo.jpg" alt="Logo">
                             <p class="shop"><b>NGO TAN LOI <br> DIGITAL <br> TECHNOLOGIES</b></p>
                         </div>
                         <div class="thongtin2">
