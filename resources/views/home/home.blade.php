@@ -140,7 +140,7 @@
             <hr class="mt-5 mb-6">
         </div><!-- End .container -->
 
-        
+
         {{-- Selling products --}}
         @include('home.components.selling_product')
         {{-- Selling products --}}
@@ -255,8 +255,6 @@
     </main><!-- End .main -->
 @endsection
 
-<button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
-
 <!-- Mobile Menu -->
 <div class="mobile-menu-overlay"></div><!-- End .mobil-menu-overlay -->
 
@@ -339,7 +337,8 @@
 
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="signin-remember">
-                                            <label class="custom-control-label" for="signin-remember">Nhớ mật khẩu</label>
+                                            <label class="custom-control-label" for="signin-remember">Nhớ mật
+                                                khẩu</label>
                                         </div><!-- End .custom-checkbox -->
 
                                         <a href="#" class="forgot-link">Quên mật khẩu?</a>

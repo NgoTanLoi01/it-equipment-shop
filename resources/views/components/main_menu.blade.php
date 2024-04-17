@@ -1,7 +1,7 @@
 <div class="header-center">
     <nav class="main-nav">
         <ul class="menu sf-arrows">
-            <li class="megamenu-container ">
+            <li class="megamenu-container active ">
                 <a href="{{ route('home') }}">Trang chủ</a>
             </li>
             {{-- @foreach ($categorysLimit as $categoryParent)
@@ -13,7 +13,65 @@
                 </li>
             @endforeach --}}
             <li>
-                <a href="{{ URL::to('/product_all') }}" class="">Sản phẩm</a>
+                <a href="{{ URL::to('/product_all') }}" class="sf-with-ul">Cửa hàng</a>
+
+                <div class="megamenu megamenu-md">
+                    <div class="row no-gutters">
+                        <div class="col-md-8">
+                            <div class="menu-col">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="menu-title">Danh mục</div><!-- End .menu-title -->
+                                        <ul>
+                                            <li><a href="{{ URL::to('/product_all') }}">Laptop</a></li>
+                                            <li><a href="{{ URL::to('/product_all') }}">Đồng hồ thông minh</a></li>
+                                            <li><a href="{{ URL::to('/product_all') }}">Máy ảnh</a></li>
+                                            <li><a href="{{ URL::to('/product_all') }}">Phụ kiện</a></li>
+                                            <li><a href="{{ URL::to('/product_all') }}"><span>Tai nghe<span
+                                                            class="tip tip-new">New</span></span></a></li>
+                                        </ul>
+
+                                        <div class="menu-title">Thương hiệu</div><!-- End .menu-title -->
+                                        <ul>
+                                            <li><a href="{{ URL::to('/product_all') }}"><span>Logitech<span
+                                                            class="tip tip-hot">Hot</span></span></a></li>
+                                            <li><a href="{{ URL::to('/product_all') }}">Apple</a></li>
+                                        </ul>
+                                    </div><!-- End .col-md-6 -->
+
+                                    <div class="col-md-6">
+                                        <div class="menu-title">Danh mục khác</div><!-- End .menu-title -->
+                                        <ul>
+                                            <li><a href="{{ URL::to('/product_all') }}">Sản phẩm mới</a></li>
+                                            <li><a href="{{ URL::to('/product_all') }}"><span>Sản phẩm bán chạy<span class="tip tip-new">New</span></span></a></li>
+                                        </ul>
+                                    </div><!-- End .col-md-6 -->
+                                </div><!-- End .row -->
+                            </div><!-- End .menu-col -->
+                        </div><!-- End .col-md-8 -->
+
+                        <div class="col-md-4">
+                            <div class="banner banner-overlay">
+                                <a href="{{ URL::to('/product_all') }}" class="banner banner-menu">
+                                    <img src="{{ asset('UserLTE/assets/images/menu/banner-1.jpg') }}" alt="Banner">
+
+                                    <div class="banner-content banner-content-top">
+                                        <div class="banner-title text-white">Sản
+                                            <br>Phẩm<br><span><strong>Hot</strong></span>
+                                        </div>
+                                        <!-- End .banner-title -->
+                                    </div><!-- End .banner-content -->
+                                </a>
+                            </div><!-- End .banner banner-overlay -->
+                        </div><!-- End .col-md-4 -->
+                    </div><!-- End .row -->
+                </div><!-- End .megamenu megamenu-md -->
+            </li>
+            <li>
+                <a href="{{ URL::to('/lien_he') }}" class="">Tin tức</a>
+            </li>
+            <li>
+                <a href="{{ URL::to('/lien_he') }}" class="">Về chúng tôi</a>
             </li>
             <li>
                 <a href="{{ URL::to('/lien_he') }}" class="">Liên hệ</a>

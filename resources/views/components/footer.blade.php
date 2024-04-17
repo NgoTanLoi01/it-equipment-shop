@@ -1,11 +1,22 @@
 <footer class="footer">
+
+    <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
+
+    <a id="zalo" href="#" title="Chat với AI">
+        <img src="{{ asset('UserLTE/assets/images/chatbot/ai.png') }}" width="60px" height=""
+            style="padding-bottom: 2px">
+    </a>
+    <a id="messenger" href="#" title="Chat với cửa hàng">
+        <img src="{{ asset('UserLTE/assets/images/chatbot/real.png') }}" width="60px" height=""
+            style="padding-bottom: 2px">
+    </a>
     <div class="footer-middle">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-lg-3">
                     <div class="widget widget-about">
-                        <img src="{{ asset('UserLTE/assets/images/demos/demo-3/Logo.jpg') }}" class="footer-logo" alt="Footer Logo"
-                            width="105" height="25">
+                        <img src="{{ asset('UserLTE/assets/images/demos/demo-3/Logo.jpg') }}" class="footer-logo"
+                            alt="Footer Logo" width="105" height="25">
                         <p> NGO TAN LOI Digital Technologies Mang lại trải nghiệm mua sắm hơn cả tuyệt vời!</p>
 
                         <div class="widget-call">
@@ -65,4 +76,20 @@
             </figure><!-- End .footer-payments -->
         </div><!-- End .container -->
     </div><!-- End .footer-bottom -->
+
 </footer><!-- End .footer -->
+<style>
+    #zalo {
+        position: fixed;
+        bottom: 170px;
+        right: 35px;
+        z-index: 9999;
+    }
+
+    #messenger {
+        position: fixed;
+        bottom: 100px;
+        right: 35px;
+        z-index: 9999;
+    }
+</style>
