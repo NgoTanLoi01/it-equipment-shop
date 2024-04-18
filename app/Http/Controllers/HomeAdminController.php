@@ -70,7 +70,7 @@ class HomeAdminController extends Controller
             });
         }
 
-        $products = $query->latest()->get();
+        $products = $query->latest()->paginate(9);
         $tags = Tag::all();
 
         return view('home.product_all', compact('products', 'tags'));
