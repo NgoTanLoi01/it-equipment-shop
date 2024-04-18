@@ -1,7 +1,8 @@
 @extends('layouts.master')
 
 @section('title')
-    <title>NGO TAN LOI</title>
+    <title>
+        NGO TAN LOI</title>
 @endsection
 
 @section('css')
@@ -17,87 +18,20 @@
         <div class="page-header text-center"
             style="background-image: url('{{ asset('UserLTE/assets/images/demos/demo-3/slider/slideSoter.jpg') }}')">
             <div class="container">
-                <h1 class="page-title">Cửa hàng</h1>
+                <h1 class="page-title"><strong>Cửa Hàng</strong></h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center"> <!-- Sử dụng lớp justify-content-center để căn giữa -->
+                        <li class="breadcrumb-item"><a href="#">Trang Chủ</a></li>
+                        <li class="breadcrumb-item"><a href="#">Cửa Hàng</a></li>
+                    </ol>
+                </nav>
             </div><!-- End .container -->
         </div><!-- End .page-header -->
-        <nav aria-label="breadcrumb" class="breadcrumb-nav mb-2">
-            <div class="container">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Shop</a></li>
-                </ol>
-            </div><!-- End .container -->
-        </nav><!-- End .breadcrumb-nav -->
+
         <div class="intro-section pt-3 pb-3 mb-2">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3">
-                        <div class="products">
-                            <div class="row">
-                                <form id="filterForm" action="{{ url('/product_all') }}" method="get">
-                                    {{-- Lọc giá --}}
-                                    <div class="mb-2">
-                                        <label><strong> Mức giá:</strong></label>
-                                        <div>
-                                            <label>
-                                                <input type="checkbox" name="price_range[]" value="0-100000000"
-                                                    class="price-range-checkbox"
-                                                    {{ in_array('0-100000000', request('price_range', [])) ? 'checked' : '' }}>
-                                                Tất cả
-                                            </label>
-                                        </div>
-                                        <div>
-                                            <label>
-                                                <input type="checkbox" name="price_range[]" value="0-3000000"
-                                                    class="price-range-checkbox"
-                                                    {{ in_array('0-3000000', request('price_range', [])) ? 'checked' : '' }}>
-                                                Dưới 3 triệu
-                                            </label>
-                                        </div>
-                                        <div>
-                                            <label>
-                                                <input type="checkbox" name="price_range[]" value="3000000-8000000"
-                                                    class="price-range-checkbox"
-                                                    {{ in_array('3000000-8000000', request('price_range', [])) ? 'checked' : '' }}>
-                                                Từ 3 đến 8 triệu
-                                            </label>
-                                        </div>
-                                        <div>
-                                            <label>
-                                                <input type="checkbox" name="price_range[]" value="8000000-15000000"
-                                                    class="price-range-checkbox"
-                                                    {{ in_array('8000000-15000000', request('price_range', [])) ? 'checked' : '' }}>
-                                                Từ 8 đến 15 triệu
-                                            </label>
-                                        </div>
-                                        <div>
-                                            <label>
-                                                <input type="checkbox" name="price_range[]" value="15000000-100000000"
-                                                    class="price-range-checkbox"
-                                                    {{ in_array('15000000-100000000', request('price_range', [])) ? 'checked' : '' }}>
-                                                Trên 15 triệu
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    {{-- Lọc Hãng sản xuất --}}
-                                    <div class="mb-3">
-                                        <label><strong>Hãng sản xuất:</strong></label>
-                                        @foreach ($tags as $tag)
-                                            <div>
-                                                <label>
-                                                    <input type="checkbox" name="product_tags[]" value="{{ $tag->id }}"
-                                                        class="product-tag-checkbox"
-                                                        {{ in_array($tag->id, request('product_tags', [])) ? 'checked' : '' }}>
-                                                    {{ $tag->name }}
-                                                </label>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                    {{-- Hiển thị sản phẩm --}}
                     <div class="col-lg-9">
                         <div class="toolbox">
                             <div class="toolbox-left">
@@ -176,8 +110,7 @@
                                             </figure><!-- End .product-media -->
 
                                             <div class="product-body">
-                                                <h3 class="product-title"><a
-                                                        href="{{ route('detail', $product->slug) }}">
+                                                <h3 class="product-title"><a href="{{ route('detail', $product->slug) }}">
                                                         {{ $product->name }}</a>
                                                 </h3>
                                                 <!-- End .product-title -->
@@ -203,6 +136,92 @@
                             </nav>
                         </div><!-- End .products -->
                     </div>
+
+                    {{-- Lọc sản phẩm new --}}
+                    <aside class="col-lg-3 order-lg-first">
+                        <div class="sidebar sidebar-shop">
+                            <div class="widget widget-clean"><label>
+                                    <h5><strong><i class="fa fa-filter"></i> BỘ LỌC TÌM KIẾM</strong></h5>
+                                </label></div><!-- End .widget widget-clean -->
+                            <form id="filterForm" action="{{ url('/product_all') }}" method="get">
+                                <div class="widget widget-collapsible">
+                                    <h6 class="widget-title"><a data-toggle="collapse" href="#widget-1" role="button"
+                                            aria-expanded="true" aria-controls="widget-1"><strong> Mức giá </strong></a>
+                                    </h6>
+                                    <!-- End .widget-title -->
+                                    <div class="collapse show" id="widget-1">
+                                        <div class="widget-body">
+                                            <div class="filter-items filter-items-count">
+                                                <div>
+                                                    <label>
+                                                        <input type="checkbox" name="price_range[]" value="0-100000000"
+                                                            class="price-range-checkbox"
+                                                            {{ in_array('0-100000000', request('price_range', [])) ? 'checked' : '' }}>
+                                                        Tất cả
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <label>
+                                                        <input type="checkbox" name="price_range[]" value="0-3000000"
+                                                            class="price-range-checkbox"
+                                                            {{ in_array('0-3000000', request('price_range', [])) ? 'checked' : '' }}>
+                                                        Dưới 3 triệu
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <label>
+                                                        <input type="checkbox" name="price_range[]"
+                                                            value="3000000-8000000" class="price-range-checkbox"
+                                                            {{ in_array('3000000-8000000', request('price_range', [])) ? 'checked' : '' }}>
+                                                        Từ 3 đến 8 triệu
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <label>
+                                                        <input type="checkbox" name="price_range[]"
+                                                            value="8000000-15000000" class="price-range-checkbox"
+                                                            {{ in_array('8000000-15000000', request('price_range', [])) ? 'checked' : '' }}>
+                                                        Từ 8 đến 15 triệu
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <label>
+                                                        <input type="checkbox" name="price_range[]"
+                                                            value="15000000-100000000" class="price-range-checkbox"
+                                                            {{ in_array('15000000-100000000', request('price_range', [])) ? 'checked' : '' }}>
+                                                        Trên 15 triệu
+                                                    </label>
+                                                </div>
+                                            </div><!-- End .filter-items -->
+                                        </div><!-- End .widget-body -->
+                                    </div><!-- End .collapse -->
+                                </div><!-- End .widget -->
+                                <div class="widget widget-collapsible">
+                                    <h6 class="widget-title"><a data-toggle="collapse" href="#widget-4" role="button"
+                                            aria-expanded="true" aria-controls="widget-4"> <strong>Hãng sản
+                                                xuất</strong></a></h6>
+                                    <!-- End .widget-title -->
+                                    <div class="collapse show" id="widget-4">
+                                        <div class="widget-body">
+                                            <div class="filter-items">
+                                                @foreach ($tags as $tag)
+                                                    <div>
+                                                        <label>
+                                                            <input type="checkbox" name="product_tags[]"
+                                                                value="{{ $tag->id }}" class="product-tag-checkbox"
+                                                                {{ in_array($tag->id, request('product_tags', [])) ? 'checked' : '' }}>
+                                                            {{ $tag->name }}
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div><!-- End .collapse -->
+                                </div><!-- End .widget -->
+                            </form>
+
+                        </div><!-- End .sidebar sidebar-shop -->
+                    </aside>
                 </div>
             </div>
         </div>
@@ -235,3 +254,4 @@
         });
     </script>
 @endsection
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

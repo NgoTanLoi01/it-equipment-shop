@@ -114,21 +114,163 @@
                     </div><!-- End .row -->
                 </div><!-- End .product-details-top -->
 
+                {{-- Mô tả sản phẩm --}}
                 <div class="product-details-tab">
                     <ul class="nav nav-pills justify-content-center" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="product-desc-link" data-toggle="tab" href="#product-desc-tab"
-                                role="tab" aria-controls="product-desc-tab" aria-selected="true">Miêu tả sản phẩm</a>
+                                role="tab" aria-controls="product-desc-tab" aria-selected="true">Mô tả sản phẩm</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="product-shipping-link" data-toggle="tab"
+                                href="#product-shipping-tab" role="tab" aria-controls="product-shipping-tab"
+                                aria-selected="false">Vận chuyển &amp; Trả hàng</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="product-review-link" data-toggle="tab" href="#product-review-tab"
+                                role="tab" aria-controls="product-review-tab" aria-selected="false">Đánh giá sản phẩm
+                                (2)</a>
                         </li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="product-desc-tab" role="tabpanel"
                             aria-labelledby="product-desc-link">
                             <div class="product-desc-content">
-                                <h3>Miêu tả sản phẩm</h3>
+                                <h3>Mô tả sản phẩm</h3>
                                 {!! $product->content !!}
                             </div><!-- End .product-desc-content -->
                         </div><!-- .End .tab-pane -->
+                        <div class="tab-pane fade" id="product-shipping-tab" role="tabpanel"
+                            aria-labelledby="product-shipping-link">
+                            <div class="product-desc-content">
+                                <h3>Chính sách vận chuyển &amp; trả hàng</h3>
+                                <p><b>*</b> Chúng tôi giao hàng đến tất cả các tỉnh thành trên lãnh thổ Việt Nam. Để biết
+                                    chi tiết
+                                    đầy đủ về các
+                                    tùy chọn giao hàng mà chúng tôi cung cấp, vui lòng xem <a href="#">Thông tin giao
+                                        hàng</a><br><br>
+                                    <b>*</b> Chúng tôi hy vọng bạn sẽ thích mỗi lần mua hàng nhưng nếu cần trả lại một mặt
+                                    hàng, bạn
+                                    có thể thực hiện việc đó trong vòng 7 ngày kể từ khi nhận nếu có lỗi do nhà sản xuất. Để
+                                    biết chi tiết đầy đủ về
+                                    cách thực hiện hoàn trả hàng, vui lòng xem <a href="#">Thông tin trả hàng</a>
+                                </p>
+                            </div><!-- End .product-desc-content -->
+                        </div>
+                        <div class="tab-pane fade" id="product-review-tab" role="tabpanel"
+                            aria-labelledby="product-review-link">
+                            <div class="reviews">
+                                <h3><strong>Đánh giá (2)</strong></h3>
+                                <div class="review">
+                                    <div class="row no-gutters">
+                                        <div class="col-auto">
+                                            <h4><a href="#">Hoàng Nam Trần</a></h4>
+                                            <div class="ratings-container">
+                                                <div class="ratings">
+                                                    <div class="ratings-val" style="width: 80%;"></div>
+                                                    <!-- End .ratings-val -->
+                                                </div><!-- End .ratings -->
+                                            </div><!-- End .rating-container -->
+                                            <span class="review-date">6 ngày trước</span>
+                                        </div><!-- End .col -->
+                                        <div class="col">
+                                            <h4>Tốt, sản phẩm đẹp</h4>
+
+                                            <div class="review-content">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum
+                                                    dolores assumenda asperiores facilis porro reprehenderit animi culpa
+                                                    atque blanditiis commodi perspiciatis doloremque, possimus, explicabo,
+                                                    autem fugit beatae quae voluptas!</p>
+                                            </div><!-- End .review-content -->
+
+                                            <div class="review-action">
+                                                <a href="#"><i class="icon-thumbs-up"></i>Thích (2)</a>
+                                                <a href="#"><i class="icon-thumbs-down"></i>Không thích (0)</a>
+                                            </div><!-- End .review-action -->
+                                        </div><!-- End .col-auto -->
+                                    </div><!-- End .row -->
+                                </div><!-- End .review -->
+
+                                <div class="review">
+                                    <div class="row no-gutters">
+                                        <div class="col-auto">
+                                            <h4><a href="#">Nguyễn Văn A</a></h4>
+                                            <div class="ratings-container">
+                                                <div class="ratings">
+                                                    <div class="ratings-val" style="width: 100%;"></div>
+                                                    <!-- End .ratings-val -->
+                                                </div><!-- End .ratings -->
+                                            </div><!-- End .rating-container -->
+                                            <span class="review-date">5 ngày trước</span>
+                                        </div><!-- End .col -->
+                                        <div class="col">
+                                            <h4>Rất tốt</h4>
+
+                                            <div class="review-content">
+                                                <p>Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis
+                                                    laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi,
+                                                    quas iure illum repellendus, blanditiis perspiciatis beatae!</p>
+                                            </div><!-- End .review-content -->
+
+                                            <div class="review-action">
+                                                <a href="#"><i class="icon-thumbs-up"></i>Thích (0)</a>
+                                                <a href="#"><i class="icon-thumbs-down"></i>Không thích (0)</a>
+                                            </div><!-- End .review-action -->
+                                        </div><!-- End .col-auto -->
+                                    </div><!-- End .row -->
+                                </div><!-- End .review -->
+                            </div><!-- End .reviews -->
+                            <div class="reviews"><br>
+                                <h3><strong>Viết đánh giá</strong></h3>
+                                <form action="#">
+                                    <div class="row no-gutters">
+                                        <div class="col">
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="review-name">Tên</label>
+                                                        <input type="text" id="review-name" class="form-control"
+                                                            placeholder="Nhập tên của bạn" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="review-email">Số điện thoại</label>
+                                                        <input type="email" id="review-email" class="form-control"
+                                                            placeholder="0123456789" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="review-rating">Rating</label>
+                                                <ul id="review-rating" class="rating">
+                                                    <li class="star" title="Poor" data-value="1"><i
+                                                            class="fa fa-star "></i></li>
+                                                    <li class="star" title="Fair" data-value="2"><i
+                                                            class="fa fa-star "></i></li>
+                                                    <li class="star" title="Good" data-value="3"><i
+                                                            class="fa fa-star "></i></li>
+                                                    <li class="star" title="Very Good" data-value="4"><i
+                                                            class="fa fa-star "></i></li>
+                                                    <li class="star" title="Excellent" data-value="5"><i
+                                                            class="fa fa-star "></i></li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="review-content">Đánh giá (1500 ký tự)</label>
+                                                <textarea id="review-content" class="form-control" placeholder="Viết nội dung đánh giá của bạn ở đây..." required maxlength="1500"></textarea>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <button class="btn btn-dark">Gửi đánh giá</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div><!-- End .tab-content -->
                 </div><!-- End .product-details-tab -->
 
@@ -202,3 +344,59 @@
         </div><!-- End .page-content -->
     </main><!-- End .main -->
 @endsection
+<style>
+    /* CSS cho các sao */
+    .rating {
+        display: flex;
+        flex-direction: row;
+        cursor: pointer;
+    }
+
+    .rating .star {
+        font-size: 23px;
+        color: #ccc;
+        margin: 0 2px;
+        cursor: pointer;
+        min-width: 128px;
+    }
+
+    .rating .star.selected,
+    .rating .star:hover~.star {
+        color: #f4c150;
+    }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<script>
+    // JavaScript để xử lý tương tác người dùng
+    document.addEventListener('DOMContentLoaded', function() {
+        var stars = document.querySelectorAll('.rating .star');
+        var selectedValue = 0;
+
+        stars.forEach(function(star, index) {
+            star.addEventListener('click', function() {
+                selectedValue = index + 1;
+                updateStars(selectedValue);
+            });
+
+            star.addEventListener('mouseover', function() {
+                updateStars(index + 1);
+            });
+
+            star.addEventListener('mouseleave', function() {
+                updateStars(selectedValue);
+            });
+        });
+
+        function updateStars(value) {
+            stars.forEach(function(star, index) {
+                if (index < value) {
+                    star.classList.add('selected');
+                } else {
+                    star.classList.remove('selected');
+                }
+            });
+        }
+    });
+</script>
