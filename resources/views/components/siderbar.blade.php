@@ -35,7 +35,7 @@
         <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false" data-display="static"
             title="Danh mục sản phẩm">
-            Danh mục sản phẩm <i class="icon-angle-down"></i>
+            <strong>Danh mục sản phẩm</strong> <i class="icon-angle-down"></i>
         </a>
 
         <div class="dropdown-menu">

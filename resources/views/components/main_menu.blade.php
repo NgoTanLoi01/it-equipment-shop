@@ -1,8 +1,8 @@
 <div class="header-center">
     <nav class="main-nav">
         <ul class="menu sf-arrows">
-            <li class="megamenu-container active ">
-                <a href="{{ route('home') }}">Trang chủ</a>
+            <li class="megamenu-container  ">
+                <a href="{{ route('home') }}"><strong>Trang chủ</strong></a>
             </li>
             {{-- @foreach ($categorysLimit as $categoryParent)
                 <li>
@@ -13,7 +13,7 @@
                 </li>
             @endforeach --}}
             <li>
-                <a href="{{ URL::to('/product_all') }}" class="sf-with-ul">Cửa hàng</a>
+                <a href="{{ URL::to('/product_all') }}" class="sf-with-ul"><strong>Cửa hàng</strong></a>
 
                 <div class="megamenu megamenu-md">
                     <div class="row no-gutters">
@@ -68,13 +68,13 @@
                 </div><!-- End .megamenu megamenu-md -->
             </li>
             <li>
-                <a href="{{ URL::to('/lien_he') }}" class="">Tin tức</a>
+                <a href="{{ URL::to('/lien_he') }}" class=""><strong>Tin tức</strong></a>
             </li>
             <li>
-                <a href="{{ URL::to('/lien_he') }}" class="">Về chúng tôi</a>
+                <a href="{{ URL::to('/lien_he') }}" class=""><strong>Về chúng tôi</strong></a>
             </li>
             <li>
-                <a href="{{ URL::to('/lien_he') }}" class="">Liên hệ</a>
+                <a href="{{ URL::to('/lien_he') }}" class=""><strong>Liên hệ</strong></a>
             </li>
         </ul><!-- End .menu -->
     </nav><!-- End .main-nav -->

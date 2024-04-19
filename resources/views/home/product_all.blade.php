@@ -13,16 +13,19 @@
     <script src="{{ asset('home/home.js') }}"></script>
 @endsection
 
+<style>
+
+</style>
 @section('content')
     <div class="main">
         <div class="page-header text-center"
-            style="background-image: url('{{ asset('UserLTE/assets/images/demos/demo-3/slider/slideSoter.jpg') }}')">
+            style="background-image: url('{{ asset('UserLTE/assets/images/demos/demo-3/slider/banner-shop.png') }}')">
             <div class="container">
                 <h1 class="page-title"><strong>Cửa Hàng</strong></h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center"> <!-- Sử dụng lớp justify-content-center để căn giữa -->
-                        <li class="breadcrumb-item"><a href="#">Trang Chủ</a></li>
-                        <li class="breadcrumb-item"><a href="#">Cửa Hàng</a></li>
+                        <li class="breadcrumb-item"><a href="#"><strong>Trang Chủ</strong></a></li>
+                        <li class="breadcrumb-item"><a href="#"><strong>Cửa Hàng</strong></a></li>
                     </ol>
                 </nav>
             </div><!-- End .container -->
