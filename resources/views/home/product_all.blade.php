@@ -19,7 +19,7 @@
 @section('content')
     <div class="main">
         <div class="page-header text-center"
-            style="background-image: url('{{ asset('UserLTE/assets/images/demos/demo-3/slider/banner-shop.png') }}')">
+            style="background-image: url('{{ asset('UserLTE/assets/images/demos/demo-3/slider/slideStore.jpg') }}')">
             <div class="container">
                 <h1 class="page-title"><strong>Cửa Hàng</strong></h1>
                 <nav aria-label="breadcrumb">

@@ -13,41 +13,28 @@
 
 @section('content')
     <main class="main">
-        <div class="page-header text-center" style="background-image: url('frontend/assets/images/page-header-bg.jpg')">
+        <div class="page-header text-center"
+            style="background-image: url('{{ asset('UserLTE/assets/images/about-header-bg.jpg') }}')">
             <div class="container">
-                <h1 class="page-title">Tin tức</h1>
+                <h1 class="page-title"><strong>Tin Tức</strong></h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center"> <!-- Sử dụng lớp justify-content-center để căn giữa -->
+                        <li class="breadcrumb-item"><a href="#"><strong>Trang Chủ</strong></a></li>
+                        <li class="breadcrumb-item"><a href="#"><strong>Tin Tức</strong></a></li>
+                    </ol>
+                </nav>
             </div><!-- End .container -->
         </div><!-- End .page-header -->
-        <nav aria-label="breadcrumb" class="breadcrumb-nav mb-2">
-            <div class="container">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Blog</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Grid 3 Columns</li>
-                </ol>
-            </div><!-- End .container -->
-        </nav><!-- End .breadcrumb-nav -->
-
         <div class="page-content">
             <div class="container">
-                <nav class="blog-nav">
-                    <ul class="menu-cat entry-filter justify-content-center">
-                        <li class="active"><a href="#" data-filter="*">All Blog Posts<span>9</span></a></li>
-                        <li><a href="#" data-filter=".lifestyle">Lifestyle<span>3</span></a></li>
-                        <li><a href="#" data-filter=".shopping">Shopping<span>1</span></a></li>
-                        <li><a href="#" data-filter=".fashion">Fashion<span>2</span></a></li>
-                        <li><a href="#" data-filter=".travel">Travel<span>4</span></a></li>
-                        <li><a href="#" data-filter=".hobbies">Hobbies<span>2</span></a></li>
-                    </ul><!-- End .blog-menu -->
-                </nav><!-- End .blog-nav -->
-
                 <div class="entry-container max-col-3" data-layout="fitRows" style="position: relative; height: 1518.3px;">
                     <div class="entry-item lifestyle shopping col-sm-6 col-lg-4"
                         style="position: absolute; left: 0px; top: 0px;">
                         <article class="entry entry-grid text-center">
                             <figure class="entry-media">
                                 <a href="single.html">
-                                    <img src="frontend/assets/images/blog/grid/3cols/post-1.jpg" alt="image desc">
+                                    <img src="{{ asset('UserLTE/assets/images/blog/grid/3cols/post-1.jpg') }}"
+                                        alt="image desc">
                                 </a>
                             </figure><!-- End .entry-media -->
 
@@ -84,7 +71,8 @@
                         <article class="entry entry-grid text-center">
                             <figure class="entry-media entry-video">
                                 <a href="single.html">
-                                    <img src="frontend/assets/images/blog/grid/3cols/post-2.jpg" alt="image desc">
+                                    <img src="{{ asset('UserLTE/assets/images/blog/grid/3cols/post-2.jpg') }}"
+                                        alt="image desc">
                                 </a>
                             </figure><!-- End .entry-media -->
 
@@ -122,44 +110,35 @@
                             <figure class="entry-media">
                                 <div class="owl-carousel owl-simple owl-light owl-nav-inside owl-loaded owl-drag"
                                     data-toggle="owl">
-
-
                                     <div class="owl-stage-outer">
                                         <div class="owl-stage"
                                             style="transform: translate3d(-752px, 0px, 0px); transition: all 0s ease 0s; width: 2256px;">
                                             <div class="owl-item cloned" style="width: 376px;"><a href="single.html">
-                                                    <img src="frontend/assets/images/blog/grid/3cols/post-3.jpg"
+                                                    <img src="{{ asset('UserLTE/assets/images/blog/grid/3cols/post-3.jpg') }}"
                                                         alt="image desc">
                                                 </a></div>
                                             <div class="owl-item cloned" style="width: 376px;"><a href="single.html">
-                                                    <img src="frontend/assets/images/blog/grid/3cols/post-4.jpg"
+                                                    <img src="{{ asset('UserLTE/assets/images/blog/grid/3cols/post-4.jpg') }}"
                                                         alt="image desc">
                                                 </a></div>
                                             <div class="owl-item active" style="width: 376px;"><a href="single.html">
-                                                    <img src="frontend/assets/images/blog/grid/3cols/post-3.jpg"
+                                                    <img src="{{ asset('UserLTE/assets/images/blog/grid/3cols/post-3.jpg') }}"
                                                         alt="image desc">
                                                 </a></div>
                                             <div class="owl-item" style="width: 376px;"><a href="single.html">
-                                                    <img src="frontend/assets/images/blog/grid/3cols/post-4.jpg"
+                                                    <img src="{{ asset('UserLTE/assets/images/blog/grid/3cols/post-4.jpg') }}"
                                                         alt="image desc">
                                                 </a></div>
                                             <div class="owl-item cloned" style="width: 376px;"><a href="single.html">
-                                                    <img src="frontend/assets/images/blog/grid/3cols/post-3.jpg"
+                                                    <img src="{{ asset('UserLTE/assets/images/blog/grid/3cols/post-3.jpg') }}"
                                                         alt="image desc">
                                                 </a></div>
                                             <div class="owl-item cloned" style="width: 376px;"><a href="single.html">
-                                                    <img src="frontend/assets/images/blog/grid/3cols/post-4.jpg"
+                                                    <img src="{{ asset('UserLTE/assets/images/blog/grid/3cols/post-4.jpg') }}"
                                                         alt="image desc">
                                                 </a></div>
                                         </div>
                                     </div>
-                                    <div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><i
-                                                class="icon-angle-left"></i></button><button type="button"
-                                            role="presentation" class="owl-next"><i
-                                                class="icon-angle-right"></i></button></div>
-                                    <div class="owl-dots"><button role="button"
-                                            class="owl-dot active"><span></span></button><button role="button"
-                                            class="owl-dot"><span></span></button></div>
                                 </div><!-- End .owl-carousel -->
                             </figure><!-- End .entry-media -->
 
@@ -196,7 +175,8 @@
                         <article class="entry entry-grid text-center">
                             <figure class="entry-media">
                                 <a href="single.html">
-                                    <img src="frontend/assets/images/blog/grid/3cols/post-4.jpg" alt="image desc">
+                                    <img src="{{ asset('UserLTE/assets/images/blog/grid/3cols/post-4.jpg') }}"
+                                        alt="image desc">
                                 </a>
                             </figure><!-- End .entry-media -->
 
@@ -233,7 +213,8 @@
                         <article class="entry entry-grid text-center">
                             <figure class="entry-media">
                                 <a href="single.html">
-                                    <img src="frontend/assets/images/blog/grid/3cols/post-5.jpg" alt="image desc">
+                                    <img src="{{ asset('UserLTE/assets/images/blog/grid/3cols/post-5.jpg') }}"
+                                        alt="image desc">
                                 </a>
                             </figure><!-- End .entry-media -->
 
@@ -271,7 +252,8 @@
                         <article class="entry entry-grid text-center">
                             <figure class="entry-media">
                                 <a href="single.html">
-                                    <img src="frontend/assets/images/blog/grid/3cols/post-6.jpg" alt="image desc">
+                                    <img src="{{ asset('UserLTE/assets/images/blog/grid/3cols/post-6.jpg') }}"
+                                        alt="image desc">
                                 </a>
                             </figure><!-- End .entry-media -->
 
@@ -315,38 +297,31 @@
                                         <div class="owl-stage"
                                             style="transform: translate3d(-752px, 0px, 0px); transition: all 0s ease 0s; width: 2256px;">
                                             <div class="owl-item cloned" style="width: 376px;"><a href="single.html">
-                                                    <img src="frontend/assets/images/blog/grid/3cols/post-7.jpg"
+                                                    <img src="{{ asset('UserLTE/assets/images/blog/grid/3cols/post-7.jpg') }}"
                                                         alt="image desc">
                                                 </a></div>
                                             <div class="owl-item cloned" style="width: 376px;"><a href="single.html">
-                                                    <img src="frontend/assets/images/blog/grid/3cols/post-6.jpg"
+                                                    <img src="{{ asset('UserLTE/assets/images/blog/grid/3cols/post-6.jpg') }}"
                                                         alt="image desc">
                                                 </a></div>
                                             <div class="owl-item active" style="width: 376px;"><a href="single.html">
-                                                    <img src="frontend/assets/images/blog/grid/3cols/post-7.jpg"
+                                                    <img src="{{ asset('UserLTE/assets/images/blog/grid/3cols/post-7.jpg') }}"
                                                         alt="image desc">
                                                 </a></div>
                                             <div class="owl-item" style="width: 376px;"><a href="single.html">
-                                                    <img src="frontend/assets/images/blog/grid/3cols/post-6.jpg"
+                                                    <img src="{{ asset('UserLTE/assets/images/blog/grid/3cols/post-6.jpg') }}"
                                                         alt="image desc">
                                                 </a></div>
                                             <div class="owl-item cloned" style="width: 376px;"><a href="single.html">
-                                                    <img src="frontend/assets/images/blog/grid/3cols/post-7.jpg"
+                                                    <img src="{{ asset('UserLTE/assets/images/blog/grid/3cols/post-7.jpg') }}"
                                                         alt="image desc">
                                                 </a></div>
                                             <div class="owl-item cloned" style="width: 376px;"><a href="single.html">
-                                                    <img src="frontend/assets/images/blog/grid/3cols/post-6.jpg"
+                                                    <img src="{{ asset('UserLTE/assets/images/blog/grid/3cols/post-6.jpg') }}"
                                                         alt="image desc">
                                                 </a></div>
                                         </div>
                                     </div>
-                                    <div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><i
-                                                class="icon-angle-left"></i></button><button type="button"
-                                            role="presentation" class="owl-next"><i
-                                                class="icon-angle-right"></i></button></div>
-                                    <div class="owl-dots"><button role="button"
-                                            class="owl-dot active"><span></span></button><button role="button"
-                                            class="owl-dot"><span></span></button></div>
                                 </div><!-- End .owl-carousel -->
                             </figure><!-- End .entry-media -->
 
@@ -383,7 +358,8 @@
                         <article class="entry entry-grid text-center">
                             <figure class="entry-media">
                                 <a href="single.html">
-                                    <img src="frontend/assets/images/blog/grid/3cols/post-8.jpg" alt="image desc">
+                                    <img src="{{ asset('UserLTE/assets/images/blog/grid/3cols/post-8.jpg') }}"
+                                        alt="image desc">
                                 </a>
                             </figure><!-- End .entry-media -->
 
@@ -420,7 +396,8 @@
                         <article class="entry entry-grid text-center">
                             <figure class="entry-media">
                                 <a href="single.html">
-                                    <img src="frontend/assets/images/blog/grid/3cols/post-9.jpg" alt="image desc">
+                                    <img src="{{ asset('UserLTE/assets/images/blog/grid/3cols/post-9.jpg') }}"
+                                        alt="image desc">
                                 </a>
                             </figure><!-- End .entry-media -->
 

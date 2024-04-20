@@ -86,4 +86,9 @@ class HomeAdminController extends Controller
     {
         return view('home.lien_he');
     }
+
+    public function blog()
+    {
+        return view('home.blog');
+    }
 }

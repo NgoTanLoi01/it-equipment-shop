@@ -34,7 +34,11 @@ Route::post('/tim_kiem', [HomeAdminController::class, 'search'])->name('tim_kiem
 Route::get('/detail/{slug}', [HomeAdminController::class, 'detail'])->name('detail');
 Route::get('/product_all', [HomeAdminController::class, 'product_all']);
 Route::get('/yeu_thich', [HomeAdminController::class, 'yeu_thich']);
+
+//man hinh user page
+Route::get('/blog', [HomeAdminController::class, 'blog']);
 Route::get('/lien_he', [HomeAdminController::class, 'lien_he']);
+
 
 //gio hang
 Route::post('/save-cart', [CartController::class, 'save_cart']);

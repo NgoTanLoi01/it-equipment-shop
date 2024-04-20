@@ -68,7 +68,7 @@
                 </div><!-- End .megamenu megamenu-md -->
             </li>
             <li>
-                <a href="{{ URL::to('/lien_he') }}" class=""><strong>Tin tức</strong></a>
+                <a href="{{ URL::to('/blog') }}" class=""><strong>Tin tức</strong></a>
             </li>
             <li>
                 <a href="{{ URL::to('/lien_he') }}" class=""><strong>Về chúng tôi</strong></a>
