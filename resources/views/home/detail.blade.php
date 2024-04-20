@@ -236,7 +236,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="review-email">Số điện thoại</label>
-                                                        <input type="email" id="review-email" class="form-control"
+                                                        <input type="text" id="review-email" class="form-control"
                                                             placeholder="0123456789" required>
                                                     </div>
                                                 </div>

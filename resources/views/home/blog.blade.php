@@ -451,7 +451,3 @@
         </div><!-- End .page-content -->
     </main>
 @endsection
-
-<script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCotX1GvSphz7kZn9vy1EAI49bckvE69JU&callback=console.debug&libraries=maps,marker&v=beta">
-</script>

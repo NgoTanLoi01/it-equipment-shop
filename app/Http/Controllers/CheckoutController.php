@@ -682,7 +682,7 @@ class CheckoutController extends Controller
                 $message->to($to_email)->subject('Thông tin đơn hàng');
                 $message->from($to_email, $to_name);
 
-                $message->attach(public_path('AdminLTE/dist/img/login_logo.png'), [
+                $message->attach(public_path('UserLTE/assets/images/demos/demo-3/Logo.jpg'), [
                     'as' => 'logo',
                     'mime' => 'image/png',
                 ]);

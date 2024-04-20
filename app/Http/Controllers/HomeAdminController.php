@@ -91,4 +91,8 @@ class HomeAdminController extends Controller
     {
         return view('home.blog');
     }
+    public function about()
+    {
+        return view('home.about');
+    }
 }

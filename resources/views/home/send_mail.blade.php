@@ -59,7 +59,7 @@
 
 <body>
     <div class="container">
-        <img class="logo" src="{{ $message->embed(public_path('AdminLTE/dist/img/login_logo.png')) }}"
+        <img class="logo" src="{{ $message->embed(public_path('UserLTE/assets/images/demos/demo-3/Logo.jpg')) }}"
             alt="Logo cửa hàng">
         <h2 style="text-align: center">XÁC NHẬN ĐƠN HÀNG <br> -------oOo-------</h2>
 

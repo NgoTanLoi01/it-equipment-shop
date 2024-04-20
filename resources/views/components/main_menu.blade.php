@@ -71,7 +71,7 @@
                 <a href="{{ URL::to('/blog') }}" class=""><strong>Tin tức</strong></a>
             </li>
             <li>
-                <a href="{{ URL::to('/lien_he') }}" class=""><strong>Về chúng tôi</strong></a>
+                <a href="{{ URL::to('/about') }}" class=""><strong>Về chúng tôi</strong></a>
             </li>
             <li>
                 <a href="{{ URL::to('/lien_he') }}" class=""><strong>Liên hệ</strong></a>
