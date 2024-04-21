@@ -13,20 +13,18 @@
 
 @section('content')
     <main class="main">
-        <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+        <div class="page-header text-center"
+            style="background-image: url('{{ asset('UserLTE/assets/images/about-header-bg.jpg') }}')">
             <div class="container">
-                <h1 class="page-title">Giỏ hàng<span>Cửa hàng</span></h1>
+                <h1 class="page-title"><strong>Giỏ Hàng</strong></h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center"> <!-- Sử dụng lớp justify-content-center để căn giữa -->
+                        <li class="breadcrumb-item"><a href="#"><strong>Trang Chủ</strong></a></li>
+                        <li class="breadcrumb-item"><a href="#"><strong>Giỏ Hàng</strong></a></li>
+                    </ol>
+                </nav>
             </div><!-- End .container -->
         </div><!-- End .page-header -->
-        <nav aria-label="breadcrumb" class="breadcrumb-nav">
-            <div class="container">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-                    <li class="breadcrumb-item"><a href="#">Giỏ hàng</a></li>
-                    {{-- <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li> --}}
-                </ol>
-            </div><!-- End .container -->
-        </nav><!-- End .breadcrumb-nav -->
 
         <div class="page-content">
             <div class="cart">
@@ -129,8 +127,7 @@
                                 $customer_id = Session::get('customer_id');
                                 if ($customer_id != null) {
                                 ?>
-                                <a href="{{ URL::to('/checkout') }}"
-                                    class="btn btn-outline-primary-2 btn-order btn-block">
+                                <a href="{{ URL::to('/checkout') }}" class="btn btn-outline-primary-2 btn-order btn-block">
                                     <span class="btn-text">Thanh toán</span>
                                     <span class="btn-hover-text">Kiểm tra thông tin thanh toán</span>
                                 </a>

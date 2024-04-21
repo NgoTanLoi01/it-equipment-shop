@@ -14,20 +14,18 @@
 @section('content')
     <main class="main">
         <div class="page-header text-center"
-            style="background-image: url('{{ asset('UserLTE/assets/images/page-header-bg.jpg') }}')">
+            style="background-image: url('{{ asset('UserLTE/assets/images/about-header-bg.jpg') }}')">
             <div class="container">
-                <h1 class="page-title">Thông tin đơn hàng<span>Cửa hàng</span></h1>
+                <h1 class="page-title"><strong>Thông Tin Thanh Toán</strong></h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center"> <!-- Sử dụng lớp justify-content-center để căn giữa -->
+                        <li class="breadcrumb-item"><a href="#"><strong>Trang Chủ</strong></a></li>
+                        <li class="breadcrumb-item"><a href="#"><strong>Thông Tin Thanh Toán</strong></a></li>
+                    </ol>
+                </nav>
             </div><!-- End .container -->
         </div><!-- End .page-header -->
-        <nav aria-label="breadcrumb" class="breadcrumb-nav">
-            <div class="container">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-                    <li class="breadcrumb-item"><a href="#">Đơn hàng</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Thông tin đơn hàng</li>
-                </ol>
-            </div><!-- End .container -->
-        </nav><!-- End .breadcrumb-nav -->
+
 
         <div class="page-content">
             <div class="checkout">

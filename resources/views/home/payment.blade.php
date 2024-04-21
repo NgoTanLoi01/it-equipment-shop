@@ -26,20 +26,19 @@
             <div class="checkout">
                 <div class="container">
                     <div class="page-header text-center"
-                        style="background-image: url('{{ asset('UserLTE/assets/images/page-header-bg.jpg') }}')">
+                        style="background-image: url('{{ asset('UserLTE/assets/images/about-header-bg.jpg') }}')">
                         <div class="container">
-                            <h1 class="page-title">Thanh toán đơn hàng<span>Cửa hàng</span></h1>
+                            <h1 class="page-title"><strong>Thông Tin Đơn Hàng</strong></h1>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb justify-content-center">
+                                    <!-- Sử dụng lớp justify-content-center để căn giữa -->
+                                    <li class="breadcrumb-item"><a href="#"><strong>Trang Chủ</strong></a></li>
+                                    <li class="breadcrumb-item"><a href="#"><strong>Thông Tin Đơn Hàng</strong></a>
+                                    </li>
+                                </ol>
+                            </nav>
                         </div><!-- End .container -->
                     </div><!-- End .page-header -->
-                    <nav aria-label="breadcrumb" class="breadcrumb-nav">
-                        <div class="container">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-                                <li class="breadcrumb-item"><a href="#">Đơn hàng</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Thanh toán đơn hàng</li>
-                            </ol>
-                        </div><!-- End .container -->
-                    </nav><!-- End .breadcrumb-nav -->
 
                     <div class="page-content">
                         <div class="checkout">
@@ -118,14 +117,13 @@
 
                                 <form action="{{ URL::to('/order-place') }}" method="POST">
                                     {{ csrf_field() }}
-                                    <div class="accordion-summary payment-options" id="accordion-payment">
+                                    <div  id="accordion-payment">
                                         <div class="card">
                                             <div class="card-header" id="heading-3">
                                                 <h2 class="card-title">
                                                     <label>
                                                         <input name="payment_option" value="2" type="checkbox"
                                                             style="display: none;">
-
                                                     </label>
                                                 </h2>
 
@@ -134,7 +132,8 @@
                                         <br>
                                         <button type="submit" value="Đặt hàng" name="send_order_place"
                                             class="btn btn-outline-primary-2 btn-order btn-block">
-                                            <span class="">Thanh toán tiền mặt</span>
+                                            <img src="{{ asset('UserLTE/assets/images/chatbot/money.png') }}"
+                                                alt="" style="width: 45px; height: auto">&ensp; <strong> Thanh Toán Khi Nhận Hàng</strong>
                                         </button>
                                     </div>
                                 </form>
@@ -145,7 +144,8 @@
                                         <input type="hidden" name="total_vnpay" id="">
                                         <button type="submit" name="redirect"
                                             class="btn btn-outline-primary-2 btn-order btn-block">
-                                            Thanh toán VNPAY
+                                            <img src="{{ asset('UserLTE/assets/images/chatbot/vnpay.png') }}"
+                                                alt="" style="width: 40px; height: auto">&ensp; <strong> Thanh Toán Với VNPAY</strong>
                                         </button>
                                     </div>
                                 </form>
@@ -156,7 +156,8 @@
                                         <input type="hidden" name="total_momo" id="">
                                         <button type="submit" name="payUrl"
                                             class="btn btn-outline-primary-2 btn-order btn-block">
-                                            Thanh toán MOMO
+                                            <img src="{{ asset('UserLTE/assets/images/chatbot/momo.png') }} "
+                                                alt="" style="width: 30px; height: auto">&ensp; <strong>Thanh Toán Với MOMO</strong>
                                         </button>
                                     </div>
                                 </form>
