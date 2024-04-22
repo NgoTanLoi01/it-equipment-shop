@@ -29,21 +29,20 @@
                                             <li><a href="{{ URL::to('/product_all') }}">Phụ kiện</a></li>
                                             <li><a href="{{ URL::to('/product_all') }}"><span>Tai nghe<span
                                                             class="tip tip-new">New</span></span></a></li>
+                                            <li><a href="{{ URL::to('/product_all') }}"><span>Loa<span></a></li>
+                                            <li><a href="{{ URL::to('/product_all') }}"><span>Chuột<span></a></li>
+                                            <li><a href="{{ URL::to('/product_all') }}"><span>Bàn Phím<span
+                                                            class="tip tip-hot">Hot</span></span></a></li>
                                         </ul>
-
+                                    </div><!-- End .col-md-6 -->
+                                    <div class="col-md-6">
                                         <div class="menu-title">Thương hiệu</div><!-- End .menu-title -->
                                         <ul>
                                             <li><a href="{{ URL::to('/product_all') }}"><span>Logitech<span
-                                                            class="tip tip-hot">Hot</span></span></a></li>
+                                                class="tip tip-hot">hot</span></span></a></li>
+                                            <li><a href="{{ URL::to('/product_all') }}">Tamayoko</a></li>
                                             <li><a href="{{ URL::to('/product_all') }}">Apple</a></li>
-                                        </ul>
-                                    </div><!-- End .col-md-6 -->
-
-                                    <div class="col-md-6">
-                                        <div class="menu-title">Danh mục khác</div><!-- End .menu-title -->
-                                        <ul>
-                                            <li><a href="{{ URL::to('/product_all') }}">Sản phẩm mới</a></li>
-                                            <li><a href="{{ URL::to('/product_all') }}"><span>Sản phẩm bán chạy<span class="tip tip-new">New</span></span></a></li>
+                                            <li><a href="{{ URL::to('/product_all') }}">Acer</a></li>
                                         </ul>
                                     </div><!-- End .col-md-6 -->
                                 </div><!-- End .row -->

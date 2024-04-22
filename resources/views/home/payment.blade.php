@@ -147,7 +147,7 @@
                                             <img src="{{ asset('UserLTE/assets/images/chatbot/vnpay.png') }}"
                                                 alt="" style="width: 40px; height: auto">&ensp; <strong> Thanh Toán Với VNPAY</strong>
                                         </button>
-                                    </div>
+                                    </div>  
                                 </form>
 
                                 <form action="{{ url('/momo_payment') }}" method="POST">

@@ -39,7 +39,7 @@
                         <div class="toolbox">
                             <div class="toolbox-left">
                                 <div class="toolbox-info">
-                                    Hiển thị <span>9 trên 36 </span> sản phẩm
+                                    Hiển thị <span>12 trên 36 </span> sản phẩm
                                 </div><!-- End .toolbox-info -->
                             </div><!-- End .toolbox-left -->
 
@@ -147,6 +147,57 @@
                                     <h5><strong><i class="fa fa-filter"></i> BỘ LỌC TÌM KIẾM</strong></h5>
                                 </label></div><!-- End .widget widget-clean -->
                             <form id="filterForm" action="{{ url('/product_all') }}" method="get">
+
+
+                                {{-- Lọc theo danh mục sản phẩm --}}
+                                <div class="widget widget-collapsible">
+                                    <h6 class="widget-title"><a data-toggle="collapse" href="#widget-2" role="button"
+                                            aria-expanded="true" aria-controls="widget-2"><strong>Danh mục sản
+                                                phẩm</strong></a></h6>
+                                    <div class="collapse show" id="widget-2">
+                                        <div class="widget-body">
+                                            <div class="filter-items">
+                                                @foreach ($categories as $category)
+                                                    <div>
+                                                        <label>
+                                                            <input type="checkbox" name="selected_categories[]"
+                                                                value="{{ $category->id }}" class="category-checkbox"
+                                                                {{ in_array($category->id, (array) $request->input('selected_categories')) ? 'checked' : '' }}>
+                                                            {{ $category->name }}
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- Lọc theo hãng sản xuất --}}
+                                <div class="widget widget-collapsible">
+                                    <h6 class="widget-title"><a data-toggle="collapse" href="#widget-4" role="button"
+                                            aria-expanded="true" aria-controls="widget-4"> <strong>Thương
+                                                hiệu</strong></a></h6>
+                                    <!-- End .widget-title -->
+                                    <div class="collapse show" id="widget-4">
+                                        <div class="widget-body">
+                                            <div class="filter-items">
+                                                @foreach ($tags as $tag)
+                                                    <div>
+                                                        <label>
+                                                            <input type="checkbox" name="product_tags[]"
+                                                                value="{{ $tag->id }}" class="product-tag-checkbox"
+                                                                {{ in_array($tag->id, request('product_tags', [])) ? 'checked' : '' }}>
+                                                            {{ $tag->name }}
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div><!-- End .collapse -->
+                                </div><!-- End .widget -->
+
+                                {{-- Lọc theo giá sản phẩm --}}
                                 <div class="widget widget-collapsible">
                                     <h6 class="widget-title"><a data-toggle="collapse" href="#widget-1" role="button"
                                             aria-expanded="true" aria-controls="widget-1"><strong> Mức giá </strong></a>
@@ -199,31 +250,21 @@
                                         </div><!-- End .widget-body -->
                                     </div><!-- End .collapse -->
                                 </div><!-- End .widget -->
-                                <div class="widget widget-collapsible">
-                                    <h6 class="widget-title"><a data-toggle="collapse" href="#widget-4" role="button"
-                                            aria-expanded="true" aria-controls="widget-4"> <strong>Hãng sản
-                                                xuất</strong></a></h6>
-                                    <!-- End .widget-title -->
-                                    <div class="collapse show" id="widget-4">
-                                        <div class="widget-body">
-                                            <div class="filter-items">
-                                                @foreach ($tags as $tag)
-                                                    <div>
-                                                        <label>
-                                                            <input type="checkbox" name="product_tags[]"
-                                                                value="{{ $tag->id }}" class="product-tag-checkbox"
-                                                                {{ in_array($tag->id, request('product_tags', [])) ? 'checked' : '' }}>
-                                                            {{ $tag->name }}
-                                                        </label>
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div><!-- End .collapse -->
-                                </div><!-- End .widget -->
                             </form>
-
-                        </div><!-- End .sidebar sidebar-shop -->
+                            {{-- <div class="sidebar-categories">
+                                <h3 class="widget-title">Theo giá</h3>
+                                <div class="d-flex justify-content-between">
+                                    <input class="input-filter-price min" type="number" min="0" maxlength="13"
+                                        placeholder="đ TỪ" onkeypress="return /[0-9]/i.test(event.key)">
+                                    <span style="line-height: 240%;"> - </span>
+                                    <input class="input-filter-price max" type="number" min="0" maxlength="13"
+                                        placeholder="đ ĐẾN" onkeypress="return /[0-9]/i.test(event.key)">
+                                </div>
+                                <div class="alert-filter-price text-primary mt-2 d-none">Vui lòng điền khoảng giá phù hợp
+                                </div>
+                                <button type="button" class="btn-filter-price btn btn-primary">Áp dụng</button>
+                            </div>
+                        </div><!-- End .sidebar sidebar-shop --> --}}
                     </aside>
                 </div>
             </div>
@@ -251,6 +292,19 @@
             tagCheckboxes.forEach(function(checkbox) {
                 checkbox.addEventListener('change', function() {
                     // Gửi yêu cầu lọc khi checkbox tag sản phẩm thay đổi
+                    document.getElementById('filterForm').submit();
+                });
+            });
+        });
+    </script>
+    {{-- Lọc theo danh mục --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var categoryCheckboxes = document.querySelectorAll('.category-checkbox');
+
+            categoryCheckboxes.forEach(function(checkbox) {
+                checkbox.addEventListener('change', function() {
+                    // Gửi yêu cầu lọc khi checkbox danh mục sản phẩm thay đổi
                     document.getElementById('filterForm').submit();
                 });
             });

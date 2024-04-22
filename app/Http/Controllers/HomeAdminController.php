@@ -49,7 +49,17 @@ class HomeAdminController extends Controller
 
     public function product_all(Request $request)
     {
+        // Truy vấn danh sách các danh mục sản phẩm
+        $categories = Category::where('parent_id', 0)->get();
+
+        // Truy vấn dữ liệu sản phẩm
         $query = Product::query();
+
+        // Lọc theo danh mục sản phẩm được chọn (nếu có)
+        if ($request->has('selected_categories')) {
+            $selectedCategories = $request->input('selected_categories');
+            $query->whereIn('category_id', $selectedCategories);
+        }
 
         // Xử lý lọc theo giá 
         if ($request->has('price_range') && !in_array('0-100000000', $request->price_range)) {
@@ -70,12 +80,13 @@ class HomeAdminController extends Controller
             });
         }
 
-        $products = $query->latest()->paginate(9);
+        // Truy vấn sản phẩm theo các điều kiện lọc và phân trang
+        $products = $query->latest()->paginate(12);
         $tags = Tag::all();
 
-        return view('home.product_all', compact('products', 'tags'));
+        // Trả về view với biến $products, $tags và $categories
+        return view('home.product_all', compact('products', 'tags', 'categories', 'request'));
     }
-
 
     public function yeu_thich()
     {
