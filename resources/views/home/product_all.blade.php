@@ -199,72 +199,34 @@
 
                                 {{-- Lọc theo giá sản phẩm --}}
                                 <div class="widget widget-collapsible">
-                                    <h6 class="widget-title"><a data-toggle="collapse" href="#widget-1" role="button"
-                                            aria-expanded="true" aria-controls="widget-1"><strong> Mức giá </strong></a>
+                                    <h6 class="widget-title"><a data-toggle="collapse" href="#widget-3" role="button"
+                                            aria-expanded="true" aria-controls="widget-3"><strong> Theo giá </strong></a>
                                     </h6>
-                                    <!-- End .widget-title -->
-                                    <div class="collapse show" id="widget-1">
+                                    <div class="collapse show" id="widget-3">
                                         <div class="widget-body">
-                                            <div class="filter-items filter-items-count">
-                                                <div>
-                                                    <label>
-                                                        <input type="checkbox" name="price_range[]" value="0-100000000"
-                                                            class="price-range-checkbox"
-                                                            {{ in_array('0-100000000', request('price_range', [])) ? 'checked' : '' }}>
-                                                        Tất cả
-                                                    </label>
+                                            <div class="filter-items">
+                                                <div class="d-flex justify-content-between">
+                                                    <input class="input-filter-price min" type="number" min="0"
+                                                        maxlength="13" placeholder="đ TỪ"
+                                                        value="{{ request('min_price') }}"
+                                                        onkeypress="return /[0-9]/i.test(event.key)">
+                                                    <span style="line-height: 240%;"> - </span>
+                                                    <input class="input-filter-price max" type="number" min="0"
+                                                        maxlength="13" placeholder="đ ĐẾN"
+                                                        value="{{ request('max_price') }}"
+                                                        onkeypress="return /[0-9]/i.test(event.key)">
                                                 </div>
-                                                <div>
-                                                    <label>
-                                                        <input type="checkbox" name="price_range[]" value="0-3000000"
-                                                            class="price-range-checkbox"
-                                                            {{ in_array('0-3000000', request('price_range', [])) ? 'checked' : '' }}>
-                                                        Dưới 3 triệu
-                                                    </label>
-                                                </div>
-                                                <div>
-                                                    <label>
-                                                        <input type="checkbox" name="price_range[]"
-                                                            value="3000000-8000000" class="price-range-checkbox"
-                                                            {{ in_array('3000000-8000000', request('price_range', [])) ? 'checked' : '' }}>
-                                                        Từ 3 đến 8 triệu
-                                                    </label>
-                                                </div>
-                                                <div>
-                                                    <label>
-                                                        <input type="checkbox" name="price_range[]"
-                                                            value="8000000-15000000" class="price-range-checkbox"
-                                                            {{ in_array('8000000-15000000', request('price_range', [])) ? 'checked' : '' }}>
-                                                        Từ 8 đến 15 triệu
-                                                    </label>
-                                                </div>
-                                                <div>
-                                                    <label>
-                                                        <input type="checkbox" name="price_range[]"
-                                                            value="15000000-100000000" class="price-range-checkbox"
-                                                            {{ in_array('15000000-100000000', request('price_range', [])) ? 'checked' : '' }}>
-                                                        Trên 15 triệu
-                                                    </label>
-                                                </div>
-                                            </div><!-- End .filter-items -->
-                                        </div><!-- End .widget-body -->
-                                    </div><!-- End .collapse -->
-                                </div><!-- End .widget -->
+                                                <div class="alert-filter-price text-primary mt-2 d-none">Vui lòng điền
+                                                    khoảng giá phù
+                                                    hợp</div>
+                                                <button type="button" class="btn-filter-price btn btn-primary">Áp
+                                                    dụng</button>
+                                            </div>
+                                        </div><!-- End .collapse -->
+                                    </div><!-- End .widget -->
+                                </div>
                             </form>
-                            {{-- <div class="sidebar-categories">
-                                <h3 class="widget-title">Theo giá</h3>
-                                <div class="d-flex justify-content-between">
-                                    <input class="input-filter-price min" type="number" min="0" maxlength="13"
-                                        placeholder="đ TỪ" onkeypress="return /[0-9]/i.test(event.key)">
-                                    <span style="line-height: 240%;"> - </span>
-                                    <input class="input-filter-price max" type="number" min="0" maxlength="13"
-                                        placeholder="đ ĐẾN" onkeypress="return /[0-9]/i.test(event.key)">
-                                </div>
-                                <div class="alert-filter-price text-primary mt-2 d-none">Vui lòng điền khoảng giá phù hợp
-                                </div>
-                                <button type="button" class="btn-filter-price btn btn-primary">Áp dụng</button>
-                            </div>
-                        </div><!-- End .sidebar sidebar-shop --> --}}
+                        </div>
                     </aside>
                 </div>
             </div>
@@ -274,16 +236,32 @@
     {{-- lọc theo giá --}}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var checkboxes = document.querySelectorAll('.price-range-checkbox');
+            var btnFilterPrice = document.querySelector('.btn-filter-price');
 
-            checkboxes.forEach(function(checkbox) {
-                checkbox.addEventListener('change', function() {
-                    // Gửi yêu cầu lọc khi checkbox thay đổi
-                    document.getElementById('filterForm').submit();
-                });
+            btnFilterPrice.addEventListener('click', function() {
+                var minPrice = document.querySelector('.input-filter-price.min').value;
+                var maxPrice = document.querySelector('.input-filter-price.max').value;
+
+                if (minPrice.trim() !== '' && maxPrice.trim() !== '' && parseInt(minPrice) <= parseInt(
+                        maxPrice)) {
+                    // Gửi yêu cầu lọc khi giá trị hợp lệ
+                    var filterForm = document.getElementById('filterForm');
+                    var priceRange = minPrice + '-' + maxPrice;
+                    var priceRangeInput = document.createElement('input');
+                    priceRangeInput.type = 'hidden';
+                    priceRangeInput.name = 'price_range[]';
+                    priceRangeInput.value = priceRange;
+                    filterForm.appendChild(priceRangeInput);
+                    filterForm.submit();
+                } else {
+                    // Hiển thị cảnh báo khi giá trị không hợp lệ
+                    var alertFilterPrice = document.querySelector('.alert-filter-price');
+                    alertFilterPrice.classList.remove('d-none');
+                }
             });
         });
     </script>
+
     {{-- lọc theo tag --}}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -312,3 +290,10 @@
     </script>
 @endsection
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .btn-filter-price {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+</style>
