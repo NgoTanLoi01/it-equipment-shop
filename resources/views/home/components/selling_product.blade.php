@@ -97,43 +97,40 @@
                     }
                 }
             }'>
-                @if (isset($productsFeatures) && count($productsFeatures) > 0)
-                    @foreach ($productsFeatures as $product)
-                        <div class="product product-2">
-                            <figure class="product-media">
-                                <a href="{{ route('detail', $product->slug) }}">
-                                    <img src="{{ config('app.base_url') . $product->feature_image_path }}"
-                                        alt="Product image" class="product-image">
+                @foreach ($productsSelling as $product)
+                    <div class="product product-2">
+                        <figure class="product-media">
+                            <a href="{{ route('detail', $product->slug) }}">
+                                <img src="{{ config('app.base_url') . $product->feature_image_path }}"
+                                    alt="Product image" class="product-image">
+                            </a>
+
+                            <div class="product-action-vertical">
+                                <a href="#" class="btn-product-icon btn-wishlist btn-expandable">
+                                    <span>Danh sách yêu thích</span>
                                 </a>
+                            </div><!-- End .product-action -->
+                        </figure><!-- End .product-media -->
 
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable">
-                                        <span>Danh sách yêu thích</span>
-                                    </a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
+                        <div class="product-body">
+                            <div class="product-cat">
+                                <a href="{{ route('detail', $product->slug) }}">{{ $product->name }}</a>
+                            </div><!-- End .product-cat -->
+                            <h3 class="product-title">
+                                <a href="{{ asset('UserLTE/product') }}">{{ $product->name }}</a>
+                            </h3><!-- End .product-title -->
+                            <div class="product-price">
+                                <span class="old-price">
+                                    Gốc: <del>{{ number_format($product->price) }} VNĐ</del>
+                                </span>
+                                <span class="new-price">{{ number_format($product->sale_price) }} VNĐ</span>
+                            </div><!-- End .product-price -->
 
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="{{ route('detail', $product->slug) }}">{{ $product->name }}</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title">
-                                    <a href="{{ asset('UserLTE/product') }}">{{ $product->name }}</a>
-                                </h3><!-- End .product-title -->
-                                <div class="product-price">
-                                    <span class="old-price">
-                                        Gốc: <del>{{ number_format($product->price) }} VNĐ</del>
-                                    </span>
-                                    <span class="new-price">{{ number_format($product->sale_price) }} VNĐ</span>
-                                </div><!-- End .product-price -->
+                            {{-- <h6>Số lượng đã bán: {{ $productSalesQuantity[$product->id] ?? 0 }}</h6> --}}
+                        </div><!-- End .product-body -->
+                    </div><!-- End .product -->
+                @endforeach
 
-                                <p>Số lượng đã bán: {{ $productSalesQuantity[$product->id] ?? 0 }}</p>
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-                    @endforeach
-                @else
-                    <p>Không có sản phẩm để hiển thị</p>
-                @endif
 
             </div><!-- End .owl-carousel -->
         </div><!-- .End .tab-pane -->

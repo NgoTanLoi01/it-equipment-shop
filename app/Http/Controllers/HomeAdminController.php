@@ -15,11 +15,19 @@ class HomeAdminController extends Controller
 {
     public function index()
     {
+        // Lấy danh sách slider
         $sliders = Slider::latest()->get();
+
+        // Lấy danh sách các danh mục cấp 1
         $categorys = Category::where('parent_id', 0)->get();
+
+        // Lấy danh sách 10 sản phẩm mới nhất
         $products = Product::latest()->take(10)->get();
-        $productsSelling = Product::latest('views_count', 'desc')->take(12)->get();
-        $productsFeatures = Product::oldest('views_count')->take(12)->get();
+
+        // Lấy danh sách 12 sản phẩm được xem nhiều nhất
+        $productsFeatures = Product::orderBy('views_count', 'desc')->take(12)->get();
+
+        // Lấy danh sách 6 danh mục cấp 1 đầu tiên
         $categorysLimit = Category::where('parent_id', 0)->take(6)->get();
 
         // Truy vấn và tính toán số lượng sản phẩm đã bán cho mỗi product_id
@@ -27,20 +35,22 @@ class HomeAdminController extends Controller
             ->select('product_id', DB::raw('SUM(product_sales_quantity) as total_sold'))
             ->groupBy('product_id');
 
-        // Lấy danh sách tất cả sản phẩm cùng với số lượng sản phẩm đã bán
-        $productsFeatures = Product::leftJoinSub($productsSold, 'productsSold', function ($join) {
+        // Lấy danh sách 12 sản phẩm được bán chạy nhất
+        $productsSelling = Product::leftJoinSub($productsSold, 'productsSold', function ($join) {
             $join->on('products.id', '=', 'productsSold.product_id');
         })
             ->orderByDesc('productsSold.total_sold') // Sắp xếp theo số lượng sản phẩm đã bán từ cao đến thấp
+            ->take(12)
             ->get();
 
-        // Lấy số lượng sản phẩm đã bán cho mỗi sản phẩm cụ thể
-        $productSalesQuantity = collect();
-        foreach ($productsFeatures as $product) {
-            $salesQuantity = $productsSold->where('product_id', $product->id)->first()->total_sold ?? 0;
-            $productSalesQuantity[$product->id] = $salesQuantity;
+
+        // Lấy số lượng sản phẩm đã bán cho mỗi sản phẩm cụ thể và lưu vào một mảng kết hợp
+        $productSalesQuantity = [];
+        foreach ($productsSelling as $product) {
+            $productSalesQuantity[$product->id] = $product->total_sold;
         }
-        
+        //dd($productSalesQuantity);
+        // Trả về view home và truyền các biến dữ liệu cần thiết
         return view("home.home", compact("sliders", "categorys", "products", "productsSelling", "categorysLimit", "productsFeatures", "productSalesQuantity"));
     }
 

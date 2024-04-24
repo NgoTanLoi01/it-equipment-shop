@@ -88,7 +88,7 @@
                         }
                     }
                 }'>
-                @foreach ($productsSelling as $keySelling => $productsSellingItem)
+                @foreach ($productsFeatures as $keySelling => $productsSellingItem)
                     <div class="product product-2">
                         <figure class="product-media">
                             <a href="{{ route('detail', $productsSellingItem->slug) }}">
