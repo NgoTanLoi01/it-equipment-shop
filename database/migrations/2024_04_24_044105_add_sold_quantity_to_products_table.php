@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddDeletedAtToOrders extends Migration
+class AddSoldQuantityToProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddDeletedAtToOrders extends Migration
      */
     public function up()
     {
-        Schema::table('orders', function (Blueprint $table) {
-            $table->softDeletes();
+        Schema::table('products', function (Blueprint $table) {
+            $table->integer('sold_quantity')->default(0); // Thêm cột sold_quantity với giá trị mặc định là 0
         });
     }
 
@@ -25,8 +25,8 @@ class AddDeletedAtToOrders extends Migration
      */
     public function down()
     {
-        Schema::table('orders', function (Blueprint $table) {
-            //
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropColumn('sold_quantity');
         });
     }
 }

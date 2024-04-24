@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Tag;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\Slider;
 use Illuminate\Support\Facades\DB;
@@ -21,7 +22,26 @@ class HomeAdminController extends Controller
         $productsFeatures = Product::oldest('views_count')->take(12)->get();
         $categorysLimit = Category::where('parent_id', 0)->take(6)->get();
 
-        return view("home.home", compact("sliders", "categorys", "products", "productsSelling", "categorysLimit", "productsFeatures"));
+        // Truy vấn và tính toán số lượng sản phẩm đã bán cho mỗi product_id
+        $productsSold = DB::table('order_details')
+            ->select('product_id', DB::raw('SUM(product_sales_quantity) as total_sold'))
+            ->groupBy('product_id');
+
+        // Lấy danh sách tất cả sản phẩm cùng với số lượng sản phẩm đã bán
+        $productsFeatures = Product::leftJoinSub($productsSold, 'productsSold', function ($join) {
+            $join->on('products.id', '=', 'productsSold.product_id');
+        })
+            ->orderByDesc('productsSold.total_sold') // Sắp xếp theo số lượng sản phẩm đã bán từ cao đến thấp
+            ->get();
+
+        // Lấy số lượng sản phẩm đã bán cho mỗi sản phẩm cụ thể
+        $productSalesQuantity = collect();
+        foreach ($productsFeatures as $product) {
+            $salesQuantity = $productsSold->where('product_id', $product->id)->first()->total_sold ?? 0;
+            $productSalesQuantity[$product->id] = $salesQuantity;
+        }
+        
+        return view("home.home", compact("sliders", "categorys", "products", "productsSelling", "categorysLimit", "productsFeatures", "productSalesQuantity"));
     }
 
     public function detail($slug)
