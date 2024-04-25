@@ -6,30 +6,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @yield('title')
 
-    <!-- Font Awesome Icons -->
+    {{-- <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('AdminLTE/dist/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('AdminLTE/dist/css/adminlte.min.css') }}"> --}}
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="{{ asset('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback') }}">
+    {{-- <link rel="stylesheet"
+        href="{{ asset('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback') }}"> --}}
     <!-- fullCalendar -->
-    <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/fullcalendar/main.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/fullcalendar/main.css') }}"> --}}
+
+    {{-- Admin Mofi css --}}
+    <link rel="icon" href="{{ asset('AdminMofi/assets/images/favicon.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset(' AdminMofi/assets/images/favicon.png') }}" type="image/x-icon">
+    <!-- Google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('AdminMofi/assets/css/font-awesome.css') }}">
+    <!-- ico-font-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('AdminMofi/assets/css/vendors/icofont.css') }}">
+    <!-- Themify icon-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('AdminMofi/assets/css/vendors/themify.css') }}">
+    <!-- Flag icon-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('AdminMofi/assets/css/vendors/flag-icon.css') }}">
+    <!-- Feather icon-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('AdminMofi/assets/css/vendors/feather-icon.css') }}">
+    <!-- Plugins css start-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('AdminMofi/assets/css/vendors/slick.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('AdminMofi/assets/css/vendors/slick-theme.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('AdminMofi/assets/css/vendors/scrollbar.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('AdminMofi/assets/css/vendors/animate.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('AdminMofi/assets/css/vendors/datatables.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('AdminMofi/assets/css/vendors/date-picker.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('AdminMofi/assets/css/vendors/owlcarousel.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('AdminMofi/assets/css/vendors/rating.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('AdminMofi/assets/css/vendors/vector-map.css') }}">
+    <!-- Plugins css Ends-->
+    <!-- Bootstrap css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('AdminMofi/assets/css/vendors/bootstrap.css') }}">
+    <!-- App css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('AdminMofi/assets/css/style.css') }}">
+    <link id="color" rel="stylesheet" href="{{ asset('AdminMofi/assets/css/color-1.css') }}" media="screen">
+    <!-- Responsive css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('AdminMofi/assets/css/responsive.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontawesome@5.15.4/css/all.min.css">
+    {{-- End Admin Mofi css --}}
     @yield('css')
 </head>
 
-<body class="hold-transition sidebar-mini">
-    <div class="wrapper">
+<body>
 
-        @include('partials.header')
-
-        @include('partials.siderbar')
-
-        @yield('content')
-
-        @include('partials.footer')
+    <div class="loader-wrapper">
+        <div class="loader loader-1">
+            <div class="loader-outter"></div>
+            <div class="loader-inner"></div>
+            <div class="loader-inner-1"></div>
+        </div>
     </div>
-    <!-- jQuery -->
+    <!-- loader ends-->
+
+
+
+    <!-- page-wrapper Start-->
+    <div class="page-wrapper compact-wrapper" id="pageWrapper">
+        <div class="page-header row">
+            <div class="header-logo-wrapper col-auto">
+                <div class="logo-wrapper"><a href="index.html"><img class="img-fluid for-light"
+                            src="{{ asset('AdminMofi/assets/images/logo/logo.png') }}" alt="" /><img
+                            class="img-fluid for-dark" src="{{ asset('AdminMofi/assets/images/logo/logo_light.png') }}"
+                            alt="" /></a></div>
+            </div>
+            {{-- <div class="col-4 col-xl-4 page-title">
+
+                <!-- <h4 class="f-w-700"> Ecommerce Dashboard</h4> -->
+                <nav>
+                    <ol class="breadcrumb justify-content-sm-start align-items-center mb-0">
+                        <li class="breadcrumb-item"><a href="{{ route('home.index') }}" class="nav-link "><i
+                                    class=""><img src="{{ asset('AdminMofi/assets/images/icon/home.png') }}"
+                                        width="40px" alt=""></i></a></li>
+                        <!-- <li class="breadcrumb-item f-w-400">Dashboard</li>
+                <li class="breadcrumb-item f-w-400 active">Ecommerce</li> -->
+                    </ol>
+                </nav>
+            </div> --}}
+            @include('partials.header')
+            <div class="page-body-wrapper">
+                @include('partials.siderbar')
+
+                @yield('content')
+
+                @include('partials.footer')
+            </div>
+        </div>
+    </div>
+    {{-- <!-- jQuery -->
     <script src="{{ asset('AdminLTE/plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -44,40 +117,70 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('AdminLTE/dist/js/demo.js') }}"></script>
 
-    <script src="{{ asset('AdminLTE/plugins/chart.js/Chart.min.js') }}"></script>
-    <!-- AdminLTE App -->
-    <!-- Page specific script -->
-    <script>
-        const xValues = ["Laptop", "Đồng hồ thông minh", "Máy ảnh", "Tai nghe", "Loa", "Chuột", "Bàn phím", "Phụ kiện"];
-        const yValues = [6, 2, 3, 2, 3, 2, 2, 7];
-        const barColors = [
-            "#b91d47",
-            "#00aba9",
-            "#2b5797",
-            "#e8c3b9",
-            "#1e7145",
-            "#ffc107",
-            "#ad29af",
-            "#00c0ff",
-        ];
+    <script src="{{ asset('AdminLTE/plugins/chart.js/Chart.min.js') }}"></script> --}}
+    <!-- End AdminLTE App -->
 
-        new Chart("myChart", {
-            type: "pie",
-            data: {
-                labels: xValues,
-                datasets: [{
-                    backgroundColor: barColors,
-                    data: yValues
-                }]
-            },
-            options: {
-                title: {
-                    display: true,
-                    text: "Số lượng sản phẩm theo danh mục"
-                }
-            }
-        });
-    </script>
+    {{-- AdminMofi Scrpit --}}
+    <!-- latest jquery-->
+    <script src="{{ asset('AdminMofi/assets/js/jquery.min.js') }}"></script>
+    <!-- Bootstrap js-->
+    <script src="{{ asset('AdminMofi/assets/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+    <!-- feather icon js-->
+    <script src="{{ asset('AdminMofi/assets/js/icons/feather-icon/feather.min.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/icons/feather-icon/feather-icon.js') }}"></script>
+    <!-- scrollbar js-->
+    <script src="{{ asset('AdminMofi/assets/js/scrollbar/simplebar.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/scrollbar/custom.js') }}"></script>
+    <!-- Sidebar jquery-->
+    <script src="{{ asset('AdminMofi/assets/js/config.js') }}"></script>
+    <!-- Plugins JS start-->
+    <script src="{{ asset('AdminMofi/assets/js/sidebar-menu.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/sidebar-pin.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/slick/slick.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/header-slick.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/chart/morris-chart/raphael.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/chart/morris-chart/morris.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/chart/morris-chart/prettify.min.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/chart/apex-chart/apex-chart.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/chart/apex-chart/stock-prices.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/chart/apex-chart/moment.min.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/chart/echart/pie-chart/facePrint.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/chart/echart/pie-chart/testHelper.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/chart/echart/pie-chart/custom-transition-texture.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/chart/echart/data/symbols.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/slick/slick-theme.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/vector-map/map/jquery-jvectormap-world-mill-en.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/vector-map/map/jquery-jvectormap-us-aea-en.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/vector-map/map/jquery-jvectormap-uk-mill-en.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/vector-map/map/jquery-jvectormap-au-mill.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/vector-map/map/jquery-jvectormap-chicago-mill-en.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/vector-map/map/jquery-jvectormap-in-mill.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/vector-map/map/jquery-jvectormap-asia-mill.js') }}"></script>
+    <!-- calendar js-->
+    <script src="{{ asset('AdminMofi/assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/datatable/datatables/datatable.custom.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/datatable/datatables/datatable.custom1.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/datepicker/date-picker/datepicker.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/datepicker/date-picker/datepicker.en.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/datepicker/date-picker/datepicker.custom.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/rating/jquery.barrating.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/rating/rating-script.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/owlcarousel/owl.carousel.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/vector-map/map-vector.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/countdown.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/dashboard/dashboard_3.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/ecommerce.js') }}"></script>
+    <!-- Plugins JS Ends-->
+    <!-- Theme js-->
+    <script src="{{ asset('AdminMofi/assets/js/script.js') }}"></script>
+    <script src="{{ asset('AdminMofi/assets/js/theme-customizer/customizer.js') }}"></script>
+    <!-- Plugin used-->
+    {{-- End AdminMofi Scrpit --}}
+
+    <!-- Page specific script -->
     <script type="text/javascript">
         CKEDITOR.replace('content');
     </script>

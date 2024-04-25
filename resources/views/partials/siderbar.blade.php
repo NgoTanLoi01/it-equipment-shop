@@ -1,171 +1,178 @@
-  <!-- Main Sidebar Container -->
-  <aside style="background-color: #1f2234" class="main-sidebar sidebar-dark-primary elevation-4">
-      <!-- Brand Logo -->
-      <a href="{{ route('home') }}" class="brand-link">
-          <img src="{{ asset('UserLTE/assets/images/demos/demo-3/Logo.jpg') }}" alt="AdminLTE Logo"
-              class="brand-image img-circle elevation-3" style="opacity: .8">
-          <span class="brand-text font-weight-light"><b>Ngo Tan Loi</b></span>
-      </a>
+  <style>
+      .sidebar-title strong {
+          color: #fff;
+          /* hoặc có thể sử dụng 'white' */
+      }
 
-      <!-- Sidebar -->
-      <div class="sidebar ">
-          <!-- Sidebar user panel (optional) -->
-          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-              @if (Auth::check())
-                  <div class="info">
-                      <a href="">
-                          <i class="fas fa-user-tie"></i>
-                          {{ Auth::user()->name }}
-                      </a>
-                  </div>
-                  <div class="info">
-                      <a href="{{ route('logout') }}">
-                          Thoát
-                      </a>
-                  </div>
-              @else
-                  <div class="info">
-                      <a href="">
-                          Vui lòng đăng nhập vào hệ thống!
-                      </a>
-                  </div>
-              @endif
-          </div>
+      .rounded-image {
+          width: 40px;
+          /* Đảm bảo kích thước của hình ảnh */
+          height: 40px;
+          border-radius: 50%;
+          /* Bo tròn hình ảnh */
+          overflow: hidden;
+          /* Loại bỏ phần dư thừa khi bo tròn */
+      }
+
+      .rounded-image img {
+          width: 100%;
+          /* Đảm bảo hình ảnh lấp đầy không gian của phần tử cha */
+          height: auto;
+          /* Đảm bảo tỷ lệ hình ảnh không bị méo */
+          display: block;
+          /* Đảm bảo hình ảnh căn giữa */
+      }
 
 
-          <!-- SidebarSearch Form -->
-          <div class="form-inline">
-              <div class="input-group" data-widget="sidebar-search">
-                  <input style="background-color: #1f2234" class="form-control form-control-sidebar" type="search"
-                      placeholder="Tìm kiếm" aria-label="Search">
-                  <div class="input-group-append">
-                      <button style="background-color: #1f2234" class="btn btn-sidebar">
-                          <i class="fas fa-search fa-fw"></i>
-                      </button>
+      .logo-and-text {
+          display: flex;
+          align-items: center;
+          color: white;
+      }
+
+      .company-name {
+          margin-left: 10px;
+          /* Khoảng cách giữa logo và dòng chữ */
+          font-size: 18px;
+          /* Điều chỉnh kích thước của dòng chữ */
+      }
+  </style>
+
+  <div class="sidebar-wrapper" data-layout="stroke-svg">
+      <div>
+          <div class="logo-wrapper">
+              <div class="logo-and-text">
+                  <div class="rounded-image">
+                      <img src="{{ asset('AdminMofi/assets/images/logo/Logo_NTL.jpg') }}" width="40px" alt="">
                   </div>
+                  <span class="company-name"><strong>Ngo Tan Loi</strong></span>
+              </div>
+              <div class="back-btn"><i class="fa fa-angle-left"></i></div>
+              <div class="toggle-sidebar">
+                  <svg class="stroke-icon sidebar-toggle status_toggle middle">
+                      <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#toggle-icon') }}"></use>
+                  </svg>
+                  <svg class="fill-icon sidebar-toggle status_toggle middle">
+                      <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-toggle-icon') }}"></use>
+                  </svg>
               </div>
           </div>
 
-          <!-- Sidebar Menu -->
-          <nav class="mt-2">
-              <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                  data-accordion="false">
-                  <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+          <div class="logo-icon-wrapper">
+              <a href="#">
+                  <div class="rounded-image">
+                      <img class="img-fluid" src="{{ asset('AdminMofi/assets/images/logo/Logo_NTL.jpg') }}"
+                          width="40px" alt="">
+                  </div>
+              </a>
+          </div>
 
-                  <li class="nav-item">
-                      <a href="{{ route('home.index') }}" class="nav-link">
-                          <i class="nav-icon fas fa-tachometer-alt"></i>
-                          <p>
-                              Thống kê
-                              <span class="right badge badge-danger"></span>
-                          </p>
-                      </a>
-                  </li>
+          <nav class="sidebar-main">
+              <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
+              <div id="sidebar-menu">
+                  <ul class="sidebar-links" id="simple-bar">
+                      <li class="back-btn"><a href="#"><img class="img-fluid"
+                                  src="{{ asset('AdminMofi/assets/images/logo/logo-icon.png') }}" alt=""></a>
+                          <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2"
+                                  aria-hidden="true"></i></div>
+                      </li>
 
-                  <li class="nav-item">
-                      <a href="{{ route('categories.index') }}" class="nav-link">
-                          <i class="nav-icon fas fa-th"></i>
-                          <p>
-                              Danh mục sản phẩm
-                              <span class="right badge badge-danger"></span>
-                          </p>
-                      </a>
-                  </li>
-
-                  {{-- <li class="nav-item">
-                      <a href="{{ route('menus.index') }}" class="nav-link">
-                          <i class="nav-icon fas fa-users"></i>
-                          <p>
-                              Danh sách khách hàng
-                              <span class="right badge badge-danger"></span>
-                          </p>
-                      </a>
-                  </li> --}}
-
-                  <li class="nav-item">
-                      <a href="{{ route('product.index') }}" class="nav-link">
-                          <i class="nav-icon fas fa-laptop"></i>
-                          <p>
-                              Sản phẩm
-                              <span class="right badge badge-danger"></span>
-                          </p>
-                      </a>
-                  </li>
-
-                  <li class="nav-item">
-                      <a href="{{ route('slider.index') }}" class="nav-link">
-                          <i class="nav-icon fas fa-sliders-h"></i>
-                          <p>
-                              Slider
-                              <span class="right badge badge-danger"></span>
-                          </p>
-                      </a>
-                  </li>
-
-                  <li class="nav-item">
-                      <a href="{{ route('settings.index') }}" class="nav-link">
-                          <i class="nav-icon fas fa-cog"></i>
-                          <p>
-                              Setting
-                              <span class="right badge badge-danger"></span>
-                          </p>
-                      </a>
-                  </li>
-
-                  <li class="nav-item">
-                      <a href="{{ URL::to('/manage-order') }}" class="nav-link">
-                          <i class="nav-icon fas fa-shopping-cart"></i>
-                          <p>
-                              Đơn hàng
-                              <span class="right badge badge-danger"></span>
-                          </p>
-                      </a>
-                  </li>
-
-                  <li class="nav-item">
-                      <a href="{{ route('users.index') }}" class="nav-link">
-                          <i class="nav-icon fas fa-users"></i>
-                          <p>
-                              Danh sách thành viên
-                              <span class="right badge badge-danger"></span>
-                          </p>
-                      </a>
-                  </li>
-
-                  <li class="nav-item">
-                      <a href="{{ route('customers.index') }}" class="nav-link">
-                          <i class="nav-icon fas fa-users"></i>
-                          <p>
-                              Danh sách khách hàng
-                              <span class="right badge badge-danger"></span>
-                          </p>
-                      </a>
-                  </li>
-
-                  <li class="nav-item">
-                      <a href="{{ route('roles.index') }}" class="nav-link">
-                          <i class="nav-icon fas fa-users-cog"></i>
-                          <p>
-                              Danh sách vai trò
-                              <span class="right badge badge-danger"></span>
-                          </p>
-                      </a>
-                  </li>
-
-                  {{-- <li class="nav-item">
-                      <a href="{{ route('permissions.create') }}" class="nav-link">
-                          <i class="nav-icon fas fa-user-check"></i>
-                          <p>
-                              Quyền hệ thống
-                              <span class="right badge badge-danger"></span>
-                          </p>
-                      </a>
-                  </li> --}}
-
-              </ul>
+                      <li class="sidebar-list"> <a class="sidebar-link sidebar-title" href="{{ route('home.index') }}">
+                              <svg class="stroke-icon">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-home') }}"></use>
+                              </svg>
+                              <svg class="fill-icon">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                              </svg><strong>Thống Kê</strong></a>
+                      </li>
+                      <li class="sidebar-list"> <a class="sidebar-link sidebar-title"
+                              href="{{ route('categories.index') }}">
+                              <svg class="stroke-icon">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-widget') }}"></use>
+                              </svg>
+                              <svg class="fill-icon">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                              </svg><strong>Danh Mục Sản Phẩm</strong></a>
+                      </li>
+                      <li class="sidebar-list"> <a class="sidebar-link sidebar-title"
+                              href="{{ route('product.index') }}">
+                              <svg class="stroke-icon">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-layout') }}"></use>
+                              </svg>
+                              <svg class="fill-icon">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                              </svg><strong>Sản Phẩm</strong></a>
+                      </li>
+                      <li class="sidebar-list"><i class="fa fa-thumb-tack"> </i><a class="sidebar-link sidebar-title"
+                              href="{{ route('slider.index') }}">
+                              <svg class="stroke-icon">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-project') }}">
+                                  </use>
+                              </svg>
+                              <svg class="fill-icon">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                              </svg><strong>Banner</strong></a>
+                      </li>
+                      <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
+                              href="{{ route('settings.index') }}">
+                              <svg class="stroke-icon">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-file') }}"></use>
+                              </svg>
+                              <svg class="fill-icon">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                              </svg><strong>Setting</strong></a>
+                      <li class="sidebar-list"><i class="fa fa-thumb-tack"> </i><a
+                              class="sidebar-link sidebar-title link-nav" href="{{ URL::to('/manage-order') }}">
+                              <svg class="stroke-icon">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-board') }}"></use>
+                              </svg>
+                              <svg class="fill-icon">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                              </svg><strong>Đơn Hàng</strong></a>
+                      <li class="sidebar-list"> <a class="sidebar-link sidebar-title"
+                              href="{{ route('users.index') }}">
+                              <svg class="stroke-icon">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-ecommerce') }}">
+                                  </use>
+                              </svg>
+                              <svg class="fill-icon">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                              </svg><strong>Danh Sách Thành Viên</strong></a>
+                      </li>
+                      <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
+                              href="{{ route('customers.index') }}">
+                              <svg class="stroke-icon">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-email') }}"></use>
+                              </svg>
+                              <svg class="fill-icon">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                              </svg><strong>Danh Sách Khách Hàng</strong></a>
+                      <li class="sidebar-list"> <a class="sidebar-link sidebar-title"
+                              href="{{ route('roles.index') }}">
+                              <svg class="stroke-icon">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-chat') }}"></use>
+                              </svg>
+                              <svg class="fill-icon">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                              </svg><strong>Danh Sách Vai Trò</strong></a>
+                      </li>
+                      {{-- <li class="sidebar-list"> <a class="sidebar-link sidebar-title" href="javascript:void(0)">
+                              <svg class="stroke-icon">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-user') }}"></use>
+                              </svg>
+                              <svg class="fill-icon">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                              </svg><strong>Thống kê</strong></a>
+                      </li>
+                      <li class="sidebar-list"> <a class="sidebar-link sidebar-title" href="javascript:void(0)">
+                              <svg class="stroke-icon">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-charts') }}"></use>
+                              </svg>
+                              <svg class="fill-icon">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                              </svg><strong>Thống kê</strong></a>
+                      </li> --}}
+              </div>
           </nav>
-
-          <!-- /.sidebar-menu -->
       </div>
-      <!-- /.sidebar -->
-  </aside>
+  </div>
