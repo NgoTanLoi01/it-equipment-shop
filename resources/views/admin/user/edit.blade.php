@@ -13,42 +13,50 @@
     <script src="{{ asset('adminPublic/user/add/add.js') }}"></script>
 @endsection
 @section('content')
-    <div class="content-wrapper">
-        @include('partials.content-header', ['name' => 'Sửa', 'key' => 'thông tin thành viên'])
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="clo-md-16">
-                        <form action="{{ route('users.update', ['id' => $user->id]) }}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            <div class="form-group">
-                                <label>Tên</label>
-                                <input name="name" type="text" class="form-control" placeholder="Nhập tên"
-                                    value="{{ $user->name }}">
+    <div class="page-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="table-responsive theme-scrollbar">
+                    <div id="basic-6_wrapper" class="dataTables_wrapper">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-header card-no-border pb-0">
+                                    <h4>Sửa Thông Tin Thành Viên Hệ Thống</h4>
+                                </div>
+                                <div class="card-body">
+                                    <form action="{{ route('users.update', ['id' => $user->id]) }}" method="post" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="form-group">
+                                            <label>Tên</label>
+                                            <input name="name" type="text" class="form-control" placeholder="Nhập tên"
+                                                value="{{ $user->name }}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input name="email" type="email" class="form-control" placeholder="Nhập email"
+                                                value="{{ $user->email }}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Password</label>
+                                            <input name="password" type="password" class = "form-control" placeholder="Nhập mật khẩu">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Chọn vai trò</label><br>
+                                            <select name="role_id[]" class="form-control select2_init" multiple>
+                                                <option value=""></option>
+                                                @foreach ($roles as $role)
+                                                    <option 
+                                                        {{ $rolesOfUser->contains('id', $role->id) ? 'selected' : ''}}
+                                                        value="{{ $role->id }}">{{ $role->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+            
+                                        <button type="submit" class="btn btn-primary"><i class="fas fa-arrow-up"></i>Gửi</button>
+                                    </form>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input name="email" type="email" class="form-control" placeholder="Nhập email"
-                                    value="{{ $user->email }}">
-                            </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input name="password" type="password" class = "form-control" placeholder="Nhập mật khẩu">
-                            </div>
-                            <div class="form-group">
-                                <label>Chọn vai trò</label><br>
-                                <select name="role_id[]" class="form-control select2_init" multiple>
-                                    <option value=""></option>
-                                    @foreach ($roles as $role)
-                                        <option 
-                                            {{ $rolesOfUser->contains('id', $role->id) ? 'selected' : ''}}
-                                            value="{{ $role->id }}">{{ $role->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary"><i class="fas fa-arrow-up"></i>Submit</button>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>

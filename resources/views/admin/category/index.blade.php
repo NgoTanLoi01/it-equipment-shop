@@ -7,6 +7,8 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('adminPublic/product/index/list.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('AdminMofi/assets/css/vendors/js-datatables/style.css') }}">
+    {{-- Doi mau sac xen ky --}}
+    <link rel="stylesheet" href="{{ asset('adminPublic/product/index/view.css') }}">
 @endsection
 
 @section('js')
@@ -17,8 +19,9 @@
     <script src="{{ asset('AdminMofi/assets/js/tooltip-init.js') }}"></script>
     <script src="{{ asset('vendors/sweetAlert2/sweetalert2@11.js') }}"></script>
     <script type="text/javascript" src="{{ asset('adminPublic/main.js') }}"></script>
+    {{-- Tìm kiếm sản phẩm --}}
+    <script src="{{ asset('AdminMofi/assets/js/search.js') }}"></script>
 @endsection
-
 @section('content')
     <div class="page-body">
         <div class="container-fluid">
@@ -44,17 +47,16 @@
                                         <div class="datatable">
                                             <label>
                                                 <select class="datatable-selector">
-                                                    <option value="5">5</option>
-                                                    <option value="10" selected="">10</option>
-                                                    <option value="15">15</option>
-                                                    <option value="20">20</option>
-                                                    <option value="25">25</option>
+                                                    <option value="10" selected="">5</option>
+                                                    <option value="15">10</option>
+                                                    <option value="20">15</option>
+                                                    <option value="25">20</option>
                                                 </select> trên mỗi trang
                                             </label>
                                         </div>
                                         <div class="datatable-search">
-                                            <input class="datatable-input" placeholder="Search..." type="search"
-                                                title="Search within table" aria-controls="project-status">
+                                            <input class="datatable-input" id="searchInput" placeholder="Search..."
+                                                type="search" title="Search within table" aria-controls="project-status">
                                         </div>
                                     </div>
                                     <div class="datatable-container">

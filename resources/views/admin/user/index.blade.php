@@ -6,56 +6,99 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('adminPublic/slider/index/index.css') }}">
-    <script type="text/javascript" src="{{ asset('adminPublic/main.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('adminPublic/product/index/view.css') }}">
+    <link rel="stylesheet" href="{{ asset('adminPublic/product/index/list.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('AdminMofi/assets/css/vendors/js-datatables/style.css') }}">
 @endsection
 
 @section('js')
     <script src="{{ asset('vendors/sweetAlert2/sweetalert2@11.js') }}"></script>
     <script type="text/javascript" src="{{ asset('adminPublic/main.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('adminPublic/main.js') }}"></script>
+        {{-- Tìm kiếm sản phẩm --}}
+        <script src="{{ asset('AdminMofi/assets/js/search.js') }}"></script>
 @endsection
 
 @section('content')
-    <div class="content-wrapper">
+    <div class="page-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header card-no-border pb-0">
+                            <h4>Danh Sách Thành Viên Hệ Thống</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="list-product-header">
+                                <div>
+                                    <a class="btn btn-primary" href="{{ route('users.create') }}"><i
+                                            class="fa fa-plus"></i>Thêm Thành Viên</a>
+                                </div>
+                                <div class="collapse" id="collapseProduct">
+                                </div>
+                            </div>
+                            <div class="list-product">
+                                <div
+                                    class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
+                                    <div class="datatable-top">
+                                        <div class="datatable">
+                                            <label>
+                                                <select class="datatable-selector">
+                                                    <option value="10" selected="">5</option>
+                                                    <option value="15">10</option>
+                                                    <option value="20">15</option>
+                                                    <option value="25">20</option>
+                                                </select> trên mỗi trang
+                                            </label>
+                                        </div>
+                                        <div class="datatable-search">
+                                            <input class="datatable-input" id="searchInput" placeholder="Search..."
+                                                type="search" title="Search within table" aria-controls="project-status">
+                                        </div>
+                                    </div>
+                                    <div class="datatable-container">
+                                        <table class="table datatable-table" id="project-status">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Thứ tự</th>
+                                                    <th scope="col">Tên</th>
+                                                    <th scope="col">Email</th>
+                                                    <th scope="col">Hành động</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($users as $user)
+                                                    <tr>
+                                                        <th scope="row">{{ $user->id }}</th>
+                                                        <td>{{ $user->name }}</td>
+                                                        <td>{{ $user->email }}</td>
 
-        @include('partials.content-header', ['name' => 'Danh sách', 'key' => 'thành viên'])
-
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <a href="{{ route('users.create') }}" class="btn btn-sm btn-primary float-right m-2"><i
-                                class="fas fa-plus fa-fw fa-xs"></i>Thêm</a>
-                    </div>
-                    <div class="col-md-12">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Thứ tự</th>
-                                    <th scope="col">Tên</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Hành động</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($users as $user)
-                                    <tr>
-                                        <th scope="row">{{ $user->id }}</th>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-
-                                        <td>
-                                            <a href="{{ route('users.edit', ['id' => $user->id]) }}" class="btn btn-sm btn-warning">
-                                                <i class="fas fa-edit"></i>Sửa</a>
-                                            <a href="" data-url="{{ route('users.delete', ['id' => $user->id]) }}" 
-                                                class="btn btn-sm btn-danger action_delete"><i class="fas fa-trash"></i>Xóa</a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-md-12">
-                        {{ $users->links('pagination::bootstrap-4') }}
+                                                        <td>
+                                                            <a href="{{ route('users.edit', ['id' => $user->id]) }}"
+                                                                class="btn btn-sm btn-warning">
+                                                                <i class="fas fa-edit"></i>Sửa</a>
+                                                            <a href=""
+                                                                data-url="{{ route('users.delete', ['id' => $user->id]) }}"
+                                                                class="btn btn-sm btn-danger action_delete"><i
+                                                                    class="fas fa-trash"></i>Xóa</a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="datatable-bottom">
+                                        <nav class="datatable-pagination">
+                                            <ul class="datatable-pagination-list">
+                                                <li>
+                                                    {{ $users->links('pagination::bootstrap-4') }}
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
