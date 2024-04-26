@@ -10,85 +10,99 @@
 @endsection
 
 @section('content')
-    <div class="content-wrapper">
-        @include('partials.content-header', ['name' => 'Sửa', 'key' => 'sản phẩm'])
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="clo-md-16">
-                        <form action="{{ route('product.update', ['id' =>$product->id]) }}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            <div class="form-group">
-                                <label>Tên sản phẩm</label>
-                                <input name="name" type="text" class="form-control" placeholder="Nhập tên sản phẩm"
-                                    value="{{ $product->name }}">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Giá sản phẩm</label>
-                                <input name="price" type="text" class="form-control" placeholder="Nhập giá sản phẩm"
-                                    value="{{ $product->price }}">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Giá sản phẩm sau khi giảm</label>
-                                <input name="sale_price" type="text" class="form-control" placeholder="Nhập giá sản phẩm sau khi giảm"
-                                    value="{{ $product->sale_price }}">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Ảnh đại diện</label>
-                                <input name="feature_image_path" type="file" class="form-control-file">
-                                <div class="col-md-3 feature_image_container">
-                                    <div class="row">
-                                        <img class="feature_image" src="{{ $product->feature_image_path }}" alt="">
-                                    </div>
+    <div class="page-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="table-responsive theme-scrollbar">
+                    <div id="basic-6_wrapper" class="dataTables_wrapper">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-header card-no-border pb-0">
+                                    <h4>Sửa Sản Phẩm</h4>
                                 </div>
-                            </div>
+                                <div class="card-body">
+                                    <form action="{{ route('product.update', ['id' => $product->id]) }}" method="post"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="form-group">
+                                            <label>Tên sản phẩm</label>
+                                            <input name="name" type="text" class="form-control"
+                                                placeholder="Nhập tên sản phẩm" value="{{ $product->name }}">
+                                        </div>
 
-                            <div class="form-group">
-                                <label>Ảnh chi tiết</label>
-                                <input name="image_path[]" multiple type="file" class="form-control-file">
-                                <div class="col-md-12 containe_image_detail" >
-                                    <div class="row">
-                                        @foreach ($product->productImage as $productImageItem)
-                                            <div class="col-md-3">
-                                                <img class="image_detail" src="{{ $productImageItem->image_path }}"
-                                                    alt="">
+                                        <div class="form-group">
+                                            <label>Giá sản phẩm</label>
+                                            <input name="price" type="text" class="form-control"
+                                                placeholder="Nhập giá sản phẩm" value="{{ $product->price }}">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Giá sản phẩm sau khi giảm</label>
+                                            <input name="sale_price" type="text" class="form-control"
+                                                placeholder="Nhập giá sản phẩm sau khi giảm"
+                                                value="{{ $product->sale_price }}">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Ảnh đại diện</label>
+                                            <input name="feature_image_path" type="file" class="form-control-file">
+                                            <div class="col-md-3 feature_image_container">
+                                                <div class="row">
+                                                    <img class="feature_image" src="{{ $product->feature_image_path }}"
+                                                        alt="">
+                                                </div>
                                             </div>
-                                        @endforeach
-                                    </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Ảnh chi tiết</label>
+                                            <input name="image_path[]" multiple type="file" class="form-control-file">
+                                            <div class="col-md-12 containe_image_detail">
+                                                <div class="row">
+                                                    @foreach ($product->productImage as $productImageItem)
+                                                        <div class="col-md-3">
+                                                            <img class="image_detail"
+                                                                src="{{ $productImageItem->image_path }}" alt="">
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Danh mục sản phẩm</label><br>
+                                            <select class="form-control select2_init" name="category_id">
+                                                <option value="">Chọn danh mục</option>
+                                                {!! $htmlOption !!}
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Thêm tags cho sản phẩm</label><br>
+                                            <select name="tags[]" class="form-control tags_select_choose"
+                                                multiple="multiple">
+                                                @foreach ($product->tags as $tagItem)
+                                                    <option value="{{ $tagItem->name }}" selected>{{ $tagItem->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Mô tả sản phẩm</label>
+                                            <textarea name="contents" class="form-control" id="content">{{ $product->content }}</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Kho</label>
+                                            <input name="quantity" type="text" class="form-control"
+                                                placeholder="Nhập số lượng sản phẩm nhập" value="{{ $product->quantity }}">
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary"><i
+                                                class="fas fa-arrow-up"></i>Gửi</button>
+                                    </form>
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                <label>Danh mục sản phẩm</label><br>
-                                <select class="form-control select2_init" name="category_id">
-                                    <option value="">Chọn danh mục</option>
-                                    {!! $htmlOption !!}
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Thêm tags cho sản phẩm</label><br>
-                                <select name="tags[]" class="form-control tags_select_choose" multiple="multiple">
-                                    @foreach ($product->tags as $tagItem)
-                                    <option value="{{$tagItem -> name}}" selected>{{$tagItem -> name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Mô tả sản phẩm</label>
-                                <textarea name="contents" class="form-control" id="content">{{ $product->content }}</textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Kho</label>
-                                <input name="quantity" type="text" class="form-control" placeholder="Nhập số lượng sản phẩm nhập"
-                                    value="{{ $product->quantity }}">
-                            </div>
-                            
-                            <button type="submit" class="btn btn-primary"><i class="fas fa-arrow-up"></i>Gửi</button>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -98,4 +112,21 @@
 @section('js')
     <script src="{{ asset('vendors/select2/select2.min.js') }}"></script>
     <script src="{{ asset('adminPublic/product/add/add.js') }}"></script>
+    <script src="https://cdn.tiny.cloud/1/jlj6iu2nqcxzcnx68yjsq7ca1jz9ps3y2cae1mahhq1vdup0/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <!-- Place the following <script> and <textarea> tags your HTML's <body> -->
+    <script>
+    tinymce.init({
+        selector: 'textarea',
+        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name',
+        mergetags_list: [
+        { value: 'First.Name', title: 'First Name' },
+        { value: 'Email', title: 'Email' },
+        ],
+        ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+    });
+    </script>
 @endsection

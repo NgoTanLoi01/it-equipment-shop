@@ -36,6 +36,10 @@
           font-size: 18px;
           /* Điều chỉnh kích thước của dòng chữ */
       }
+      h6{
+        font-size: 11px;
+        color: #fff;
+      }
   </style>
 
   <div class="sidebar-wrapper" data-layout="stroke-svg">
@@ -45,7 +49,8 @@
                   <div class="rounded-image">
                       <img src="{{ asset('AdminMofi/assets/images/logo/Logo_NTL.jpg') }}" width="40px" alt="">
                   </div>
-                  <span class="company-name"><strong>Ngo Tan Loi</strong></span>
+                  <span class="company-name"><strong>Ngo Tan Loi</strong><br><h6>Digital Technologies</h6></span>
+                  <br>
               </div>
               <div class="back-btn"><i class="fa fa-angle-left"></i></div>
               <div class="toggle-sidebar">

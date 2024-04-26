@@ -54,6 +54,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('AdminMofi/assets/css/responsive.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontawesome@5.15.4/css/all.min.css">
     {{-- End Admin Mofi css --}}
+
+
     @yield('css')
 </head>
 
@@ -77,7 +79,8 @@
                 <div class="logo-wrapper"><a href="index.html"><img class="img-fluid for-light"
                             src="{{ asset('AdminMofi/assets/images/logo/logo.png') }}" alt="" /><img
                             class="img-fluid for-dark" src="{{ asset('AdminMofi/assets/images/logo/logo_light.png') }}"
-                            alt="" /></a></div>
+                            alt="" /></a>
+                </div>
             </div>
             @include('partials.header')
 
