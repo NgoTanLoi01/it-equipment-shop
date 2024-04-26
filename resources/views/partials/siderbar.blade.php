@@ -85,6 +85,16 @@
                                   <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
                               </svg><strong>Thống Kê</strong></a>
                       </li>
+                      <li class="sidebar-list"><i class="fa fa-thumb-tack"> </i><a class="sidebar-link sidebar-title"
+                              href="{{ route('slider.index') }}">
+                              <svg class="stroke-icon">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-project') }}">
+                                  </use>
+                              </svg>
+                              <svg class="fill-icon">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                              </svg><strong>Slider</strong></a>
+                      </li>
                       <li class="sidebar-list"> <a class="sidebar-link sidebar-title"
                               href="{{ route('categories.index') }}">
                               <svg class="stroke-icon">
@@ -102,16 +112,6 @@
                               <svg class="fill-icon">
                                   <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
                               </svg><strong>Sản Phẩm</strong></a>
-                      </li>
-                      <li class="sidebar-list"><i class="fa fa-thumb-tack"> </i><a class="sidebar-link sidebar-title"
-                              href="{{ route('slider.index') }}">
-                              <svg class="stroke-icon">
-                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-project') }}">
-                                  </use>
-                              </svg>
-                              <svg class="fill-icon">
-                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
-                              </svg><strong>Banner</strong></a>
                       </li>
                       <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
                               href="{{ route('settings.index') }}">

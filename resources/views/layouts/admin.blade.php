@@ -79,20 +79,8 @@
                             class="img-fluid for-dark" src="{{ asset('AdminMofi/assets/images/logo/logo_light.png') }}"
                             alt="" /></a></div>
             </div>
-            {{-- <div class="col-4 col-xl-4 page-title">
-
-                <!-- <h4 class="f-w-700"> Ecommerce Dashboard</h4> -->
-                <nav>
-                    <ol class="breadcrumb justify-content-sm-start align-items-center mb-0">
-                        <li class="breadcrumb-item"><a href="{{ route('home.index') }}" class="nav-link "><i
-                                    class=""><img src="{{ asset('AdminMofi/assets/images/icon/home.png') }}"
-                                        width="40px" alt=""></i></a></li>
-                        <!-- <li class="breadcrumb-item f-w-400">Dashboard</li>
-                <li class="breadcrumb-item f-w-400 active">Ecommerce</li> -->
-                    </ol>
-                </nav>
-            </div> --}}
             @include('partials.header')
+
             <div class="page-body-wrapper">
                 @include('partials.siderbar')
 
