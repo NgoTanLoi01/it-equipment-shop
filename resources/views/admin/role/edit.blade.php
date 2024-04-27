@@ -21,7 +21,7 @@
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-header card-no-border pb-0">
-                                    <h4>Sửa Vai Trò Hệ Thống</h4>
+                                    <h4>SỬA VAI TRÒ HỆ THỐNG</h4>
                                 </div>
                                 <div class="card-body">
                                     <form action="{{ route('roles.update', ['id' => $role->id]) }}" method="post"
@@ -29,14 +29,14 @@
                                         <div class="col-md-12">
                                             @csrf
                                             <div class="form-group">
-                                                <label>Tên vai trò</label>
+                                                <label><strong>Tên vai trò</strong></label>
                                                 <input name="name" type="text" class="form-control"
                                                     placeholder="Nhập tên vai trò" value="{{ $role->name }}">
-                                            </div>
+                                            </div><br>
                                             <div class="form-group">
-                                                <label>Mô tả vai trò</label>
+                                                <label><strong>Mô tả vai trò</strong></label>
                                                 <textarea name="display_name" id="content" class="form-control">{{ $role->display_name }}</textarea>
-                                            </div>
+                                            </div><br>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="row">
@@ -77,8 +77,8 @@
                                                 @endforeach
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary"><i
-                                                class="fas fa-arrow-up"></i>Gửi</button>
+                                        <button type="submit" class="btn btn-primary"><img
+                                            src="{{ asset('AdminMofi/assets/images/icon/success.png') }}" width="16px" alt=""><strong>Gửi</strong></button>
                                     </form>
                                 </div>
                             </div>

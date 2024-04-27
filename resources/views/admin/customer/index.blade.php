@@ -24,7 +24,7 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
-                            <h4>Danh Sách Khách Hàng</h4>
+                            <h4>DANH SÁCH KHÁCH HÀNG</h4>
                         </div>
                         <div class="card-body">
                             <div class="list-product">

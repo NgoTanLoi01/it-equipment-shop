@@ -18,33 +18,33 @@
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-header card-no-border pb-0">
-                                    <h4>Sửa Sản Phẩm</h4>
+                                    <h4>SỬA SẢN PHẨM</h4>
                                 </div>
                                 <div class="card-body">
                                     <form action="{{ route('product.update', ['id' => $product->id]) }}" method="post"
                                         enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
-                                            <label>Tên sản phẩm</label>
+                                            <label><strong>Tên sản phẩm</strong></label>
                                             <input name="name" type="text" class="form-control"
                                                 placeholder="Nhập tên sản phẩm" value="{{ $product->name }}">
                                         </div>
-
+                                        <br>
                                         <div class="form-group">
-                                            <label>Giá sản phẩm</label>
+                                            <label><strong>Giá sản phẩm</strong></label>
                                             <input name="price" type="text" class="form-control"
                                                 placeholder="Nhập giá sản phẩm" value="{{ $product->price }}">
                                         </div>
-
+<br>
                                         <div class="form-group">
-                                            <label>Giá sản phẩm sau khi giảm</label>
+                                            <label><strong>Giá sản phẩm sau khi giảm</strong></label>
                                             <input name="sale_price" type="text" class="form-control"
                                                 placeholder="Nhập giá sản phẩm sau khi giảm"
                                                 value="{{ $product->sale_price }}">
                                         </div>
-
+<br>
                                         <div class="form-group">
-                                            <label>Ảnh đại diện</label>
+                                            <label><strong>Ảnh đại diện</strong></label>
                                             <input name="feature_image_path" type="file" class="form-control-file">
                                             <div class="col-md-3 feature_image_container">
                                                 <div class="row">
@@ -53,9 +53,9 @@
                                                 </div>
                                             </div>
                                         </div>
-
+<br>
                                         <div class="form-group">
-                                            <label>Ảnh chi tiết</label>
+                                            <label><strong>Ảnh chi tiết</strong></label>
                                             <input name="image_path[]" multiple type="file" class="form-control-file">
                                             <div class="col-md-12 containe_image_detail">
                                                 <div class="row">
@@ -68,17 +68,17 @@
                                                 </div>
                                             </div>
                                         </div>
-
+<br>
                                         <div class="form-group">
-                                            <label>Danh mục sản phẩm</label><br>
+                                            <label><strong>Danh mục sản phẩm</strong></label><br>
                                             <select class="form-control select2_init" name="category_id">
                                                 <option value="">Chọn danh mục</option>
                                                 {!! $htmlOption !!}
                                             </select>
                                         </div>
-
+<br>
                                         <div class="form-group">
-                                            <label>Thêm tags cho sản phẩm</label><br>
+                                            <label><strong>Thêm tags cho sản phẩm</strong></label><br>
                                             <select name="tags[]" class="form-control tags_select_choose"
                                                 multiple="multiple">
                                                 @foreach ($product->tags as $tagItem)
@@ -87,18 +87,20 @@
                                                 @endforeach
                                             </select>
                                         </div>
+                                        <br>
                                         <div class="form-group">
-                                            <label>Mô tả sản phẩm</label>
+                                            <label><strong>Mô tả sản phẩm</strong></label>
                                             <textarea name="contents" class="form-control" id="content">{{ $product->content }}</textarea>
                                         </div>
+                                        <br>
                                         <div class="form-group">
-                                            <label>Kho</label>
+                                            <label><strong>Kho</strong></label>
                                             <input name="quantity" type="text" class="form-control"
                                                 placeholder="Nhập số lượng sản phẩm nhập" value="{{ $product->quantity }}">
                                         </div>
-
-                                        <button type="submit" class="btn btn-primary"><i
-                                                class="fas fa-arrow-up"></i>Gửi</button>
+<br>
+                                        <button type="submit" class="btn btn-primary"><img
+                                            src="{{ asset('AdminMofi/assets/images/icon/success.png') }}" width="16px" alt=""></i><strong>Gửi</strong</button>
                                     </form>
                                 </div>
                             </div>

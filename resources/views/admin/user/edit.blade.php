@@ -21,27 +21,30 @@
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-header card-no-border pb-0">
-                                    <h4>Sửa Thông Tin Thành Viên Hệ Thống</h4>
+                                    <h4>SỬA THÔNG TIN THÀNH VIÊN HỆ THỐNG</h4>
                                 </div>
                                 <div class="card-body">
                                     <form action="{{ route('users.update', ['id' => $user->id]) }}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
-                                            <label>Tên</label>
+                                            <label><strong>Tên</strong></label>
                                             <input name="name" type="text" class="form-control" placeholder="Nhập tên"
                                                 value="{{ $user->name }}">
                                         </div>
+                                        <br>
                                         <div class="form-group">
-                                            <label>Email</label>
+                                            <label><strong>Email</strong></label>
                                             <input name="email" type="email" class="form-control" placeholder="Nhập email"
                                                 value="{{ $user->email }}">
                                         </div>
+                                        <br>
                                         <div class="form-group">
-                                            <label>Password</label>
+                                            <label><strong>Password</strong></label>
                                             <input name="password" type="password" class = "form-control" placeholder="Nhập mật khẩu">
                                         </div>
+                                        <br>
                                         <div class="form-group">
-                                            <label>Chọn vai trò</label><br>
+                                            <label><strong>Chọn vai trò</strong></label><br>
                                             <select name="role_id[]" class="form-control select2_init" multiple>
                                                 <option value=""></option>
                                                 @foreach ($roles as $role)
@@ -52,7 +55,8 @@
                                             </select>
                                         </div>
             
-                                        <button type="submit" class="btn btn-primary"><i class="fas fa-arrow-up"></i>Gửi</button>
+                                        <button type="submit" class="btn btn-primary"><img
+                                            src="{{ asset('AdminMofi/assets/images/icon/success.png') }}" width="16px" alt=""><strong>Gửi</strong></button>
                                     </form>
                                 </div>
                             </div>

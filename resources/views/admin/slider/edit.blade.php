@@ -18,14 +18,14 @@
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-header card-no-border pb-0">
-                                    <h4>Sửa Slider</h4>
+                                    <h4>SỬA SLIDER</h4>
                                 </div>
                                 <div class="card-body">
                                     <form action="{{ route('slider.update', ['id' => $slider->id]) }}" method="post"
                                         enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
-                                            <label>Tên slider</label>
+                                            <label><strong>Tên slider</strong></label>
                                             <input name="name" type="text"
                                                 class="form-control @error('name') is-invalid @enderror"
                                                 placeholder="Nhập tên slider" value="{{ $slider->name }}">
@@ -33,18 +33,18 @@
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
-
+                                        <br>
                                         <div class="form-group">
-                                            <label>Mô tả slider</label>
+                                            <label><strong>Mô tả slider</strong></label>
                                             <textarea name="description" id="content" class="form-control @error('description') is-invalid @enderror"
                                                 placeholder="Nhập mô tả" value="">{{ $slider->description }}</textarea>
                                         </div>
                                         @error('description')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
-
+                                        <br>
                                         <div class="form-group">
-                                            <label>Hình ảnh</label>
+                                            <label><strong>Hình ảnh</strong></label>
                                             <input name="image_path" type="file"
                                                 class="form-control @error('image_path') is-invalid @enderror">
                                             <div class="col-md-4">
@@ -57,9 +57,9 @@
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
-
-                                        <button type="submit" class="btn btn-primary"><i
-                                                class="fas fa-arrow-up"></i>Gửi</button>
+                                        <br>
+                                        <button type="submit" class="btn btn-primary"><img
+                                            src="{{ asset('AdminMofi/assets/images/icon/success.png') }}" width="16px" alt=""></i><strong> Gửi</strong></button>
                                     </form>
                                 </div>
                             </div>

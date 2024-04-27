@@ -13,13 +13,13 @@
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-header card-no-border pb-0">
-                                    <h4>Thêm Setting</h4>
+                                    <h4>THÊM SETTING</h4>
                                 </div>
                                 <div class="card-body">
                                     <form action="{{ route('settings.store') . '?type=' . request() ->type }}" method="post">
                                         @csrf
                                         <div class="form-group">
-                                            <label>Config key</label>
+                                            <label><strong>Config key</strong></label>
                                             <input name="config_key" type="text"
                                                 class="form-control form-control @error('config_key') is-invalid @enderror"
                                                 placeholder="Nhập config key">
@@ -27,10 +27,10 @@
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
-            
+                                        <br>
                                         @if (request()->type === 'Text')
                                             <div class="form-group">
-                                                <label>Config value</label>
+                                                <label><strong>Config value</strong></label>
                                                 <input name="config_value" type="text"
                                                     class="form-control form-control @error('config_value') is-invalid @enderror"
                                                     placeholder="Nhập config value">
@@ -39,8 +39,9 @@
                                                 @enderror
                                             </div>
                                         @elseif(request()->type === 'Textarea')
+                                        <br>
                                             <div class="form-group">
-                                                <label>Config value</label>
+                                                <label><strong>Config value</strong></label>
                                                 <textarea id="content" name="config_value"
                                                     class="form-control form-control @error('config_value') is-invalid @enderror"></textarea>
                                                 @error('config_value')
@@ -48,8 +49,9 @@
                                                 @enderror
                                             </div>
                                         @endif
-            
-                                        <button type="submit" class="btn btn-primary"><i class="fas fa-arrow-up"></i>Gửi</button>
+                                            <br>
+                                        <button type="submit" class="btn btn-primary"><img
+                                            src="{{ asset('AdminMofi/assets/images/icon/success.png') }}" width="16px" alt=""><strong>Gửi</strong></button>
                                     </form>
                                 </div>
                             </div>

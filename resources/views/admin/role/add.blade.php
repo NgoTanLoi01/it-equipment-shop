@@ -22,7 +22,7 @@
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-header card-no-border pb-0">
-                                    <h4>Thêm Vai Trò Hệ Thống</h4>
+                                    <h4>THÊM VAI TRÒ HỆ THỐNG</h4>
                                 </div>
                                 <div class="card-body">
                                     <form action="{{ route('roles.store') }}" method="post" enctype="multipart/form-data"
@@ -30,14 +30,16 @@
                                         <div class="col-md-12">
                                             @csrf
                                             <div class="form-group">
-                                                <label>Tên vai trò</label>
+                                                <label><strong>Tên vai trò</strong></label>
                                                 <input name="name" type="text" class="form-control"
                                                     placeholder="Nhập tên vai trò" value="{{ old('name') }}">
                                             </div>
+                                            <br>
                                             <div class="form-group">
-                                                <label>Mô tả vai trò</label>
+                                                <label><strong>Mô tả vai trò</strong></label>
                                                 <textarea name="display_name" id="content" class="form-control" placeholder="Nhập mô tả">{{ old('display_name') }}</textarea>
                                             </div>
+                                            <br>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="row">
@@ -77,8 +79,8 @@
                                                 @endforeach
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary"><i
-                                                class="fas fa-arrow-up"></i>Gửi</button>
+                                        <button type="submit" class="btn btn-primary"><img
+                                            src="{{ asset('AdminMofi/assets/images/icon/success.png') }}" width="16px" alt=""><strong>Gửi</strong></button>
                                     </form>
                                 </div>
                             </div>
@@ -89,4 +91,6 @@
         </div>
     </div>
 @endsection
-
+@section('js')
+    <script src="{{ asset('adminPublic/product/add/add.js') }}"></script>
+@endsection

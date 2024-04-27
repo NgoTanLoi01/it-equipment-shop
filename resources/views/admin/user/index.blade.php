@@ -15,8 +15,8 @@
     <script src="{{ asset('vendors/sweetAlert2/sweetalert2@11.js') }}"></script>
     <script type="text/javascript" src="{{ asset('adminPublic/main.js') }}"></script>
     <script type="text/javascript" src="{{ asset('adminPublic/main.js') }}"></script>
-        {{-- Tìm kiếm sản phẩm --}}
-        <script src="{{ asset('AdminMofi/assets/js/search.js') }}"></script>
+    {{-- Tìm kiếm sản phẩm --}}
+    <script src="{{ asset('AdminMofi/assets/js/search.js') }}"></script>
 @endsection
 
 @section('content')
@@ -26,13 +26,14 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
-                            <h4>Danh Sách Thành Viên Hệ Thống</h4>
+                            <h4>DANH SÁCH THÀNH VIÊN HỆ THỐNG</h4>
                         </div>
                         <div class="card-body">
                             <div class="list-product-header">
                                 <div>
-                                    <a class="btn btn-primary" href="{{ route('users.create') }}"><i
-                                            class="fa fa-plus"></i>Thêm Thành Viên</a>
+                                    <a class="btn btn-primary" href="{{ route('users.create') }}"><img
+                                            src="{{ asset('AdminMofi/assets/images/icon/add.png') }}" width="16px"
+                                            alt=""><strong>Thêm Thành Viên</strong></a>
                                 </div>
                                 <div class="collapse" id="collapseProduct">
                                 </div>
@@ -60,10 +61,10 @@
                                         <table class="table datatable-table" id="project-status">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">Thứ tự</th>
-                                                    <th scope="col">Tên</th>
-                                                    <th scope="col">Email</th>
-                                                    <th scope="col">Hành động</th>
+                                                    <th scope="col"><strong>Thứ tự</strong></th>
+                                                    <th scope="col"><strong>Tên</strong></th>
+                                                    <th scope="col"><strong>Email</strong></th>
+                                                    <th scope="col"><strong>Hành động</strong></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -76,11 +77,12 @@
                                                         <td>
                                                             <a href="{{ route('users.edit', ['id' => $user->id]) }}"
                                                                 class="btn btn-sm btn-warning">
-                                                                <i class="fas fa-edit"></i>Sửa</a>
+                                                                <img src="{{ asset('AdminMofi/assets/images/icon/edit.png') }}"
+                                                                    width="16px" alt=""><strong>Sửa</strong></a>
                                                             <a href=""
                                                                 data-url="{{ route('users.delete', ['id' => $user->id]) }}"
-                                                                class="btn btn-sm btn-danger action_delete"><i
-                                                                    class="fas fa-trash"></i>Xóa</a>
+                                                                class="btn btn-sm btn-danger action_delete"><img
+                                                                src="{{ asset('AdminMofi/assets/images/icon/delete.png') }}" width="16px" alt=""><strong>Xóa</strong></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach

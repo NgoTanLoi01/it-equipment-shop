@@ -26,13 +26,13 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
-                            <h4>Danh Sách Vai Trò Hệ Thống</h4>
+                            <h4>DANH SÁCH VAI TRÒ HỆ THỐNG</h4>
                         </div>
                         <div class="card-body">
                             <div class="list-product-header">
                                 <div>
-                                    <a class="btn btn-primary" href="{{ route('roles.create') }}"><i
-                                            class="fa fa-plus"></i>Thêm Vai Trò Hệ Thống</a>
+                                    <a class="btn btn-primary" href="{{ route('roles.create') }}"><img
+                                        src="{{ asset('AdminMofi/assets/images/icon/add.png') }}" width="16px" alt=""><strong>Thêm Vai Trò Hệ Thống</strong></a>
                                 </div>
                                 <div class="collapse" id="collapseProduct">
                                 </div>
@@ -60,10 +60,10 @@
                                         <table class="table datatable-table" id="project-status">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">Thứ tự</th>
-                                                    <th scope="col">Tên vai trò</th>
-                                                    <th scope="col">Mô tả vai trò</th>
-                                                    <th scope="col">Hành động</th>
+                                                    <th scope="col"><strong>Thứ tự</strong></th>
+                                                    <th scope="col"><strong>Tên vai trò</strong></th>
+                                                    <th scope="col"><strong>Mô tả vai trò</strong></th>
+                                                    <th scope="col"><strong>Hành động</strong></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -74,12 +74,12 @@
                                                         <td>{!! $role->display_name !!}</td>
                                                         <td>
                                                             <a href="{{ route('roles.edit', ['id' => $role->id]) }}"
-                                                                class="btn btn-sm btn-warning"><i
-                                                                    class="fas fa-edit"></i>Sửa</a>
+                                                                class="btn btn-sm btn-warning"><img
+                                                                src="{{ asset('AdminMofi/assets/images/icon/edit.png') }}" width="16px" alt=""><strong>Sửa</strong></a>
                                                             <a href=""
                                                                 data-url="{{ route('roles.delete', ['id' => $role->id]) }}"
-                                                                class="btn btn-sm btn-danger action_delete"> <i
-                                                                    class="fas fa-trash"></i>Xóa</a>
+                                                                class="btn btn-sm btn-danger action_delete"> <img
+                                                                src="{{ asset('AdminMofi/assets/images/icon/delete.png') }}" width="16px" alt=""><strong>Xóa</strong></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach

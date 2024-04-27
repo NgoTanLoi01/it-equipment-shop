@@ -28,13 +28,14 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
-                            <h4>Danh Sách Slider</h4>
+                            <h4>DANH SÁCH SLIDER</h4>
                         </div>
                         <div class="card-body">
                             <div class="list-product-header">
                                 <div>
-                                    <a href="{{ route('slider.create') }}" class="btn btn-sm btn-primary"><i
-                                            class="fas fa-plus fa-fw fa-xs"></i>Thêm Slider</a>
+                                    <a href="{{ route('slider.create') }}" class="btn btn-sm btn-primary"><img
+                                            src="{{ asset('AdminMofi/assets/images/icon/add.png') }}" width="16px" alt=""><strong>Thêm
+                                        Slider</strong></a>
                                 </div>
                                 <div class="collapse" id="collapseProduct">
                                 </div>
@@ -79,12 +80,12 @@
                                                                 src="{{ $slider->image_path }}" alt=""></td>
                                                         <td>
                                                             <a href="{{ route('slider.edit', ['id' => $slider->id]) }}"
-                                                                class="btn btn-sm btn-warning"><i
-                                                                    class="fas fa-edit"></i>Sửa</a>
+                                                                class="btn btn-sm btn-warning"><img
+                                                                src="{{ asset('AdminMofi/assets/images/icon/edit.png') }}" width="16px" alt=""></i><strong>Sửa</strong></a>
                                                             <a href=""
                                                                 data-url="{{ route('slider.delete', ['id' => $slider->id]) }}"
-                                                                class="btn btn-sm btn-danger action_delete"><i
-                                                                    class="fas fa-trash"></i>Xóa</a>
+                                                                class="btn btn-sm btn-danger action_delete"><img
+                                                                src="{{ asset('AdminMofi/assets/images/icon/delete.png') }}" width="16px" alt=""></i><strong>Xóa</strong></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach

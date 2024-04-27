@@ -31,12 +31,14 @@
                                 <div>
                                     <a target="_blank" href="{{ url('/print-order/' . $order_by_id->first()->order_id) }}"
                                         class="btn btn-sm btn-outline-secondary float-right m-2">
-                                        <i class="fas fa-print"></i> In đơn hàng
+                                        <img src="{{ asset('AdminMofi/assets/images/icon/print.png') }}" width="16px"
+                                            alt=""><strong>&nbsp;In đơn hàng</strong>
                                     </a>
 
                                     <a href="{{ url('/send-mail/' . $order_by_id->first()->order_id) }}"
                                         class="btn btn-sm btn-outline-danger float-right m-2">
-                                        <i class="fas fa-regular fa-envelope"></i> Gửi mail thông báo
+                                        <img src="{{ asset('AdminMofi/assets/images/icon/email.png') }}" width="16px"
+                                            alt=""><strong>&nbsp;Gửi mail thông báo</strong>
                                     </a>
                                 </div>
                                 <div class="collapse" id="collapseProduct">

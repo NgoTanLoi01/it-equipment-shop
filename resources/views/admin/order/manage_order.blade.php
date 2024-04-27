@@ -53,7 +53,7 @@
                                                 <tr>
                                                     <th scope="col"><strong>Tên người đặt</strong></th>
                                                     <th scope="col"><strong>Tổng giá tiền</strong></th>
-                                                    <th scope="col"><strong>Tình trạng</strong></th>
+                                                    <th scope="col"><strong>Phương thức thanh toán</strong></th>
                                                     <th scope="col"><strong>Hoạt động</strong></th>
                                                 </tr>
                                             </thead>
@@ -67,8 +67,8 @@
                                                         <td>{{ $order->order_status }}</td>
                                                         <td>
                                                             <a href="{{ URL::to('/view-order/' . $order->order_id) }}"
-                                                                class="btn btn-sm btn-success"><i
-                                                                    class="far fa-eye"></i>Xem</a>
+                                                                class="btn btn-sm btn-success"><img
+                                                                src="{{ asset('AdminMofi/assets/images/icon/view.png') }}" width="16px" alt=""><strong>Xem</strong></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach

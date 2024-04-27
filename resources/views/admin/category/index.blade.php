@@ -29,13 +29,13 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
-                            <h4>Danh Mục Sản Phẩm</h4>
+                            <h4>DANH MỤC SẢN PHẨM</h4>
                         </div>
                         <div class="card-body">
                             <div class="list-product-header">
                                 <div>
-                                    <a class="btn btn-primary" href="{{ route('categories.create') }}"><i
-                                            class="fa fa-plus"></i>Thêm Danh Mục</a>
+                                    <a class="btn btn-primary" href="{{ route('categories.create') }}"><img
+                                        src="{{ asset('AdminMofi/assets/images/icon/add.png') }}" width="16px" alt=""><strong> Thêm Danh Mục</strong></a>
                                 </div>
                                 <div class="collapse" id="collapseProduct">
                                 </div>
@@ -63,9 +63,9 @@
                                         <table class="table datatable-table" id="project-status">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">Thứ tự</th>
-                                                    <th scope="col">Tên danh mục</th>
-                                                    <th scope="col">Hoạt động</th>
+                                                    <th scope="col"><strong>Thứ tự</strong></th>
+                                                    <th scope="col"><strong>Tên danh mục</strong></th>
+                                                    <th scope="col"><strong>Hoạt động</strong></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -75,11 +75,11 @@
                                                         <td>{{ $category->name }}</td>
                                                         <td>
                                                             <a href="{{ route('categories.edit', ['id' => $category->id]) }}"
-                                                                class="btn btn-sm btn-warning"><i
-                                                                    class="fas fa-edit"></i>Sửa</a>
+                                                                class="btn btn-sm btn-warning"><img
+                                                                src="{{ asset('AdminMofi/assets/images/icon/edit.png') }}" width="16px" alt=""><strong> Sửa</strong></a>
                                                             <a href="{{ route('categories.delete', ['id' => $category->id]) }}"
-                                                                class="btn btn-sm btn-danger"><i
-                                                                    class="fas fa-trash"></i>Xóa</a>
+                                                                class="btn btn-sm btn-danger"><img
+                                                                src="{{ asset('AdminMofi/assets/images/icon/delete.png') }}" width="16px" alt=""><strong> Xóa</strong></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach

@@ -26,13 +26,13 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
-                            <h4>Danh Sách Setting</h4>
+                            <h4>DANH SÁCH SETTING</h4>
                         </div>
                         <div class="card-body">
                             <div class="list-product-header">
                                 <div>
-                                    <a class="btn btn-primary" href="{{ route('settings.create') . '?type=Textarea' }}"><i
-                                            class="fa fa-plus"></i>Thêm Setting</a></a>
+                                    <a class="btn btn-primary" href="{{ route('settings.create') . '?type=Textarea' }}"><img
+                                        src="{{ asset('AdminMofi/assets/images/icon/add.png') }}" width="16px" alt=""><strong>Thêm Setting</strong></a></a>
                                 </div>
                                 <div class="collapse" id="collapseProduct">
                                 </div>
@@ -60,10 +60,10 @@
                                         <table class="table datatable-table" id="project-status">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">Thứ tự</th>
-                                                    <th scope="col">Config key</th>
-                                                    <th scope="col">Config value</th>
-                                                    <th scope="col">Hành động</th>
+                                                    <th scope="col"><strong>Thứ tự</strong></th>
+                                                    <th scope="col"><strong>Config key</strong></th>
+                                                    <th scope="col"><strong>Config value</strong></th>
+                                                    <th scope="col"><strong>Hành động</strong></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -74,11 +74,11 @@
                                                         <td>{{ $setting->config_value }}</td>
                                                         <td>
                                                             <a href="{{ route('settings.edit', ['id' => $setting->id]) . '?type=' . $setting->type }}"
-                                                                class="btn btn-sm btn-warning"><i
-                                                                    class="fas fa-edit"></i>Sửa</a>
+                                                                class="btn btn-sm btn-warning"><img
+                                                                src="{{ asset('AdminMofi/assets/images/icon/edit.png') }}" width="16px" alt=""><strong>Sửa</strong></a>
                                                             <a href="" class="btn btn-sm btn-danger action_delete"
-                                                                data-url="{{ route('settings.delete', ['id' => $setting->id]) }}"><i
-                                                                    class="fas fa-trash"></i>Xóa</a>
+                                                                data-url="{{ route('settings.delete', ['id' => $setting->id]) }}"><img
+                                                                src="{{ asset('AdminMofi/assets/images/icon/delete.png') }}" width="16px" alt=""><strong>Xóa</strong></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
