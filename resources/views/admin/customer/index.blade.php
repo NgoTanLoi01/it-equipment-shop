@@ -11,10 +11,10 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('vendors/sweetAlert2/sweetalert2@11.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('adminPublic/main.js') }}"></script>
-    {{-- Tìm kiếm sản phẩm --}}
-    <script src="{{ asset('AdminMofi/assets/js/search.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('adminPublic/product/index/list.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('AdminMofi/assets/css/vendors/js-datatables/style.css') }}">
+{{-- Doi mau sac xen ky --}}
+<link rel="stylesheet" href="{{ asset('adminPublic/product/index/view.css') }}">
 @endsection
 
 @section('content')
@@ -50,9 +50,9 @@
                                         <table class="table datatable-table" id="project-status">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">Tên</th>
-                                                    <th scope="col">Email</th>
-                                                    <th scope="col">Số điện thoại</th>
+                                                    <th scope="col"><strong>Tên</strong></th>
+                                                    <th scope="col"><strong>Email</strong></th>
+                                                    <th scope="col"><strong>Số điện thoại</strong></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
