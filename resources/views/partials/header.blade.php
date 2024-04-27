@@ -243,17 +243,15 @@
 
                       </div>
                       <ul class="profile-dropdown onhover-show-div">
-                          <li> <a class="nav-link" data-widget="login" href="{{ route('login') }}" role="button">
-                                  <i class="fas fa-user-tie"> Đăng nhập</i>
-                              </a>
-                          </li>
                           <li><a href="letter-box.html"><i data-feather="mail"></i><span>Inbox</span></a></li>
                           <li><a href="task.html"><i data-feather="file-text"></i><span>Taskboard</span></a></li>
                           <li><a href="edit-profile.html"><i data-feather="settings"></i><span>Settings</span></a>
                           </li>
-                          <li><a href="login.html"><i data-feather="log-in"> </i><span>Log in</span></a></li>
-                      </ul>
+                          <li><a href="{{ route('login') }}"><i data-feather="log-in"> </i><span>Đăng nhập</span></a>
+                          </li>
                   </li>
+              </ul>
+              </li>
               </ul>
           </div>
           <script class="result-template" type="text/x-handlebars-template">

@@ -10,6 +10,7 @@
 
 @section('js')
     <script src="{{ asset('adminPublic/role/add/add.js') }}"></script>
+    <script src="{{ asset('adminPublic/product/add/add.js') }}"></script>
 @endsection
 
 @section('content')
@@ -43,7 +44,7 @@
                                                 <div class="col-md-12">
                                                     <label for="">
                                                         <input type="checkbox" class="checkall">
-                                                        Chọn tất cả
+                                                        <span style="font-size: 16px"><b>Chọn tất cả</b></span>
                                                     </label>
                                                 </div>
                                                 @foreach ($permissionsParent as $permissionsParentItem)
@@ -53,8 +54,10 @@
                                                             <label>
                                                                 <input type="checkbox" value=""
                                                                     class="checkbox_wrapper">
+                                                                <span style="font-size: 14px; color:black">
+                                                                    <b>Quản lý {{ $permissionsParentItem->name }}</b></span>
+
                                                             </label>
-                                                            Module {{ $permissionsParentItem->name }}
                                                         </div>
                                                         <div class="row">
                                                             @foreach ($permissionsParentItem->permissionsChildrent as $permissionsChildrentItem)
@@ -86,6 +89,4 @@
         </div>
     </div>
 @endsection
-@section('js')
-    <script src="{{ asset('adminPublic/product/add/add.js') }}"></script>
-@endsection
+
