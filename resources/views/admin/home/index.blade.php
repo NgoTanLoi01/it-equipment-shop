@@ -261,7 +261,7 @@
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
                             <div class="header-top daily-revenue-card">
-                                <h4>Total Sells</h4>
+                                <h4>Tổng Số Đơn Hàng</h4>
                                 <div class="dropdown icon-dropdown">
                                     <button class="btn dropdown-toggle" id="userdropdown" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -281,14 +281,14 @@
                                         alt="icon"></div>
                                 <div class="flex-grow-1">
                                     <div class="d-flex align-items-center gap-2">
-                                        <h2>12,463</h2>
+                                        <h2>12</h2>
                                         <div class="d-flex total-icon">
                                             <p class="mb-0 up-arrow bg-light-success"><i
                                                     class="fa fa-arrow-up text-success"></i></p><span
                                                 class="f-w-500 font-success">+ 20.08% </span>
                                         </div>
                                     </div>
-                                    <p class="text-truncate">Compared to Jan 2024</p>
+                                    <p class="text-truncate">Trong năm 2024</p>
                                 </div>
                             </div>
                             <div id="admissionRatio"></div>
@@ -299,7 +299,7 @@
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
                             <div class="header-top daily-revenue-card">
-                                <h4>Orders Value</h4>
+                                <h4>Tổng Số Doanh Thu</h4>
                                 <div class="dropdown icon-dropdown">
                                     <button class="btn dropdown-toggle" id="userdropdown2" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false"><img
@@ -318,14 +318,14 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <div class="d-flex align-items-center gap-2">
-                                        <h2>78,596</h2>
+                                        <h2>234,000,000</h2>
                                         <div class="d-flex total-icon">
                                             <p class="mb-0 up-arrow bg-light-danger"><i
                                                     class="fa fa-arrow-up text-danger"></i></p><span
                                                 class="f-w-500 font-danger">- 10.02%</span>
                                         </div>
                                     </div>
-                                    <p class="text-truncate">Compared to Aug 2024</p>
+                                    <p class="text-truncate">Trong năm 2024</p>
                                 </div>
                             </div>
                             <div id="order-value"></div>
@@ -336,7 +336,7 @@
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
                             <div class="header-top daily-revenue-card">
-                                <h4>Daily Orders</h4>
+                                <h4>Tổng Số Khách Hàng</h4>
                                 <div class="dropdown icon-dropdown">
                                     <button class="btn dropdown-toggle" id="userdropdown3" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false"><img
@@ -354,14 +354,14 @@
                                         alt="icon"></div>
                                 <div class="flex-grow-1">
                                     <div class="d-flex align-items-center gap-2">
-                                        <h2>95,789</h2>
+                                        <h2>7</h2>
                                         <div class="d-flex total-icon">
                                             <p class="mb-0 up-arrow bg-light-success"><i
                                                     class="fa fa-arrow-up text-success"></i></p><span
                                                 class="f-w-500 font-success">+ 13.23%</span>
                                         </div>
                                     </div>
-                                    <p class="text-truncate">Compared to may 2024</p>
+                                    <p class="text-truncate">Trong năm 2024</p>
                                 </div>
                             </div>
                             <div id="daily-value"></div>
@@ -372,7 +372,7 @@
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
                             <div class="header-top daily-revenue-card">
-                                <h4>Daily Revenue</h4>
+                                <h4>Tổng Số Sản Phẩm</h4>
                                 <div class="dropdown icon-dropdown">
                                     <button class="btn dropdown-toggle" id="userdropdown4" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false"><img
@@ -391,14 +391,14 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <div class="d-flex align-items-center gap-2">
-                                        <h2>41,954</h2>
+                                        <h2>36</h2>
                                         <div class="d-flex total-icon">
                                             <p class="mb-0 up-arrow bg-light-danger"><i
                                                     class="fa fa-arrow-up text-danger"></i></p><span
                                                 class="f-w-500 font-danger">- 17.06%</span>
                                         </div>
                                     </div>
-                                    <p class="text-truncate">Compared to july 2024</p>
+                                    <p class="text-truncate">Trong năm 2024</p>
                                 </div>
                             </div>
                             <div id="daily-revenue"></div>
@@ -409,7 +409,7 @@
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
                             <div class="header-top">
-                                <h4>Recent Orders</h4>
+                                <h4>Đơn Hàng Gần Đây</h4>
                                 <div class="dropdown icon-dropdown">
                                     <button class="btn dropdown-toggle" id="userdropdown5" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false"><img
@@ -453,7 +453,7 @@
                                                     <div class="flex-shrink-0"><img
                                                             src="{{ asset('adminmofi/assets/images/dashboard-3/1.png') }}" alt=""></div>
                                                     <div class="flex-grow-1"><a href="checkout.html">
-                                                            <h6>Decorative Plants</h6>
+                                                            <h6 style="color: black">Decorative Plants</h6>
                                                         </a></div>
                                                 </div>
                                             </td>
@@ -491,7 +491,7 @@
                                                     <div class="flex-shrink-0"><img
                                                             src="{{ asset('adminmofi/assets/images/dashboard-3/2.png') }}" alt=""></div>
                                                     <div class="flex-grow-1"><a href="checkout.html">
-                                                            <h6>Sticky Calender</h6>
+                                                            <h6 style="color: black">Sticky Calender</h6>
                                                         </a></div>
                                                 </div>
                                             </td>
@@ -529,7 +529,7 @@
                                                     <div class="flex-shrink-0"><img
                                                             src="{{ asset('adminmofi/assets/images/dashboard-3/3.png') }}" alt=""></div>
                                                     <div class="flex-grow-1"><a href="checkout.html">
-                                                            <h6>Crystal Mug</h6>
+                                                            <h6 style="color: black">Crystal Mug</h6>
                                                         </a></div>
                                                 </div>
                                             </td>
@@ -567,7 +567,7 @@
                                                     <div class="flex-shrink-0"><img
                                                             src="{{ asset('adminmofi/assets/images/dashboard-3/4.png') }}" alt=""></div>
                                                     <div class="flex-grow-1"><a href="checkout.html">
-                                                            <h6>Motion Table Lamp</h6>
+                                                            <h6 style="color: black">Motion Table Lamp</h6>
                                                         </a></div>
                                                 </div>
                                             </td>
@@ -605,7 +605,7 @@
                                                     <div class="flex-shrink-0"><img
                                                             src="{{ asset('adminmofi/assets/images/dashboard-3/2.png') }}" alt=""></div>
                                                     <div class="flex-grow-1"><a href="checkout.html">
-                                                            <h6>Sticky Calender</h6>
+                                                            <h6 style="color: black">Sticky Calender</h6>
                                                         </a></div>
                                                 </div>
                                             </td>
@@ -643,7 +643,7 @@
                                                     <div class="flex-shrink-0"><img
                                                             src="{{ asset('adminmofi/assets/images/dashboard-3/3.png') }}" alt=""></div>
                                                     <div class="flex-grow-1"><a href="checkout.html">
-                                                            <h6>Crystal Mug</h6>
+                                                            <h6 style="color: black">Crystal Mug</h6>
                                                         </a></div>
                                                 </div>
                                             </td>
@@ -681,7 +681,7 @@
                                                     <div class="flex-shrink-0"><img
                                                             src="{{ asset('adminmofi/assets/images/dashboard-3/4.png') }}" alt=""></div>
                                                     <div class="flex-grow-1"><a href="checkout.html">
-                                                            <h6>Motion Table Lamp</h6>
+                                                            <h6 style="color: black">Motion Table Lamp</h6>
                                                         </a></div>
                                                 </div>
                                             </td>
@@ -717,7 +717,7 @@
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
                             <div class="header-top">
-                                <h4>Sales Overview</h4>
+                                <h4>Doanh Số Bán Hàng</h4>
                                 <div class="dropdown icon-dropdown">
                                     <button class="btn dropdown-toggle" id="userdropdown6" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false"><img
@@ -734,11 +734,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-5 col-sm-6">
+                <div class="col-xl-6 col-lg-5 col-sm-6">
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
                             <div class="header-top">
-                                <h4>Recent Customers</h4>
+                                <h4>Khách Hàng Thân Thiết</h4>
                                 <div class="dropdown icon-dropdown">
                                     <button class="btn dropdown-toggle" id="userdropdown7" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false"><img
@@ -826,11 +826,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-5 col-sm-6">
+                <div class="col-xl-6 col-lg-5 col-sm-6">
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
                             <div class="header-top">
-                                <h4>Revenue By Category</h4>
+                                <h4>Doanh Thu Theo Danh Mục</h4>
                                 <div class="dropdown icon-dropdown">
                                     <button class="btn dropdown-toggle" id="userdropdown8" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false"><img
@@ -848,11 +848,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-7 col-sm-12">
+                {{-- <div class="col-xl-6 col-lg-7 col-sm-12">
                     <div class="card overflow-hidden">
                         <div class="card-header card-no-border pb-0">
                             <div class="header-top">
-                                <h4>User by Continent</h4>
+                                <h4>Người Mua Theo Quốc Gia</h4>
                                 <div class="dropdown icon-dropdown">
                                     <button class="btn dropdown-toggle" id="userdropdown9" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false"><img
@@ -996,12 +996,13 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="col-xl-6 col-lg-12">
                     <div class="card">
                         <div class="card-body product-slider">
                             <div class="row align-items-center">
                                 <div class="col-sm-6">
+                                    <h4 class="text-truncate">Sản Phẩm Bán Chạy Nhất</h4><br>
                                     <div class="product-page-main p-0">
                                         <div class="row">
                                             <div class="col-3 product-thumbnail">
@@ -1086,7 +1087,7 @@
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
                             <div class="header-top top-sellers">
-                                <h4 class="text-truncate">Top seller of the month</h4>
+                                <h4 class="text-truncate">Sản Phẩm Bán Chạy</h4>
                                 <div class="dropdown icon-dropdown">
                                     <button class="btn dropdown-toggle" id="userdropdown10" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false"><img
@@ -1218,6 +1219,7 @@
                                             </td>
                                             <td>$15025</td>
                                         </tr>
+                                        
                                     </tbody>
                                 </table>
                             </div>
