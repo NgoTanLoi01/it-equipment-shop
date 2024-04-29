@@ -89,10 +89,9 @@
                                         <button type="submit" class="btn-product btn-cart"><span>Thêm vào giỏ hàng</button>
 
                                         <div class="details-action-wrapper">
-                                            <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>Thêm
-                                                    vào
-                                                    danh sách yêu thích</span></a>
-                                        </div><!-- End .details-action-wrapper -->
+                                            <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>Thêm vào yêu thích</span></a>
+                                            <a href="#" class="btn-product btn-compare" title="Compare"><span>So sánh sản phẩm</span></a>
+                                        </div>
                                     </div><!-- End .product-details-action -->
                                 </form>
 
@@ -260,7 +259,8 @@
 
                                             <div class="form-group">
                                                 <label for="review-content">Đánh giá (1500 ký tự)</label>
-                                                <textarea id="review-content" class="form-control" placeholder="Viết nội dung đánh giá của bạn ở đây..." required maxlength="1500"></textarea>
+                                                <textarea id="review-content" class="form-control" placeholder="Viết nội dung đánh giá của bạn ở đây..." required
+                                                    maxlength="1500"></textarea>
                                             </div>
 
                                             <div class="form-group">

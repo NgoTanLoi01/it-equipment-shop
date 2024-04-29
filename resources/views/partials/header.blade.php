@@ -24,6 +24,19 @@
                   </svg>
               </div>
           </div>
+          <div class="col-4 col-xl-4 page-title">
+
+              <!-- <h4 class="f-w-700"> Ecommerce Dashboard</h4> -->
+              <nav>
+                  <ol class="breadcrumb justify-content-sm-start align-items-center mb-0">
+                      <li class="breadcrumb-item"><a href="{{ route('home.index') }}"><img
+                                  src="{{ asset('AdminMofi/assets/images/icon/home.png') }}" width="40px"
+                                  alt=""></a></li>
+                      <!-- <li class="breadcrumb-item f-w-400">Dashboard</li>
+                <li class="breadcrumb-item f-w-400 active">Ecommerce</li> -->
+                  </ol>
+              </nav>
+          </div>
           <div class="nav-right col-xxl-8 col-xl-6 col-md-7 col-8 pull-right right-header p-0 ms-auto">
               <ul class="nav-menus">
                   <li> <span class="header-search">

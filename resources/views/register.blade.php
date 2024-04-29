@@ -98,7 +98,7 @@
             <div class="user_card">
                 <div class="d-flex justify-content-center">
                     <div class="brand_logo_container">
-                        <img src="{{asset('AdminLTE/dist/img/login_logo.png')}}"
+                        <img src="{{asset('UserLTE/assets/images/demos/demo-3/Logo.jpg')}}"
                             class="brand_logo" alt="Logo">
                     </div>
                 </div>

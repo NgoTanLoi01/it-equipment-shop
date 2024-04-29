@@ -9,7 +9,7 @@
                       <p class="mb-0 f-w-600">Copyright 2024 © Ngo Tan Loi Digital Technologies </p>
                       <p class="mb-0 f-w-600">Design by ngotanloi2424@gmail.com
                           <svg class="footer-icon">
-                              <use href="../assets/svg/icon-sprite.svg#footer-heart"> </use>
+                              <use href="{{asset('UserLTE/assets/svg/icon-sprite.svg#footer-heart') }}"> </use>
                           </svg>
                       </p>
                   </div>

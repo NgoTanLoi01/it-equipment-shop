@@ -225,6 +225,108 @@
                                         </div><!-- End .collapse -->
                                     </div><!-- End .widget -->
                                 </div>
+                                {{-- Lọc theo đánh giá --}}
+                                <div class="widget widget-collapsible">
+                                    <h6 class="widget-title"><a data-toggle="collapse" href="#widget-1" role="button"
+                                            aria-expanded="true" aria-controls="widget-1"><strong> Theo đánh giá
+                                            </strong></a>
+                                    </h6>
+                                    <div class="collapse show" id="widget-1">
+                                        <div class="widget-body">
+                                            <div class="filter-items">
+                                                <div class="filter-item">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input"
+                                                            id="cus-rating-1">
+                                                        <label class="custom-control-label" for="cus-rating-1">
+                                                            <span class="ratings-container">
+                                                                <span class="ratings">
+                                                                    <span class="ratings-val"
+                                                                        style="width: 100%;"></span><!-- End .ratings-val -->
+                                                                </span><!-- End .ratings -->
+                                                                <span class="ratings-text">( 24 )</span>
+                                                            </span><!-- End .rating-container -->
+                                                        </label>
+                                                    </div><!-- End .custom-checkbox -->
+                                                </div><!-- End .filter-item -->
+
+                                                <div class="filter-item">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input"
+                                                            id="cus-rating-2">
+                                                        <label class="custom-control-label" for="cus-rating-2">
+                                                            <span class="ratings-container">
+                                                                <span class="ratings">
+                                                                    <span class="ratings-val"
+                                                                        style="width: 80%;"></span><!-- End .ratings-val -->
+                                                                </span><!-- End .ratings -->
+                                                                <span class="ratings-text">( 8 )</span>
+                                                            </span><!-- End .rating-container -->
+                                                        </label>
+                                                    </div><!-- End .custom-checkbox -->
+                                                </div><!-- End .filter-item -->
+
+                                                <div class="filter-item">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input"
+                                                            id="cus-rating-3">
+                                                        <label class="custom-control-label" for="cus-rating-3">
+                                                            <span class="ratings-container">
+                                                                <span class="ratings">
+                                                                    <span class="ratings-val"
+                                                                        style="width: 60%;"></span><!-- End .ratings-val -->
+                                                                </span><!-- End .ratings -->
+                                                                <span class="ratings-text">( 5 )</span>
+                                                            </span><!-- End .rating-container -->
+                                                        </label>
+                                                    </div><!-- End .custom-checkbox -->
+                                                </div><!-- End .filter-item -->
+
+                                                <div class="filter-item">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input"
+                                                            id="cus-rating-4">
+                                                        <label class="custom-control-label" for="cus-rating-4">
+                                                            <span class="ratings-container">
+                                                                <span class="ratings">
+                                                                    <span class="ratings-val"
+                                                                        style="width: 40%;"></span><!-- End .ratings-val -->
+                                                                </span><!-- End .ratings -->
+                                                                <span class="ratings-text">( 1 )</span>
+                                                            </span><!-- End .rating-container -->
+                                                        </label>
+                                                    </div><!-- End .custom-checkbox -->
+                                                </div><!-- End .filter-item -->
+
+                                                <div class="filter-item">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input"
+                                                            id="cus-rating-5">
+                                                        <label class="custom-control-label" for="cus-rating-5">
+                                                            <span class="ratings-container">
+                                                                <span class="ratings">
+                                                                    <span class="ratings-val"
+                                                                        style="width: 20%;"></span><!-- End .ratings-val -->
+                                                                </span><!-- End .ratings -->
+                                                                <span class="ratings-text">( 3 )</span>
+                                                            </span><!-- End .rating-container -->
+                                                        </label>
+                                                    </div><!-- End .custom-checkbox -->
+                                                </div><!-- End .filter-item -->
+
+                                            </div>
+                                        </div><!-- End .collapse -->
+                                    </div><!-- End .widget -->
+                                </div>
+                                {{-- Banner --}}
+                                <div class="widget widget-banner-sidebar">
+                                    <div class="banner-sidebar banner-overlay">
+                                        <a href="#">
+                                            <img src="{{ asset('UserLTE/assets/images/demos/demo-3/banners/banner-6.png') }}"
+                                                alt="banner">
+                                        </a>
+                                    </div><!-- End .banner-ad -->
+                                </div>
                             </form>
                         </div>
                     </aside>
@@ -295,5 +397,4 @@
         width: 100%;
         margin-top: 20px;
     }
-
 </style>

@@ -254,7 +254,8 @@
         </div><!-- End .container -->
     </main><!-- End .main -->
 @endsection
-
+<link rel="icon" href="{{ asset('AdminMofi/assets/images/favicon.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('AdminMofi/assets/images/favicon.png') }}" type="image/x-icon">
 <!-- Mobile Menu -->
 <div class="mobile-menu-overlay"></div><!-- End .mobil-menu-overlay -->
 
