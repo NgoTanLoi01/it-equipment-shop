@@ -257,6 +257,7 @@
         <!-- Container-fluid starts-->
         <div class="container-fluid dashboard-3">
             <div class="row">
+                {{-- Thong ke so don hang --}}
                 <div class="col-xl-3 col-sm-6">
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
@@ -281,7 +282,7 @@
                                         alt="icon"></div>
                                 <div class="flex-grow-1">
                                     <div class="d-flex align-items-center gap-2">
-                                        <h2>12</h2>
+                                        <h2>{{ $orderCount }}</h2>
                                         <div class="d-flex total-icon">
                                             <p class="mb-0 up-arrow bg-light-success"><i
                                                     class="fa fa-arrow-up text-success"></i></p><span
@@ -295,6 +296,7 @@
                         </div>
                     </div>
                 </div>
+                {{-- Thong ke doanh thu --}}
                 <div class="col-xl-3 col-sm-6">
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
@@ -318,7 +320,7 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <div class="d-flex align-items-center gap-2">
-                                        <h2>234,000,000</h2>
+                                        <h2>{{ number_format($totalRevenue) }}</h2>
                                         <div class="d-flex total-icon">
                                             <p class="mb-0 up-arrow bg-light-danger"><i
                                                     class="fa fa-arrow-up text-danger"></i></p><span
@@ -332,6 +334,7 @@
                         </div>
                     </div>
                 </div>
+                {{-- Thong ke so khach hang --}}
                 <div class="col-xl-3 col-sm-6">
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
@@ -354,7 +357,7 @@
                                         alt="icon"></div>
                                 <div class="flex-grow-1">
                                     <div class="d-flex align-items-center gap-2">
-                                        <h2>7</h2>
+                                        <h2>{{ $customerCount }}</h2>
                                         <div class="d-flex total-icon">
                                             <p class="mb-0 up-arrow bg-light-success"><i
                                                     class="fa fa-arrow-up text-success"></i></p><span
@@ -368,6 +371,7 @@
                         </div>
                     </div>
                 </div>
+                {{-- Thong ke tong san pham --}}
                 <div class="col-xl-3 col-sm-6">
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
@@ -391,7 +395,7 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <div class="d-flex align-items-center gap-2">
-                                        <h2>36</h2>
+                                        <h2>{{ $productCount }}</h2>
                                         <div class="d-flex total-icon">
                                             <p class="mb-0 up-arrow bg-light-danger"><i
                                                     class="fa fa-arrow-up text-danger"></i></p><span
@@ -405,6 +409,7 @@
                         </div>
                     </div>
                 </div>
+                {{-- Thong ke don hang gan day --}}
                 <div class="col-xxl-7 col-xl-8 col-sm-12">
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
@@ -713,6 +718,7 @@
                         </div>
                     </div>
                 </div>
+                {{-- Thong ke doanh so ban hang theo bieu do --}}
                 <div class="col-xxl-5 col-xl-4 col-lg-7 col-sm-12">
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
@@ -734,6 +740,7 @@
                         </div>
                     </div>
                 </div>
+                {{-- Thong ke khach hang than thiet --}}
                 <div class="col-xl-6 col-lg-5 col-sm-6">
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
@@ -826,6 +833,7 @@
                         </div>
                     </div>
                 </div>
+                {{-- Thong ke so san pham theo danh muc --}}
                 <div class="col-xl-6 col-lg-5 col-sm-6">
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
@@ -997,6 +1005,7 @@
                         </div>
                     </div>
                 </div> --}}
+                {{-- Thong ke san pham ban chay nhat --}}
                 <div class="col-xl-6 col-lg-12">
                     <div class="card">
                         <div class="card-body product-slider">
@@ -1083,6 +1092,7 @@
                         </div>
                     </div>
                 </div>
+                {{-- Thong ke san pham ban chay --}}
                 <div class="col-xl-6 col-lg-12">
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
