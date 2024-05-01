@@ -151,7 +151,7 @@
             @endif
         </div>
 
-        
+
         <h2>THỐNG KÊ DOANH THU</h2>
         <div>
 
@@ -451,7 +451,8 @@
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
                             <div class="header-top top-sellers">
-                                <h4 class="text-truncate">Khách hàng thân thiết <br><span style="font-size: 14px">(Số đơn hàng >=2)</span></h4>
+                                <h4 class="text-truncate">Khách hàng thân thiết <br><span style="font-size: 14px">(Số đơn
+                                        hàng >=2)</span></h4>
                                 <div class="dropdown icon-dropdown">
                                     <button class="btn dropdown-toggle" id="userdropdown10" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false"><img
@@ -809,15 +810,16 @@
                                                     <label class="form-check-label"></label>
                                                 </div>
                                             </th>
-                                            <th>Seller Name</th>
-                                            <th>Brand Name</th>
-                                            <th>Product</th>
-                                            <th>Sold</th>
-                                            <th>Price</th>
-                                            <th>Earnings</th>
+                                            <th >Sản phẩm</th>
+                                            {{-- <th>Brand Name</th> --}}
+                                            <th style="text-align: center">Số lượng tồn kho hehe</th>
+                                            <th style="text-align: center">Giá bán</th>
+                                            <th style="text-align: center">Số lượng bán</th>
+                                            {{-- <th>Earnings</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($bestSellingProducts as $product)
                                         <tr>
                                             <td>
                                                 <div class="form-check">
@@ -827,102 +829,22 @@
                                             </td>
                                             <td>
                                                 <div class="d-flex align-items-center gap-2">
-                                                    <div class="flex-shrink-0"><img
-                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/9.png') }}"
+                                                    <div class="flex-shrink-0"><img style="width: 50px;"
+                                                            src="{{ config('app.base_url') . $product->feature_image_path }}"
                                                             alt="">
                                                     </div>
                                                     <div class="flex-grow-1"><a href="product-page.html">
-                                                            <h6>Gary Waters</h6>
+                                                            <span style="color: black; text-align: center">{{ $product->name }}</span>
                                                         </a></div>
                                                 </div>
                                             </td>
                                             <td>Adidas</td>
-                                            <td>Clothes</td>
-                                            <td>650 </td>
-                                            <td>
-                                                <p>$37.50</p>
-                                            </td>
-                                            <td>$24375</td>
+                                            {{-- <td>Clothes</td> --}}
+                                            <td style="text-align: center">{{ number_format($product->sale_price) }} VND </td>
+                                            <td style="text-align: center">{{ $product->total_sold }}</td>
+                                            {{-- <td>$24375</td> --}}
                                         </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="">
-                                                    <label class="form-check-label"></label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex align-items-center gap-2">
-                                                    <div class="flex-shrink-0"><img
-                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/10.png') }}"
-                                                            alt="">
-                                                    </div>
-                                                    <div class="flex-grow-1"><a href="product-page.html">
-                                                            <h6>Edwin Hogan</h6>
-                                                        </a></div>
-                                                </div>
-                                            </td>
-                                            <td>Nike</td>
-                                            <td>Shoes</td>
-                                            <td>956</td>
-                                            <td>
-                                                <p>$24.75</p>
-                                            </td>
-                                            <td>$23661</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="">
-                                                    <label class="form-check-label"></label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex align-items-center gap-2">
-                                                    <div class="flex-shrink-0"><img
-                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/11.png') }}"
-                                                            alt="">
-                                                    </div>
-                                                    <div class="flex-grow-1"><a href="product-page.html">
-                                                            <h6>Aaron Hogan</h6>
-                                                        </a></div>
-                                                </div>
-                                            </td>
-                                            <td>Sony</td>
-                                            <td>Electronics</td>
-                                            <td>348</td>
-                                            <td>
-                                                <p>$184.50</p>
-                                            </td>
-                                            <td>$64206</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="">
-                                                    <label class="form-check-label"></label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex align-items-center gap-2">
-                                                    <div class="flex-shrink-0"><img
-                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/12.png') }}"
-                                                            alt="">
-                                                    </div>
-                                                    <div class="flex-grow-1"><a href="product-page.html">
-                                                            <h6>Ralph Waters</h6>
-                                                        </a></div>
-                                                </div>
-                                            </td>
-                                            <td>i Phone</td>
-                                            <td>Mobile</td>
-                                            <td>100</td>
-                                            <td>
-                                                <p>$150.25</p>
-                                            </td>
-                                            <td>$15025</td>
-                                        </tr>
-
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

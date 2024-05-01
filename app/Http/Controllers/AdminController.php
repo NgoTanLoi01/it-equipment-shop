@@ -67,6 +67,9 @@ class AdminController extends Controller
             ->whereMonth('created_at', date('m'))
             ->count();
 
+        // Lấy danh sách sản phẩm bán chạy nhất
+        $bestSellingProducts = $this->getBestSellingProducts();
+
         $donHangGanDay = $this->getDonHangGanDay();
         return view('admin.home.index', compact(
             'productCount',
@@ -81,7 +84,8 @@ class AdminController extends Controller
             'orderCountMonth',
             'totalRevenueMonth',
             'customerCountMonth',
-            'donHangGanDay'
+            'donHangGanDay',
+            'bestSellingProducts'
         ));
     }
 
@@ -91,7 +95,24 @@ class AdminController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
     }
-    
+    public function getBestSellingProducts()
+    {
+        // Truy vấn và tính toán số lượng sản phẩm đã bán cho mỗi product_id
+        $productsSold = DB::table('order_details')
+            ->select('product_id', DB::raw('SUM(product_sales_quantity) as total_sold'))
+            ->groupBy('product_id');
+
+        // Lấy danh sách 12 sản phẩm được bán chạy nhất
+        $bestSellingProducts = Product::leftJoinSub($productsSold, 'productsSold', function ($join) {
+            $join->on('products.id', '=', 'productsSold.product_id');
+        })
+            ->orderByDesc('productsSold.total_sold') // Sắp xếp theo số lượng sản phẩm đã bán từ cao đến thấp
+            ->take(5)
+            ->get();
+
+        return $bestSellingProducts;
+    }
+
     public function postloginAdmin(Request $request)
     {
     }

@@ -113,9 +113,9 @@
                         </figure><!-- End .product-media -->
 
                         <div class="product-body">
-                            <div class="product-cat">
+                            {{-- <div class="product-cat">
                                 <a href="{{ route('detail', $product->slug) }}">{{ $product->name }}</a>
-                            </div><!-- End .product-cat -->
+                            </div><!-- End .product-cat --> --}}
                             <h3 class="product-title">
                                 <a href="{{ asset('UserLTE/product') }}">{{ $product->name }}</a>
                             </h3><!-- End .product-title -->
