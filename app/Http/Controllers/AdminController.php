@@ -67,6 +67,7 @@ class AdminController extends Controller
             ->whereMonth('created_at', date('m'))
             ->count();
 
+        $donHangGanDay = $this->getDonHangGanDay();
         return view('admin.home.index', compact(
             'productCount',
             'orderCount',
@@ -79,10 +80,18 @@ class AdminController extends Controller
             'productCountMonth',
             'orderCountMonth',
             'totalRevenueMonth',
-            'customerCountMonth'
+            'customerCountMonth',
+            'donHangGanDay'
         ));
     }
 
+    public function getDonHangGanDay()
+    {
+        return Order::select('order_id', 'customer_id', 'order_total', 'created_at', 'order_status')
+            ->orderBy('created_at', 'desc')
+            ->get();
+    }
+    
     public function postloginAdmin(Request $request)
     {
     }

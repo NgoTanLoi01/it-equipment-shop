@@ -266,7 +266,8 @@
                                 <div class="dropdown icon-dropdown">
                                     <button class="btn dropdown-toggle" id="userdropdown" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">
-                                        <img src="{{ asset('adminmofi/assets/images/icon/more.png') }}" width="16px" alt="">
+                                        <img src="{{ asset('adminmofi/assets/images/icon/more.png') }}" width="16px"
+                                            alt="">
                                     </button>
 
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown"><a
@@ -278,7 +279,8 @@
                         </div>
                         <div class="card-body pb-0 total-sells">
                             <div class="d-flex align-items-center gap-3">
-                                <div class="flex-shrink-0"><img src="{{ asset('adminmofi/assets/images/dashboard-3/icon/coin1.png') }}"
+                                <div class="flex-shrink-0"><img
+                                        src="{{ asset('adminmofi/assets/images/dashboard-3/icon/coin1.png') }}"
                                         alt="icon"></div>
                                 <div class="flex-grow-1">
                                     <div class="d-flex align-items-center gap-2">
@@ -305,7 +307,8 @@
                                 <div class="dropdown icon-dropdown">
                                     <button class="btn dropdown-toggle" id="userdropdown2" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false"><img
-                                            src="{{ asset('adminmofi/assets/images/icon/more.png') }}" width="16px" alt=""></button>
+                                            src="{{ asset('adminmofi/assets/images/icon/more.png') }}" width="16px"
+                                            alt=""></button>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown2"><a
                                             class="dropdown-item" href="#">Weekly</a><a class="dropdown-item"
                                             href="#">Monthly</a><a class="dropdown-item" href="#">Yearly</a>
@@ -315,7 +318,8 @@
                         </div>
                         <div class="card-body pb-0 total-sells-2">
                             <div class="d-flex align-items-center gap-3">
-                                <div class="flex-shrink-0"><img src="{{ asset('adminmofi/assets/images/dashboard-3/icon/shopping1.png') }}"
+                                <div class="flex-shrink-0"><img
+                                        src="{{ asset('adminmofi/assets/images/dashboard-3/icon/shopping1.png') }}"
                                         alt="icon">
                                 </div>
                                 <div class="flex-grow-1">
@@ -343,7 +347,8 @@
                                 <div class="dropdown icon-dropdown">
                                     <button class="btn dropdown-toggle" id="userdropdown3" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false"><img
-                                            src="{{ asset('adminmofi/assets/images/icon/more.png') }}" width="16px" alt=""></button>
+                                            src="{{ asset('adminmofi/assets/images/icon/more.png') }}" width="16px"
+                                            alt=""></button>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown3"><a
                                             class="dropdown-item" href="#">Weekly</a><a class="dropdown-item"
                                             href="#">Monthly</a><a class="dropdown-item" href="#">Yearly</a>
@@ -353,7 +358,8 @@
                         </div>
                         <div class="card-body pb-0 total-sells-3">
                             <div class="d-flex align-items-center gap-3">
-                                <div class="flex-shrink-0"><img src="{{ asset('adminmofi/assets/images/dashboard-3/icon/sent1.png') }}"
+                                <div class="flex-shrink-0"><img
+                                        src="{{ asset('adminmofi/assets/images/dashboard-3/icon/sent1.png') }}"
                                         alt="icon"></div>
                                 <div class="flex-grow-1">
                                     <div class="d-flex align-items-center gap-2">
@@ -380,7 +386,8 @@
                                 <div class="dropdown icon-dropdown">
                                     <button class="btn dropdown-toggle" id="userdropdown4" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false"><img
-                                            src="{{ asset('adminmofi/assets/images/icon/more.png') }}" width="16px" alt=""></button>
+                                            src="{{ asset('adminmofi/assets/images/icon/more.png') }}" width="16px"
+                                            alt=""></button>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown4"><a
                                             class="dropdown-item" href="#">Weekly</a><a class="dropdown-item"
                                             href="#">Monthly</a><a class="dropdown-item" href="#">Yearly</a>
@@ -390,7 +397,8 @@
                         </div>
                         <div class="card-body pb-0 total-sells-4">
                             <div class="d-flex align-items-center gap-3">
-                                <div class="flex-shrink-0"><img src="{{ asset('adminmofi/assets/images/dashboard-3/icon/revenue1.png') }}"
+                                <div class="flex-shrink-0"><img
+                                        src="{{ asset('adminmofi/assets/images/dashboard-3/icon/revenue1.png') }}"
                                         alt="icon">
                                 </div>
                                 <div class="flex-grow-1">
@@ -418,7 +426,8 @@
                                 <div class="dropdown icon-dropdown">
                                     <button class="btn dropdown-toggle" id="userdropdown5" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false"><img
-                                            src="{{ asset('adminmofi/assets/images/icon/more.png') }}" width="16px" alt=""></button>
+                                            src="{{ asset('adminmofi/assets/images/icon/more.png') }}" width="16px"
+                                            alt=""></button>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown5"><a
                                             class="dropdown-item" href="#">Weekly</a><a class="dropdown-item"
                                             href="#">Monthly</a><a class="dropdown-item" href="#">Yearly</a>
@@ -437,283 +446,53 @@
                                                     <label class="form-check-label"></label>
                                                 </div>
                                             </th>
-                                            <th>Recent Orders</th>
-                                            <th>Order Date</th>
+                                            <th>Tên khách hàng</th>
+                                            <th>Ngày đặt</th>
                                             <th>QTY</th>
                                             <th>Customer</th>
-                                            <th>Price </th>
-                                            <th>Status</th>
+                                            <th>Giá</th>
+                                            <th>Thông tin thanh toán</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="">
-                                                    <label class="form-check-label"></label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex align-items-center gap-2">
-                                                    <div class="flex-shrink-0"><img
-                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/1.png') }}" alt=""></div>
-                                                    <div class="flex-grow-1"><a href="checkout.html">
-                                                            <h6 style="color: black">Decorative Plants</h6>
-                                                        </a></div>
-                                                </div>
-                                            </td>
-                                            <td>20 Sep - 03.00AM</td>
-                                            <td>QTY:12</td>
-                                            <td class="customer-img">
-                                                <div class="d-flex align-items-center gap-2">
-                                                    <div class="flex-shrink-0"><img
-                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/6.png') }}" alt="">
+                                        @foreach ($donHangGanDay as $donHang)
+                                            <tr>
+                                                <td>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="">
+                                                        <label class="form-check-label"></label>
                                                     </div>
-                                                    <div class="flex-grow-1">
-                                                        <h6>Leonie Green </h6>
+                                                </td>
+                                                <td>{{ $donHang->customer->customer_name }}</td>
+                                                <td>{{ $donHang->created_at }}</td>
+                                                <td>QTY: 1</td> <!-- Đổi thành số lượng thực tế của đơn hàng -->
+                                                <td class="customer-img">
+                                                    <div class="d-flex align-items-center gap-2">
+                                                        <div class="flex-shrink-0"><img
+                                                                src="{{ asset('adminmofi/assets/images/dashboard-3/user/6.png') }}"
+                                                                alt=""></div>
+                                                        <div class="flex-grow-1">
+                                                            <h6>{{ $donHang->customer->customer_name }}</h6>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p>$637.30</p>
-                                            </td>
-                                            <td>
-                                                <div class="status-box">
-                                                    <div class="btn background-light-success font-success f-w-500">Succeed
+                                                </td>
+                                                <td>
+                                                    <p>{{ number_format($donHang->order_total) }}VNĐ</p>
+                                                </td>
+                                                <td>
+                                                    <div class="status-box">
+                                                        <div class="btn background-light-success font-success f-w-500">
+                                                            <a
+                                                                href="{{ URL::to('/view-order/' . $donHang->order_id) }}">{{ $donHang->order_status }}</a>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="">
-                                                    <label class="form-check-label"></label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex align-items-center gap-2">
-                                                    <div class="flex-shrink-0"><img
-                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/2.png') }}" alt=""></div>
-                                                    <div class="flex-grow-1"><a href="checkout.html">
-                                                            <h6 style="color: black">Sticky Calender</h6>
-                                                        </a></div>
-                                                </div>
-                                            </td>
-                                            <td>12 Mar - 08.12AM</td>
-                                            <td>QTY:14</td>
-                                            <td class="customer-img">
-                                                <div class="d-flex align-items-center gap-2">
-                                                    <div class="flex-shrink-0"><img
-                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/8.png') }}" alt="">
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <h6>Peter White</h6>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p>$637.30</p>
-                                            </td>
-                                            <td>
-                                                <div class="status-box">
-                                                    <div class="btn background-light-warning font-warning f-w-500">Waiting
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="">
-                                                    <label class="form-check-label"></label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex align-items-center gap-2">
-                                                    <div class="flex-shrink-0"><img
-                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/3.png') }}" alt=""></div>
-                                                    <div class="flex-grow-1"><a href="checkout.html">
-                                                            <h6 style="color: black">Crystal Mug</h6>
-                                                        </a></div>
-                                                </div>
-                                            </td>
-                                            <td>Feb 15 - 10.00AM</td>
-                                            <td>QTY:19</td>
-                                            <td class="customer-img">
-                                                <div class="d-flex align-items-center gap-2">
-                                                    <div class="flex-shrink-0"><img
-                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/7.png') }}" alt="">
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <h6>Ruby Yang </h6>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p>$637.30</p>
-                                            </td>
-                                            <td>
-                                                <div class="status-box">
-                                                    <div class="btn background-light-success font-success f-w-500">Succeed
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="">
-                                                    <label class="form-check-label"></label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex align-items-center gap-2">
-                                                    <div class="flex-shrink-0"><img
-                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/4.png') }}" alt=""></div>
-                                                    <div class="flex-grow-1"><a href="checkout.html">
-                                                            <h6 style="color: black">Motion Table Lamp</h6>
-                                                        </a></div>
-                                                </div>
-                                            </td>
-                                            <td>Jun 10 - 12.30AM</td>
-                                            <td>QTY:17</td>
-                                            <td class="customer-img">
-                                                <div class="d-flex align-items-center gap-2">
-                                                    <div class="flex-shrink-0"><img
-                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/8.png') }}" alt="">
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <h6>Visha Long</h6>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p>$637.30</p>
-                                            </td>
-                                            <td>
-                                                <div class="status-box">
-                                                    <div class="btn background-light-danger font-danger f-w-500">Canceled
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="">
-                                                    <label class="form-check-label"></label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex align-items-center gap-2">
-                                                    <div class="flex-shrink-0"><img
-                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/2.png') }}" alt=""></div>
-                                                    <div class="flex-grow-1"><a href="checkout.html">
-                                                            <h6 style="color: black">Sticky Calender</h6>
-                                                        </a></div>
-                                                </div>
-                                            </td>
-                                            <td>12 Mar - 08.12AM</td>
-                                            <td>QTY:14</td>
-                                            <td class="customer-img">
-                                                <div class="d-flex align-items-center gap-2">
-                                                    <div class="flex-shrink-0"><img
-                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/8.png') }}" alt="">
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <h6>Peter White</h6>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p>$637.30</p>
-                                            </td>
-                                            <td>
-                                                <div class="status-box">
-                                                    <div class="btn background-light-warning font-warning f-w-500">Waiting
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="">
-                                                    <label class="form-check-label"></label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex align-items-center gap-2">
-                                                    <div class="flex-shrink-0"><img
-                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/3.png') }}" alt=""></div>
-                                                    <div class="flex-grow-1"><a href="checkout.html">
-                                                            <h6 style="color: black">Crystal Mug</h6>
-                                                        </a></div>
-                                                </div>
-                                            </td>
-                                            <td>Feb 15 - 10.00AM</td>
-                                            <td>QTY:19</td>
-                                            <td class="customer-img">
-                                                <div class="d-flex align-items-center gap-2">
-                                                    <div class="flex-shrink-0"><img
-                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/7.png') }}" alt="">
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <h6>Ruby Yang </h6>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p>$637.30</p>
-                                            </td>
-                                            <td>
-                                                <div class="status-box">
-                                                    <div class="btn background-light-success font-success f-w-500">Succeed
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="">
-                                                    <label class="form-check-label"></label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex align-items-center gap-2">
-                                                    <div class="flex-shrink-0"><img
-                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/4.png') }}" alt=""></div>
-                                                    <div class="flex-grow-1"><a href="checkout.html">
-                                                            <h6 style="color: black">Motion Table Lamp</h6>
-                                                        </a></div>
-                                                </div>
-                                            </td>
-                                            <td>Jun 10 - 12.30AM</td>
-                                            <td>QTY:17</td>
-                                            <td class="customer-img">
-                                                <div class="d-flex align-items-center gap-2">
-                                                    <div class="flex-shrink-0"><img
-                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/8.png') }}" alt="">
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <h6>Visha Long</h6>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p>$637.30</p>
-                                            </td>
-                                            <td>
-                                                <div class="status-box">
-                                                    <div class="btn background-light-danger font-danger f-w-500">Canceled
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+
                                     </tbody>
                                 </table>
+
                             </div>
                         </div>
                     </div>
@@ -727,7 +506,8 @@
                                 <div class="dropdown icon-dropdown">
                                     <button class="btn dropdown-toggle" id="userdropdown6" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false"><img
-                                            src="{{ asset('adminmofi/assets/images/icon/more.png') }}" width="16px" alt=""></button>
+                                            src="{{ asset('adminmofi/assets/images/icon/more.png') }}" width="16px"
+                                            alt=""></button>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown6"><a
                                             class="dropdown-item" href="#">Weekly</a><a class="dropdown-item"
                                             href="#">Monthly</a><a class="dropdown-item" href="#">Yearly</a>
@@ -749,7 +529,8 @@
                                 <div class="dropdown icon-dropdown">
                                     <button class="btn dropdown-toggle" id="userdropdown7" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false"><img
-                                            src="{{ asset('adminmofi/assets/images/icon/more.png') }}" width="16px" alt=""></button>
+                                            src="{{ asset('adminmofi/assets/images/icon/more.png') }}" width="16px"
+                                            alt=""></button>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown7"><a
                                             class="dropdown-item" href="#">Weekly</a><a class="dropdown-item"
                                             href="#">Monthly</a><a class="dropdown-item" href="#">Yearly</a>
@@ -760,7 +541,8 @@
                         <div class="card-body pt-0">
                             <ul class="recent-customers">
                                 <li class="d-flex align-items-center gap-2">
-                                    <div class="flex-shrink-0"><img src="{{ asset('adminmofi/assets/images/dashboard-3/user/1.png') }}"
+                                    <div class="flex-shrink-0"><img
+                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/1.png') }}"
                                             alt=""></div>
                                     <div class="flex-grow-1"><a href="cart.html">
                                             <h5>Junsung Park</h5>
@@ -774,7 +556,8 @@
                                     </div>
                                 </li>
                                 <li class="d-flex align-items-center gap-2">
-                                    <div class="flex-shrink-0"><img src="{{ asset('adminmofi/assets/images/dashboard-3/user/2.png') }}"
+                                    <div class="flex-shrink-0"><img
+                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/2.png') }}"
                                             alt=""></div>
                                     <div class="flex-grow-1"><a href="cart.html">
                                             <h5>Yongjae Choi</h5>
@@ -788,7 +571,8 @@
                                     </div>
                                 </li>
                                 <li class="d-flex align-items-center gap-2">
-                                    <div class="flex-shrink-0"><img src="{{ asset('adminmofi/assets/images/dashboard-3/user/3.png') }}"
+                                    <div class="flex-shrink-0"><img
+                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/3.png') }}"
                                             alt=""></div>
                                     <div class="flex-grow-1"><a href="cart.html">
                                             <h5>Seonil Jang</h5>
@@ -802,7 +586,8 @@
                                     </div>
                                 </li>
                                 <li class="d-flex align-items-center gap-2">
-                                    <div class="flex-shrink-0"><img src="{{ asset('adminmofi/assets/images/dashboard-3/user/4.png') }}"
+                                    <div class="flex-shrink-0"><img
+                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/4.png') }}"
                                             alt=""></div>
                                     <div class="flex-grow-1"><a href="cart.html">
                                             <h5>Joohee Min</h5>
@@ -816,7 +601,8 @@
                                     </div>
                                 </li>
                                 <li class="d-flex align-items-center gap-2">
-                                    <div class="flex-shrink-0"><img src="{{ asset('adminmofi/assets/images/dashboard-3/user/5.png') }}"
+                                    <div class="flex-shrink-0"><img
+                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/5.png') }}"
                                             alt=""></div>
                                     <div class="flex-grow-1"><a href="cart.html">
                                             <h5>Soojung Kin</h5>
@@ -842,7 +628,8 @@
                                 <div class="dropdown icon-dropdown">
                                     <button class="btn dropdown-toggle" id="userdropdown8" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false"><img
-                                            src="{{ asset('adminmofi/assets/images/icon/more.png') }}" width="16px" alt=""></button>
+                                            src="{{ asset('adminmofi/assets/images/icon/more.png') }}" width="16px"
+                                            alt=""></button>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown8"><a
                                             class="dropdown-item" href="#">Weekly</a><a class="dropdown-item"
                                             href="#">Monthly</a><a class="dropdown-item" href="#">Yearly</a>
@@ -1101,7 +888,8 @@
                                 <div class="dropdown icon-dropdown">
                                     <button class="btn dropdown-toggle" id="userdropdown10" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false"><img
-                                            src="{{ asset('adminmofi/assets/images/icon/more.png') }}" width="16px" alt=""></button>
+                                            src="{{ asset('adminmofi/assets/images/icon/more.png') }}" width="16px"
+                                            alt=""></button>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown10"><a
                                             class="dropdown-item" href="#">Weekly</a><a class="dropdown-item"
                                             href="#">Monthly</a><a class="dropdown-item" href="#">Yearly</a>
@@ -1139,7 +927,8 @@
                                             <td>
                                                 <div class="d-flex align-items-center gap-2">
                                                     <div class="flex-shrink-0"><img
-                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/9.png') }}" alt="">
+                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/9.png') }}"
+                                                            alt="">
                                                     </div>
                                                     <div class="flex-grow-1"><a href="product-page.html">
                                                             <h6>Gary Waters</h6>
@@ -1164,7 +953,8 @@
                                             <td>
                                                 <div class="d-flex align-items-center gap-2">
                                                     <div class="flex-shrink-0"><img
-                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/10.png') }}" alt="">
+                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/10.png') }}"
+                                                            alt="">
                                                     </div>
                                                     <div class="flex-grow-1"><a href="product-page.html">
                                                             <h6>Edwin Hogan</h6>
@@ -1189,7 +979,8 @@
                                             <td>
                                                 <div class="d-flex align-items-center gap-2">
                                                     <div class="flex-shrink-0"><img
-                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/11.png') }}" alt="">
+                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/11.png') }}"
+                                                            alt="">
                                                     </div>
                                                     <div class="flex-grow-1"><a href="product-page.html">
                                                             <h6>Aaron Hogan</h6>
@@ -1214,7 +1005,8 @@
                                             <td>
                                                 <div class="d-flex align-items-center gap-2">
                                                     <div class="flex-shrink-0"><img
-                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/12.png') }}" alt="">
+                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/12.png') }}"
+                                                            alt="">
                                                     </div>
                                                     <div class="flex-grow-1"><a href="product-page.html">
                                                             <h6>Ralph Waters</h6>
@@ -1229,7 +1021,7 @@
                                             </td>
                                             <td>$15025</td>
                                         </tr>
-                                        
+
                                     </tbody>
                                 </table>
                             </div>
