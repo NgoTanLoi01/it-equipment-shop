@@ -3,91 +3,17 @@
 @section('title')
     <title>NGO TAN LOI Digital Technologies</title>
 @endsection
-
-{{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    window.onload = function() {
-        // Nếu có dữ liệu doanh thu, thì mới vẽ biểu đồ
-        @if (isset($thongKeData))
-            var ctx = document.getElementById('dailyRevenueChart').getContext('2d');
-            var dailyRevenueChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['{{ $selectedDate }}'],
-                    datasets: [{
-                            label: 'Doanh thu (VNĐ)',
-                            data: [{{ $thongKeData->totalRevenue }}],
-                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                            borderColor: 'rgba(75, 192, 192, 1)',
-                            borderWidth: 1
-                        },
-                        {
-                            label: 'Số lượng đơn hàng',
-                            data: [{{ $thongKeData->orderCount }}],
-                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                            borderColor: 'rgba(255, 99, 132, 1)',
-                            borderWidth: 1
-                        }
-                    ]
-                },
-                options: {
-                    scales: {
-                        x: {
-                            type: 'time',
-                            time: {
-                                unit: 'day',
-                                displayFormats: {
-                                    day: 'DD/MM/YYYY'
-                                }
-                            }
-                        },
-                        y: [{
-                                id: 'revenue-axis',
-                                beginAtZero: true,
-                                ticks: {
-                                    callback: function(value, index, values) {
-                                        // Sử dụng hàm toLocaleString để định dạng số
-                                        return value.toLocaleString('vi-VN', {
-                                            style: 'currency',
-                                            currency: 'VND'
-                                        });
-                                    }
-                                }
-                            },
-                            {
-                                id: 'order-axis',
-                                beginAtZero: true,
-                                ticks: {
-                                    stepSize: 1
-                                }
-                            }
-                        ]
-                    },
-                    plugins: {
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    var label = context.dataset.label || '';
-
-                                    if (label) {
-                                        label += ': ';
-                                    }
-
-                                    if (context.parsed.y !== null) {
-                                        label += new Intl.NumberFormat('vi-VN').format(context.parsed
-                                            .y);
-                                    }
-
-                                    return label;
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        @endif
+<style>
+    /* Hiển thị phần email */
+    .customer-email {
+        max-width: 150px;
+        /* Điều chỉnh chiều rộng tối đa của phần email */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        /* Hiển thị dấu ba chấm khi email quá dài */
+        white-space: nowrap;
     }
-</script> --}}
+</style>
 
 @section('content')
     {{-- <div class="content-wrapper">
@@ -450,7 +376,7 @@
                                             <th>Ngày đặt</th>
                                             <th>QTY</th>
                                             <th>Customer</th>
-                                            <th>Giá</th>
+                                            <th style="text-align: center">Giá</th>
                                             <th>Thông tin thanh toán</th>
                                         </tr>
                                     </thead>
@@ -524,98 +450,73 @@
                 <div class="col-xl-6 col-lg-5 col-sm-6">
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
-                            <div class="header-top">
-                                <h4>Khách Hàng Thân Thiết</h4>
+                            <div class="header-top top-sellers">
+                                <h4 class="text-truncate">Khách hàng thân thiết <br><span style="font-size: 14px">(Số đơn hàng >=2)</span></h4>
                                 <div class="dropdown icon-dropdown">
-                                    <button class="btn dropdown-toggle" id="userdropdown7" type="button"
+                                    <button class="btn dropdown-toggle" id="userdropdown10" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false"><img
                                             src="{{ asset('adminmofi/assets/images/icon/more.png') }}" width="16px"
                                             alt=""></button>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown7"><a
-                                            class="dropdown-item" href="#">Weekly</a><a class="dropdown-item"
-                                            href="#">Monthly</a><a class="dropdown-item" href="#">Yearly</a>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown10">
+                                        <a class="dropdown-item" href="#">Weekly</a>
+                                        <a class="dropdown-item" href="#">Monthly</a>
+                                        <a class="dropdown-item" href="#">Yearly</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body pt-0">
-                            <ul class="recent-customers">
-                                <li class="d-flex align-items-center gap-2">
-                                    <div class="flex-shrink-0"><img
-                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/1.png') }}"
-                                            alt=""></div>
-                                    <div class="flex-grow-1"><a href="cart.html">
-                                            <h5>Junsung Park</h5>
-                                        </a>
-                                        <p class="text-truncate">ID #32449<span class="text-success">Paid</span></p>
-                                    </div>
-                                    <div class="active-status active-online"></div>
-                                    <div class="recent-text">
-                                        <h5>$8282.13</h5>
-                                        <p>50 min ago</p>
-                                    </div>
-                                </li>
-                                <li class="d-flex align-items-center gap-2">
-                                    <div class="flex-shrink-0"><img
-                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/2.png') }}"
-                                            alt=""></div>
-                                    <div class="flex-grow-1"><a href="cart.html">
-                                            <h5>Yongjae Choi</h5>
-                                        </a>
-                                        <p class="text-truncate">ID #95460<span class="text-danger">Pending</span></p>
-                                    </div>
-                                    <div class="active-status active-online"></div>
-                                    <div class="recent-text">
-                                        <h5>$9546.84 </h5>
-                                        <p>34 min ago</p>
-                                    </div>
-                                </li>
-                                <li class="d-flex align-items-center gap-2">
-                                    <div class="flex-shrink-0"><img
-                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/3.png') }}"
-                                            alt=""></div>
-                                    <div class="flex-grow-1"><a href="cart.html">
-                                            <h5>Seonil Jang</h5>
-                                        </a>
-                                        <p class="text-truncate">ID #95468<span class="text-success">Paid</span></p>
-                                    </div>
-                                    <div class="active-status active-online"></div>
-                                    <div class="recent-text">
-                                        <h5>$2354.16</h5>
-                                        <p>30 min ago</p>
-                                    </div>
-                                </li>
-                                <li class="d-flex align-items-center gap-2">
-                                    <div class="flex-shrink-0"><img
-                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/4.png') }}"
-                                            alt=""></div>
-                                    <div class="flex-grow-1"><a href="cart.html">
-                                            <h5>Joohee Min</h5>
-                                        </a>
-                                        <p class="text-truncate">ID #95462<span class="text-danger"> Pending</span></p>
-                                    </div>
-                                    <div class="active-status active-online"></div>
-                                    <div class="recent-text">
-                                        <h5>$3254.35</h5>
-                                        <p>25 min ago</p>
-                                    </div>
-                                </li>
-                                <li class="d-flex align-items-center gap-2">
-                                    <div class="flex-shrink-0"><img
-                                            src="{{ asset('adminmofi/assets/images/dashboard-3/user/5.png') }}"
-                                            alt=""></div>
-                                    <div class="flex-grow-1"><a href="cart.html">
-                                            <h5>Soojung Kin</h5>
-                                        </a>
-                                        <p class="text-truncate">ID #34586<span class="text-success">Paid</span></p>
-                                    </div>
-                                    <div class="active-status active-online"></div>
-                                    <div class="recent-text">
-                                        <h5>$3654.32</h5>
-                                        <p>23 min ago</p>
-                                    </div>
-                                </li>
-                            </ul>
+                        <div class="card-body pt-0 seller-month px-0">
+                            <div class="table-responsive theme-scrollbar">
+                                <table class="table display" id="seller-month" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="">
+                                                    <label class="form-check-label"></label>
+                                                </div>
+                                            </th>
+                                            <th style="text-align: center">Email</th>
+                                            <th style="text-align: center">Tên khách hàng</th>
+                                            <th style="text-align: center">Số đơn hàng</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($khachHangThanThiet as $khachHang)
+                                            <tr>
+                                                <td>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="">
+                                                        <label class="form-check-label"></label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center gap-2">
+                                                        <div class="flex-shrink-0">
+                                                            <!-- Thay đổi ảnh của khách hàng -->
+                                                            <img src="{{ asset('adminmofi/assets/images/dashboard-3/user/9.png') }}"
+                                                                alt="">
+                                                        </div>
+                                                        <div class="flex-grow-1">
+                                                            <!-- Thay đổi tên khách hàng -->
+                                                            <h5 style="color: black">{{ $khachHang->customer_email }}
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td style="text-align: center">
+                                                    <!-- Thay đổi email của khách hàng -->
+                                                    {{ $khachHang->customer_name }}
+                                                </td>
+                                                <td style="text-align: center">
+                                                    <!-- Thay đổi số lượng đơn hàng của khách hàng -->
+                                                    {{ $khachHang->totalOrders }}
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -880,7 +781,7 @@
                     </div>
                 </div>
                 {{-- Thong ke san pham ban chay --}}
-                <div class="col-xl-6 col-lg-12">
+                <div class="col-xl-6 col-lg-12 ">
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
                             <div class="header-top top-sellers">
