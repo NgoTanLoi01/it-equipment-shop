@@ -90,7 +90,7 @@
                                   <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
                               </svg><strong>Thống Kê</strong></a>
                       </li>
-                      <li class="sidebar-list"><i class="fa fa-thumb-tack"> </i><a class="sidebar-link sidebar-title"
+                      <li class="sidebar-list"><a class="sidebar-link sidebar-title"
                               href="{{ route('slider.index') }}">
                               <svg class="stroke-icon">
                                   <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-project') }}">
@@ -126,7 +126,7 @@
                               <svg class="fill-icon">
                                   <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
                               </svg><strong>Setting</strong></a>
-                      <li class="sidebar-list"><i class="fa fa-thumb-tack"> </i><a
+                      <li class="sidebar-list"><a
                               class="sidebar-link sidebar-title link-nav" href="{{ URL::to('/manage-order') }}">
                               <svg class="stroke-icon">
                                   <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-board') }}"></use>

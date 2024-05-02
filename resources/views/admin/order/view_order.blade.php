@@ -38,7 +38,7 @@
                                     <a href="{{ url('/send-mail/' . $order_by_id->first()->order_id) }}"
                                         class="btn btn-sm btn-outline-danger float-right m-2">
                                         <img src="{{ asset('AdminMofi/assets/images/icon/email.png') }}" width="16px"
-                                            alt=""><strong>&nbsp;Gửi mail thông báo</strong>
+                                            alt=""><strong>&nbsp;Gửi Email thông báo</strong>
                                     </a>
                                 </div>
                                 <div class="collapse" id="collapseProduct">

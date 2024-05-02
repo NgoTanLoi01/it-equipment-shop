@@ -810,7 +810,7 @@
                                                     <label class="form-check-label"></label>
                                                 </div>
                                             </th>
-                                            <th >Sản phẩm</th>
+                                            <th>Sản phẩm</th>
                                             {{-- <th>Brand Name</th> --}}
                                             <th style="text-align: center">Số lượng tồn kho hehe</th>
                                             <th style="text-align: center">Giá bán</th>
@@ -819,31 +819,33 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($bestSellingProducts as $product)
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="">
-                                                    <label class="form-check-label"></label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex align-items-center gap-2">
-                                                    <div class="flex-shrink-0"><img style="width: 50px;"
-                                                            src="{{ config('app.base_url') . $product->feature_image_path }}"
-                                                            alt="">
+                                        @foreach ($bestSellingProducts as $product)
+                                            <tr>
+                                                <td>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="">
+                                                        <label class="form-check-label"></label>
                                                     </div>
-                                                    <div class="flex-grow-1"><a href="product-page.html">
-                                                            <span style="color: black; text-align: center">{{ $product->name }}</span>
-                                                        </a></div>
-                                                </div>
-                                            </td>
-                                            <td>Adidas</td>
-                                            {{-- <td>Clothes</td> --}}
-                                            <td style="text-align: center">{{ number_format($product->sale_price) }} VND </td>
-                                            <td style="text-align: center">{{ $product->total_sold }}</td>
-                                            {{-- <td>$24375</td> --}}
-                                        </tr>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center gap-2">
+                                                        <div class="flex-shrink-0"><img style="width: 50px;"
+                                                                src="{{ config('app.base_url') . $product->feature_image_path }}"
+                                                                alt="">
+                                                        </div>
+                                                        <div class="flex-grow-1"><a href="#">
+                                                                <span
+                                                                    style="color: black; text-align: center">{{ $product->name }}</span>
+                                                            </a></div>
+                                                    </div>
+                                                </td>
+                                                <td>Adidas</td>
+                                                {{-- <td>Clothes</td> --}}
+                                                <td style="text-align: center">{{ number_format($product->sale_price) }}
+                                                    VND </td>
+                                                <td style="text-align: center">{{ $product->total_sold }}</td>
+                                                {{-- <td>$24375</td> --}}
+                                            </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
