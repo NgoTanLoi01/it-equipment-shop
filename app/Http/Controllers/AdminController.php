@@ -67,8 +67,11 @@ class AdminController extends Controller
             ->whereMonth('created_at', date('m'))
             ->count();
 
-        // Lấy danh sách sản phẩm bán chạy nhất
+        // Lấy danh sách sản phẩm bán chạy
         $bestSellingProducts = $this->getBestSellingProducts();
+
+        // Lấy thông tin về sản phẩm bán chạy nhất
+        $bestSellingProduct = $this->getBestSellingProducts()->first();
 
         $donHangGanDay = $this->getDonHangGanDay();
         return view('admin.home.index', compact(
@@ -85,7 +88,8 @@ class AdminController extends Controller
             'totalRevenueMonth',
             'customerCountMonth',
             'donHangGanDay',
-            'bestSellingProducts'
+            'bestSellingProducts',
+            'bestSellingProduct'
         ));
     }
 

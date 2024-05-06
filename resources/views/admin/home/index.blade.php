@@ -526,7 +526,7 @@
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
                             <div class="header-top">
-                                <h4>Doanh Thu Theo Danh Mục</h4>
+                                <h4>Sản Phẩm Bán Được Theo Doanh Mục</h4>
                                 <div class="dropdown icon-dropdown">
                                     <button class="btn dropdown-toggle" id="userdropdown8" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false"><img
@@ -705,74 +705,43 @@
                                         <div class="row">
                                             <div class="col-3 product-thumbnail">
                                                 <div class="pro-slide-right">
+                                                    @foreach ($bestSellingProduct->images as $image)
                                                     <div class="mt-4">
                                                         <div class="slide-box"><img class="img-fluid"
-                                                                src="{{ asset('adminmofi/assets/images/dashboard-3/slider/1.png') }}"
-                                                                alt=""></div>
+                                                                src="{{ asset($image->image_path) }}" alt=""></div>
                                                     </div>
-                                                    <div>
-                                                        <div class="slide-box"><img class="img-fluid"
-                                                                src="{{ asset('adminmofi/assets/images/dashboard-3/slider/2.png') }}"
-                                                                alt=""></div>
-                                                    </div>
-                                                    <div>
-                                                        <div class="slide-box"><img class="img-fluid"
-                                                                src="{{ asset('adminmofi/assets/images/dashboard-3/slider/3.png') }}"
-                                                                alt=""></div>
-                                                    </div>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                             <div class="col-9 px-0 product-main">
                                                 <div class="pro-slide-single">
+                                                    @foreach ($bestSellingProduct->images as $image)
                                                     <div> <img class="img-fluid"
-                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/slider/4.png') }}"
-                                                            alt=""></div>
-                                                    <div><img class="img-fluid"
-                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/slider/5.png') }}"
-                                                            alt=""></div>
-                                                    <div><img class="img-fluid"
-                                                            src="{{ asset('adminmofi/assets/images/dashboard-3/slider/6.png') }}"
-                                                            alt=""></div>
+                                                            src="{{ asset($image->image_path) }}" alt=""></div>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <div class="product-details my-4"><a href="product-page.html">
-                                            <h4 class="text-truncate">Women’s Fit and Flare Knee length one Piece Dress
-                                            </h4>
-                                        </a>
-                                        <h3 class="font-primary">$126</h3>
-                                        <h5>Select size:</h5>
-                                        <ul class="product-size">
-                                            <li>S </li>
-                                            <li>M </li>
-                                            <li>L </li>
-                                            <li>XL</li>
-                                        </ul>
-                                        <h5>Colour:</h5>
-                                        <ul class="product-color">
-                                            <li class="border-primary"><span class="bg-primary"> <i
-                                                        class="icon-check"></i></span></li>
-                                            <li class="border-secondary"><span class="bg-secondary"> </span></li>
-                                            <li class="border-warning"><span class="bg-warning"> </span></li>
-                                            <li class="border-tertiary"><span class="bg-tertiary"></span></li>
-                                        </ul>
+                                    <div class="product-details my-4"><a href="#">
+                                            <h4 class="">{{ $bestSellingProduct->name }}</h4></a><br>
+                                        <h4 class="font-primary">Giá bán: {{ number_format($bestSellingProduct->sale_price) }} VNĐ</h4>
+                                        <h5>Giá gốc: <del>{{ number_format($bestSellingProduct->price) }} VNĐ</del></h5><br>
+                                        <h5>Số lượng bán: {{ $bestSellingProduct->total_sold }}</h5><br>
                                         <div class="discount-box">
-                                            <h6>Special Discount </h6>
+                                            <h6>Đồng hồ thông minh</h6>
                                         </div>
-                                        <h3 class="text-truncate">Deal of the Day From <span class="font-secondary">$48
-                                            </span></h3>
                                         <div class="countdown" id="clock-arrival" data-hours="1" data-minutes="2"
                                             data-seconds="3">
                                             <ul>
-                                                <li><span class="days time"></span><span class="title">Days</span></li>
-                                                <li><span class="hours time"></span><span class="title">Hours</span></li>
+                                                <li><span class="days time"></span><span class="title">Ngày</span></li>
+                                                <li><span class="hours time"></span><span class="title">Giờ</span></li>
                                                 <li class="px-3"><span class="minutes time"></span><span
-                                                        class="title">Min</span></li>
+                                                        class="title">Phút</span></li>
                                                 <li class="px-3"><span class="seconds time"></span><span
-                                                        class="title">Sec</span></li>
+                                                        class="title">Giây</span></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -781,6 +750,7 @@
                         </div>
                     </div>
                 </div>
+                
                 {{-- Thong ke san pham ban chay --}}
                 <div class="col-xl-6 col-lg-12 ">
                     <div class="card">
