@@ -2,74 +2,14 @@
 
     <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
     {{-- Chat với AI --}}
-    <div class="chatbot-container" id="chatbot-container">
-        {{-- <div class="chatbot-header">
-            <span class="chatbot-title">Synthia AI</span>
-        </div> --}}
-        <button class="close-btn" id="close-btn">&times;</button>
-
-        <div class="card card-warning card-outline direct-chat direct-chat-info">
-            <div class="card-header">
-                <h3 class="card-title" id="name"><i class="fas fa-robot"></i> Synthia AI</h3>
-
-                <div class="card-tools">
-                    <span title="" id="posi" class="badge bg-dark">Bard AI</span>
-
-                </div>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-                <!-- Conversations are loaded here -->
-                <div id="mssg" class="direct-chat-messages">
-                    <div class='direct-chat-msg'>
-                        <div class='direct-chat-infos clearfix'><span
-                                class='direct-chat-name float-left'>Synthia</span><span
-                                class='direct-chat-timestamp float-right'><a href="#"
-                                    vall="Xin chào;  Tôi là Synthia, 1 trợ lý ảo của cửa hàng NgoTanLoi digital technologies. Tôi có thể giúp gì cho bạn? "
-                                    class="text-primary play"><i class="fas fa-play-circle"></i></a> </span></div><img
-                            class='direct-chat-img' src='img/neo.jpg' alt='Message User Image'>
-                        <div class='direct-chat-text'>Xin chào; Tôi là Synthia, 1 trợ lý ảo của cửa hàng NgoTanLoi
-                            digital
-                            technologies. Tôi có thể giúp gì cho bạn? </div>
-                    </div>
-                </div>
-                <!--/.direct-chat-messages-->
-                <span class="character-typing">
-                    <div><b class="wait">Wait,</b> <span>Typing ...</span> </div>
-                </span>
-            </div>
-            <!-- /.card-body -->
-            <div class="card-footer">
-                <form id="frm">
-                    <input id="hdn_csv" type="hidden" />
-                    <input id="hdn_prompt" type="hidden" />
-                    <input id="hdn_usr" type="hidden" />
-                    <div class="input-group">
-                        <textarea id="txtMsg" rows="1" name="message" required style="overflow:hidden;resize:none"
-                            placeholder="Nhập câu hỏi ..." class="form-control"></textarea>
-
-                        <span class="input-group-append">
-                            <button type="button" onclick="createPrompt();return false;" id="Ask"
-                                class="btn btn-dark">Gửi</button>
-                        </span>
-                    </div>
-                </form>
-            </div>
-            <!-- /.card-footer-->
-        </div>
-    </div>
-    <img src="{{ asset('UserLTE/assets/images/chatbot/ai.png') }}" alt="Chatbot" class="chatbot-icon" id="chatbot-icon"
-        width="60px" height="" style="padding-bottom: 2px; border-radius: 50%">
-    {{-- <a id="zalo" href="#" title="Chat với AI">
-        <img src="{{ asset('UserLTE/assets/images/chatbot/ai.png') }}" width="60px" height=""
-            style="padding-bottom: 2px">
-    </a> --}}
+    {{-- <img src="{{ asset('UserLTE/assets/images/chatbot/ai.png') }}" alt="Chatbot" class="chatbot-icon" id="chatbot-icon"
+        width="60px" height="" style="padding-bottom: 2px; border-radius: 50%"> --}}
 
     {{-- Chat với Cửa --}}
-    <a id="messenger" href="#" title="Chat với cửa hàng">
+    {{-- <a id="messenger" href="#" title="Chat với cửa hàng">
         <img src="{{ asset('UserLTE/assets/images/chatbot/real.png') }}" width="60px" height=""
             style="padding-bottom: 2px; border-radius: 50%">
-    </a>
+    </a> --}}
     <div class="footer-middle">
         <div class="container">
             <div class="row">
@@ -216,16 +156,75 @@
     }
 </style>
 {{-- <link href="{{ asset('Bard_ai_clone/css/adminlte.min.css')}}" rel="stylesheet" type="text/css" /> --}}
+
 <script>
-    const chatbotContainer = document.getElementById('chatbot-container');
-    const chatbotIcon = document.getElementById('chatbot-icon');
-    const closeBtn = document.getElementById('close-btn');
-
-    chatbotIcon.addEventListener('click', () => {
-        chatbotContainer.style.display = 'block';
-    });
-
-    closeBtn.addEventListener('click', () => {
-        chatbotContainer.style.display = 'none';
-    });
+    // Configs
+    let liveChatBaseUrl = document.location.protocol + '//' + 'livechat.fpt.ai/v36/src';
+    let LiveChatSocketUrl = 'livechat.fpt.ai:443';
+    let FptAppCode = '321b58316e117218b088763ce405a493';
+    let FptAppName = 'NTL Digital Technology hỗ trợ';
+    // Define custom styles
+    let CustomStyles = {
+        // Header
+        headerBackground: 'linear-gradient(86.7deg, #3353a2ff 0.85%, #31b7b7ff 98.94%)',
+        headerTextColor: '#ffffffff',
+        headerLogoEnable: false,
+        headerLogoLink: 'https://chatbot-tools.fpt.ai/livechat-builder/img/Icon-fpt-ai.png',
+        headerText: 'NTL Digital Technology hỗ trợ',
+        // Main
+        primaryColor: '#6d9ccbff',
+        secondaryColor: '#ecececff',
+        primaryTextColor: '#ffffffff',
+        secondaryTextColor: '#000000DE',
+        buttonColor: '#b4b4b4ff',
+        buttonTextColor: '#ffffffff',
+        bodyBackgroundEnable: false,
+        bodyBackgroundLink: '',
+        avatarBot: 'https://chatbot-tools.fpt.ai/livechat-builder/img/bot.png',
+        sendMessagePlaceholder: 'Nhập tin nhắn của bạn',
+        // Float button
+        floatButtonLogo: 'https://chatbot-tools.fpt.ai/livechat-builder/img/Icon-fpt-ai.png',
+        floatButtonTooltip: 'NgoTanLoi Digital Technology xin chào!',
+        floatButtonTooltipEnable: true,
+        // Start screen
+        customerLogo: 'https://chatbot-tools.fpt.ai/livechat-builder/img/bot.png',
+        customerWelcomeText: 'Vui lòng nhập thông tin của bạn để bắt đầu trò chuyện:',
+        customerButtonText: 'Bắt đầu trò chuyện',
+        // Prefix
+        prefixEnable: true, // Bật chức năng yêu cầu nhập thông tin
+        prefixType: 'radio', // Loại input là radio button
+        prefixOptions: ["Anh", "Chị"], // Các lựa chọn cho danh xưng
+        prefixPlaceholder: 'Chọn danh xưng', // Placeholder cho input
+        // Custom CSS
+        css: ''
+    };
+    // Get bot code from URL if FptAppCode is empty
+    if (!FptAppCode) {
+        let appCodeFromHash = window.location.hash.substr(1);
+        if (appCodeFromHash.length === 32) {
+            FptAppCode = appCodeFromHash;
+        }
+    }
+    // Set Configs
+    let FptLiveChatConfigs = {
+        appName: FptAppName,
+        appCode: FptAppCode,
+        themes: '',
+        styles: CustomStyles
+    };
+    // Append Script
+    let FptLiveChatScript = document.createElement('script');
+    FptLiveChatScript.id = 'fpt_ai_livechat_script';
+    FptLiveChatScript.src = liveChatBaseUrl + '/static/fptai-livechat.js';
+    document.body.appendChild(FptLiveChatScript);
+    // Append Stylesheet
+    let FptLiveChatStyles = document.createElement('link');
+    FptLiveChatStyles.id = 'fpt_ai_livechat_script';
+    FptLiveChatStyles.rel = 'stylesheet';
+    FptLiveChatStyles.href = liveChatBaseUrl + '/static/fptai-livechat.css';
+    document.body.appendChild(FptLiveChatStyles);
+    // Init
+    FptLiveChatScript.onload = function() {
+        fpt_ai_render_chatbox(FptLiveChatConfigs, liveChatBaseUrl, LiveChatSocketUrl);
+    };
 </script>
