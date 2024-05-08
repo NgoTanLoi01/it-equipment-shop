@@ -72,6 +72,7 @@ class AdminController extends Controller
 
         // Lấy thông tin về sản phẩm bán chạy nhất
         $bestSellingProduct = $this->getBestSellingProducts()->first();
+        
 
         $donHangGanDay = $this->getDonHangGanDay();
         return view('admin.home.index', compact(

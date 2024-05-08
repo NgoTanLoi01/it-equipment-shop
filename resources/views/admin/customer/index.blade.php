@@ -53,6 +53,7 @@
                                                     <th scope="col"><strong>Tên</strong></th>
                                                     <th scope="col"><strong>Email</strong></th>
                                                     <th scope="col"><strong>Số điện thoại</strong></th>
+                                                    <th scope="col"><strong>Hành động</strong></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -61,6 +62,11 @@
                                                         <td>{{ $customer->customer_name }}</td>
                                                         <td>{{ $customer->customer_email }}</td>
                                                         <td>{{ $customer->customer_phone }}</td>
+                                                        <td>
+                                                            <a href="#"
+                                                                class="btn btn-sm btn-success"><img
+                                                                src="{{ asset('AdminMofi/assets/images/icon/view.png') }}" width="16px" alt=""><strong>Xem</strong></a>
+                                                        </td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>

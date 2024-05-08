@@ -54,7 +54,7 @@
                                                     <th scope="col"><strong>Tên người đặt</strong></th>
                                                     <th scope="col"><strong>Tổng giá tiền</strong></th>
                                                     <th scope="col"><strong>Phương thức thanh toán</strong></th>
-                                                    <th scope="col"><strong>Hoạt động</strong></th>
+                                                    <th scope="col"><strong>Hàng động</strong></th>
                                                 </tr>
                                             </thead>
                                             <tbody>

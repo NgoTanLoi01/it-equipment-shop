@@ -344,7 +344,7 @@
                     </div>
                 </div>
                 {{-- Thong ke don hang gan day --}}
-                <div class="col-xxl-7 col-xl-8 col-sm-12">
+                <div class="col-xxl-12 col-xl-8 col-sm-12">
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
                             <div class="header-top">
@@ -424,7 +424,26 @@
                     </div>
                 </div>
                 {{-- Thong ke doanh so ban hang theo bieu do --}}
-                <div class="col-xxl-5 col-xl-4 col-lg-7 col-sm-12">
+                <div class="col-xxl-12 col-xl-12 box-col-12 proorder-xl-8 proorder-md-9">
+                    <div class="card">
+                        <div class="card-header card-no-border pb-0">
+                            <div class="header-top">
+                                <h4>Doanh số bán hàng <br> <p class="text-truncate">Trong năm 2024</p></h4>
+                                
+                                <div class="dropdown icon-dropdown">
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown14"><a
+                                            class="dropdown-item" href="#">Weekly</a><a class="dropdown-item"
+                                            href="#">Monthly</a><a class="dropdown-item" href="#">Yearly</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body sale-statistic">
+                            <div id="chart-dash-2-line"></div>
+                        </div>
+                    </div>
+                </div>
+                {{-- <div class="col-xxl-12 col-xl-4 col-lg-7 col-sm-12">
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
                             <div class="header-top">
@@ -443,6 +462,30 @@
                         </div>
                         <div class="card-body pt-0">
                             <div id="salse-overview"></div>
+                        </div>
+                    </div>
+                </div> --}}
+                {{-- Thong ke so san pham theo danh muc --}}
+                <div class="col-xl-6 col-lg-5 col-sm-6">
+                    <div class="card">
+                        <div class="card-header card-no-border pb-0">
+                            <div class="header-top">
+                                <h4>Sản Phẩm Bán Được Theo Doanh Mục</h4>
+                                <div class="dropdown icon-dropdown">
+                                    <button class="btn dropdown-toggle" id="userdropdown8" type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false"><img
+                                            src="{{ asset('adminmofi/assets/images/icon/more.png') }}" width="16px"
+                                            alt=""></button>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown8"><a
+                                            class="dropdown-item" href="#">Weekly</a><a class="dropdown-item"
+                                            href="#">Monthly</a><a class="dropdown-item" href="#">Yearly</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body revenue-category">
+                            <div id="pie-chart"></div>
+                            <div class="donut-legend" id="legend"></div>
                         </div>
                     </div>
                 </div>
@@ -521,179 +564,6 @@
                         </div>
                     </div>
                 </div>
-                {{-- Thong ke so san pham theo danh muc --}}
-                <div class="col-xl-6 col-lg-5 col-sm-6">
-                    <div class="card">
-                        <div class="card-header card-no-border pb-0">
-                            <div class="header-top">
-                                <h4>Sản Phẩm Bán Được Theo Doanh Mục</h4>
-                                <div class="dropdown icon-dropdown">
-                                    <button class="btn dropdown-toggle" id="userdropdown8" type="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false"><img
-                                            src="{{ asset('adminmofi/assets/images/icon/more.png') }}" width="16px"
-                                            alt=""></button>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown8"><a
-                                            class="dropdown-item" href="#">Weekly</a><a class="dropdown-item"
-                                            href="#">Monthly</a><a class="dropdown-item" href="#">Yearly</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body revenue-category">
-                            <div id="pie-chart"></div>
-                            <div class="donut-legend" id="legend"></div>
-                        </div>
-                    </div>
-                </div>
-                {{-- <div class="col-xl-6 col-lg-7 col-sm-12">
-                    <div class="card overflow-hidden">
-                        <div class="card-header card-no-border pb-0">
-                            <div class="header-top">
-                                <h4>Người Mua Theo Quốc Gia</h4>
-                                <div class="dropdown icon-dropdown">
-                                    <button class="btn dropdown-toggle" id="userdropdown9" type="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false"><img
-                                            src="{{ asset('adminmofi/assets/images/icon/more.png') }}" width="16px" alt=""></button>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown9"><a
-                                            class="dropdown-item" href="#">Weekly</a><a class="dropdown-item"
-                                            href="#">Monthly</a><a class="dropdown-item" href="#">Yearly</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body user-continent pb-0">
-                            <div class="user-map-menu d-flex align-items-center gap-5">
-                                <div class="user-items">
-                                    <h5>1,506<span>items</span></h5>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 25%"
-                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        <div class="progress-bar bg-secondary" role="progressbar" style="width: 25%"
-                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 25%"
-                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        <div class="progress-bar bg-tertiary" role="progressbar" style="width: 25%"
-                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                <div class="map-items">
-                                    <ul class="d-flex align-items-center gap-3">
-                                        <li>
-                                            <h5><span class="bg-primary"></span>Keyboard</h5>
-                                            <p class="mb-0">651</p>
-                                        </li>
-                                        <li>
-                                            <h5><span class="bg-secondary"></span>Laptops</h5>
-                                            <p class="mb-0">345</p>
-                                        </li>
-                                        <li>
-                                            <h5><span class="bg-warning"></span>Desktop</h5>
-                                            <p class="mb-0">654</p>
-                                        </li>
-                                        <li>
-                                            <h5><span class="bg-tertiary"></span>Mouse</h5>
-                                            <p class="mb-0">954</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="contries-sale d-flex gap-4">
-                                <div class="map-value">
-                                    <h5>All Over Contries's Sale</h5>
-                                    <ul>
-                                        <li>
-                                            <div class="d-flex gap-2">
-                                                <div class="flex-shrink-0">
-                                                    <svg>
-                                                        <use class="fill-primary"
-                                                            href="{{ asset('adminmofi/assets/svg/icon-sprite.svg#map-loaction') }}">
-                                                        </use>
-                                                    </svg>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h6>United States</h6>
-                                                </div><span>53.23%</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="d-flex gap-2">
-                                                <div class="flex-shrink-0">
-                                                    <svg>
-                                                        <use class="fill-secondary"
-                                                            href="{{ asset('adminmofi/assets/svg/icon-sprite.svg#map-loaction') }}">
-                                                        </use>
-                                                    </svg>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h6>Romania</h6>
-                                                </div><span>31.85%</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="d-flex gap-2">
-                                                <div class="flex-shrink-0">
-                                                    <svg>
-                                                        <use class="fill-warning"
-                                                            href="{{ asset('adminmofi/assets/svg/icon-sprite.svg#map-loaction') }}">
-                                                        </use>
-                                                    </svg>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h6>Austalia</h6>
-                                                </div><span>12.98%</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="d-flex gap-2">
-                                                <div class="flex-shrink-0">
-                                                    <svg>
-                                                        <use class="fill-tertiary"
-                                                            href="{{ asset('adminmofi/assets/svg/icon-sprite.svg#map-loaction') }}">
-                                                        </use>
-                                                    </svg>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h6>Germany</h6>
-                                                </div><span>45.23%</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="d-flex gap-2">
-                                                <div class="flex-shrink-0">
-                                                    <svg>
-                                                        <use class="fill-success"
-                                                            href="{{ asset('adminmofi/assets/svg/icon-sprite.svg#map-loaction') }}">
-                                                        </use>
-                                                    </svg>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h6>Africa</h6>
-                                                </div><span>23.15%</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="d-flex gap-2">
-                                                <div class="flex-shrink-0">
-                                                    <svg>
-                                                        <use class="fill-danger"
-                                                            href="{{ asset('adminmofi/assets/svg/icon-sprite.svg#map-loaction') }}">
-                                                        </use>
-                                                    </svg>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h6>Europe</h6>
-                                                </div><span>95.75%</span>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="map">
-                                    <div class="jvector-map-height" id="world-map2"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
                 {{-- Thong ke san pham ban chay nhat --}}
                 <div class="col-xl-6 col-lg-12">
                     <div class="card">
@@ -706,18 +576,20 @@
                                             <div class="col-3 product-thumbnail">
                                                 <div class="pro-slide-right">
                                                     @foreach ($bestSellingProduct->images as $image)
-                                                    <div class="mt-4">
-                                                        <div class="slide-box"><img class="img-fluid"
-                                                                src="{{ asset($image->image_path) }}" alt=""></div>
-                                                    </div>
+                                                        <div class="mt-4">
+                                                            <div class="slide-box"><img class="img-fluid"
+                                                                    src="{{ asset($image->image_path) }}" alt="">
+                                                            </div>
+                                                        </div>
                                                     @endforeach
                                                 </div>
                                             </div>
                                             <div class="col-9 px-0 product-main">
                                                 <div class="pro-slide-single">
                                                     @foreach ($bestSellingProduct->images as $image)
-                                                    <div> <img class="img-fluid"
-                                                            src="{{ asset($image->image_path) }}" alt=""></div>
+                                                        <div> <img class="img-fluid"
+                                                                src="{{ asset($image->image_path) }}" alt="">
+                                                        </div>
                                                     @endforeach
                                                 </div>
                                             </div>
@@ -726,9 +598,12 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="product-details my-4"><a href="#">
-                                            <h4 class="">{{ $bestSellingProduct->name }}</h4></a><br>
-                                        <h4 class="font-primary">Giá bán: {{ number_format($bestSellingProduct->sale_price) }} VNĐ</h4>
-                                        <h5>Giá gốc: <del>{{ number_format($bestSellingProduct->price) }} VNĐ</del></h5><br>
+                                            <h4 class="">{{ $bestSellingProduct->name }}</h4>
+                                        </a><br>
+                                        <h4 class="font-primary">Giá bán:
+                                            {{ number_format($bestSellingProduct->sale_price) }} VNĐ</h4>
+                                        <h5>Giá gốc: <del>{{ number_format($bestSellingProduct->price) }} VNĐ</del></h5>
+                                        <br>
                                         <h5>Số lượng bán: {{ $bestSellingProduct->total_sold }}</h5><br>
                                         <div class="discount-box">
                                             <h6>Đồng hồ thông minh</h6>
@@ -750,7 +625,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 {{-- Thong ke san pham ban chay --}}
                 <div class="col-xl-6 col-lg-12 ">
                     <div class="card">
@@ -828,3 +703,4 @@
         <!-- Container-fluid Ends-->
     </div>
 @endsection
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
