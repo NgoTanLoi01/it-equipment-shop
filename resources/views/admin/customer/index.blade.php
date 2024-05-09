@@ -11,10 +11,10 @@
 @endsection
 
 @section('js')
-<link rel="stylesheet" href="{{ asset('adminPublic/product/index/list.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('AdminMofi/assets/css/vendors/js-datatables/style.css') }}">
-{{-- Doi mau sac xen ky --}}
-<link rel="stylesheet" href="{{ asset('adminPublic/product/index/view.css') }}">
+    <link rel="stylesheet" href="{{ asset('adminPublic/product/index/list.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('AdminMofi/assets/css/vendors/js-datatables/style.css') }}">
+    {{-- Doi mau sac xen ky --}}
+    <link rel="stylesheet" href="{{ asset('adminPublic/product/index/view.css') }}">
 @endsection
 
 @section('content')
@@ -59,14 +59,14 @@
                                             <tbody>
                                                 @foreach ($customers as $customer)
                                                     <tr>
-                                                        <td>{{ $customer->customer_name }}</td>
+                                                        <td scope="row">{{ $customer->customer_name }}</td>
                                                         <td>{{ $customer->customer_email }}</td>
                                                         <td>{{ $customer->customer_phone }}</td>
                                                         <td>
-                                                            <a href="#"
-                                                                class="btn btn-sm btn-success"><img
-                                                                src="{{ asset('AdminMofi/assets/images/icon/view.png') }}" width="16px" alt=""><strong>Xem</strong></a>
-                                                        </td>
+                                                            <a href="{{ route('customers.view', ['id' => $customer->customer_id]) }}" class="btn btn-sm btn-success">
+                                                                <img src="{{ asset('AdminMofi/assets/images/icon/view.png') }}" width="16px" alt=""><strong>Xem</strong>
+                                                            </a>
+                                                        </td>                                                        
                                                     </tr>
                                                 @endforeach
                                             </tbody>

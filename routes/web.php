@@ -113,8 +113,6 @@ Route::prefix('admin')->group(function () {
             'middleware' => 'can:category-delete'
         ]);
     });
-
-
     //menus
     Route::prefix('menus')->group(function () {
         Route::get('/', [
@@ -280,6 +278,10 @@ Route::prefix('admin')->group(function () {
         Route::get('/', [
             'as' => 'customers.index',
             'uses' => 'App\Http\Controllers\CustomerController@index'
+        ]);
+        Route::get('/view/{id}', [ // Sửa URI cho route customers.view
+            'as' => 'customers.view',
+            'uses' => 'App\Http\Controllers\CustomerController@view',
         ]);
     });
     //role
