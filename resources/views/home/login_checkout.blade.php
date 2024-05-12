@@ -40,7 +40,8 @@
                                 <form action="{{ URL::to('/login-customer') }}" method="POST">
                                     {{ csrf_field() }}
                                     <div class="form-group">
-                                        <label for="singin-email">Nhập địa chỉ Email của bạn *</label>
+                                        <label for="singin-email">Nhập địa chỉ <strong>Email</strong> hoặc <strong>Số điện
+                                                thoại</strong> của bạn *</label>
                                         <input type="email" class="form-control" name="email_account" required>
                                     </div>
 
@@ -54,19 +55,22 @@
                                             <span>Đăng nhập</span>
                                             <i class="icon-long-arrow-right"></i>
                                         </button>
-
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="signin-remember">
                                             <label class="custom-control-label" for="signin-remember">Nhớ mật
-                                                khẩu</label>
+                                                khẩu</label>&nbsp;
                                         </div>
-
-                                        <a href="#" class="forgot-link">Quên mật khẩu?</a>
+                                        <a href="#" class="forgot-link">Quên mật khẩu?</a><br>
                                     </div>
                                 </form>
                                 {{-- end form --}}
                             </div><!-- .End .tab-pane -->
-
+                            <ul>
+                                <li><a href="{{ route('login-by-google') }}"><img width="60px"
+                                            alt="Đăng nhập với tài khoản Google"
+                                            src="{{ asset('UserLTE/assets/images/icons/google_icon.png') }}">Đăng nhập với Google</a></li>
+                                <li><a href=""><img src="" alt=""></a></li>
+                            </ul>
                             {{-- Đăng ký --}}
                             <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
                                 <form action="{{ URL::to('/add-customer') }}" method="POST">

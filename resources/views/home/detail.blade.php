@@ -89,8 +89,10 @@
                                         <button type="submit" class="btn-product btn-cart"><span>Thêm vào giỏ hàng</button>
 
                                         <div class="details-action-wrapper">
-                                            <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>Thêm vào yêu thích</span></a>
-                                            <a href="#" class="btn-product btn-compare" title="Compare"><span>So sánh sản phẩm</span></a>
+                                            <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>Thêm
+                                                    vào yêu thích</span></a>
+                                            <a href="#" class="btn-product btn-compare" title="Compare"><span>So sánh
+                                                    sản phẩm</span></a>
                                         </div>
                                     </div><!-- End .product-details-action -->
                                 </form>
@@ -255,19 +257,22 @@
                                                     <li class="star" title="Excellent" data-value="5"><i
                                                             class="fa fa-star "></i></li>
                                                 </ul>
-                                            </div>
+                                                <div class="form-group">
+                                                    <label for="review-content">Tiêu đề</label>
+                                                    <input type="text" id="review-content-title" class="form-control"
+                                                        placeholder="Tốt, sản phẩm đẹp,..." required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="review-content">Đánh giá (1500 ký tự)</label>
+                                                    <textarea id="review-content" class="form-control" placeholder="Viết nội dung đánh giá của bạn ở đây..." required
+                                                        maxlength="1500"></textarea>
+                                                </div>
 
-                                            <div class="form-group">
-                                                <label for="review-content">Đánh giá (1500 ký tự)</label>
-                                                <textarea id="review-content" class="form-control" placeholder="Viết nội dung đánh giá của bạn ở đây..." required
-                                                    maxlength="1500"></textarea>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <button class="btn btn-dark">Gửi đánh giá</button>
+                                                <div class="form-group">
+                                                    <button class="btn btn-dark">Gửi đánh giá</button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                 </form>
                             </div>
                         </div>

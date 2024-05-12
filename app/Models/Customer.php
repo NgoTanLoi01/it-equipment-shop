@@ -3,15 +3,23 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class Customer extends Authenticatable
 {
     use HasFactory;
 
     protected $table = 'customers';
-    protected $primaryKey = 'customer_id'; // Thay 'customer_id' bằng tên của cột khóa chính trong bảng customers
-    protected $fillable = ['customer_name', 'customer_email', 'customer_phone'];
-    
-}
+    protected $primaryKey = 'customer_id';
+    protected $fillable = ['customer_name', 'customer_email', 'customer_phone', 'google_id'];
+    public function getAuthIdentifierName()
+    {
+        return 'customer_id';
+    }
 
+    public function getAuthIdentifier()
+    {
+        return $this->getKey();
+    }
+}

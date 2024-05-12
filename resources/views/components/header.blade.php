@@ -13,14 +13,21 @@
                     <li>
                         <ul>
                             <?php
+                            use App\Models\Customer;
                             $customer_id = Session::get('customer_id');
-                            $customer_name = Session::get('customer_name');
-            
+                            $google_id = Session::get('google_id');
+                            
                             if ($customer_id != NULL) {
+                                $user = Customer::where('customer_id', $customer_id)->first();
+                            } elseif ($google_id != NULL) {
+                                $user = Customer::where('google_id', $google_id)->first();
+                            }
+                            
+                            if (isset($user)) {
+                                $customer_name = $user->customer_name;
                             ?>
                             <li><a href="#">{{ $customer_name }}</a></li>
                             <li><a href="{{ URL::to('/logout-checkout') }}">Đăng xuất</a></li>
-                            
                             <?php
                             } else {
                             ?>

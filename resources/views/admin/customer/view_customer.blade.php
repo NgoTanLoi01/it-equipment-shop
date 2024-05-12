@@ -39,6 +39,7 @@
                                                     <th scope="col"><strong> Tên khách hàng</strong></th>
                                                     <th scope="col"><strong> Số điện thoại</strong></th>
                                                     <th scope="col"><strong> Email</strong></th>
+                                                    <th scope="col"><strong> Số đơn hàng đã đặt</strong></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -46,6 +47,7 @@
                                                     <td>{{ $customer->customer_name }}</td>
                                                     <td>{{ $customer->customer_phone }}</td>
                                                     <td>{{ $customer->customer_email }}</td>
+                                                    <td>{{ $orderCount }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>

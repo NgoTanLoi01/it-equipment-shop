@@ -538,7 +538,7 @@
                                                     <div class="d-flex align-items-center gap-2">
                                                         <div class="flex-shrink-0">
                                                             <!-- Thay đổi ảnh của khách hàng -->
-                                                            <img src="{{ asset('adminmofi/assets/images/dashboard-3/user/9.png') }}"
+                                                            <img src="{{ asset('adminmofi/assets/images/dashboard-3/user/2.png') }}"
                                                                 alt="">
                                                         </div>
                                                         <div class="flex-grow-1">

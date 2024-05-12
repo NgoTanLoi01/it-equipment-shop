@@ -3,14 +3,10 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\MenusController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomeAdminController;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\CategoryAdminController;
+use App\Http\Controllers\LoginGoogleFaceBookController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -40,6 +36,13 @@ Route::get('/blog', [HomeAdminController::class, 'blog']);
 Route::get('/about', [HomeAdminController::class, 'about']);
 Route::get('/lien_he', [HomeAdminController::class, 'lien_he']);
 
+//login
+Route::get('/login-checkout', [CheckoutController::class, 'login_checkout']);
+Route::get('/logout-checkout', [CheckoutController::class, 'logout_checkout']);
+
+//login with google
+Route::get('auth/google', [LoginGoogleFaceBookController::class, 'redirectToGoogle'])->name('login-by-google');
+Route::get('auth/google/callback', [LoginGoogleFaceBookController::class, 'handleGoogleCallback']);
 
 //gio hang
 Route::post('/save-cart', [CartController::class, 'save_cart']);
@@ -48,8 +51,6 @@ Route::get('/delete-to-cart/{rowId}', [CartController::class, 'delete_to_cart'])
 Route::get('/update-cart-quantity', [CartController::class, 'update_cart_quantity']);
 
 //thanh toan
-Route::get('/login-checkout', [CheckoutController::class, 'login_checkout']);
-Route::get('/logout-checkout', [CheckoutController::class, 'logout_checkout']);
 Route::post('/add-customer', [CheckoutController::class, 'add_customer']);
 Route::post('/order-place', [CheckoutController::class, 'order_place']);
 Route::post('/login-customer', [CheckoutController::class, 'login_customer']);
