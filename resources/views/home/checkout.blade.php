@@ -46,7 +46,7 @@
 
                                 <label>Điện thoại người nhận *</label>
                                 <input name="shipping_phone" type="tel" class="form-control"
-                                    value="{{ $customer_info->customer_phone ?? '' }}" readonly required>
+                                    value="{{ $customer_info->customer_phone ?? '' }}" required>
 
                                 <label>Email *</label>
                                 <input name="shipping_email" type="email" class="form-control"

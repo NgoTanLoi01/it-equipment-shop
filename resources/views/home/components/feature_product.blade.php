@@ -11,7 +11,7 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" id="products-top-link" data-toggle="tab" href="#products-top-tab" role="tab"
-                aria-controls="products-top-tab" aria-selected="false">Nổi bậc</a>
+                aria-controls="products-top-tab" aria-selected="false">Nổi bật</a>
         </li>
     </ul>
 
@@ -121,7 +121,7 @@
                         </div><!-- End .product-body -->
                     </div><!-- End .product -->
                 @endforeach
-                {{-- ảnh nổi bậc --}}
+                {{-- ảnh Nổi bật --}}
             </div><!-- End .owl-carousel -->
         </div><!-- .End .tab-pane -->
     </div>

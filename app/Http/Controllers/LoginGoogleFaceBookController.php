@@ -24,6 +24,7 @@ class LoginGoogleFaceBookController extends Controller
 
             if ($finduser) {
                 // Lưu thông tin người dùng vào session
+                session(['customer_id' => $finduser->customer_id]);
                 session(['user' => $finduser]);
             } else {
                 $newUser = Customer::create([
@@ -35,6 +36,7 @@ class LoginGoogleFaceBookController extends Controller
                 ]);
 
                 // Lưu thông tin người dùng mới vào session
+                session(['customer_id' => $newUser->customer_id]);
                 session(['user' => $newUser]);
             }
 

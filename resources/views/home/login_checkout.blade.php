@@ -64,13 +64,13 @@
                                     </div>
                                 </form>
                                 {{-- end form --}}
+                                <ul>
+                                    <li><a href="{{ route('login-by-google') }}"><img width="60px"
+                                                alt="Đăng nhập với tài khoản Google"
+                                                src="{{ asset('UserLTE/assets/images/icons/google_icon.png') }}">Đăng nhập với Google</a></li>
+                                    <li><a href=""><img src="" alt=""></a></li>
+                                </ul>
                             </div><!-- .End .tab-pane -->
-                            <ul>
-                                <li><a href="{{ route('login-by-google') }}"><img width="60px"
-                                            alt="Đăng nhập với tài khoản Google"
-                                            src="{{ asset('UserLTE/assets/images/icons/google_icon.png') }}">Đăng nhập với Google</a></li>
-                                <li><a href=""><img src="" alt=""></a></li>
-                            </ul>
                             {{-- Đăng ký --}}
                             <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
                                 <form action="{{ URL::to('/add-customer') }}" method="POST">
