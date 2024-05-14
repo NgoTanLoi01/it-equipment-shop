@@ -76,7 +76,14 @@
             </div>
 
             <div class="header-right">
-
+                <div class="wishlist">
+                    <a href="{{ URL::to('/user-account') }}" title="My account">
+                        <div class="icon">
+                            <i class="icon-user"></i>
+                        </div>
+                        <p>Tài khoản</p>
+                    </a>
+                </div><!-- End .compare-dropdown -->
                 <div class="wishlist">
                     <a href="{{ URL::to('/yeu_thich') }}">
                         <div class="icon">
@@ -97,44 +104,6 @@
                     </a>
                 </div><!-- End .cart-dropdown -->
 
-                <?php
-                    $customer_id = Session::get('customer_id');
-                    $shipping_id = Session::get('shipping_id');
-                    if ($customer_id != NULL && $shipping_id == NULL) {
-                ?>
-                <div class="wishlist">
-                    <a href="{{ URL::to('/checkout') }}">
-                        <div class="icon">
-                            <i class="icon-usd"></i>
-                        </div>
-                        <p>Thanh toán</p>
-                    </a>
-                </div><!-- End .compare-dropdown -->
-                <?php
-                    }elseif($customer_id != NULL && $shipping_id != NULL) {
-                ?>
-                <div class="wishlist">
-                    <a href="{{ URL::to('/payment') }}">
-                        <div class="icon">
-                            <i class="icon-usd"></i>
-                        </div>
-                        <p>Thanh toán</p>
-                    </a>
-                </div><!-- End .compare-dropdown -->
-                <?php
-                }else{
-                ?>
-                <div class="wishlist">
-                    <a href="{{ URL::to('/login-checkout') }}">
-                        <div class="icon">
-                            <i class="icon-usd"></i>
-                        </div>
-                        <p>Thanh toán</p>
-                    </a>
-                </div><!-- End .compare-dropdown -->
-                <?php
-                    } 
-                ?>
             </div><!-- End .header-right -->
         </div><!-- End .container -->
     </div><!-- End .header-middle -->

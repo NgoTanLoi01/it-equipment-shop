@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomeAdminController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\UserAccountController;
 use App\Http\Controllers\LoginGoogleFaceBookController;
 use Illuminate\Support\Facades\Route;
 
@@ -63,6 +64,9 @@ Route::get('/manage-order', [CheckoutController::class, 'manage_order']);
 Route::get('/view-order/{orderId}', [CheckoutController::class, 'view_order']);
 Route::get('/delete-order/{orderId}', [CheckoutController::class, 'delete_order']);
 Route::get('/print-order/{orderId}', [CheckoutController::class, 'print_order']);
+
+//quan ly tai khoan nguoi dung
+Route::get('/user-account', [UserAccountController::class, 'user_account']);
 
 //gui mail
 Route::get('send-mail/{orderId}', [CheckoutController::class, 'send_mail']);
