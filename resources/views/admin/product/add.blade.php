@@ -33,7 +33,7 @@
                                         @error('name')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
-<br>
+                                        <br>
                                         <div class="form-group">
                                             <label><strong>Giá sản phẩm</strong></label>
                                             <input name="price" type="text"
@@ -43,7 +43,7 @@
                                         @error('price')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
-<br>
+                                        <br>
                                         <div class="form-group">
                                             <label><strong>Giá sản phẩm sau khi giảm</strong></label>
                                             <input name="sale_price" type="text"
@@ -54,17 +54,17 @@
                                         @error('sale_price')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
-<br>
+                                        <br>
                                         <div class="form-group">
                                             <label><strong>Ảnh đại diện</strong></label>
                                             <input name="feature_image_path" type="file" class="form-control-file">
                                         </div>
-<br>
+                                        <br>
                                         <div class="form-group">
                                             <label><strong>Ảnh chi tiết</strong></label>
                                             <input name="image_path[]" multiple type="file" class="form-control-file">
                                         </div>
-<br>
+                                        <br>
                                         <div class="form-group">
                                             <label><strong>Danh mục sản phẩm</strong></label><br>
                                             <select
@@ -77,9 +77,9 @@
                                         @error('category_id')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
-<br>
+                                        <br>
                                         <div class="form-group">
-                                            <label><strong>Thêm tags cho sản phẩm</strong></label><br>
+                                            <label><strong>Thêm thương hiệu sản phẩm</strong></label><br>
                                             <select name="tags[]" class="form-control tags_select_choose"
                                                 multiple="multiple">
                                             </select>
@@ -98,9 +98,10 @@
                                             <input name="quantity" type="text" class="form-control"
                                                 placeholder="Nhập số lượng sản phẩm kho" value="{{ old('quantity') }}">
                                         </div>
-<br>
+                                        <br>
                                         <button type="submit" class="btn btn-primary"><img
-                                            src="{{ asset('AdminMofi/assets/images/icon/success.png') }}" width="16px" alt=""><strong>Gửi</strong></button>
+                                                src="{{ asset('AdminMofi/assets/images/icon/success.png') }}"
+                                                width="16px" alt=""><strong>Gửi</strong></button>
                                     </form>
                                 </div>
                             </div>
@@ -112,11 +113,10 @@
     </div>
 @endsection
 @section('js')
-
     <script src="{{ asset('vendors/select2/select2.min.js') }}"></script>
     <script src="{{ asset('adminPublic/product/add/add.js') }}"></script>
-    <script src="https://cdn.tiny.cloud/1/jlj6iu2nqcxzcnx68yjsq7ca1jz9ps3y2cae1mahhq1vdup0/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-
-    <!-- Place the following <script> and <textarea> tags your HTML's <body> -->
+    <script src="https://cdn.tiny.cloud/1/jlj6iu2nqcxzcnx68yjsq7ca1jz9ps3y2cae1mahhq1vdup0/tinymce/6/tinymce.min.js"
+        referrerpolicy="origin"></script>
+<!-- Place the following <script> and <textarea> tags your HTML's <body> -->
     <script src="{{ asset('tinymce/tiny.js') }}"></script>
 @endsection
