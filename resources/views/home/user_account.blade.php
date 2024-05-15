@@ -282,7 +282,7 @@
 
                                 <div class="tab-pane fade" id="tab-address" role="tabpanel"
                                     aria-labelledby="tab-address-link">
-                                    <p>The following addresses will be used on the checkout page by default.</p>
+                                    <p>Các địa chỉ bạn đã sử dụng để mua hàng.</p>
 
                                     <div class="row">
                                         <div class="col-lg-6">
@@ -320,12 +320,15 @@
                                     aria-labelledby="tab-account-link">
                                     <form action="#">
                                         <label>Tên Hiển Thị *</label>
-                                        <input type="text" class="form-control" required>
+                                        <input type="text" class="form-control" required readonly>
                                         <small class="form-text">Đây sẽ là cách tên của bạn được hiển thị trong phần tài
                                             khoản và trong phần đánh giá</small>
 
                                         <label>Địa chỉ Email *</label>
-                                        <input type="email" class="form-control" required>
+                                        <input type="email" class="form-control" required readonly>
+
+                                        <label>Số Điện Thoại *</label>
+                                        <input type="text" class="form-control" required readonly>
 
                                         <label>Mật khẩu hiện tại</label>
                                         <input type="password" class="form-control">

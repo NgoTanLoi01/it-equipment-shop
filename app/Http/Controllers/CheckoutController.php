@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Product;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use App\Models\Slider;
 use App\Models\Order;
 use App\Models\Customer;
 use Illuminate\Support\Facades\DB;
@@ -14,9 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use App\Rules\Captcha;
-use Barryvdh\DomPDF\Facade as PDF;
-use Shipping;
+
 
 session_start();
 
@@ -161,8 +156,6 @@ class CheckoutController extends Controller
         // Chuyển hướng đến trang thanh toán
         return redirect()->to($jsonResult['payUrl']);
     }
-
-
 
     public function vnpay_payment(Request $request)
     {
@@ -336,7 +329,7 @@ class CheckoutController extends Controller
         $shipping_info = DB::table('shipping')->where('customer_id', $customer_id)->first();
         // Kiểm tra session customer_id để đảm bảo tồn tại trước khi truy vấn dữ liệu
         $customer_info = $customer_id ? Customer::where('customer_id', $customer_id)->first() : null;
-    
+
         return view('home.checkout', compact('shipping_info', 'customer_info'));
     }
 
@@ -455,7 +448,19 @@ class CheckoutController extends Controller
             return Redirect::to('/login-checkout');
         }
     }
+    public function updateOrderStatus(Request $request, $id)
+    {
+        $deliveryStatus = $request->input('delivery_status');
+        $order = Order::find($id);
 
+        if ($order) {
+            $order->delivery_status = $deliveryStatus;
+            $order->save();
+            return redirect()->back()->with('success', 'Trạng thái đơn hàng đã được cập nhật.');
+        }
+
+        return redirect()->back()->with('error', 'Có lỗi xảy ra khi cập nhật trạng thái đơn hàng.');
+    }
     public function manage_order()
     {
         $all_order = DB::table('order')

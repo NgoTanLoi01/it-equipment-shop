@@ -7,15 +7,7 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('adminPublic/setting/index/index.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('AdminMofi/assets/css/vendors/js-datatables/style.css') }}">
-    {{-- Doi mau sac xen ky --}}
     <link rel="stylesheet" href="{{ asset('adminPublic/product/index/view.css') }}">
-@endsection
-
-@section('js')
-    <script src="{{ asset('vendors/sweetAlert2/sweetalert2@11.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('adminPublic/main.js') }}"></script>
-    {{-- Tìm kiếm sản phẩm --}}
-    <script src="{{ asset('AdminMofi/assets/js/search.js') }}"></script>
 @endsection
 
 @section('content')
@@ -54,7 +46,8 @@
                                                     <th scope="col"><strong>Tên người đặt</strong></th>
                                                     <th scope="col"><strong>Tổng giá tiền</strong></th>
                                                     <th scope="col"><strong>Phương thức thanh toán</strong></th>
-                                                    <th scope="col"><strong>Hàng động</strong></th>
+                                                    <th scope="col"><strong>Trạng thái đơn hàng</strong></th>
+                                                    <th scope="col"><strong>Hành động</strong></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -66,9 +59,33 @@
                                                         </td>
                                                         <td>{{ $order->order_status }}</td>
                                                         <td>
+                                                            <form
+                                                                action="{{ url('/update-order-status/' . $order->order_id) }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                <select name="delivery_status">
+                                                                    <option value="Chờ xác nhận"
+                                                                        {{ $order->delivery_status == 'Chờ xác nhận' ? 'selected' : '' }}>
+                                                                        Chờ xác nhận</option>
+                                                                    <option value="Đang giao"
+                                                                        {{ $order->delivery_status == 'Đang giao' ? 'selected' : '' }}>
+                                                                        Đang giao</option>
+                                                                    <option value="Đã giao"
+                                                                        {{ $order->delivery_status == 'Đã giao' ? 'selected' : '' }}>
+                                                                        Đã giao</option>
+                                                                </select>
+                                                                <button type="submit" class="btn btn-sm btn-primary"><img
+                                                                        src="{{ asset('AdminMofi/assets/images/icon/save.png') }}"
+                                                                        width="16px"
+                                                                        alt=""><strong>Lưu</strong></button>
+                                                            </form>
+                                                        </td>
+                                                        <td>
                                                             <a href="{{ URL::to('/view-order/' . $order->order_id) }}"
-                                                                class="btn btn-sm btn-success"><img
-                                                                src="{{ asset('AdminMofi/assets/images/icon/view.png') }}" width="16px" alt=""><strong>Xem</strong></a>
+                                                                class="btn btn-sm btn-success">
+                                                                <img src="{{ asset('AdminMofi/assets/images/icon/view.png') }}"
+                                                                    width="16px" alt=""><strong>Xem</strong>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                 @endforeach

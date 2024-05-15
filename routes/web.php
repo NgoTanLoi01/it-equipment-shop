@@ -64,6 +64,7 @@ Route::get('/manage-order', [CheckoutController::class, 'manage_order']);
 Route::get('/view-order/{orderId}', [CheckoutController::class, 'view_order']);
 Route::get('/delete-order/{orderId}', [CheckoutController::class, 'delete_order']);
 Route::get('/print-order/{orderId}', [CheckoutController::class, 'print_order']);
+Route::post('/update-order-status/{id}', [CheckoutController::class, 'updateOrderStatus']);
 
 //quan ly tai khoan nguoi dung
 Route::get('/user-account', [UserAccountController::class, 'user_account']);
