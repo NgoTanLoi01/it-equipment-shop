@@ -6,7 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomeAdminController;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\UserAccountController;
+use App\Http\Controllers\CustomerAccountController;
 use App\Http\Controllers\LoginGoogleFaceBookController;
 use Illuminate\Support\Facades\Route;
 
@@ -67,7 +67,8 @@ Route::get('/print-order/{orderId}', [CheckoutController::class, 'print_order'])
 Route::post('/update-order-status/{id}', [CheckoutController::class, 'updateOrderStatus']);
 
 //quan ly tai khoan nguoi dung
-Route::get('/user-account', [UserAccountController::class, 'user_account']);
+Route::get('/customer-account', [CustomerAccountController::class, 'customer_account']);
+
 
 //gui mail
 Route::get('send-mail/{orderId}', [CheckoutController::class, 'send_mail']);

@@ -12,11 +12,9 @@
     .order-tab-content {
         display: none;
     }
-
     .order-tab-content.active {
         display: block;
     }
-
     .search-bar {
         margin-bottom: 15px;
     }
@@ -282,7 +280,7 @@
 
                                 <div class="tab-pane fade" id="tab-address" role="tabpanel"
                                     aria-labelledby="tab-address-link">
-                                    <p>Các địa chỉ bạn đã sử dụng để mua hàng.</p>
+                                    <p>The following addresses will be used on the checkout page by default.</p>
 
                                     <div class="row">
                                         <div class="col-lg-6">
@@ -316,35 +314,34 @@
                                     </div><!-- End .row -->
                                 </div><!-- .End .tab-pane -->
 
-                                <div class="tab-pane fade" id="tab-account" role="tabpanel"
-                                    aria-labelledby="tab-account-link">
+                                <div class="tab-pane fade" id="tab-account" role="tabpanel" aria-labelledby="tab-account-link">
                                     <form action="#">
                                         <label>Tên Hiển Thị *</label>
-                                        <input type="text" class="form-control" required readonly>
-                                        <small class="form-text">Đây sẽ là cách tên của bạn được hiển thị trong phần tài
-                                            khoản và trong phần đánh giá</small>
-
+                                        <input type="text" class="form-control" value="{{ isset($customer) ? $customer->customer_name : '' }}" required>
+                                        <small class="form-text">Đây sẽ là cách tên của bạn được hiển thị trong phần tài khoản và trong phần đánh giá</small>
+                                
                                         <label>Địa chỉ Email *</label>
-                                        <input type="email" class="form-control" required readonly>
-
-                                        <label>Số Điện Thoại *</label>
-                                        <input type="text" class="form-control" required readonly>
-
+                                        <input type="email" class="form-control" value="{{ isset($customer) ? $customer->customer_email : '' }}" required>
+                                
+                                        <label>Số điện thoại *</label>
+                                        <input type="text" class="form-control" value="{{ isset($customer) ? $customer->customer_phone : '' }}" required>
+                                
                                         <label>Mật khẩu hiện tại</label>
                                         <input type="password" class="form-control">
-
+                                
                                         <label>Mật khẩu mới</label>
                                         <input type="password" class="form-control">
-
+                                
                                         <label>Xác nhận mật khẩu mới</label>
                                         <input type="password" class="form-control mb-2">
-
+                                
                                         <button type="submit" class="btn btn-outline-primary-2">
                                             <span>LƯU THAY ĐỔI</span>
                                             <i class="icon-long-arrow-right"></i>
                                         </button>
                                     </form>
                                 </div><!-- .End .tab-pane -->
+                                
                             </div>
                         </div>
                     </div>
@@ -362,7 +359,6 @@
             e.preventDefault();
             $(this).tab('show');
         });
-
         // Example search function for the tables
         $('#search-all').on('keyup', function() {
             var value = $(this).val().toLowerCase();
@@ -370,28 +366,24 @@
                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
             });
         });
-
         $('#search-pending').on('keyup', function() {
             var value = $(this).val().toLowerCase();
             $('#pending-orders table tbody tr').filter(function() {
                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
             });
         });
-
         $('#search-shipping').on('keyup', function() {
             var value = $(this).val().toLowerCase();
             $('#shipping-orders table tbody tr').filter(function() {
                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
             });
         });
-
         $('#search-delivered').on('keyup', function() {
             var value = $(this).val().toLowerCase();
             $('#delivered-orders table tbody tr').filter(function() {
                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
             });
         });
-
         $('#search-cancelled').on('keyup', function() {
             var value = $(this).val().toLowerCase();
             $('#cancelled-orders table tbody tr').filter(function() {

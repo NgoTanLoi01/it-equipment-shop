@@ -20,7 +20,8 @@ class Order extends Model
         'order_total',
         'order_status',
         'delivery_status',
-        // Các cột khác...
+        'create_at',
+        'update_at'
     ];
     public function customer()
     {

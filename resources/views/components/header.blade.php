@@ -77,7 +77,7 @@
 
             <div class="header-right">
                 <div class="wishlist">
-                    <a href="{{ URL::to('/user-account') }}" title="My account">
+                    <a href="{{ URL::to('/customer-account') }}" title="My account">
                         <div class="icon">
                             <i class="icon-user"></i>
                         </div>

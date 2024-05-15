@@ -11,10 +11,8 @@ use App\Models\ProductTag;
 use App\Models\Tag;
 use App\Traits\DeleteModelTrait;
 use App\Traits\StorageImageTrait;
-use GuzzleHttp\Psr7\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 
