@@ -11,7 +11,7 @@ class Customer extends Authenticatable
 
     protected $table = 'customers';
     protected $primaryKey = 'customer_id';
-    protected $fillable = ['customer_name', 'customer_email', 'customer_phone', 'google_id'];
+    protected $fillable = ['customer_name', 'customer_email', 'customer_phone', 'google_id', 'password'];
     public function getAuthIdentifierName()
     {
         return 'customer_id';

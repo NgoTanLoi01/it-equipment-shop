@@ -12,9 +12,11 @@
     .order-tab-content {
         display: none;
     }
+
     .order-tab-content.active {
         display: block;
     }
+
     .search-bar {
         margin-bottom: 15px;
     }
@@ -48,15 +50,16 @@
                                 <li class="nav-item">
                                     <a class="nav-link active" id="tab-dashboard-link" data-toggle="tab"
                                         href="#tab-dashboard" role="tab" aria-controls="tab-dashboard"
-                                        aria-selected="true"><i class="bi bi-cart" style="font-size: 24px"></i><strong>&nbsp;Đơn
+                                        aria-selected="true"><i class="bi bi-cart"
+                                            style="font-size: 24px"></i><strong>&nbsp;Đơn
                                             Hàng </strong></a>
                                 </li>
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a class="nav-link" id="tab-address-link" data-toggle="tab" href="#tab-address"
                                         role="tab" aria-controls="tab-address" aria-selected="false"><i
                                             class="bi bi-airplane" style="font-size: 24px"></i><strong>&nbsp;Địa
                                             Chỉ</strong></a>
-                                </li>
+                                </li> --}}
                                 <li class="nav-item">
                                     <a class="nav-link" id="tab-account-link" data-toggle="tab" href="#tab-account"
                                         role="tab" aria-controls="tab-account" aria-selected="false"><i
@@ -104,11 +107,12 @@
                                             <a class="nav-link" id="cancelled-orders-tab" data-toggle="tab"
                                                 href="#cancelled-orders" role="tab" aria-controls="cancelled-orders"
                                                 aria-selected="false"><i class="bi bi-x-circle"
-                                                    style="font-size: 24px"></i> <strong>Đã hủy</strong></a>
+                                                    style="font-size: 24px"></i><strong> Đã hủy</strong></a>
                                         </li>
                                     </ul>
 
                                     <div class="tab-content" id="orderTabsContent">
+                                        {{-- Tất cả đơn hàng --}}
                                         <div class="tab-pane fade show active order-tab-content" id="all-orders"
                                             role="tabpanel" aria-labelledby="all-orders-tab"><br>
                                             <div class="search-bar">
@@ -127,24 +131,28 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <!-- Add your order rows here -->
-                                                    <tr>
-                                                        <td>12345</td>
-                                                        <td>Nguyễn Văn A</td>
-                                                        <td>2024-05-10</td>
-                                                        <td>Đang giao</td>
-                                                        <td>500,000 VND</td>
-                                                        <td style="text-align: center ; font-size: 24px">
-                                                            <a href="#"><i class="bi bi-eye"></i></a>
-                                                            <a href="#"><i class="bi bi-trash3"></i></a>
-                                                        </td>
-                                                    </tr>
+                                                    @foreach ($orders as $order)
+                                                        <tr>
+                                                            <td>{{ $order->order_id }}</td>
+                                                            <td>{{ $order->shipping_name }}</td>
+                                                            <td>{{ $order->created_at }}</td>
+                                                            <td>{{ $order->delivery_status }}</td>
+                                                            <td>{{ number_format(floatval($order->order_total)) }} VNĐ</td>
+                                                            <td style="text-align: center; font-size: 24px">
+                                                                <a href="#"><i class="bi bi-eye"></i></a>
+                                                                <a href="#"><i class="bi bi-trash3"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <div class="tab-pane fade order-tab-content" id="pending-orders" role="tabpanel"
-                                            aria-labelledby="pending-orders-tab"><br>
 
+                                        {{-- Chờ xác nhận --}}
+                                        <div class="tab-pane fade order-tab-content" id="pending-orders" role="tabpanel"
+                                            aria-labelledby="pending-orders-tab">
+                                            <br>
                                             <div class="search-bar">
                                                 <input type="text" class="form-control" id="search-pending"
                                                     placeholder="Tìm kiếm...">
@@ -161,23 +169,27 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <!-- Add your order rows here -->
-                                                    <tr>
-                                                        <td>12346</td>
-                                                        <td>Trần Văn B</td>
-                                                        <td>2024-05-11</td>
-                                                        <td>Chờ xác nhận</td>
-                                                        <td>300,000 VND</td>
-                                                        <td style="text-align: center ; font-size: 24px">
-                                                            <a href="#"><i class="bi bi-eye"></i></a>
-                                                            <a href="#"><i class="bi bi-trash3"></i></a>
-                                                        </td>
-                                                    </tr>
+                                                    @foreach ($pendingOrders as $order)
+                                                        <tr>
+                                                            <td>{{ $order->order_id }}</td>
+                                                            <td>{{ $order->shipping_name }}</td>
+                                                            <td>{{ $order->created_at }}</td>
+                                                            <td>{{ $order->delivery_status }}</td>
+                                                            <td>{{ number_format(floatval($order->order_total)) }} VNĐ</td>
+                                                            <td style="text-align: center; font-size: 24px">
+                                                                <a href="#"><i class="bi bi-eye"></i></a>
+                                                                <a href="#"><i class="bi bi-trash3"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
+
+                                        {{-- Đang giao --}}
                                         <div class="tab-pane fade order-tab-content" id="shipping-orders" role="tabpanel"
-                                            aria-labelledby="shipping-orders-tab"><br>
+                                            aria-labelledby="shipping-orders-tab">
+                                            <br>
                                             <div class="search-bar">
                                                 <input type="text" class="form-control" id="search-shipping"
                                                     placeholder="Tìm kiếm...">
@@ -194,23 +206,27 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <!-- Add your order rows here -->
-                                                    <tr>
-                                                        <td>12347</td>
-                                                        <td>Lê Thị C</td>
-                                                        <td>2024-05-12</td>
-                                                        <td>Đang giao</td>
-                                                        <td>450,000 VND</td>
-                                                        <td style="text-align: center ; font-size: 24px">
-                                                            <a href="#"><i class="bi bi-eye"></i></a>
-                                                            <a href="#"><i class="bi bi-trash3"></i></a>
-                                                        </td>
-                                                    </tr>
+                                                    @foreach ($shippingOrders as $order)
+                                                        <tr>
+                                                            <td>{{ $order->order_id }}</td>
+                                                            <td>{{ $order->shipping_name }}</td>
+                                                            <td>{{ $order->created_at }}</td>
+                                                            <td>{{ $order->delivery_status }}</td>
+                                                            <td>{{ number_format(floatval($order->order_total)) }} VNĐ</td>
+                                                            <td style="text-align: center; font-size: 24px">
+                                                                <a href="#"><i class="bi bi-eye"></i></a>
+                                                                <a href="#"><i class="bi bi-trash3"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
+
+                                        {{-- Đã giao --}}
                                         <div class="tab-pane fade order-tab-content" id="delivered-orders"
-                                            role="tabpanel" aria-labelledby="delivered-orders-tab"><br>
+                                            role="tabpanel" aria-labelledby="delivered-orders-tab">
+                                            <br>
                                             <div class="search-bar">
                                                 <input type="text" class="form-control" id="search-delivered"
                                                     placeholder="Tìm kiếm...">
@@ -227,23 +243,27 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <!-- Add your order rows here -->
-                                                    <tr>
-                                                        <td>12348</td>
-                                                        <td>Phạm Văn D</td>
-                                                        <td>2024-05-13</td>
-                                                        <td>Đã giao</td>
-                                                        <td>600,000 VND</td>
-                                                        <td style="text-align: center ; font-size: 24px">
-                                                            <a href="#"><i class="bi bi-eye"></i></a>
-                                                            <a href="#"><i class="bi bi-trash3"></i></a>
-                                                        </td>
-                                                    </tr>
+                                                    @foreach ($deliveredOrders as $order)
+                                                        <tr>
+                                                            <td>{{ $order->order_id }}</td>
+                                                            <td>{{ $order->shipping_name }}</td>
+                                                            <td>{{ $order->created_at }}</td>
+                                                            <td>{{ $order->delivery_status }}</td>
+                                                            <td>{{ number_format(floatval($order->order_total)) }} VNĐ</td>
+                                                            <td style="text-align: center; font-size: 24px">
+                                                                <a href="#"><i class="bi bi-eye"></i></a>
+                                                                <a href="#"><i class="bi bi-trash3"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
+
+                                        {{-- Đã hủy --}}
                                         <div class="tab-pane fade order-tab-content" id="cancelled-orders"
-                                            role="tabpanel" aria-labelledby="cancelled-orders-tab"><br>
+                                            role="tabpanel" aria-labelledby="cancelled-orders-tab">
+                                            <br>
                                             <div class="search-bar">
                                                 <input type="text" class="form-control" id="search-cancelled"
                                                     placeholder="Tìm kiếm...">
@@ -257,91 +277,62 @@
                                                         <th style="text-align: center"><strong>Trạng Thái</strong></th>
                                                         <th style="text-align: center"><strong>Tổng tiền</strong></th>
                                                         <th style="text-align: center"><strong>Thao tác</strong></th>
-                                                    </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <!-- Add your order rows here -->
-                                                    <tr>
-                                                        <td>12349</td>
-                                                        <td>Ngô Văn E</td>
-                                                        <td>2024-05-14</td>
-                                                        <td>Đã hủy</td>
-                                                        <td>700,000 VND</td>
-                                                        <td style="text-align: center ; font-size: 24px">
-                                                            <a href="#"><i class="bi bi-eye"></i></a>
-                                                            <a href="#"><i class="bi bi-trash3"></i></a>
-                                                        </td>
-                                                    </tr>
+                                                    @foreach ($cancelledOrders as $order)
+                                                        <tr>
+                                                            <td>{{ $order->order_id }}</td>
+                                                            <td>{{ $order->shipping_name }}</td>
+                                                            <td>{{ $order->created_at }}</td>
+                                                            <td>{{ $order->delivery_status }}</td>
+                                                            <td>{{ number_format(floatval($order->order_total)) }} VNĐ</td>
+                                                            <td style="text-align: center; font-size: 24px">
+                                                                <a href="#"><i class="bi bi-eye"></i></a>
+                                                                <a href="#"><i class="bi bi-trash3"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="tab-pane fade" id="tab-address" role="tabpanel"
-                                    aria-labelledby="tab-address-link">
-                                    <p>The following addresses will be used on the checkout page by default.</p>
-
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="card card-dashboard">
-                                                <div class="card-body">
-                                                    <h3 class="card-title">Billing Address</h3><!-- End .card-title -->
-
-                                                    <p>User Name<br>
-                                                        User Company<br>
-                                                        John str<br>
-                                                        New York, NY 10001<br>
-                                                        1-234-987-6543<br>
-                                                        yourmail@mail.com<br>
-                                                        <a href="#">Edit <i class="icon-edit"></i></a>
-                                                    </p>
-                                                </div><!-- End .card-body -->
-                                            </div><!-- End .card-dashboard -->
-                                        </div><!-- End .col-lg-6 -->
-
-                                        <div class="col-lg-6">
-                                            <div class="card card-dashboard">
-                                                <div class="card-body">
-                                                    <h3 class="card-title">Shipping Address</h3><!-- End .card-title -->
-
-                                                    <p>You have not set up this type of address yet.<br>
-                                                        <a href="#">Edit <i class="icon-edit"></i></a>
-                                                    </p>
-                                                </div><!-- End .card-body -->
-                                            </div><!-- End .card-dashboard -->
-                                        </div><!-- End .col-lg-6 -->
-                                    </div><!-- End .row -->
-                                </div><!-- .End .tab-pane -->
-
-                                <div class="tab-pane fade" id="tab-account" role="tabpanel" aria-labelledby="tab-account-link">
+                                {{-- ĐỔi mật khẩu customer --}}
+                                <div class="tab-pane fade" id="tab-account" role="tabpanel"
+                                    aria-labelledby="tab-account-link">
                                     <form action="#">
                                         <label>Tên Hiển Thị *</label>
-                                        <input type="text" class="form-control" value="{{ isset($customer) ? $customer->customer_name : '' }}" required>
-                                        <small class="form-text">Đây sẽ là cách tên của bạn được hiển thị trong phần tài khoản và trong phần đánh giá</small>
-                                
+                                        <input type="text" class="form-control"
+                                            value="{{ isset($customer) ? $customer->customer_name : '' }}" required>
+                                        <small class="form-text">Đây sẽ là cách tên của bạn được hiển thị trong phần
+                                            tài
+                                            khoản và trong phần đánh giá</small>
+
                                         <label>Địa chỉ Email *</label>
-                                        <input type="email" class="form-control" value="{{ isset($customer) ? $customer->customer_email : '' }}" required>
-                                
+                                        <input type="email" class="form-control"
+                                            value="{{ isset($customer) ? $customer->customer_email : '' }}" required>
+
                                         <label>Số điện thoại *</label>
-                                        <input type="text" class="form-control" value="{{ isset($customer) ? $customer->customer_phone : '' }}" required>
-                                
+                                        <input type="text" class="form-control"
+                                            value="{{ isset($customer) ? $customer->customer_phone : '' }}" required>
+
                                         <label>Mật khẩu hiện tại</label>
                                         <input type="password" class="form-control">
-                                
+
                                         <label>Mật khẩu mới</label>
                                         <input type="password" class="form-control">
-                                
+
                                         <label>Xác nhận mật khẩu mới</label>
                                         <input type="password" class="form-control mb-2">
-                                
+
                                         <button type="submit" class="btn btn-outline-primary-2">
                                             <span>LƯU THAY ĐỔI</span>
                                             <i class="icon-long-arrow-right"></i>
                                         </button>
                                     </form>
                                 </div><!-- .End .tab-pane -->
-                                
+
                             </div>
                         </div>
                     </div>

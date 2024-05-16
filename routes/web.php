@@ -68,7 +68,8 @@ Route::post('/update-order-status/{id}', [CheckoutController::class, 'updateOrde
 
 //quan ly tai khoan nguoi dung
 Route::get('/customer-account', [CustomerAccountController::class, 'customer_account']);
-
+Route::post('/customer/update-password', [CustomerAccountController::class, 'updatePassword'])
+    ->name('customer.updatePassword');
 
 //gui mail
 Route::get('send-mail/{orderId}', [CheckoutController::class, 'send_mail']);
