@@ -20,6 +20,29 @@
     .search-bar {
         margin-bottom: 15px;
     }
+
+    #all-orders .table th,
+    #all-orders .table td,
+    #pending-orders .table th,
+    #pending-orders .table td,
+    #shipping-orders .table th,
+    #shipping-orders .table td,
+    #delivered-orders .table th,
+    #delivered-orders .table td,
+    #cancelled-orders .table th,
+    #cancelled-orders .table td {
+        text-align: center;
+
+        /* font-weight: bold; */
+    }
+
+    .even-row {
+        background-color: #e6e4f3;
+    }
+
+    .odd-row {
+        background-color: #ffffff;
+    }
 </style>
 @section('js')
     <link rel="stylesheet" href="{{ asset('home/home.js') }}">
@@ -40,7 +63,6 @@
             </div>
         </div>
         <br>
-
         <div class="page-content">
             <div class="dashboard">
                 <div class="container">
@@ -122,17 +144,17 @@
                                             <table class="table table-bordered table-hover">
                                                 <thead>
                                                     <tr>
-                                                        <th style="text-align: center"><strong>Mã đơn hàng</strong></th>
-                                                        <th style="text-align: center"><strong>Tên người nhận</strong></th>
-                                                        <th style="text-align: center"><strong>Ngày đặt</strong></th>
-                                                        <th style="text-align: center"><strong>Trạng Thái</strong></th>
-                                                        <th style="text-align: center"><strong>Tổng tiền</strong></th>
-                                                        <th style="text-align: center"><strong>Thao tác</strong></th>
+                                                        <th><strong>Mã đơn hàng</strong></th>
+                                                        <th><strong>Tên người nhận</strong></th>
+                                                        <th><strong>Ngày đặt</strong></th>
+                                                        <th><strong>Trạng Thái</strong></th>
+                                                        <th><strong>Tổng tiền</strong></th>
+                                                        <th><strong>Thao tác</strong></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     @foreach ($orders as $order)
-                                                        <tr>
+                                                        <tr class="{{ $loop->index % 2 == 0 ? 'even-row' : 'odd-row' }}">
                                                             <td>{{ $order->order_id }}</td>
                                                             <td>{{ $order->shipping_name }}</td>
                                                             <td>{{ $order->created_at }}</td>
@@ -140,7 +162,6 @@
                                                             <td>{{ number_format(floatval($order->order_total)) }} VNĐ</td>
                                                             <td style="text-align: center; font-size: 24px">
                                                                 <a href="#"><i class="bi bi-eye"></i></a>
-                                                                <a href="#"><i class="bi bi-trash3"></i></a>
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -160,17 +181,17 @@
                                             <table class="table table-bordered table-hover">
                                                 <thead>
                                                     <tr>
-                                                        <th style="text-align: center"><strong>Mã đơn hàng</strong></th>
-                                                        <th style="text-align: center"><strong>Tên người nhận</strong></th>
-                                                        <th style="text-align: center"><strong>Ngày đặt</strong></th>
-                                                        <th style="text-align: center"><strong>Trạng Thái</strong></th>
-                                                        <th style="text-align: center"><strong>Tổng tiền</strong></th>
-                                                        <th style="text-align: center"><strong>Thao tác</strong></th>
+                                                        <th style=""><strong>Mã đơn hàng</strong></th>
+                                                        <th style=""><strong>Tên người nhận</strong></th>
+                                                        <th style=""><strong>Ngày đặt</strong></th>
+                                                        <th style=""><strong>Trạng Thái</strong></th>
+                                                        <th style=""><strong>Tổng tiền</strong></th>
+                                                        <th style=""><strong>Thao tác</strong></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     @foreach ($pendingOrders as $order)
-                                                        <tr>
+                                                        <tr class="{{ $loop->index % 2 == 0 ? 'even-row' : 'odd-row' }}">
                                                             <td>{{ $order->order_id }}</td>
                                                             <td>{{ $order->shipping_name }}</td>
                                                             <td>{{ $order->created_at }}</td>
@@ -197,17 +218,17 @@
                                             <table class="table table-bordered table-hover">
                                                 <thead>
                                                     <tr>
-                                                        <th style="text-align: center"><strong>Mã đơn hàng</strong></th>
-                                                        <th style="text-align: center"><strong>Tên người nhận</strong></th>
-                                                        <th style="text-align: center"><strong>Ngày đặt</strong></th>
-                                                        <th style="text-align: center"><strong>Trạng Thái</strong></th>
-                                                        <th style="text-align: center"><strong>Tổng tiền</strong></th>
-                                                        <th style="text-align: center"><strong>Thao tác</strong></th>
+                                                        <th><strong>Mã đơn hàng</strong></th>
+                                                        <th><strong>Tên người nhận</strong></th>
+                                                        <th><strong>Ngày đặt</strong></th>
+                                                        <th><strong>Trạng Thái</strong></th>
+                                                        <th><strong>Tổng tiền</strong></th>
+                                                        <th><strong>Thao tác</strong></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     @foreach ($shippingOrders as $order)
-                                                        <tr>
+                                                        <tr class="{{ $loop->index % 2 == 0 ? 'even-row' : 'odd-row' }}">
                                                             <td>{{ $order->order_id }}</td>
                                                             <td>{{ $order->shipping_name }}</td>
                                                             <td>{{ $order->created_at }}</td>
@@ -215,7 +236,6 @@
                                                             <td>{{ number_format(floatval($order->order_total)) }} VNĐ</td>
                                                             <td style="text-align: center; font-size: 24px">
                                                                 <a href="#"><i class="bi bi-eye"></i></a>
-                                                                <a href="#"><i class="bi bi-trash3"></i></a>
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -234,17 +254,17 @@
                                             <table class="table table-bordered table-hover">
                                                 <thead>
                                                     <tr>
-                                                        <th style="text-align: center"><strong>Mã đơn hàng</strong></th>
-                                                        <th style="text-align: center"><strong>Tên người nhận</strong></th>
-                                                        <th style="text-align: center"><strong>Ngày đặt</strong></th>
-                                                        <th style="text-align: center"><strong>Trạng Thái</strong></th>
-                                                        <th style="text-align: center"><strong>Tổng tiền</strong></th>
-                                                        <th style="text-align: center"><strong>Thao tác</strong></th>
+                                                        <th><strong>Mã đơn hàng</strong></th>
+                                                        <th><strong>Tên người nhận</strong></th>
+                                                        <th><strong>Ngày đặt</strong></th>
+                                                        <th><strong>Trạng Thái</strong></th>
+                                                        <th><strong>Tổng tiền</strong></th>
+                                                        <th><strong>Thao tác</strong></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     @foreach ($deliveredOrders as $order)
-                                                        <tr>
+                                                        <tr class="{{ $loop->index % 2 == 0 ? 'even-row' : 'odd-row' }}">
                                                             <td>{{ $order->order_id }}</td>
                                                             <td>{{ $order->shipping_name }}</td>
                                                             <td>{{ $order->created_at }}</td>
@@ -252,7 +272,6 @@
                                                             <td>{{ number_format(floatval($order->order_total)) }} VNĐ</td>
                                                             <td style="text-align: center; font-size: 24px">
                                                                 <a href="#"><i class="bi bi-eye"></i></a>
-                                                                <a href="#"><i class="bi bi-trash3"></i></a>
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -270,17 +289,17 @@
                                             </div>
                                             <table class="table table-bordered table-hover">
                                                 <thead>
-                                                    <tr>
-                                                        <th style="text-align: center"><strong>Mã đơn hàng</strong></th>
-                                                        <th style="text-align: center"><strong>Tên người nhận</strong></th>
-                                                        <th style="text-align: center"><strong>Ngày đặt</strong></th>
-                                                        <th style="text-align: center"><strong>Trạng Thái</strong></th>
-                                                        <th style="text-align: center"><strong>Tổng tiền</strong></th>
-                                                        <th style="text-align: center"><strong>Thao tác</strong></th>
+                                                    <tr >
+                                                        <th><strong>Mã đơn hàng</strong></th>
+                                                        <th><strong>Tên người nhận</strong></th>
+                                                        <th><strong>Ngày đặt</strong></th>
+                                                        <th><strong>Trạng Thái</strong></th>
+                                                        <th><strong>Tổng tiền</strong></th>
+                                                        <th><strong>Thao tác</strong></th>
                                                 </thead>
                                                 <tbody>
                                                     @foreach ($cancelledOrders as $order)
-                                                        <tr>
+                                                        <tr class="{{ $loop->index % 2 == 0 ? 'even-row' : 'odd-row' }}">
                                                             <td>{{ $order->order_id }}</td>
                                                             <td>{{ $order->shipping_name }}</td>
                                                             <td>{{ $order->created_at }}</td>
@@ -288,7 +307,6 @@
                                                             <td>{{ number_format(floatval($order->order_total)) }} VNĐ</td>
                                                             <td style="text-align: center; font-size: 24px">
                                                                 <a href="#"><i class="bi bi-eye"></i></a>
-                                                                <a href="#"><i class="bi bi-trash3"></i></a>
                                                             </td>
                                                         </tr>
                                                     @endforeach
