@@ -126,7 +126,7 @@
                                 <span class="new-price">{{ number_format($product->sale_price) }} VNĐ</span>
                             </div><!-- End .product-price -->
 
-                            {{-- <h6>Số lượng đã bán: {{ $productSalesQuantity[$product->id] ?? 0 }}</h6> --}}
+                            <h6>Số lượng đã bán: {{ $productSalesQuantity[$product->id] ?? 0 }}</h6>
                         </div><!-- End .product-body -->
                     </div><!-- End .product -->
                 @endforeach

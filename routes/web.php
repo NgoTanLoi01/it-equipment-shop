@@ -29,6 +29,7 @@ Route::get('/category/{slug}/{id}', [
 ]);
 Route::post('/tim_kiem', [HomeAdminController::class, 'search'])->name('tim_kiem.search');
 Route::get('/detail/{slug}', [HomeAdminController::class, 'detail'])->name('detail');
+Route::post('/detail/{slug}/review', [HomeAdminController::class, 'storeReview'])->name('detail.storeReview');
 Route::get('/product_all', [HomeAdminController::class, 'product_all']);
 Route::get('/yeu_thich', [HomeAdminController::class, 'yeu_thich']);
 

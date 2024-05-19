@@ -5,14 +5,43 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Tag;
-use App\Models\Order;
+use App\Models\ProductReview;
 use Illuminate\Http\Request;
 use App\Models\Slider;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
 
 class HomeAdminController extends Controller
 {
+    public function detail($slug)
+    {
+        $product = Product::where('slug', $slug)->with('reviews')->firstOrFail();
+
+        // Tăng lượt xem lên 1
+        $product->increment('views_count');
+
+        $related = Product::where('category_id', $product->category_id)
+            ->where('id', '!=', $product->id)
+            ->get();
+
+        return view('home.detail', compact('product', 'related'));
+    }
+
+    public function storeReview(Request $request)
+    {
+        $request->validate([
+            'product_id' => 'required|exists:products,id',
+            'reviewer_name' => 'required|string|max:255',
+            'reviewer_phone' => 'required|string|max:20',
+            'rating' => 'required|integer|min:1|max:5',
+            'review_title' => 'required|string|max:255',
+            'review_text' => 'required|string|max:1500',
+        ]);
+
+        ProductReview::create($request->all());
+
+        return redirect()->back()->with('success', 'Đánh giá của bạn đã được gửi thành công!');
+    }
+
     public function index()
     {
         // Lấy danh sách slider
@@ -54,19 +83,6 @@ class HomeAdminController extends Controller
         return view("home.home", compact("sliders", "categorys", "products", "productsSelling", "categorysLimit", "productsFeatures", "productSalesQuantity"));
     }
 
-    public function detail($slug)
-    {
-        $product = Product::where("slug", $slug)->first();
-
-        // Tăng lượt xem lên 1
-        $product->increment('views_count');
-
-        $related = Product::where('category_id', $product->category_id)
-            ->where('id', '!=', $product->id)
-            ->get();
-
-        return view('home.detail', compact('product', 'related'));
-    }
 
     public function search(Request $request)
     {

@@ -38,5 +38,8 @@ class Product extends Model
 
     protected $table = 'products';
     // Trong tệp Product.php (hoặc tên tương ứng của model)
-
+    public function reviews()
+    {
+        return $this->hasMany(ProductReview::class);
+    }
 }

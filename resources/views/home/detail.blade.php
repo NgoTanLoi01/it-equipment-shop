@@ -80,16 +80,21 @@
 
                                 <div class="col-md-6">
                                     <div class="product-details product-details-sidebar">
-                                        <h1 class="product-title">{{ $product->name }}</h1><!-- End .product-title -->
+                                        <h1 style="font-size: 18px; font-weight: bold;">{{ $product->name }}</h1>
+                                        <!-- End .product-title -->
 
                                         <div class="product-price">
-                                            <span class="old-price"> Gốc: <del>{{ number_format($product->price) }}
+                                            <span class="old-price" style="font-size: 20px;"> Gốc:
+                                                <del>{{ number_format($product->price) }}
                                                     VNĐ</del></span>
                                         </div><!-- End .product-price -->
                                         <div class="product-price">
-                                            <span class="new-price">{{ number_format($product->sale_price) }} VNĐ</span>
+                                            <span class="new-price"
+                                                style="font-size: 20px;">{{ number_format($product->sale_price) }}
+                                                VNĐ</span>
                                         </div><!-- End .product-price -->
-                                        <label for="qty">{{ $product->quantity }} sản phẩm có sẵn</label>
+                                        <label for="qty">{{ $product->quantity }} sản phẩm có sẵn</label><br>
+                                        {{-- <label for="qty">{{ $productSalesQuantity[$product->id] ?? 0 }} sản phẩm đã bán</label> --}}
                                         <div class="details-filter-row details-row-size">
                                             <label>Số lượng:</label>
                                             <div class="product-details-quantity">
@@ -189,134 +194,103 @@
                                 </div>
                                 <div class="tab-pane fade" id="product-review-tab" role="tabpanel"
                                     aria-labelledby="product-review-link">
+                                    {{-- Hiển thị đánh giá của khách hàng --}}
                                     <div class="reviews">
-                                        <h3><strong>Đánh giá (2)</strong></h3>
-                                        <div class="review">
-
-                                            <div class="row no-gutters">
-                                                <div class="col-auto">
-                                                    <h4><a href="#">Hoàng Nam Trần</a></h4>
-                                                    <div class="ratings-container">
-                                                        <div class="ratings">
-                                                            <div class="ratings-val" style="width: 80%;"></div>
-                                                            <!-- End .ratings-val -->
-                                                        </div><!-- End .ratings -->
-                                                    </div><!-- End .rating-container -->
-                                                    <span class="review-date">6 ngày trước</span>
-                                                </div><!-- End .col -->
-                                                <div class="col">
-                                                    <h4>Tốt, sản phẩm đẹp</h4>
-
-                                                    <div class="review-content">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus
-                                                            cum
-                                                            dolores assumenda asperiores facilis porro reprehenderit animi
-                                                            culpa
-                                                            atque blanditiis commodi perspiciatis doloremque, possimus,
-                                                            explicabo,
-                                                            autem fugit beatae quae voluptas!</p>
-                                                    </div><!-- End .review-content -->
-
-                                                    <div class="review-action">
-                                                        <a href="#"><i class="icon-thumbs-up"></i>Thích (2)</a>
-                                                        <a href="#"><i class="icon-thumbs-down"></i>Không thích
-                                                            (0)</a>
-                                                    </div><!-- End .review-action -->
-                                                </div><!-- End .col-auto -->
-                                            </div><!-- End .row -->
-                                        </div><!-- End .review -->
-
-                                        <div class="review">
-                                            <div class="row no-gutters">
-                                                <div class="col-auto">
-                                                    <h4><a href="#">Nguyễn Văn A</a></h4>
-                                                    <div class="ratings-container">
-                                                        <div class="ratings">
-                                                            <div class="ratings-val" style="width: 100%;"></div>
-                                                            <!-- End .ratings-val -->
-                                                        </div><!-- End .ratings -->
-                                                    </div><!-- End .rating-container -->
-                                                    <span class="review-date">5 ngày trước</span>
-                                                </div><!-- End .col -->
-                                                <div class="col">
-                                                    <h4>Rất tốt</h4>
-
-                                                    <div class="review-content">
-                                                        <p>Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum
-                                                            blanditiis
-                                                            laudantium iste amet. Cum non voluptate eos enim, ab cumque nam,
-                                                            modi,
-                                                            quas iure illum repellendus, blanditiis perspiciatis beatae!</p>
-                                                    </div><!-- End .review-content -->
-
-                                                    <div class="review-action">
-                                                        <a href="#"><i class="icon-thumbs-up"></i>Thích (0)</a>
-                                                        <a href="#"><i class="icon-thumbs-down"></i>Không thích
-                                                            (0)</a>
-                                                    </div><!-- End .review-action -->
-                                                </div><!-- End .col-auto -->
-                                            </div><!-- End .row -->
-                                        </div><!-- End .review -->
+                                        <h3><strong>Đánh giá ({{ $product->reviews->count() }})</strong></h3>
+                                        @foreach ($product->reviews as $review)
+                                            <div class="review">
+                                                <div class="row no-gutters">
+                                                    <div class="col-auto">
+                                                        <h4><a href="#">{{ $review->reviewer_name }}</a></h4>
+                                                        <div class="ratings-container">
+                                                            <ul class="rating">
+                                                                @for ($i = 1; $i <= 5; $i++)
+                                                                    <li class="star-customer" title="{{ $i }}"
+                                                                        data-value="{{ $i }}">
+                                                                        <i class="fa fa-star"
+                                                                            style="font-size: 14px; min-width: 18px; {{ $i <= $review->rating ? 'color: #ffc107;' : '' }}"></i>
+                                                                    </li>
+                                                                @endfor
+                                                            </ul>
+                                                        </div><!-- End .rating-container -->
+                                                        <span
+                                                            class="review-date">{{ $review->created_at->diffForHumans() }}</span>
+                                                    </div><!-- End .col -->
+                                                    <div class="col">
+                                                        <h4 style="font-weight: bold">{{ $review->review_title }}</h4>
+                                                        <div class="review-content">
+                                                            <p>{{ $review->review_text }}</p>
+                                                        </div><!-- End .review-content -->
+                                                        <div class="review-action">
+                                                            <a href="#"><i class="icon-thumbs-up"></i>Thích (2)</a>
+                                                            <a href="#"><i class="icon-thumbs-down"></i>Không thích
+                                                                (0)
+                                                            </a>
+                                                        </div><!-- End .review-action -->
+                                                    </div><!-- End .col-auto -->
+                                                </div><!-- End .row -->
+                                            </div><!-- End .review -->
+                                        @endforeach
                                     </div><br><!-- End .reviews -->
 
-                                    <div class="review">
-
+                                    {{-- Phần viết đánh giá của khách hàng --}}
+                                    <div class="review-form">
                                         <h4><strong>Viết đánh giá của bạn về sản phẩm</strong></h4>
                                         <br>
-                                        <form action="#">
-                                            <div class="row no-gutters">
-                                                <div class="form-row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="review-name">Tên</label>
-                                                            <input type="text" id="review-name" class="form-control"
-                                                                placeholder="Nhập tên của bạn" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="review-email">Số điện thoại</label>
-                                                            <input type="text" id="review-email" class="form-control"
-                                                                placeholder="0123456789" required>
-                                                        </div>
+                                        <form action="{{ route('detail.storeReview', $product->slug) }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                            <input type="hidden" name="rating" id="rating" value="1">
+                                            <!-- Trường ẩn để lưu rating -->
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="review-name">Tên</label>
+                                                        <input type="text" id="review-name" name="reviewer_name"
+                                                            class="form-control" placeholder="Nhập tên của bạn" required>
                                                     </div>
                                                 </div>
-
-                                                <div class="form-group">
-                                                    <label for="review-rating">Rating</label>
-                                                    <ul id="review-rating" class="rating">
-                                                        <li class="star" title="Poor" data-value="1"><i
-                                                                class="fa fa-star "></i></li>
-                                                        <li class="star" title="Fair" data-value="2"><i
-                                                                class="fa fa-star "></i></li>
-                                                        <li class="star" title="Good" data-value="3"><i
-                                                                class="fa fa-star "></i></li>
-                                                        <li class="star" title="Very Good" data-value="4"><i
-                                                                class="fa fa-star "></i></li>
-                                                        <li class="star" title="Excellent" data-value="5"><i
-                                                                class="fa fa-star "></i></li>
-                                                    </ul>
+                                                <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="review-content">Tiêu đề</label>
-                                                        <input type="text" id="review-content-title"
-                                                            class="form-control" placeholder="Tốt, sản phẩm đẹp,..."
-                                                            required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="review-content">Đánh giá (1500 ký tự)</label>
-                                                        <textarea id="review-content" class="form-control" placeholder="Viết nội dung đánh giá của bạn ở đây..." required
-                                                            maxlength="1500"></textarea>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <button class="btn btn-dark">Gửi đánh giá</button>
+                                                        <label for="review-phone">Số điện thoại</label>
+                                                        <input type="text" id="review-phone" name="reviewer_phone"
+                                                            class="form-control" placeholder="0123456789" required>
                                                     </div>
                                                 </div>
-                                            </div><!-- End .row -->
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="review-rating">Rating</label>
+                                                <ul id="review-rating" class="rating">
+                                                    @for ($i = 1; $i <= 5; $i++)
+                                                        <li class="star" title="{{ $i }}"
+                                                            data-value="{{ $i }}">
+                                                            <i class="fa fa-star" style="min-width: 85px;"></i>
+                                                        </li>
+                                                    @endfor
+                                                </ul>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="review-title">Tiêu đề đánh giá</label>
+                                                <input type="text" id="review-title" name="review_title"
+                                                    class="form-control" placeholder="Ex: Tốt, sản phẩm đẹp,..." required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="review-content">Nội dung đánh giá (1500 ký tự)</label>
+                                                <textarea id="review-content" name="review_text" class="form-control"
+                                                    placeholder="Viết nội dung đánh giá của bạn ở đây..." required maxlength="1500"></textarea>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <button class="btn btn-dark" type="submit">Gửi đánh giá</button>
+                                            </div>
                                         </form>
-                                    </div><!-- End .review -->
+                                    </div>
 
                                 </div>
+
                             </div><!-- End .tab-content -->
                         </div><!-- End .product-details-tab -->
 
@@ -392,7 +366,8 @@
                     <aside class="col-lg-3">
                         <div class="sidebar sidebar-product">
                             <div class="widget widget-products">
-                                <h4 class="widget-title">Sản phẩm liên quan</h4><!-- End .widget-title -->
+                                <h5 style="font-size: 14px; font-weight: bold;"><strong>ƯU ĐÃI HẤP DẪN KHI MUA
+                                        CÙNG</strong></h5>
                                 <div class="products">
                                     <div class="product product-sm">
                                         <figure class="product-media">
@@ -508,34 +483,113 @@
         display: flex;
         flex-direction: row;
         cursor: pointer;
+        margin-bottom: 15px;
+        
+        /* Thêm khoảng cách dưới để các thành phần không dính vào nhau */
     }
 
     .rating .star {
         font-size: 23px;
         color: #ccc;
-        margin: 0 2px;
+        margin: 0 5px;
+        /* Tăng khoảng cách giữa các sao */
         cursor: pointer;
-        min-width: 128px;
     }
 
     .rating .star.selected,
-    .rating .star:hover~.star {
+    .rating .star:hover {
         color: #f4c150;
+        
     }
 
     .product-main-image img {
         border: 3px solid #f00;
         /* Viền màu đỏ */
-        padding: 5 border-radius: 10px;
+        padding: 5px;
+        border-radius: 10px;
         /* Góc viền bo tròn */
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         /* Hiệu ứng đổ bóng */
     }
+
+    .review-form .form-group {
+        margin-bottom: 20px;
+        /* Tăng khoảng cách giữa các nhóm form */
+    }
+
+    .review-form .form-group label {
+        font-weight: bold;
+        margin-bottom: 10px;
+        /* Tăng khoảng cách giữa nhãn và trường input */
+    }
+
+    .review-form .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .review-form .btn {
+        background-color: #343a40;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .review-form .btn:hover {
+        background-color: #495057;
+    }
+
+    /* CSS cho phần hiển thị đánh giá */
+    .reviews .review {
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        /* Tăng khoảng cách giữa các đánh giá */
+        background-color: #f9f9f9;
+    }
+
+    .reviews .review h4 a {
+        font-weight: bold;
+        text-decoration: none;
+        color: #343a40;
+    }
+
+    .reviews .review .ratings-container {
+        margin-bottom: 10px;
+        box-sizing: content-box;
+        /* Tăng khoảng cách giữa sao và ngày đánh giá */
+    }
+
+    .reviews .review .review-date {
+        color: #888;
+        font-size: 12px;
+    }
+
+    .reviews .review .review-content {
+        margin-top: 15px;
+    }
+
+    .reviews .review .review-action a {
+        text-decoration: none;
+        color: #f4c150;
+        margin-right: 15px;
+    }
+
+    .reviews .review .review-action a:hover {
+        text-decoration: underline;
+    }
 </style>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
-{{-- <script>
+<script>
     document.addEventListener('DOMContentLoaded', function() {
         var stars = document.querySelectorAll('.rating .star');
         var selectedValue = 0;
@@ -543,6 +597,8 @@
         stars.forEach(function(star, index) {
             star.addEventListener('click', function() {
                 selectedValue = index + 1;
+                document.getElementById('rating').value =
+                    selectedValue; // Cập nhật giá trị rating vào trường ẩn
                 updateStars(selectedValue);
             });
 
@@ -565,4 +621,4 @@
             });
         }
     });
-</script> --}}
+</script>

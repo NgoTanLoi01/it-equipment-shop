@@ -1,4 +1,4 @@
-<footer class="footer">
+<footer class="footer" style="background-image: url('http://127.0.0.1:8000/UserLTE/assets/images/about-header-bg.jpg')">
 
     <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
     {{-- Chat với AI --}}
@@ -16,7 +16,7 @@
                 <div class="col-sm-6 col-lg-3">
                     <div class="widget widget-about">
                         <img src="{{ asset('UserLTE/assets/images/demos/demo-3/Logo.jpg') }}" class="footer-logo"
-                            alt="Footer Logo" width="105" height="25">
+                            alt="Footer Logo" width="105" height="25" style="border-radius: 50px">
                         <p> NGO TAN LOI Digital Technologies Mang lại trải nghiệm mua sắm hơn cả tuyệt vời!</p>
 
                         <div class="widget-call">
@@ -159,50 +159,49 @@
 
 <script>
     // Configs
-    let liveChatBaseUrl = document.location.protocol + '//' + 'livechat.fpt.ai/v36/src';
-    let LiveChatSocketUrl = 'livechat.fpt.ai:443';
-    let FptAppCode = '321b58316e117218b088763ce405a493';
-    let FptAppName = 'NTL Digital Technology hỗ trợ';
+    let liveChatBaseUrl = document.location.protocol + '//' + 'livechat.fpt.ai/v36/src'
+    let LiveChatSocketUrl = 'livechat.fpt.ai:443'
+    let FptAppCode = '321b58316e117218b088763ce405a493'
+    let FptAppName = 'Chatbot Hỗ Trợ'
     // Define custom styles
     let CustomStyles = {
-        // Header
-        headerBackground: 'linear-gradient(86.7deg, #3353a2ff 0.85%, #31b7b7ff 98.94%)',
+        // header
+        headerBackground: '#3C3737FF',
         headerTextColor: '#ffffffff',
-        headerLogoEnable: false,
-        headerLogoLink: 'https://chatbot-tools.fpt.ai/livechat-builder/img/Icon-fpt-ai.png',
-        headerText: 'NTL Digital Technology hỗ trợ',
-        // Main
-        primaryColor: '#6d9ccbff',
+        headerLogoEnable: true,
+        headerLogoLink: 'https://chatbot-tools.fpt.ai/livechat-builder/img/theme/digital_agency/logo_head.svg',
+        headerText: 'Chatbot Hỗ Trợ',
+        // main
+        primaryColor: '#EE238FFF',
         secondaryColor: '#ecececff',
         primaryTextColor: '#ffffffff',
         secondaryTextColor: '#000000DE',
-        buttonColor: '#b4b4b4ff',
+        buttonColor: '#b4b4b4B3',
         buttonTextColor: '#ffffffff',
-        bodyBackgroundEnable: false,
-        bodyBackgroundLink: '',
-        avatarBot: 'https://chatbot-tools.fpt.ai/livechat-builder/img/bot.png',
-        sendMessagePlaceholder: 'Nhập tin nhắn của bạn',
-        // Float button
-        floatButtonLogo: 'https://chatbot-tools.fpt.ai/livechat-builder/img/Icon-fpt-ai.png',
+        bodyBackgroundEnable: true,
+        bodyBackgroundLink: 'https://chatbot-tools.fpt.ai/livechat-builder/img/theme/digital_agency/body.png',
+        avatarBot: 'https://chatbot-tools.fpt.ai/livechat-builder/img/theme/digital_agency/bot.svg',
+        sendMessagePlaceholder: 'Nhập tên của bạn',
+        // float button
+        floatButtonLogo: 'https://chatbot-tools.fpt.ai/livechat-builder/img/theme/digital_agency/logo.svg',
         floatButtonTooltip: 'NgoTanLoi Digital Technology xin chào!',
         floatButtonTooltipEnable: true,
-        // Start screen
-        customerLogo: 'https://chatbot-tools.fpt.ai/livechat-builder/img/bot.png',
-        customerWelcomeText: 'Vui lòng nhập thông tin của bạn để bắt đầu trò chuyện:',
-        customerButtonText: 'Bắt đầu trò chuyện',
-        // Prefix
-        prefixEnable: true, // Bật chức năng yêu cầu nhập thông tin
-        prefixType: 'radio', // Loại input là radio button
-        prefixOptions: ["Anh", "Chị"], // Các lựa chọn cho danh xưng
-        prefixPlaceholder: 'Chọn danh xưng', // Placeholder cho input
-        // Custom CSS
+        // start screen
+        customerLogo: 'https://chatbot-tools.fpt.ai/livechat-builder/img/theme/digital_agency/logo.svg',
+        customerWelcomeText: 'Vui lòng nhập tên của bạn',
+        customerButtonText: 'Bắt đầu',
+        prefixEnable: false,
+        prefixType: 'radio',
+        prefixOptions: ["Anh", "Chị"],
+        prefixPlaceholder: 'Danh xưng',
+        // custom css
         css: ''
-    };
-    // Get bot code from URL if FptAppCode is empty
+    }
+    // Get bot code from url if FptAppCode is empty
     if (!FptAppCode) {
-        let appCodeFromHash = window.location.hash.substr(1);
+        let appCodeFromHash = window.location.hash.substr(1)
         if (appCodeFromHash.length === 32) {
-            FptAppCode = appCodeFromHash;
+            FptAppCode = appCodeFromHash
         }
     }
     // Set Configs
@@ -211,20 +210,20 @@
         appCode: FptAppCode,
         themes: '',
         styles: CustomStyles
-    };
+    }
     // Append Script
-    let FptLiveChatScript = document.createElement('script');
-    FptLiveChatScript.id = 'fpt_ai_livechat_script';
-    FptLiveChatScript.src = liveChatBaseUrl + '/static/fptai-livechat.js';
-    document.body.appendChild(FptLiveChatScript);
+    let FptLiveChatScript = document.createElement('script')
+    FptLiveChatScript.id = 'fpt_ai_livechat_script'
+    FptLiveChatScript.src = liveChatBaseUrl + '/static/fptai-livechat.js'
+    document.body.appendChild(FptLiveChatScript)
     // Append Stylesheet
-    let FptLiveChatStyles = document.createElement('link');
-    FptLiveChatStyles.id = 'fpt_ai_livechat_script';
-    FptLiveChatStyles.rel = 'stylesheet';
-    FptLiveChatStyles.href = liveChatBaseUrl + '/static/fptai-livechat.css';
-    document.body.appendChild(FptLiveChatStyles);
+    let FptLiveChatStyles = document.createElement('link')
+    FptLiveChatStyles.id = 'fpt_ai_livechat_script'
+    FptLiveChatStyles.rel = 'stylesheet'
+    FptLiveChatStyles.href = liveChatBaseUrl + '/static/fptai-livechat.css'
+    document.body.appendChild(FptLiveChatStyles)
     // Init
     FptLiveChatScript.onload = function() {
-        fpt_ai_render_chatbox(FptLiveChatConfigs, liveChatBaseUrl, LiveChatSocketUrl);
-    };
+        fpt_ai_render_chatbox(FptLiveChatConfigs, liveChatBaseUrl, LiveChatSocketUrl)
+    }
 </script>
