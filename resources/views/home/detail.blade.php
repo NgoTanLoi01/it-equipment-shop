@@ -147,19 +147,19 @@
                                 <li class="nav-item">
                                     <a class="nav-link active" id="product-desc-link" data-toggle="tab"
                                         href="#product-desc-tab" role="tab" aria-controls="product-desc-tab"
-                                        aria-selected="true">Mô tả sản phẩm</a>
+                                        aria-selected="true"><strong>Mô tả sản phẩm </strong></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="product-shipping-link" data-toggle="tab"
                                         href="#product-shipping-tab" role="tab" aria-controls="product-shipping-tab"
-                                        aria-selected="false">Vận chuyển &amp;
-                                        Trả hàng</a>
+                                        aria-selected="false"><strong>Vận chuyển &amp;
+                                        Trả hàng </strong></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="product-review-link" data-toggle="tab"
                                         href="#product-review-tab" role="tab" aria-controls="product-review-tab"
-                                        aria-selected="false">Đánh giá sản phẩm
-                                        (2)</a>
+                                        aria-selected="false"><strong>Đánh giá sản phẩm
+                                        ({{ $product->reviews->count() }}) </strong></a>
                                 </li>
                             </ul>
                             <div class="tab-content">
@@ -192,6 +192,8 @@
                                         </p>
                                     </div><!-- End .product-desc-content -->
                                 </div>
+
+                                {{-- Phần Đánh giá sản phẩm --}}
                                 <div class="tab-pane fade" id="product-review-tab" role="tabpanel"
                                     aria-labelledby="product-review-link">
                                     {{-- Hiển thị đánh giá của khách hàng --}}
@@ -240,6 +242,7 @@
                                         <form action="{{ route('detail.storeReview', $product->slug) }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                            <input type="hidden" name="customer_id" value="{{ $customer_info->customer_id }}">
                                             <input type="hidden" name="rating" id="rating" value="1">
                                             <!-- Trường ẩn để lưu rating -->
                                             <div class="form-row">
@@ -247,14 +250,14 @@
                                                     <div class="form-group">
                                                         <label for="review-name">Tên</label>
                                                         <input type="text" id="review-name" name="reviewer_name"
-                                                            class="form-control" placeholder="Nhập tên của bạn" required>
+                                                            class="form-control"  value="{{ $customer_info->customer_name ?? '' }}" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="review-phone">Số điện thoại</label>
                                                         <input type="text" id="review-phone" name="reviewer_phone"
-                                                            class="form-control" placeholder="0123456789" required>
+                                                            class="form-control"  value="{{ $customer_info->customer_phone ?? '' }}" placeholder="Ex: 0123456789" required>
                                                     </div>
                                                 </div>
                                             </div>

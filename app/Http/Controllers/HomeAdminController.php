@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Customer;
+use Illuminate\Support\Facades\Session;
 use App\Models\Tag;
 use App\Models\ProductReview;
 use Illuminate\Http\Request;
@@ -22,8 +24,12 @@ class HomeAdminController extends Controller
         $related = Product::where('category_id', $product->category_id)
             ->where('id', '!=', $product->id)
             ->get();
+        $customer_id = Session::get('customer_id');
+        $shipping_info = DB::table('shipping')->where('customer_id', $customer_id)->first();
+        // Kiểm tra session customer_id để đảm bảo tồn tại trước khi truy vấn dữ liệu
+        $customer_info = $customer_id ? Customer::where('customer_id', $customer_id)->first() : null;
 
-        return view('home.detail', compact('product', 'related'));
+        return view('home.detail', compact('product', 'related', 'shipping_info', 'customer_info'));
     }
 
     public function storeReview(Request $request)

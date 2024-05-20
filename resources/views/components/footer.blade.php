@@ -82,7 +82,7 @@
     .chatbot-container {
         display: none;
         position: fixed;
-        bottom: 160px;
+        bottom: 180px;
         right: 20px;
         width: 300px;
         background-color: #f0f0f0;

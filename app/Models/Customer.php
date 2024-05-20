@@ -21,4 +21,8 @@ class Customer extends Authenticatable
     {
         return $this->getKey();
     }
+    public function reviews()
+    {
+        return $this->hasMany(ProductReview::class);
+    }
 }

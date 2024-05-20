@@ -14,7 +14,6 @@
             @endforeach --}}
             <li>
                 <a href="{{ URL::to('/product_all') }}" class="sf-with-ul"><strong>Cửa hàng</strong></a>
-
                 <div class="megamenu megamenu-md">
                     <div class="row no-gutters">
                         <div class="col-md-8">
