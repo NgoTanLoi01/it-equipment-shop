@@ -35,8 +35,8 @@
             <div class="container">
                 <div class="row">
                     {{-- Hiển thị sản phẩm --}}
-                    <div class="col-lg-9">
-                        <div class="toolbox">
+                    <div class="col-lg-9" >
+                        <div class="toolbox" style="border: 1px solid #e5e5e5; padding: 10px 15px 10px;">
                             <div class="toolbox-left">
                                 <div class="toolbox-info">
                                     Hiển thị <span>12 trên 36 </span> sản phẩm
@@ -144,7 +144,7 @@
                     <aside class="col-lg-3 order-lg-first">
                         <div class="sidebar sidebar-shop">
                             <div class="widget widget-clean"><label>
-                                    <h5><strong><i class="fa fa-filter"></i> BỘ LỌC TÌM KIẾM</strong></h5>
+                                    <h5 style="font-size: 1.8rem;"><strong><i class="fa fa-filter"></i> BỘ LỌC TÌM KIẾM</strong></h5>
                                 </label></div><!-- End .widget widget-clean -->
                             <form id="filterForm" action="{{ url('/product_all') }}" method="get">
 
@@ -199,125 +199,74 @@
 
                                 {{-- Lọc theo giá sản phẩm --}}
                                 <div class="widget widget-collapsible">
-                                    <h6 class="widget-title"><a data-toggle="collapse" href="#widget-3" role="button"
-                                            aria-expanded="true" aria-controls="widget-3"><strong> Theo giá </strong></a>
+                                    <h6 class="widget-title">
+                                        <a data-toggle="collapse" href="#widget-3" role="button" aria-expanded="true"
+                                            aria-controls="widget-3">
+                                            <strong>Theo giá</strong>
+                                        </a>
                                     </h6>
                                     <div class="collapse show" id="widget-3">
                                         <div class="widget-body">
                                             <div class="filter-items">
-                                                <div class="d-flex justify-content-between">
-                                                    <input class="input-filter-price min" type="number" min="0"
-                                                        maxlength="13" placeholder="đ TỪ"
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <input class="input-filter-price form-control form-control-sm min"
+                                                        type="number" min="0" maxlength="13" placeholder="đ từ"
                                                         value="{{ request('min_price') }}"
                                                         onkeypress="return /[0-9]/i.test(event.key)">
-                                                    <span style="line-height: 240%;"> - </span>
-                                                    <input class="input-filter-price max" type="number" min="0"
-                                                        maxlength="13" placeholder="đ ĐẾN"
+                                                    <span class="mx-4">-</span>
+                                                    <input class="input-filter-price form-control form-control-sm max"
+                                                        type="number" min="0" maxlength="13" placeholder="đ đến"
                                                         value="{{ request('max_price') }}"
                                                         onkeypress="return /[0-9]/i.test(event.key)">
                                                 </div>
                                                 <div class="alert-filter-price text-primary mt-2 d-none">Vui lòng điền
-                                                    khoảng giá phù
-                                                    hợp</div>
-                                                <button type="button" class="btn-filter-price btn btn-primary">Áp
-                                                    dụng</button>
+                                                    khoảng giá phù hợp</div>
+                                                <button type="button"
+                                                    class="btn-filter-price btn btn-primary btn-sm mt-2">Áp Dụng</button>
                                             </div>
-                                        </div><!-- End .collapse -->
-                                    </div><!-- End .widget -->
-                                </div>
+                                        </div><!-- End .widget-body -->
+                                    </div><!-- End .collapse -->
+                                </div><!-- End .widget -->
+
                                 {{-- Lọc theo đánh giá --}}
-                                <div class="widget widget-collapsible">
-                                    <h6 class="widget-title"><a data-toggle="collapse" href="#widget-1" role="button"
-                                            aria-expanded="true" aria-controls="widget-1"><strong> Theo đánh giá
-                                            </strong></a>
-                                    </h6>
-                                    <div class="collapse show" id="widget-1">
-                                        <div class="widget-body">
-                                            <div class="filter-items">
-                                                <div class="filter-item">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="cus-rating-1">
-                                                        <label class="custom-control-label" for="cus-rating-1">
-                                                            <span class="ratings-container">
-                                                                <span class="ratings">
-                                                                    <span class="ratings-val"
-                                                                        style="width: 100%;"></span><!-- End .ratings-val -->
-                                                                </span><!-- End .ratings -->
-                                                                <span class="ratings-text">( 24 )</span>
-                                                            </span><!-- End .rating-container -->
-                                                        </label>
-                                                    </div><!-- End .custom-checkbox -->
-                                                </div><!-- End .filter-item -->
-
-                                                <div class="filter-item">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="cus-rating-2">
-                                                        <label class="custom-control-label" for="cus-rating-2">
-                                                            <span class="ratings-container">
-                                                                <span class="ratings">
-                                                                    <span class="ratings-val"
-                                                                        style="width: 80%;"></span><!-- End .ratings-val -->
-                                                                </span><!-- End .ratings -->
-                                                                <span class="ratings-text">( 8 )</span>
-                                                            </span><!-- End .rating-container -->
-                                                        </label>
-                                                    </div><!-- End .custom-checkbox -->
-                                                </div><!-- End .filter-item -->
-
-                                                <div class="filter-item">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="cus-rating-3">
-                                                        <label class="custom-control-label" for="cus-rating-3">
-                                                            <span class="ratings-container">
-                                                                <span class="ratings">
-                                                                    <span class="ratings-val"
-                                                                        style="width: 60%;"></span><!-- End .ratings-val -->
-                                                                </span><!-- End .ratings -->
-                                                                <span class="ratings-text">( 5 )</span>
-                                                            </span><!-- End .rating-container -->
-                                                        </label>
-                                                    </div><!-- End .custom-checkbox -->
-                                                </div><!-- End .filter-item -->
-
-                                                <div class="filter-item">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="cus-rating-4">
-                                                        <label class="custom-control-label" for="cus-rating-4">
-                                                            <span class="ratings-container">
-                                                                <span class="ratings">
-                                                                    <span class="ratings-val"
-                                                                        style="width: 40%;"></span><!-- End .ratings-val -->
-                                                                </span><!-- End .ratings -->
-                                                                <span class="ratings-text">( 1 )</span>
-                                                            </span><!-- End .rating-container -->
-                                                        </label>
-                                                    </div><!-- End .custom-checkbox -->
-                                                </div><!-- End .filter-item -->
-
-                                                <div class="filter-item">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="cus-rating-5">
-                                                        <label class="custom-control-label" for="cus-rating-5">
-                                                            <span class="ratings-container">
-                                                                <span class="ratings">
-                                                                    <span class="ratings-val"
-                                                                        style="width: 20%;"></span><!-- End .ratings-val -->
-                                                                </span><!-- End .ratings -->
-                                                                <span class="ratings-text">( 3 )</span>
-                                                            </span><!-- End .rating-container -->
-                                                        </label>
-                                                    </div><!-- End .custom-checkbox -->
-                                                </div><!-- End .filter-item -->
-
-                                            </div>
+                                <form id="filterForm" method="GET" action="{{ route('product_all') }}">
+                                    <div class="widget widget-collapsible">
+                                        <h6 class="widget-title">
+                                            <a data-toggle="collapse" href="#widget-1" role="button"
+                                                aria-expanded="true" aria-controls="widget-1">
+                                                <strong>Theo đánh giá</strong>
+                                            </a>
+                                        </h6>
+                                        <div class="collapse show" id="widget-1">
+                                            <div class="widget-body">
+                                                <div class="filter-items">
+                                                    @for ($i = 1; $i <= 5; $i++)
+                                                        <div class="filter-item">
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input"
+                                                                    id="cus-rating-{{ $i }}" name="ratings[]"
+                                                                    value="{{ $i }}">
+                                                                <label class="custom-control-label"
+                                                                    for="cus-rating-{{ $i }}">
+                                                                    <span class="ratings-container">
+                                                                        <span class="ratings">
+                                                                            <span class="ratings-val"
+                                                                                style="width: {{ $i * 20 }}%;"></span><!-- End .ratings-val -->
+                                                                        </span><!-- End .ratings -->
+                                                                        <span
+                                                                            class="ratings-text">({{ rand(0, 3) }})</span><!-- Random example count -->
+                                                                    </span><!-- End .rating-container -->
+                                                                </label>
+                                                            </div><!-- End .custom-checkbox -->
+                                                        </div><!-- End .filter-item -->
+                                                    @endfor
+                                                </div><!-- End .filter-items -->
+                                            </div><!-- End .widget-body -->
                                         </div><!-- End .collapse -->
                                     </div><!-- End .widget -->
-                                </div>
+                                    {{-- Các phần lọc khác --}}
+                                </form>
+
                                 {{-- Banner --}}
                                 <div class="widget widget-banner-sidebar">
                                     <div class="banner-sidebar banner-overlay">
@@ -377,6 +326,7 @@
             });
         });
     </script>
+
     {{-- Lọc theo danh mục --}}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -390,11 +340,52 @@
             });
         });
     </script>
+
+    {{-- Lọc theo đánh giá --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var ratingCheckboxes = document.querySelectorAll('input[name="ratings[]"]');
+
+            ratingCheckboxes.forEach(function(checkbox) {
+                checkbox.addEventListener('change', function() {
+                    // Gửi yêu cầu lọc khi checkbox đánh giá thay đổi
+                    document.getElementById('filterForm').submit();
+                });
+            });
+        });
+    </script>
 @endsection
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
     .btn-filter-price {
         width: 100%;
         margin-top: 20px;
+    }
+
+    .input-filter-price {
+        width: 100px;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .widget-body .filter-items {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .btn-filter-price {
+        display: block;
+        width: 100%;
+    }
+
+    .alert-filter-price {
+        font-size: 14px;
+    }
+
+    @media (max-width: 576px) {
+        .input-filter-price {
+            width: 80px;
+        }
     }
 </style>

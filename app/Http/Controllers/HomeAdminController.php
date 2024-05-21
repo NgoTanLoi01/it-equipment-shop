@@ -100,45 +100,54 @@ class HomeAdminController extends Controller
 
 
     public function product_all(Request $request)
-    {
-        // Truy vấn danh sách các danh mục sản phẩm
-        $categories = Category::where('parent_id', 0)->get();
+{
+    // Truy vấn danh sách các danh mục sản phẩm
+    $categories = Category::where('parent_id', 0)->get();
 
-        // Truy vấn dữ liệu sản phẩm
-        $query = Product::query();
+    // Truy vấn dữ liệu sản phẩm
+    $query = Product::query();
 
-        // Lọc theo danh mục sản phẩm được chọn (nếu có)
-        if ($request->has('selected_categories')) {
-            $selectedCategories = $request->input('selected_categories');
-            $query->whereIn('category_id', $selectedCategories);
-        }
-
-        // Xử lý lọc theo giá 
-        if ($request->has('price_range') && !in_array('0-100000000', $request->price_range)) {
-            $priceRange = $request->price_range;
-            $query->where(function ($query) use ($priceRange) {
-                foreach ($priceRange as $range) {
-                    [$minPrice, $maxPrice] = explode('-', $range);
-                    $query->orWhereRaw('CAST(sale_price AS DECIMAL(10,2)) BETWEEN ? AND ?', [$minPrice, $maxPrice]);
-                }
-            });
-        }
-
-        // Xử lý lọc theo tag sản phẩm 
-        if ($request->has('product_tags')) {
-            $tagIds = $request->product_tags;
-            $query->whereHas('tags', function ($query) use ($tagIds) {
-                $query->whereIn('tags.id', $tagIds);
-            });
-        }
-
-        // Truy vấn sản phẩm theo các điều kiện lọc và phân trang
-        $products = $query->latest()->paginate(12);
-        $tags = Tag::all();
-
-        // Trả về view với biến $products, $tags và $categories
-        return view('home.product_all', compact('products', 'tags', 'categories', 'request'));
+    // Lọc theo danh mục sản phẩm được chọn (nếu có)
+    if ($request->has('selected_categories')) {
+        $selectedCategories = $request->input('selected_categories');
+        $query->whereIn('category_id', $selectedCategories);
     }
+
+    // Xử lý lọc theo giá 
+    if ($request->has('price_range') && !in_array('0-100000000', $request->price_range)) {
+        $priceRange = $request->price_range;
+        $query->where(function ($query) use ($priceRange) {
+            foreach ($priceRange as $range) {
+                [$minPrice, $maxPrice] = explode('-', $range);
+                $query->orWhereRaw('CAST(sale_price AS DECIMAL(10,2)) BETWEEN ? AND ?', [$minPrice, $maxPrice]);
+            }
+        });
+    }
+
+    // Xử lý lọc theo tag sản phẩm 
+    if ($request->has('product_tags')) {
+        $tagIds = $request->product_tags;
+        $query->whereHas('tags', function ($query) use ($tagIds) {
+            $query->whereIn('tags.id', $tagIds);
+        });
+    }
+
+    // Lọc theo đánh giá số sao
+    if ($request->has('ratings')) {
+        $ratings = $request->input('ratings');
+        $query->whereHas('reviews', function ($query) use ($ratings) {
+            $query->whereIn('rating', $ratings);
+        });
+    }
+
+    // Truy vấn sản phẩm theo các điều kiện lọc và phân trang
+    $products = $query->latest()->paginate(12);
+    $tags = Tag::all();
+
+    // Trả về view với biến $products, $tags và $categories
+    return view('home.product_all', compact('products', 'tags', 'categories', 'request'));
+}
+
 
     public function yeu_thich()
     {

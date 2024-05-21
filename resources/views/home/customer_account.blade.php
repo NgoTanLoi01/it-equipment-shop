@@ -89,7 +89,7 @@
                                         </strong></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="bi bi-box-arrow-left"
+                                    <a class="nav-link" href="{{ URL::to('/logout-checkout') }}"><i class="bi bi-box-arrow-left"
                                             style="font-size: 24px"></i><strong>&nbsp;Đăng Xuất </strong></a>
                                 </li>
                             </ul>
@@ -318,30 +318,32 @@
 
                                 {{-- ĐỔi mật khẩu customer --}}
                                 <div class="tab-pane fade" id="tab-account" role="tabpanel"
-                                    aria-labelledby="tab-account-link">
-                                    <form action="#">
-                                        <label>Tên Hiển Thị *</label>
-                                        <input type="text" class="form-control"
-                                            value="{{ isset($customer) ? $customer->customer_name : '' }}" required>
+                                    aria-labelledby="tab-account-link" >
+                                    <form action="#" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="customer_id" value="{{ $customer_info->customer_id }}">
+                                        <label style="color: black"><strong>Tên Hiển Thị *</strong></label>
+                                        <input type="text" class="form-control" style="color: black"
+                                            value="{{ $customer_info->customer_name ?? '' }}" required readonly>
                                         <small class="form-text">Đây sẽ là cách tên của bạn được hiển thị trong phần
                                             tài
                                             khoản và trong phần đánh giá</small>
 
-                                        <label>Địa chỉ Email *</label>
-                                        <input type="email" class="form-control"
-                                            value="{{ isset($customer) ? $customer->customer_email : '' }}" required>
+                                        <label style="color: black"><strong>Địa chỉ Email *</strong></label>
+                                        <input type="email" class="form-control" style="color: black"
+                                            value="{{ $customer_info->customer_email ?? '' }}" required readonly>
 
-                                        <label>Số điện thoại *</label>
-                                        <input type="text" class="form-control"
-                                            value="{{ isset($customer) ? $customer->customer_phone : '' }}" required>
+                                        <label style="color: black"><strong>Số điện thoại</strong></label>
+                                        <input type="text" class="form-control" style="color: black"
+                                            value="{{ $customer_info->customer_phone ?? '' }}" required>
 
-                                        <label>Mật khẩu hiện tại</label>
+                                        <label style="color: black"><strong>Mật khẩu hiện tại</strong></label>
                                         <input type="password" class="form-control">
 
-                                        <label>Mật khẩu mới</label>
+                                        <label style="color: black"><strong>Mật khẩu mới</strong></label>
                                         <input type="password" class="form-control">
 
-                                        <label>Xác nhận mật khẩu mới</label>
+                                        <label style="color: black"><strong>Xác nhận mật khẩu mới</strong></label>
                                         <input type="password" class="form-control mb-2">
 
                                         <button type="submit" class="btn btn-outline-primary-2">

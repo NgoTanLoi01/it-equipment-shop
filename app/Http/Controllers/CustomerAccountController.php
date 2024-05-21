@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Customer;
 use App\Models\Order;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
+
 
 class CustomerAccountController extends Controller
 {
@@ -17,6 +20,9 @@ class CustomerAccountController extends Controller
         $customer_id = session('customer_id');
         session(['customer_id' => $customer_id]);
 
+        $customer_id = Session::get('customer_id');
+        // Kiểm tra session customer_id để đảm bảo tồn tại trước khi truy vấn dữ liệu
+        $customer_info = $customer_id ? Customer::where('customer_id', $customer_id)->first() : null;
         // dd($customer);
         // Tiếp tục xử lý khi đã có người dùng đăng nhập
         $orders = Order::select('order.*', 'shipping.shipping_name')
@@ -51,7 +57,7 @@ class CustomerAccountController extends Controller
             }
         }
 
-        return view('home.customer_account', compact('customer', 'allOrders', 'pendingOrders', 'shippingOrders', 'deliveredOrders', 'cancelledOrders', 'orders'));
+        return view('home.customer_account', compact('customer', 'allOrders', 'pendingOrders', 'shippingOrders', 'deliveredOrders', 'cancelledOrders', 'orders', 'customer_info'));
     }
 
     

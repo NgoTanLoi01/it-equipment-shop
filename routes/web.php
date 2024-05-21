@@ -28,10 +28,13 @@ Route::get('/category/{slug}/{id}', [
     'uses' => 'App\Http\Controllers\CategoryAdminController@index'
 ]);
 Route::post('/tim_kiem', [HomeAdminController::class, 'search'])->name('tim_kiem.search');
+Route::get('/product_all', [HomeAdminController::class, 'product_all'])->name('product_all');
+Route::get('/yeu_thich', [HomeAdminController::class, 'yeu_thich']);
+
+//chi tiet & review san pham
 Route::get('/detail/{slug}', [HomeAdminController::class, 'detail'])->name('detail');
 Route::post('/detail/{slug}/review', [HomeAdminController::class, 'storeReview'])->name('detail.storeReview');
-Route::get('/product_all', [HomeAdminController::class, 'product_all']);
-Route::get('/yeu_thich', [HomeAdminController::class, 'yeu_thich']);
+
 
 //man hinh user page
 Route::get('/blog', [HomeAdminController::class, 'blog']);
@@ -69,8 +72,6 @@ Route::post('/update-order-status/{id}', [CheckoutController::class, 'updateOrde
 
 //quan ly tai khoan nguoi dung
 Route::get('/customer-account', [CustomerAccountController::class, 'customer_account']);
-Route::post('/customer/update-password', [CustomerAccountController::class, 'updatePassword'])
-    ->name('customer.updatePassword');
 
 //gui mail
 Route::get('send-mail/{orderId}', [CheckoutController::class, 'send_mail']);

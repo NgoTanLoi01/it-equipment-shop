@@ -350,7 +350,6 @@ class CheckoutController extends Controller
         return redirect('/payment');
     }
 
-
     public function payment()
     {
         return view('home.payment');
