@@ -13,19 +13,18 @@
 
 @section('content')
     <main class="main">
-        <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+        <div class="page-header text-center"
+            style="background-image: url('{{ asset('UserLTE/assets/images/demos/demo-3/slider/slideStore.jpg') }}')">
             <div class="container">
-                <h1 class="page-title">Danh sách yêu thích<span>Cửa hàng</span></h1>
+                <h1 class="page-title"><strong>Danh Sách Yêu Thích</strong></h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center"> <!-- Sử dụng lớp justify-content-center để căn giữa -->
+                        <li class="breadcrumb-item"><a href="#"><strong>Trang Chủ</strong></a></li>
+                        <li class="breadcrumb-item"><a href="#"><strong>Danh Sách Yêu Thích</strong></a></li>
+                    </ol>
+                </nav>
             </div><!-- End .container -->
-        </div><!-- End .page-header -->
-        <nav aria-label="breadcrumb" class="breadcrumb-nav">
-            <div class="container">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Danh sách yêu thích</li>
-                </ol>
-            </div><!-- End .container -->
-        </nav><!-- End .breadcrumb-nav -->
+        </div><br><!-- End .page-header -->
 
         <div class="page-content">
             <div class="container">

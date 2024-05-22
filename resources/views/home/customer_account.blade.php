@@ -9,6 +9,26 @@
 @endsection
 
 <style>
+    
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        /* Added some space below the table */
+    }
+
+    .table th,
+    .table td {
+        border: 1px solid rgba(249, 140, 140, 0.8); !important
+        vertical-align: middle;
+        /* Ensures text is centered vertically */
+    }
+
+    .table th {
+        background-color: #faa3a3;
+        color: #d9534f;
+    }
+
     .order-tab-content {
         display: none;
     }
@@ -36,8 +56,16 @@
         /* font-weight: bold; */
     }
 
+    #all-orders .table th,
+    #pending-orders .table th,
+    #shipping-orders .table th,
+    #delivered-orders .table th,
+    #cancelled-orders .table th {
+        color: black;
+    }
+
     .even-row {
-        background-color: #e6e4f3;
+        background-color: #fae1dd;
     }
 
     .odd-row {
@@ -51,7 +79,7 @@
 @section('content')
     <main class="main">
         <div class="page-header text-center"
-            style="background-image: url('{{ asset('UserLTE/assets/images/about-header-bg.jpg') }}')">
+            style="background-image: url('{{ asset('UserLTE/assets/images/oso.png') }}')">
             <div class="container">
                 <h1 class="page-title"><strong>Tài khoản</strong></h1>
                 <nav aria-label="breadcrumb">
@@ -73,7 +101,7 @@
                                     <a class="nav-link active" id="tab-dashboard-link" data-toggle="tab"
                                         href="#tab-dashboard" role="tab" aria-controls="tab-dashboard"
                                         aria-selected="true"><i class="bi bi-cart"
-                                            style="font-size: 24px"></i><strong>&nbsp;Đơn
+                                            style="font-size: 24px"></i><strong>&nbsp;Đơn Đặt
                                             Hàng </strong></a>
                                 </li>
                                 {{-- <li class="nav-item">
@@ -85,12 +113,13 @@
                                 <li class="nav-item">
                                     <a class="nav-link" id="tab-account-link" data-toggle="tab" href="#tab-account"
                                         role="tab" aria-controls="tab-account" aria-selected="false"><i
-                                            class="bi bi-person" style="font-size: 24px"></i><strong>&nbsp;Tài Khoản
+                                            class="bi bi-person" style="font-size: 24px"></i><strong>&nbsp;Hồ Sơ
                                         </strong></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ URL::to('/logout-checkout') }}"><i class="bi bi-box-arrow-left"
-                                            style="font-size: 24px"></i><strong>&nbsp;Đăng Xuất </strong></a>
+                                    <a class="nav-link" href="{{ URL::to('/logout-checkout') }}"><i
+                                            class="bi bi-box-arrow-left" style="font-size: 24px"></i><strong>&nbsp;Đăng Xuất
+                                        </strong></a>
                                 </li>
                             </ul>
                         </aside>
@@ -99,8 +128,9 @@
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="tab-dashboard" role="tabpanel"
                                     aria-labelledby="tab-dashboard-link">
-                                    <!-- Order Tabs -->
+                                    <!-- Đơn đặt hàng -->
                                     <ul class="nav nav-tabs" id="orderTabs" role="tablist">
+
                                         <li class="nav-item">
                                             <a class="nav-link active" id="all-orders-tab" data-toggle="tab"
                                                 href="#all-orders" role="tab" aria-controls="all-orders"
@@ -161,11 +191,11 @@
                                                             <td>{{ $order->delivery_status }}</td>
                                                             <td>{{ number_format(floatval($order->order_total)) }} VNĐ</td>
                                                             <td style="text-align: center; font-size: 24px">
-                                                                <a href="#"><i class="bi bi-eye"></i></a>
+                                                                <a href="{{ route('ordered.info', $order->order_id) }}"><i
+                                                                        class="bi bi-eye"></i></a>
                                                             </td>
                                                         </tr>
                                                     @endforeach
-
                                                 </tbody>
                                             </table>
                                         </div>
@@ -198,7 +228,8 @@
                                                             <td>{{ $order->delivery_status }}</td>
                                                             <td>{{ number_format(floatval($order->order_total)) }} VNĐ</td>
                                                             <td style="text-align: center; font-size: 24px">
-                                                                <a href="#"><i class="bi bi-eye"></i></a>
+                                                                <a href="{{ route('ordered.info', $order->order_id) }}"><i
+                                                                    class="bi bi-eye"></i></a>
                                                                 <a href="#"><i class="bi bi-trash3"></i></a>
                                                             </td>
                                                         </tr>
@@ -235,7 +266,8 @@
                                                             <td>{{ $order->delivery_status }}</td>
                                                             <td>{{ number_format(floatval($order->order_total)) }} VNĐ</td>
                                                             <td style="text-align: center; font-size: 24px">
-                                                                <a href="#"><i class="bi bi-eye"></i></a>
+                                                                <a href="{{ route('ordered.info', $order->order_id) }}"><i
+                                                                    class="bi bi-eye"></i></a>
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -271,7 +303,8 @@
                                                             <td>{{ $order->delivery_status }}</td>
                                                             <td>{{ number_format(floatval($order->order_total)) }} VNĐ</td>
                                                             <td style="text-align: center; font-size: 24px">
-                                                                <a href="#"><i class="bi bi-eye"></i></a>
+                                                                <a href="{{ route('ordered.info', $order->order_id) }}"><i
+                                                                    class="bi bi-eye"></i></a>
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -289,7 +322,7 @@
                                             </div>
                                             <table class="table table-bordered table-hover">
                                                 <thead>
-                                                    <tr >
+                                                    <tr>
                                                         <th><strong>Mã đơn hàng</strong></th>
                                                         <th><strong>Tên người nhận</strong></th>
                                                         <th><strong>Ngày đặt</strong></th>
@@ -306,7 +339,8 @@
                                                             <td>{{ $order->delivery_status }}</td>
                                                             <td>{{ number_format(floatval($order->order_total)) }} VNĐ</td>
                                                             <td style="text-align: center; font-size: 24px">
-                                                                <a href="#"><i class="bi bi-eye"></i></a>
+                                                                <a href="{{ route('ordered.info', $order->order_id) }}"><i
+                                                                    class="bi bi-eye"></i></a>
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -314,14 +348,16 @@
                                             </table>
                                         </div>
                                     </div>
+
                                 </div>
 
                                 {{-- ĐỔi mật khẩu customer --}}
                                 <div class="tab-pane fade" id="tab-account" role="tabpanel"
-                                    aria-labelledby="tab-account-link" >
+                                    aria-labelledby="tab-account-link">
                                     <form action="#" method="POST">
                                         @csrf
-                                        <input type="hidden" name="customer_id" value="{{ $customer_info->customer_id }}">
+                                        <input type="hidden" name="customer_id"
+                                            value="{{ $customer_info->customer_id }}">
                                         <label style="color: black"><strong>Tên Hiển Thị *</strong></label>
                                         <input type="text" class="form-control" style="color: black"
                                             value="{{ $customer_info->customer_name ?? '' }}" required readonly>

@@ -23,9 +23,14 @@ class Order extends Model
         'create_at',
         'update_at'
     ];
+
     public function customer()
     {
         return $this->belongsTo(Customer::class, 'customer_id');
     }
-    
+
+    public function orderDetails()
+    {
+        return $this->hasMany(OrderDetail::class, 'order_id', 'order_id');
+    }
 }

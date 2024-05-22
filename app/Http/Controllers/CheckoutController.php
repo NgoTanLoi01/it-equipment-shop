@@ -17,8 +17,20 @@ session_start();
 
 class CheckoutController extends Controller
 {
-    public function manageOrder()
+    // CheckoutController.php
+    public function ordered_info($order_id)
     {
+        // Lấy thông tin đơn hàng và chi tiết đơn hàng
+        $order = Order::with('orderDetails.product')->where('order_id', $order_id)->first();
+
+        if (!$order) {
+            return redirect()->back()->with('error', 'Đơn hàng không tồn tại.');
+        }
+
+        // Lấy thông tin giao hàng từ bảng shipping
+        $shipping_info = DB::table('shipping')->where('shipping_id', $order->shipping_id)->first();
+
+        return view('home.ordered_info', compact('order', 'shipping_info'));
     }
     public function execPostRequest($url, $data)
     {
@@ -294,7 +306,6 @@ class CheckoutController extends Controller
             echo json_encode($returnData);
         }
     }
-
     private $order;
     public function __construct(Order $order)
     {

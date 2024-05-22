@@ -42,4 +42,9 @@ class Product extends Model
     {
         return $this->hasMany(ProductReview::class);
     }
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'order_product', 'product_id', 'order_id')
+                    ->withPivot('quantity', 'price'); // Thêm thông tin chi tiết về quantity và price nếu có
+    }
 }

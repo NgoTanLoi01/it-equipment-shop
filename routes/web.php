@@ -29,7 +29,6 @@ Route::get('/category/{slug}/{id}', [
 ]);
 Route::post('/tim_kiem', [HomeAdminController::class, 'search'])->name('tim_kiem.search');
 Route::get('/product_all', [HomeAdminController::class, 'product_all'])->name('product_all');
-Route::get('/yeu_thich', [HomeAdminController::class, 'yeu_thich']);
 
 //chi tiet & review san pham
 Route::get('/detail/{slug}', [HomeAdminController::class, 'detail'])->name('detail');
@@ -40,6 +39,7 @@ Route::post('/detail/{slug}/review', [HomeAdminController::class, 'storeReview']
 Route::get('/blog', [HomeAdminController::class, 'blog']);
 Route::get('/about', [HomeAdminController::class, 'about']);
 Route::get('/lien_he', [HomeAdminController::class, 'lien_he']);
+Route::get('/yeu_thich', [HomeAdminController::class, 'yeu_thich']);
 
 //login
 Route::get('/login-checkout', [CheckoutController::class, 'login_checkout']);
@@ -69,6 +69,7 @@ Route::get('/view-order/{orderId}', [CheckoutController::class, 'view_order']);
 Route::get('/delete-order/{orderId}', [CheckoutController::class, 'delete_order']);
 Route::get('/print-order/{orderId}', [CheckoutController::class, 'print_order']);
 Route::post('/update-order-status/{id}', [CheckoutController::class, 'updateOrderStatus']);
+Route::get('/ordered-info/{order_id}', [CheckoutController::class, 'ordered_info'])->name('ordered.info');
 
 //quan ly tai khoan nguoi dung
 Route::get('/customer-account', [CustomerAccountController::class, 'customer_account']);
@@ -80,8 +81,7 @@ Route::get('send-mail/{orderId}', [CheckoutController::class, 'send_mail']);
 Route::post('/vnpay_payment', [CheckoutController::class, 'vnpay_payment']);
 Route::post('/momo_payment', [CheckoutController::class, 'momo_payment']);
 
-//Sinhvien
-//Route::get('/print-order/{orderId}', [CheckoutController::class, 'print_order']);
+
 //xu ly admin
 Route::prefix('admin')->group(function () {
 
