@@ -60,5 +60,17 @@ class CustomerAccountController extends Controller
         return view('home.customer_account', compact('customer', 'allOrders', 'pendingOrders', 'shippingOrders', 'deliveredOrders', 'cancelledOrders', 'orders', 'customer_info'));
     }
 
+    public function cancelOrder($order_id)
+    {
+        $order = Order::find($order_id);
+    
+        if ($order) {
+            $order->delivery_status = 'Đã hủy';
+            $order->save();
+            return response()->json(['success' => true]);
+        }
+    
+        return response()->json(['success' => false]);
+    }
     
 }

@@ -73,6 +73,7 @@ Route::get('/ordered-info/{order_id}', [CheckoutController::class, 'ordered_info
 
 //quan ly tai khoan nguoi dung
 Route::get('/customer-account', [CustomerAccountController::class, 'customer_account']);
+Route::get('/orders/cancel/{order_id}', [CustomerAccountController::class, 'cancelOrder'])->name('orders.cancel');
 
 //gui mail
 Route::get('send-mail/{orderId}', [CheckoutController::class, 'send_mail']);

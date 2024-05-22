@@ -2,6 +2,7 @@
 @section('title')
     <title>NGO TAN LOI</title>
 @endsection
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('home/home.css') }}">
@@ -228,10 +229,9 @@
                                                             <td>{{ $order->delivery_status }}</td>
                                                             <td>{{ number_format(floatval($order->order_total)) }} VNĐ</td>
                                                             <td style="text-align: center; font-size: 24px">
-                                                                <a href="{{ route('ordered.info', $order->order_id) }}"><i
-                                                                    class="bi bi-eye"></i></a>
-                                                                <a href="#"><i class="bi bi-trash3"></i></a>
-                                                            </td>
+                                                                <a href="{{ route('ordered.info', $order->order_id) }}"><i class="bi bi-eye"></i></a>
+                                                                <a href="#" class="cancel-order" data-order-id="{{ $order->order_id }}"><i class="bi bi-trash3"></i></a>
+                                                            </td>                                                            
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
@@ -435,6 +435,62 @@
             var value = $(this).val().toLowerCase();
             $('#cancelled-orders table tbody tr').filter(function() {
                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.cancel-order').forEach(function (element) {
+            element.addEventListener('click', function (event) {
+                event.preventDefault();
+                const orderId = this.getAttribute('data-order-id');
+
+                Swal.fire({
+                    title: 'Bạn muốn hủy đơn hàng?',
+                    text: "Bạn không thể hoàn tác điều này!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Đồng ý!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        fetch(`/orders/cancel/${orderId}`, {
+                            method: 'GET',
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                            }
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                Swal.fire({
+                                    title: 'Đã hủy!',
+                                    text: 'Đơn hàng của bạn đã hủy!.',
+                                    icon: 'success'
+                                }).then(() => {
+                                    window.location.reload();
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'There was an error cancelling your order.',
+                                    icon: 'error'
+                                });
+                            }
+                        })
+                        .catch(error => {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'There was an error cancelling your order.',
+                                icon: 'error'
+                            });
+                        });
+                    }
+                });
             });
         });
     });
