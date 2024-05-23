@@ -49,6 +49,7 @@
                                         <table class="table datatable-table" id="project-status">
                                             <thead>
                                                 <tr>
+                                                    <th scope="col"><strong>Mã đơn hàng</strong></th>
                                                     <th scope="col"><strong>Tên người đặt</strong></th>
                                                     <th scope="col"><strong>Tổng giá tiền</strong></th>
                                                     <th scope="col"><strong>Phương thức thanh toán</strong></th>
@@ -59,6 +60,7 @@
                                             <tbody>
                                                 @foreach ($all_order as $order)
                                                     <tr class="{{ $order->delivery_status == 'Đã hủy' ? 'cancelled-order' : '' }}">
+                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;{{ $order->order_id}}</td>
                                                         <td>{{ $order->customer_name }}</td>
                                                         <td style="color: red">
                                                             {{ number_format(floatval($order->order_total)) }} VNĐ

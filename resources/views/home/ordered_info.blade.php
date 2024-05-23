@@ -168,7 +168,10 @@
                         </ul>
                     </div>
                 </div><br>
-
+                <div class="container__address-content-hd justify-content-between">
+                    <div><i class="container__address-content-hd-icon bi bi-bag-check-fill"></i>Sản Phẩm Đã Đặt
+                    </div>
+                </div>
                 <table class="table table-wishlist table-mobile" style="text-align: center;">
                     <thead>
                         <tr>
@@ -204,14 +207,15 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="cart-totals shop-single-content">
-                            <div class="cart-title">
-                                <h4 class="title">Tổng Tiền Hàng</h4>
+                            <div class="container__address-content-hd justify-content-between">
+                                <div><i class="container__address-content-hd-icon bi bi-cash"></i>Tổng Tiền Sản Phẩm
+                                </div>
                             </div>
                             <div class="cart-total-table mt-25" style="position:relative;">
                                 <table class="table">
                                     <tbody style="color: black; font-weight: bold">
                                         <tr>
-                                            <td>Tổng tiền hàng</td>
+                                            <td>Tổng tiền sản phẩm</td>
                                             <td class="text-right">{{ number_format($order->order_total) }}</td>
                                         </tr>
                                         <tr class="shipping">

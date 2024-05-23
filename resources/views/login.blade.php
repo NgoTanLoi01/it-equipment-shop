@@ -215,8 +215,8 @@
                         <div class="login-main">
                             <form class="theme-form" method="POST">
                                 @csrf
-                                <h4>Đăng nhập vào tài khoản</h4>
-                                <p>Nhập Email và mật khẩu của bạn để đăng nhập</p>
+                                <h4 style="text-align: center">Đăng Nhập Vào Tài Khoản Quản Trị</h4>
+                                <p style="text-align: center">Nhập Email và mật khẩu của bạn để đăng nhập</p>
                                 @if ($message = Session::get('error'))
                                     <div class="alert alert-danger alert-block">
                                         <button type="button" class="close" data-dismiss="alert">×</button>

@@ -535,7 +535,7 @@
     }
 
     .review-form .btn {
-        background-color: #343a40;
+        background-color: #fcb941;
         color: #fff;
         padding: 10px 20px;
         border: none;
@@ -545,7 +545,7 @@
     }
 
     .review-form .btn:hover {
-        background-color: #495057;
+        background-color: #e9dd57;
     }
 
     /* CSS cho phần hiển thị đánh giá */

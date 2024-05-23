@@ -55,7 +55,7 @@
                                     </div>
                                 </div><!-- End .toolbox-sort -->
                                 <div class="toolbox-layout">
-                                    <a href="category-list.html" class="btn-layout">
+                                    <a href="#" class="btn-layout">
                                         <svg width="16" height="10">
                                             <rect x="0" y="0" width="4" height="4"></rect>
                                             <rect x="6" y="0" width="10" height="4"></rect>
@@ -64,7 +64,7 @@
                                         </svg>
                                     </a>
 
-                                    <a href="category-2cols.html" class="btn-layout">
+                                    <a href="#" class="btn-layout">
                                         <svg width="10" height="10">
                                             <rect x="0" y="0" width="4" height="4"></rect>
                                             <rect x="6" y="0" width="4" height="4"></rect>
@@ -73,7 +73,7 @@
                                         </svg>
                                     </a>
 
-                                    <a href="category.html" class="btn-layout active">
+                                    <a href="#" class="btn-layout active">
                                         <svg width="16" height="10">
                                             <rect x="0" y="0" width="4" height="4"></rect>
                                             <rect x="6" y="0" width="4" height="4"></rect>
@@ -84,7 +84,7 @@
                                         </svg>
                                     </a>
 
-                                    <a href="category-4cols.html" class="btn-layout">
+                                    <a href="#" class="btn-layout">
                                         <svg width="22" height="10">
                                             <rect x="0" y="0" width="4" height="4"></rect>
                                             <rect x="6" y="0" width="4" height="4"></rect>
