@@ -78,152 +78,87 @@
     </div><!-- End .footer-bottom -->
 
 </footer><!-- End .footer -->
+<!-- Biểu tượng Chatbot và khung chứa iframe -->
+<div class="chatbot-icon-container" id="chatbot-icon-container">
+    <img src="{{ asset('UserLTE/assets/images/chatbot/neo.jpg') }}" alt="Chatbot" class="chatbot-icon"
+        id="chatbot-icon" width="60px" height="" style="border-radius: 50%; cursor: pointer;">
+</div>
+<div id="chatbot-frame-container" style="display: none;">
+    <iframe src="https://app.chatfly.co/chat/9053d6d7-ed43-4814-ba31-e0c78b47153c" width="370" height="550"
+        style="border:1px solid black; border-radius: 10px;"></iframe>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    var chatbotIcon = document.getElementById("chatbot-icon");
+    var chatbotFrameContainer = document.getElementById("chatbot-frame-container");
+
+    chatbotIcon.addEventListener("click", function () {
+        if (chatbotFrameContainer.style.display === "none" || chatbotFrameContainer.style.display === "") {
+            chatbotFrameContainer.style.display = "block";
+        } else {
+            chatbotFrameContainer.style.display = "none";
+        }
+
+        // Thêm hoặc loại bỏ lớp "shaking"
+        chatbotIcon.classList.toggle("shaking");
+    });
+});
+
+</script>
+<script>
+    window.chatbotConfig = {
+        bot_id: "9053d6d7-ed43-4814-ba31-e0c78b47153c",
+    };
+</script>
+<script src="https://app.chatfly.co/Chat.js"></script>
+
+
+
 <style>
-    .chatbot-container {
-        display: none;
-        position: fixed;
-        bottom: 180px;
-        right: 20px;
-        width: 300px;
-        background-color: #f0f0f0;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        /* Đã thay đổi border-radius thành 10px */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        z-index: 9999;
-    }
-
-    .chatbot-container .card {
-        border-radius: 10px;
-        /* Đã thay đổi border-radius của card thành 10px */
-        border: none;
-        /* Đã loại bỏ border của card */
-    }
-
-    .chatbot-container .card-header {
-        padding: 15px;
-        /* Đã tăng padding của card-header */
-        background-color: #4CAF50;
-        color: white;
-        border-top-left-radius: 10px;
-        /* Đã thay đổi border-radius của card-header */
-        border-top-right-radius: 10px;
-        /* Đã thay đổi border-radius của card-header */
-    }
-
-    .chatbot-container .card-footer {
-        padding: 15px;
-        /* Đã tăng padding của card-footer */
-        background-color: #f0f0f0;
-        /* Đã thay đổi màu nền của card-footer */
-        border-bottom-left-radius: 10px;
-        /* Đã thay đổi border-radius của card-footer */
-        border-bottom-right-radius: 10px;
-        /* Đã thay đổi border-radius của card-footer */
-    }
-
-    .chatbot-container .chatbot-title {
-        font-size: 20px;
-        /* Đã tăng kích thước font của tiêu đề chatbot */
-    }
-
-    .close-btn {
-        float: right;
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 20px;
-        color: #ffffff;
-        /* Đã thay đổi màu của nút đóng */
-    }
-
-    .chatbot-icon {
-        position: fixed;
-        bottom: 90px;
-        right: 35px;
-        width: 60px;
-        height: 60px;
-        cursor: pointer;
-        border-radius: 50%;
-        /* Đã thêm border-radius để làm tròn hình ảnh */
-    }
-
-    #messenger {
+    .chatbot-icon-container {
         position: fixed;
         bottom: 20px;
-        right: 35px;
-        z-index: 9999;
+        right: 20px;
+        z-index: 1000;
     }
-</style>
-{{-- <link href="{{ asset('Bard_ai_clone/css/adminlte.min.css')}}" rel="stylesheet" type="text/css" /> --}}
 
-<script>
-    // Configs
-    let liveChatBaseUrl = document.location.protocol + '//' + 'livechat.fpt.ai/v36/src'
-    let LiveChatSocketUrl = 'livechat.fpt.ai:443'
-    let FptAppCode = '321b58316e117218b088763ce405a493'
-    let FptAppName = 'Chatbot Hỗ Trợ'
-    // Define custom styles
-    let CustomStyles = {
-        // header
-        headerBackground: '#3C3737FF',
-        headerTextColor: '#ffffffff',
-        headerLogoEnable: true,
-        headerLogoLink: 'https://chatbot-tools.fpt.ai/livechat-builder/img/theme/digital_agency/logo_head.svg',
-        headerText: 'Chatbot Hỗ Trợ',
-        // main
-        primaryColor: '#EE238FFF',
-        secondaryColor: '#ecececff',
-        primaryTextColor: '#ffffffff',
-        secondaryTextColor: '#000000DE',
-        buttonColor: '#b4b4b4B3',
-        buttonTextColor: '#ffffffff',
-        bodyBackgroundEnable: true,
-        bodyBackgroundLink: 'https://chatbot-tools.fpt.ai/livechat-builder/img/theme/digital_agency/body.png',
-        avatarBot: 'https://chatbot-tools.fpt.ai/livechat-builder/img/theme/digital_agency/bot.svg',
-        sendMessagePlaceholder: 'Nhập tên của bạn',
-        // float button
-        floatButtonLogo: 'https://chatbot-tools.fpt.ai/livechat-builder/img/theme/digital_agency/logo.svg',
-        floatButtonTooltip: 'NgoTanLoi Digital Technology xin chào!',
-        floatButtonTooltipEnable: true,
-        // start screen
-        customerLogo: 'https://chatbot-tools.fpt.ai/livechat-builder/img/theme/digital_agency/logo.svg',
-        customerWelcomeText: 'Vui lòng nhập tên của bạn',
-        customerButtonText: 'Bắt đầu',
-        prefixEnable: false,
-        prefixType: 'radio',
-        prefixOptions: ["Anh", "Chị"],
-        prefixPlaceholder: 'Danh xưng',
-        // custom css
-        css: ''
+    #chatbot-frame-container {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        z-index: 1000;
+        background: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
     }
-    // Get bot code from url if FptAppCode is empty
-    if (!FptAppCode) {
-        let appCodeFromHash = window.location.hash.substr(1)
-        if (appCodeFromHash.length === 32) {
-            FptAppCode = appCodeFromHash
+
+    @keyframes shake {
+        0% {
+            transform: translateX(0);
+        }
+
+        20% {
+            transform: translateX(-10px);
+        }
+
+        40% {
+            transform: translateX(10px);
+        }
+
+        60% {
+            transform: translateX(-10px);
+        }
+
+        80% {
+            transform: translateX(10px);
+        }
+
+        100% {
+            transform: translateX(0);
         }
     }
-    // Set Configs
-    let FptLiveChatConfigs = {
-        appName: FptAppName,
-        appCode: FptAppCode,
-        themes: '',
-        styles: CustomStyles
+
+    .shaking {
+        animation: shake 0.5s;
     }
-    // Append Script
-    let FptLiveChatScript = document.createElement('script')
-    FptLiveChatScript.id = 'fpt_ai_livechat_script'
-    FptLiveChatScript.src = liveChatBaseUrl + '/static/fptai-livechat.js'
-    document.body.appendChild(FptLiveChatScript)
-    // Append Stylesheet
-    let FptLiveChatStyles = document.createElement('link')
-    FptLiveChatStyles.id = 'fpt_ai_livechat_script'
-    FptLiveChatStyles.rel = 'stylesheet'
-    FptLiveChatStyles.href = liveChatBaseUrl + '/static/fptai-livechat.css'
-    document.body.appendChild(FptLiveChatStyles)
-    // Init
-    FptLiveChatScript.onload = function() {
-        fpt_ai_render_chatbox(FptLiveChatConfigs, liveChatBaseUrl, LiveChatSocketUrl)
-    }
-</script>
+</style>

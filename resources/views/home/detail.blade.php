@@ -153,13 +153,13 @@
                                     <a class="nav-link" id="product-shipping-link" data-toggle="tab"
                                         href="#product-shipping-tab" role="tab" aria-controls="product-shipping-tab"
                                         aria-selected="false"><strong>Vận chuyển &amp;
-                                        Trả hàng </strong></a>
+                                            Trả hàng </strong></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="product-review-link" data-toggle="tab"
                                         href="#product-review-tab" role="tab" aria-controls="product-review-tab"
                                         aria-selected="false"><strong>Đánh giá sản phẩm
-                                        ({{ $product->reviews->count() }}) </strong></a>
+                                            ({{ $product->reviews->count() }}) </strong></a>
                                 </li>
                             </ul>
                             <div class="tab-content">
@@ -242,7 +242,8 @@
                                         <form action="{{ route('detail.storeReview', $product->slug) }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                            <input type="hidden" name="customer_id" value="{{ $customer_info->customer_id }}">
+                                            <input type="hidden" name="customer_id"
+                                                value="{{ $customer_info->customer_id }}">
                                             <input type="hidden" name="rating" id="rating" value="1">
                                             <!-- Trường ẩn để lưu rating -->
                                             <div class="form-row">
@@ -250,14 +251,17 @@
                                                     <div class="form-group">
                                                         <label for="review-name">Tên</label>
                                                         <input type="text" id="review-name" name="reviewer_name"
-                                                            class="form-control"  value="{{ $customer_info->customer_name ?? '' }}" required>
+                                                            class="form-control"
+                                                            value="{{ $customer_info->customer_name ?? '' }}" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="review-phone">Số điện thoại</label>
                                                         <input type="text" id="review-phone" name="reviewer_phone"
-                                                            class="form-control"  value="{{ $customer_info->customer_phone ?? '' }}" placeholder="Ex: 0123456789" required>
+                                                            class="form-control"
+                                                            value="{{ $customer_info->customer_phone ?? '' }}"
+                                                            placeholder="Ex: 0123456789" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -296,81 +300,13 @@
 
                             </div><!-- End .tab-content -->
                         </div><!-- End .product-details-tab -->
-
-                        {{-- Sản phẩm cùng danh mục --}}
-                        <h2 class="title text-center mb-4">Bạn Cũng Có Thể Thích</h2><!-- End .title text-center -->
-                        <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl"
-                            data-owl-options='{
-                            "nav": false, 
-                            "dots": true,
-                            "margin": 20,
-                            "loop": false,
-                            "responsive": {
-                                "0": {
-                                    "items":1
-                                },
-                                "480": {
-                                    "items":2
-                                },
-                                "768": {
-                                    "items":3
-                                },
-                                "992": {
-                                    "items":4
-                                },
-                                "1200": {
-                                    "items":4,
-                                    "nav": true,
-                                    "dots": false
-                                }
-                            }
-                        }'>
-                            @foreach ($related as $keySelling => $productsSellingItem)
-                                <div class="product product-7 text-center">
-                                    <figure class="product-media">
-                                        <a href="{{ route('detail', $productsSellingItem->slug) }}">
-                                            <img src="{{ config('app.base_url') . $productsSellingItem->feature_image_path }}"
-                                                alt="Product image" class="product-image">
-                                        </a>
-
-                                        <div class="product-action-vertical">
-                                            <a href="#"
-                                                class="btn-product-icon btn-wishlist btn-expandable"><span>Thêm vào
-                                                    danh sách yêu thích</span></a>
-                                            <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
-                                                title="Xem nhanh"><span>Xem nhanh</span></a>
-                                        </div><!-- End .product-action-vertical -->
-
-                                        <div class="product-action">
-                                            <a href="#" class="btn-product btn-cart"><span>Thêm vào giỏ
-                                                    hàng</span></a>
-                                        </div><!-- End .product-action -->
-                                    </figure><!-- End .product-media -->
-
-                                    <div class="product-body">
-                                        <h3 class="product-title"><a
-                                                href="{{ route('detail', $productsSellingItem->slug) }}">{{ $productsSellingItem->name }}</a>
-                                        </h3>
-                                        <!-- End .product-title -->
-                                        <div class="product-price">
-                                            <span class="old-price"> Gốc:
-                                                <del>{{ number_format($productsSellingItem->price) }}
-                                                    VNĐ</del></span>
-                                            <span class="new-price">{{ number_format($productsSellingItem->sale_price) }}
-                                                VNĐ</span>
-                                        </div><!-- End .product-price -->
-                                    </div><!-- End .product-body -->
-                                </div><!-- End .product -->
-                            @endforeach
-                        </div><!-- End .owl-carousel -->
                     </div><!-- End .col-lg-9 -->
-
                     {{-- Sản phẩm gợi ý mua cùng --}}
                     <aside class="col-lg-3">
                         <div class="sidebar sidebar-product">
                             <div class="widget widget-products">
-                                <h5 style="font-size: 14px; font-weight: bold;"><strong>ƯU ĐÃI HẤP DẪN KHI MUA
-                                        CÙNG</strong></h5>
+                                <h5 style="font-size: 14px; font-weight: bold;"><strong>Sản Phẩm Thường Được Mua
+                                        Cùng</strong></h5>
                                 <div class="products">
                                     <div class="product product-sm">
                                         <figure class="product-media">
@@ -476,6 +412,74 @@
                     </aside><!-- End .col-lg-3 -->
                 </div><!-- End .row -->
 
+                <div class="col-12">
+                    {{-- Sản phẩm cùng danh mục --}}
+                    <h2 class="title text-center mb-4">Bạn Cũng Có Thể Thích</h2><!-- End .title text-center -->
+                    <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl"
+                        data-owl-options='{
+                        "nav": false, 
+                        "dots": true,
+                        "margin": 20,
+                        "loop": false,
+                        "responsive": {
+                            "0": {
+                                "items":1
+                            },
+                            "480": {
+                                "items":2
+                            },
+                            "768": {
+                                "items":3
+                            },
+                            "992": {
+                                "items":4
+                            },
+                            "1200": {
+                                "items":4,
+                                "nav": true,
+                                "dots": false
+                            }
+                        }
+                    }'>
+                        @foreach ($related as $keySelling => $productsSellingItem)
+                            <div class="product product-7 text-center">
+                                <figure class="product-media">
+                                    <a href="{{ route('detail', $productsSellingItem->slug) }}">
+                                        <img src="{{ config('app.base_url') . $productsSellingItem->feature_image_path }}"
+                                            alt="Product image" class="product-image">
+                                    </a>
+
+                                    <div class="product-action-vertical">
+                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>Thêm
+                                                vào
+                                                danh sách yêu thích</span></a>
+                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
+                                            title="Xem nhanh"><span>Xem nhanh</span></a>
+                                    </div><!-- End .product-action-vertical -->
+
+                                    <div class="product-action">
+                                        <a href="#" class="btn-product btn-cart"><span>Thêm vào giỏ
+                                                hàng</span></a>
+                                    </div><!-- End .product-action -->
+                                </figure><!-- End .product-media -->
+
+                                <div class="product-body">
+                                    <h3 class="product-title"><a
+                                            href="{{ route('detail', $productsSellingItem->slug) }}">{{ $productsSellingItem->name }}</a>
+                                    </h3>
+                                    <!-- End .product-title -->
+                                    <div class="product-price">
+                                        <span class="old-price"> Gốc:
+                                            <del>{{ number_format($productsSellingItem->price) }}
+                                                VNĐ</del></span>
+                                        <span class="new-price">{{ number_format($productsSellingItem->sale_price) }}
+                                            VNĐ</span>
+                                    </div><!-- End .product-price -->
+                                </div><!-- End .product-body -->
+                            </div><!-- End .product -->
+                        @endforeach
+                    </div><!-- End .owl-carousel -->
+                </div>
             </div><!-- End .container -->
         </div><!-- End .page-content -->
     </main><!-- End .main -->
@@ -487,7 +491,7 @@
         flex-direction: row;
         cursor: pointer;
         margin-bottom: 15px;
-        
+
         /* Thêm khoảng cách dưới để các thành phần không dính vào nhau */
     }
 
@@ -502,7 +506,7 @@
     .rating .star.selected,
     .rating .star:hover {
         color: #f4c150;
-        
+
     }
 
     .product-main-image img {
