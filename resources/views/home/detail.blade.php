@@ -95,19 +95,19 @@
                                         </div><!-- End .product-price -->
                                         <label for="qty">{{ $product->quantity }} sản phẩm có sẵn</label><br>
                                         {{-- <label for="qty">{{ $productSalesQuantity[$product->id] ?? 0 }} sản phẩm đã bán</label> --}}
-                                        <div class="details-filter-row details-row-size">
-                                            <label>Số lượng:</label>
-                                            <div class="product-details-quantity">
-                                                <input type="number" name="qty" id="qty" class="form-control"
-                                                    value="1" min="1" max="{{ $product->quantity }}"
-                                                    step="1" data-decimals="0" required>
-                                            </div><!-- End .product-details-quantity -->
-                                        </div><!-- End .details-filter-row -->
-
                                         <div class="product-details-action">
                                             <div class="details-action-col">
                                                 <form action="{{ URL::to('/save-cart') }}" method="POST">
                                                     {{ csrf_field() }}
+                                                    <div class="details-filter-row details-row-size">
+                                                        <label>Số lượng:</label>
+                                                        <div class="product-details-quantity">
+                                                            <input type="number" name="qty" id="qty" class="form-control"
+                                                                value="1" min="1" max="{{ $product->quantity }}"
+                                                                step="1" data-decimals="0" required>
+                                                        </div><!-- End .product-details-quantity -->
+                                                    </div><!-- End .details-filter-row -->
+            
                                                     <input name="productid_hidden" type="hidden" class="form-control"
                                                         value="{{ $product->id }}">
                                                     <button type="submit" class="btn-product btn-cart"><span>Thêm vào giỏ

@@ -156,7 +156,7 @@
                     <div class="container__address-css"></div>
                     <div class="container__address-content">
                         <div class="container__address-content-hd justify-content-between">
-                            <div><i class="container__address-content-hd-icon bi bi-geo-alt-fill"></i>Địa Chỉ Nhận Hàng
+                            <div><i class="container__address-content-hd-icon bi bi-geo-alt-fill"></i>Thông Tin Nhận Hàng
                             </div>
                         </div>
                         <ul class="shipping-list list-address">
@@ -216,18 +216,21 @@
                                     <tbody style="color: black; font-weight: bold">
                                         <tr>
                                             <td>Tổng tiền sản phẩm</td>
-                                            <td class="text-right">{{ number_format($order->order_total) }}</td>
+                                            <td class="text-right">{{ number_format($order->order_total) }}đ</td>
                                         </tr>
                                         <tr class="shipping">
-                                            <td>Phí vận chuyển (Miễn phí vận chuyển cho đơn hàng trên 1.000.000đ)</td>
+                                            <td>Phí vận chuyển (Miễn phí cho đơn hàng trên 1.000.000đ)</td>
                                             <td class="text-right">
                                                 Miễn phí </td>
                                         </tr>
-
-
+                                        <tr class="shipping">
+                                            <td>Phương thức thanh toán</td>
+                                            <td class="text-right">
+                                                {{ $order->order_status }}</td>
+                                        </tr>
                                         <tr>
-                                            <td width="70%">Thành tiền</td>
-                                            <td class="text-right totalBill">{{ number_format($order->order_total) }}</td>
+                                            <td style="color: red" width="70%">Thành tiền</td>
+                                            <td style="color: red" class="text-right totalBill">{{ number_format($order->order_total) }}đ</td>
                                         </tr>
                                     </tbody>
                                 </table>

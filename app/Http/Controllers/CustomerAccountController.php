@@ -28,7 +28,7 @@ class CustomerAccountController extends Controller
         $orders = Order::select('order.*', 'shipping.shipping_name')
             ->where('order.customer_id', $customer_id)
             ->leftJoin('shipping', 'order.shipping_id', '=', 'shipping.shipping_id')
-            ->get();
+            ->paginate(10);
 
         // Phân loại các đơn hàng theo delivery_status
         $allOrders = [];

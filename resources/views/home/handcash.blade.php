@@ -37,9 +37,12 @@
                                     alt="">
                             </div><br>
                             <h5><strong>Cảm ơn bạn đã mua sắm tại trang web của chúng tôi</strong></h5><br>
-                            <a href="#" class="btn btn-primary"><img width="32px"
-                                    src="{{ asset('UserLTE/assets/images/icons/go-back.png') }}" alt=""> <strong>Xem
-                                    đơn hàng đã đặt</strong></a>
+                            <a href="{{ route('customer_account') }}" class="btn btn-primary">
+                                <img width="32px" src="{{ asset('UserLTE/assets/images/icons/go-back.png') }}"
+                                    alt="">
+                                <strong>Xem đơn hàng đã đặt</strong>
+                            </a>
+
                         </div>
                     </div>
                 </div>

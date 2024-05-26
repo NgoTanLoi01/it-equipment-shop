@@ -72,7 +72,7 @@ Route::post('/update-order-status/{id}', [CheckoutController::class, 'updateOrde
 Route::get('/ordered-info/{order_id}', [CheckoutController::class, 'ordered_info'])->name('ordered.info');
 
 //quan ly tai khoan nguoi dung
-Route::get('/customer-account', [CustomerAccountController::class, 'customer_account']);
+Route::get('/customer-account', [CustomerAccountController::class, 'customer_account'])->name('customer_account');
 Route::get('/orders/cancel/{order_id}', [CustomerAccountController::class, 'cancelOrder'])->name('orders.cancel');
 
 //gui mail
@@ -80,7 +80,9 @@ Route::get('send-mail/{orderId}', [CheckoutController::class, 'send_mail']);
 
 //cong thanh toan
 Route::post('/vnpay_payment', [CheckoutController::class, 'vnpay_payment']);
+Route::get('/vnpay_return', [CheckoutController::class, 'vnpay_return']);
 Route::post('/momo_payment', [CheckoutController::class, 'momo_payment']);
+
 
 
 //xu ly admin

@@ -199,6 +199,9 @@
                                                     @endforeach
                                                 </tbody>
                                             </table>
+                                            <div class="col-12 text-center">
+                                                {{ $orders->links('pagination::bootstrap-4') }}
+                                            </div>
                                         </div>
 
                                         {{-- Chờ xác nhận --}}
@@ -236,6 +239,9 @@
                                                     @endforeach
                                                 </tbody>
                                             </table>
+                                            <div class="col-12 text-center">
+                                                {{ $orders->links('pagination::bootstrap-4') }}
+                                            </div>
                                         </div>
 
                                         {{-- Đang giao --}}
@@ -273,6 +279,9 @@
                                                     @endforeach
                                                 </tbody>
                                             </table>
+                                            <div class="col-12 text-center">
+                                                {{ $orders->links('pagination::bootstrap-4') }}
+                                            </div>
                                         </div>
 
                                         {{-- Đã giao --}}
@@ -310,6 +319,9 @@
                                                     @endforeach
                                                 </tbody>
                                             </table>
+                                            <div class="col-12 text-center">
+                                                {{ $orders->links('pagination::bootstrap-4') }}
+                                            </div>
                                         </div>
 
                                         {{-- Đã hủy --}}
@@ -346,6 +358,9 @@
                                                     @endforeach
                                                 </tbody>
                                             </table>
+                                            <div class="col-12 text-center">
+                                                {{ $orders->links('pagination::bootstrap-4') }}
+                                            </div>
                                         </div>
                                     </div>
 

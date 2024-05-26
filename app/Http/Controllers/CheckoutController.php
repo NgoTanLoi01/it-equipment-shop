@@ -137,6 +137,7 @@ class CheckoutController extends Controller
             'payment_id' => $payment_id,
             'order_total' => $totalAmount,
             'order_status' => 'Đơn hàng đã được thanh toán bằng Momo',
+            'delivery_status' => 'Đang giao',
             'created_at' => now(),
         );
 
@@ -164,7 +165,7 @@ class CheckoutController extends Controller
                 return response()->json(['error' => 'Sản phẩm không đủ số lượng.']);
             }
         }
-
+        Cart::destroy();
         // Chuyển hướng đến trang thanh toán
         return redirect()->to($jsonResult['payUrl']);
     }
@@ -172,32 +173,32 @@ class CheckoutController extends Controller
     public function vnpay_payment(Request $request)
     {
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-        $vnp_Returnurl = "http://127.0.0.1:8000/checkout";
+        $vnp_Returnurl = "http://127.0.0.1:8000/vnpay_return"; // URL callback chính xác
         $vnp_TmnCode = "YOU17NPC"; // Mã website tại VNPAY
         $vnp_HashSecret = "NMYCLNXMEPBVEJUNUGMDAZXZGHALDDHL"; // Chuỗi bí mật
-
+    
         // Tạo mã đơn hàng
         $vnp_TxnRef = time() . '_' . rand(1000, 9999);
-
+    
         // Thông tin đơn hàng
         $vnp_OrderInfo = 'Thanh toán đơn hàng';
         $vnp_OrderType = 'billpayment';
-
+    
         // Lấy tổng tiền từ giỏ hàng
         $totalAmount = 0;
         $content = Cart::content();
         foreach ($content as $v_content) {
             $totalAmount += $v_content->price * $v_content->qty;
         }
-
+    
         // Chuyển đổi tổng tiền thành đơn vị tiền tệ của VNPAY (VND)
         $vnp_Amount = $totalAmount * 100;
-
+    
         // Thông tin thanh toán
         $vnp_Locale = 'vn';
         $vnp_BankCode = 'NCB';
         $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
-
+    
         // Các tham số thanh toán
         $inputData = array(
             "vnp_Version" => "2.1.0",
@@ -213,13 +214,13 @@ class CheckoutController extends Controller
             "vnp_ReturnUrl" => $vnp_Returnurl,
             "vnp_TxnRef" => $vnp_TxnRef,
         );
-
+    
         if (isset($vnp_BankCode) && $vnp_BankCode != "") {
             $inputData['vnp_BankCode'] = $vnp_BankCode;
         }
-
+    
         ksort($inputData);
-
+    
         // Tạo chuỗi hash
         $query = "";
         $i = 0;
@@ -233,24 +234,24 @@ class CheckoutController extends Controller
             }
             $query .= urlencode($key) . "=" . urlencode($value) . '&';
         }
-
+    
         $vnp_Url = $vnp_Url . "?" . $query;
         if (isset($vnp_HashSecret)) {
             $vnpSecureHash = hash_hmac('sha512', $hashdata, $vnp_HashSecret);
             $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
         }
-
+    
         // Lưu thông tin thanh toán vào bảng payment
         $payment_data = array(
             'vnp_txn_ref' => $vnp_TxnRef,
             'vnp_amount' => $vnp_Amount,
             'payment_method' => $vnp_OrderType,
             'vnp_response_code' => '',
-
+            'created_at' => now(),
         );
-
+    
         $payment_id = DB::table('payment')->insertGetId($payment_data);
-
+    
         // Lưu thông tin đơn hàng vào bảng order
         $order_data = array(
             'customer_id' => Session::get('customer_id'),
@@ -258,11 +259,12 @@ class CheckoutController extends Controller
             'payment_id' => $payment_id,
             'order_total' => round(Cart::total(0, '.', '') / (1 + 0.21), 2),
             'order_status' => 'Đơn hàng đã được thanh toán bằng VNPAY',
+            'delivery_status' => 'Đang giao',
             'created_at' => now(),
         );
-
+    
         $order_id = DB::table('order')->insertGetId($order_data);
-
+    
         // Lưu chi tiết đơn hàng vào bảng order_details
         foreach ($content as $v_content) {
             $order_d_data = array(
@@ -273,39 +275,45 @@ class CheckoutController extends Controller
                 'product_sales_quantity' => $v_content->qty,
                 'tax' => 0,
             );
-
+    
             DB::table('order_details')->insert($order_d_data);
-
+    
             // Giảm số lượng sản phẩm trong CSDL
             $product = DB::table('products')->where('id', $v_content->id)->first();
-
+    
             if ($product && $product->quantity >= $v_content->qty) {
                 DB::table('products')->where('id', $v_content->id)->decrement('quantity', $v_content->qty);
             } else {
                 return response()->json(['error' => 'Sản phẩm không đủ số lượng.']);
             }
         }
-
-        // Xử lý thanh toán theo phương thức đã chọn
-        if ($vnp_OrderType == 1) {
-            // Xử lý thanh toán thẻ ATM
-            echo 'Thanh toán thẻ ATM';
-        } elseif ($vnp_OrderType == 2) {
-            // Xử lý thanh toán tiền mặt
+    
+        // Chuyển hướng người dùng đến trang thanh toán VNPAY
+        return redirect()->to($vnp_Url);
+    }
+    
+    // Thêm phương thức callback để xử lý khi thanh toán xong
+    public function vnpay_return(Request $request)
+    {
+        $vnp_TxnRef = $request->vnp_TxnRef;
+        $vnp_ResponseCode = $request->vnp_ResponseCode;
+    
+        if ($vnp_ResponseCode == "00") {
+            // Xóa giỏ hàng sau khi thanh toán thành công
             Cart::destroy();
+    
+            // Cập nhật trạng thái đơn hàng
+            $payment_id = DB::table('payment')->where('vnp_txn_ref', $vnp_TxnRef)->value('payment_id');
+            DB::table('order')
+                ->where('payment_id', $payment_id)
+                ->update(['order_status' => 'Đơn hàng đã được thanh toán bằng VNPAY', 'delivery_status' => 'Đang giao']);
+    
             return view('home.handcash');
         } else {
-            // Xử lý thanh toán thẻ ghi nợ
-            echo 'Thanh toán thẻ ghi nợ';
-        }
-        //$returnData = array();
-        if (isset($_POST['redirect'])) {
-            header('Location: ' . $vnp_Url);
-            die();
-        } else {
-            echo json_encode($returnData);
+            return response()->json(['error' => 'Giao dịch không thành công.']);
         }
     }
+    
     private $order;
     public function __construct(Order $order)
     {
@@ -390,6 +398,7 @@ class CheckoutController extends Controller
             'payment_id' => $paymentId,
             'order_total' => round(Cart::total(0, '.', '') / (1 + 0.21), 2),
             'order_status' => 'Thanh toán khi nhận hàng',
+            'delivery_status' => 'Chờ xác nhận',
         ];
 
         $orderId = DB::table('order')->insertGetId($orderData);
@@ -477,7 +486,7 @@ class CheckoutController extends Controller
             ->join('customers', 'order.customer_id', '=', 'customers.customer_id')
             ->select('order.*', 'customers.customer_name')
             ->orderBy('order.order_id', 'desc')
-            ->paginate(8);
+            ->paginate(10);
 
         return view('admin.order.manage_order', compact('all_order'));
     }
