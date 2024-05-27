@@ -102,12 +102,13 @@
                                                     <div class="details-filter-row details-row-size">
                                                         <label>Số lượng:</label>
                                                         <div class="product-details-quantity">
-                                                            <input type="number" name="qty" id="qty" class="form-control"
-                                                                value="1" min="1" max="{{ $product->quantity }}"
-                                                                step="1" data-decimals="0" required>
+                                                            <input type="number" name="qty" id="qty"
+                                                                class="form-control" value="1" min="1"
+                                                                max="{{ $product->quantity }}" step="1"
+                                                                data-decimals="0" required>
                                                         </div><!-- End .product-details-quantity -->
                                                     </div><!-- End .details-filter-row -->
-            
+
                                                     <input name="productid_hidden" type="hidden" class="form-control"
                                                         value="{{ $product->id }}">
                                                     <button type="submit" class="btn-product btn-cart"><span>Thêm vào giỏ
@@ -307,93 +308,27 @@
                             <div class="widget widget-products">
                                 <h5 style="font-size: 14px; font-weight: bold;"><strong>Sản Phẩm Thường Được Mua
                                         Cùng</strong></h5>
-                                <div class="products">
-                                    <div class="product product-sm">
-                                        <figure class="product-media">
-                                            <a href="#">
-                                                <img src="{{ asset('UserLTE/assets/images/demos/demo-3/products/1.jpg') }}"
-                                                    alt="Product image" class="product-image">
-                                            </a>
-                                        </figure>
+                                @foreach ($productsFeatures as $product)
+                                    <div class="products">
+                                        <div class="product product-sm">
+                                            <figure class="product-media">
+                                                <a href="{{ route('detail', $product->slug) }}">
+                                                    <img src="{{ config('app.base_url') . $product->feature_image_path }}"
+                                                        alt="Product image" class="product-image">
+                                                </a>
+                                            </figure>
 
-                                        <div class="product-body">
-                                            <h5 class="product-title"><a href="#">Light brown studded Wide fit
-                                                    wedges</a></h5><!-- End .product-title -->
-                                            <div class="product-price">
-                                                <span class="new-price">$50.00</span>
-                                                <span class="old-price">$110.00</span>
-                                            </div><!-- End .product-price -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product product-sm -->
-
-                                    <div class="product product-sm">
-                                        <figure class="product-media">
-                                            <a href="#">
-                                                <img src="{{ asset('UserLTE/assets/images/demos/demo-3/products/2.jpg') }}"
-                                                    alt="Product image" class="product-image">
-                                            </a>
-                                        </figure>
-
-                                        <div class="product-body">
-                                            <h5 class="product-title"><a href="#">Yellow button front tea
-                                                    top</a></h5><!-- End .product-title -->
-                                            <div class="product-price">
-                                                $56.00
-                                            </div><!-- End .product-price -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product product-sm -->
-
-                                    <div class="product product-sm">
-                                        <figure class="product-media">
-                                            <a href="#">
-                                                <img src="{{ asset('UserLTE/assets/images/demos/demo-3/products/3.jpg') }}"
-                                                    alt="Product image" class="product-image">
-                                            </a>
-                                        </figure>
-
-                                        <div class="product-body">
-                                            <h5 class="product-title"><a href="#">Beige metal hoop tote bag</a>
-                                            </h5><!-- End .product-title -->
-                                            <div class="product-price">
-                                                $50.00
-                                            </div><!-- End .product-price -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product product-sm -->
-
-                                    <div class="product product-sm">
-                                        <figure class="product-media">
-                                            <a href="#">
-                                                <img src="{{ asset('UserLTE/assets/images/demos/demo-3/products/4.jpg') }}"
-                                                    alt="Product image" class="product-image">
-                                            </a>
-                                        </figure>
-
-                                        <div class="product-body">
-                                            <h5 class="product-title"><a href="#">Black soft RI weekend travel
-                                                    bag</a></h5><!-- End .product-title -->
-                                            <div class="product-price">
-                                                $75.00
-                                            </div><!-- End .product-price -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product product-sm -->
-
-                                    <div class="product product-sm">
-                                        <figure class="product-media">
-                                            <a href="#">
-                                                <img src="{{ asset('UserLTE/assets/images/demos/demo-3/products/4.jpg') }}"
-                                                    alt="Product image" class="product-image">
-                                            </a>
-                                        </figure>
-
-                                        <div class="product-body">
-                                            <h5 class="product-title"><a href="#">Black soft RI weekend travel
-                                                    bag</a></h5><!-- End .product-title -->
-                                            <div class="product-price">
-                                                $75.00
-                                            </div><!-- End .product-price -->
-                                        </div><!-- End .product-body -->
-                                    </div><!-- End .product product-sm -->
-                                </div><!-- End .products -->
+                                            <div class="product-body">
+                                                <h5 class="product-title"><a
+                                                        href="{{ route('detail', $product->slug) }}">{{ $product->name }}</a></h5><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    <span class="new-price">{{ number_format($product->sale_price) }}</span>
+                                                    <span class="old-price"><del>{{ number_format($product->price) }}</span>
+                                                </div><!-- End .product-price -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product product-sm -->
+                                    </div><!-- End .products -->
+                                @endforeach
                                 <a href="{{ URL::to('/product_all') }}" class="btn btn-outline-dark-3"><span>Xem Thêm Sản
                                         Phẩm</span><i class="icon-long-arrow-right"></i></a>
                             </div><!-- End .widget widget-products -->

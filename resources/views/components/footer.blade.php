@@ -81,7 +81,7 @@
 <!-- Biểu tượng Chatbot và khung chứa iframe -->
 <div class="chatbot-icon-container" id="chatbot-icon-container">
     <div id="chatbot-tooltip" class="chatbot-tooltip">NgoTanLoi Digital Technology xin chào!</div>
-    <img src="{{ asset('UserLTE/assets/images/chatbot/ai.png') }}" alt="Chatbot" class="chatbot-icon"
+    <img src="{{ asset('UserLTE/assets/images/chatbot/ai2.png') }}" alt="Chatbot" class="chatbot-icon"
         id="chatbot-icon" width="60px" height="" style=" cursor: pointer;">
 </div>
 <div id="chatbot-frame-container" style="display: none;">
@@ -187,7 +187,7 @@
         bottom: 10px;
         right: 110%;
         /* Adjust as needed to position the tooltip */
-        background-color: #ee238f;
+        background-color: #6517ab;
         color: white;
         padding: 5px 10px;
         border-radius: 5px;
