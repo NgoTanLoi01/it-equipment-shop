@@ -401,13 +401,13 @@
         var browsersChart = Morris.Donut({
             element: "pie-chart",
             data: [
-                { label: "Laptop", value: 12 },
-                { label: "Đồng hồ", value: 8 },
+                { label: "Laptop", value: 8 },
+                { label: "Đồng hồ", value: 5 },
                 { label: "Máy ảnh", value: 4 },
                 { label: "Tai nghe", value: 3 },
-                { label: "Loa", value: 5 },
-                { label: "Chuột", value: 3 },
-                { label: "Phụ kiện", value: 3 },
+                { label: "Loa", value: 3 },
+                { label: "Chuột", value: 4 },
+                { label: "Phụ kiện", value: 7 },
             ],
             colors: color_array,
         });
@@ -775,135 +775,135 @@
     );
     ChartEl.render();
 
-    var options = {
-        series: [
-            {
-                name: "Doanh Thu (triệu)",
-                type: "area",
-                data: [
-                    20, 50, 60, 180, 90, 340, 120, 250, 190, 100, 180, 380, 190,
-                    220, 100, 90, 140, 70, 130, 90, 100, 50, 0,
-                ],
-            },
-            {
-                name: "Sản Phẩm (chiếc)",
-                type: "line",
-                data: [
-                    20, 70, 30, 100, 120, 220, 250, 100, 200, 300, 330, 270,
-                    300, 200, 180, 220, 130, 300, 220, 180, 40, 70, 0,
-                ],
-            },
-        ],
-        chart: {
-            height: 270,
-            type: "line",
-            toolbar: {
-                show: false,
-            },
-            dropShadow: {
-                enabled: true,
-                top: 4,
-                left: 1,
-                blur: 8,
-                color: [MofiAdminConfig.primary, "#8D8D8D"],
-                opacity: 0.6,
-            },
-        },
-        stroke: {
-            curve: "smooth",
-            width: [3, 3],
-            dashArray: [0, 4],
-        },
-        grid: {
-            show: true,
-            borderColor: "rgba(106, 113, 133, 0.30)",
-            strokeDashArray: 3,
-        },
-        fill: {
-            type: "solid",
-            opacity: [0, 1],
-        },
+    // var options = {
+    //     series: [
+    //         {
+    //             name: "Doanh Thu (triệu)",
+    //             type: "area",
+    //             data: [
+    //                 20, 50, 60, 180, 90, 340, 120, 250, 190, 100, 180, 380, 190,
+    //                 220, 100, 90, 140, 70, 130, 90, 100, 50, 0,
+    //             ],
+    //         },
+    //         {
+    //             name: "Sản Phẩm (chiếc)",
+    //             type: "line",
+    //             data: [
+    //                 20, 70, 30, 100, 120, 220, 250, 100, 200, 300, 330, 270,
+    //                 300, 200, 180, 220, 130, 300, 220, 180, 40, 70, 0,
+    //             ],
+    //         },
+    //     ],
+    //     chart: {
+    //         height: 270,
+    //         type: "line",
+    //         toolbar: {
+    //             show: false,
+    //         },
+    //         dropShadow: {
+    //             enabled: true,
+    //             top: 4,
+    //             left: 1,
+    //             blur: 8,
+    //             color: [MofiAdminConfig.primary, "#8D8D8D"],
+    //             opacity: 0.6,
+    //         },
+    //     },
+    //     stroke: {
+    //         curve: "smooth",
+    //         width: [3, 3],
+    //         dashArray: [0, 4],
+    //     },
+    //     grid: {
+    //         show: true,
+    //         borderColor: "rgba(106, 113, 133, 0.30)",
+    //         strokeDashArray: 3,
+    //     },
+    //     fill: {
+    //         type: "solid",
+    //         opacity: [0, 1],
+    //     },
 
-        labels: [
-            "Tháng 1",
-            "",
-            "Tháng 2",
-            "",
-            "Tháng 3",
-            "",
-            "Tháng 4",
-            "",
-            "Tháng 5",
-            "",
-            "Tháng 6",
-            "",
-            "Tháng 7",
-            "",
-            "Tháng 8",
-            "",
-            "Tháng 9",
-            "",
-            "Tháng 10",
-            "",
-            "Tháng 11",
-            "",
-            "Tháng 12",
-        ],
-        markers: {
-            size: [3, 0],
-            colors: ["#3D434A"],
-            strokeWidth: [0, 0],
-        },
-        responsive: [
-            {
-                breakpoint: 991,
-                options: {
-                    chart: {
-                        height: 300,
-                    },
-                },
-            },
-            {
-                breakpoint: 1500,
-                options: {
-                    chart: {
-                        height: 325,
-                    },
-                },
-            },
-        ],
-        tooltip: {
-            shared: true,
-            intersect: false,
-            y: {
-                formatter: function (
-                    value,
-                    { series, seriesIndex, dataPointIndex, w }
-                ) {
-                    if (seriesIndex === 0) {
-                        // Kiểm tra nếu đang xử lý series "Doanh Thu"
-                        return value.toFixed(0) + " VNĐ";
-                    } else {
-                        // Đối với series "Sản Phẩm"
-                        return value + " sản phẩm";
-                    }
-                },
-            },
-        },
-        colors: [MofiAdminConfig.primary, "#8D8D8D"],
-        xaxis: {
-            labels: {
-                style: {
-                    fontFamily: "Outfit, sans-serif",
-                    fontWeight: 500,
-                    colors: "#8D8D8D",
-                },
-            },
-            axisBorder: {
-                show: false,
-            },
-        },
-    };
+    //     labels: [
+    //         "Tháng 1",
+    //         "",
+    //         "Tháng 2",
+    //         "",
+    //         "Tháng 3",
+    //         "",
+    //         "Tháng 4",
+    //         "",
+    //         "Tháng 5",
+    //         "",
+    //         "Tháng 6",
+    //         "",
+    //         "Tháng 7",
+    //         "",
+    //         "Tháng 8",
+    //         "",
+    //         "Tháng 9",
+    //         "",
+    //         "Tháng 10",
+    //         "",
+    //         "Tháng 11",
+    //         "",
+    //         "Tháng 12",
+    //     ],
+    //     markers: {
+    //         size: [3, 0],
+    //         colors: ["#3D434A"],
+    //         strokeWidth: [0, 0],
+    //     },
+    //     responsive: [
+    //         {
+    //             breakpoint: 991,
+    //             options: {
+    //                 chart: {
+    //                     height: 300,
+    //                 },
+    //             },
+    //         },
+    //         {
+    //             breakpoint: 1500,
+    //             options: {
+    //                 chart: {
+    //                     height: 325,
+    //                 },
+    //             },
+    //         },
+    //     ],
+    //     tooltip: {
+    //         shared: true,
+    //         intersect: false,
+    //         y: {
+    //             formatter: function (
+    //                 value,
+    //                 { series, seriesIndex, dataPointIndex, w }
+    //             ) {
+    //                 if (seriesIndex === 0) {
+    //                     // Kiểm tra nếu đang xử lý series "Doanh Thu"
+    //                     return value.toFixed(0) + " VNĐ";
+    //                 } else {
+    //                     // Đối với series "Sản Phẩm"
+    //                     return value + " sản phẩm";
+    //                 }
+    //             },
+    //         },
+    //     },
+    //     colors: [MofiAdminConfig.primary, "#8D8D8D"],
+    //     xaxis: {
+    //         labels: {
+    //             style: {
+    //                 fontFamily: "Outfit, sans-serif",
+    //                 fontWeight: 500,
+    //                 colors: "#8D8D8D",
+    //             },
+    //         },
+    //         axisBorder: {
+    //             show: false,
+    //         },
+    //     },
+    // };
     var chart = new ApexCharts(
         document.querySelector("#chart-dash-2-line"),
         options

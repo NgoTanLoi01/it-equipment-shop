@@ -72,9 +72,23 @@ class AdminController extends Controller
 
         // Lấy thông tin về sản phẩm bán chạy nhất
         $bestSellingProduct = $this->getBestSellingProducts()->first();
-        
 
         $donHangGanDay = $this->getDonHangGanDay();
+
+        // Lấy dữ liệu theo tháng
+        $monthlyData = Order::selectRaw('MONTH(created_at) as month, SUM(order_total) as totalRevenue, COUNT(order_id) as productCount')
+            ->whereYear('created_at', date('Y'))
+            ->groupBy('month')
+            ->get()
+            ->keyBy('month')
+            ->toArray();
+
+        $revenueData = [];
+        $productData = [];
+        for ($i = 1; $i <= 12; $i++) {
+            $revenueData[] = isset($monthlyData[$i]) ? $monthlyData[$i]['totalRevenue'] / 1000000 : 0; // Chuyển đổi sang triệu đồng
+            $productData[] = isset($monthlyData[$i]) ? $monthlyData[$i]['productCount'] : 0;
+        }
         return view('admin.home.index', compact(
             'productCount',
             'orderCount',
@@ -90,7 +104,9 @@ class AdminController extends Controller
             'customerCountMonth',
             'donHangGanDay',
             'bestSellingProducts',
-            'bestSellingProduct'
+            'bestSellingProduct',
+            'revenueData',
+            'productData'
         ));
     }
 

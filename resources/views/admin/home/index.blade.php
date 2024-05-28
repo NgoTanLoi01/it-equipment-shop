@@ -428,8 +428,10 @@
                     <div class="card">
                         <div class="card-header card-no-border pb-0">
                             <div class="header-top">
-                                <h4>Doanh số bán hàng <br> <p class="text-truncate">Trong năm 2024</p></h4>
-                                
+                                <h4>Doanh số bán hàng <br>
+                                    <p class="text-truncate">Trong năm 2024</p>
+                                </h4>
+
                                 <div class="dropdown icon-dropdown">
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown14"><a
                                             class="dropdown-item" href="#">Weekly</a><a class="dropdown-item"
@@ -443,6 +445,112 @@
                         </div>
                     </div>
                 </div>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        var options = {
+                            series: [{
+                                    name: "Doanh Thu (triệu)",
+                                    type: "area",
+                                    data: @json($revenueData),
+                                },
+                                {
+                                    name: "Sản Phẩm (chiếc)",
+                                    type: "line",
+                                    data: @json($productData),
+                                },
+                            ],
+                            chart: {
+                                height: 270,
+                                type: "line",
+                                toolbar: {
+                                    show: false,
+                                },
+                                dropShadow: {
+                                    enabled: true,
+                                    top: 4,
+                                    left: 1,
+                                    blur: 8,
+                                    color: [MofiAdminConfig.primary, "#8D8D8D"],
+                                    opacity: 0.6,
+                                },
+                            },
+                            stroke: {
+                                curve: "smooth",
+                                width: [3, 3],
+                                dashArray: [0, 4],
+                            },
+                            grid: {
+                                show: true,
+                                borderColor: "rgba(106, 113, 133, 0.30)",
+                                strokeDashArray: 3,
+                            },
+                            fill: {
+                                type: "solid",
+                                opacity: [0, 1],
+                            },
+                            labels: [
+                                "Tháng 1",  "Tháng 2",  "Tháng 3",  "Tháng 4",  "Tháng 5", 
+                                "Tháng 6",  "Tháng 7",  "Tháng 8",  "Tháng 9",  "Tháng 10", 
+                                "Tháng 11",  "Tháng 12"
+                            ],
+                            markers: {
+                                size: [3, 0],
+                                colors: ["#3D434A"],
+                                strokeWidth: [0, 0],
+                            },
+                            responsive: [{
+                                    breakpoint: 991,
+                                    options: {
+                                        chart: {
+                                            height: 300,
+                                        },
+                                    },
+                                },
+                                {
+                                    breakpoint: 1500,
+                                    options: {
+                                        chart: {
+                                            height: 325,
+                                        },
+                                    },
+                                },
+                            ],
+                            tooltip: {
+                                shared: true,
+                                intersect: false,
+                                y: {
+                                    formatter: function(value, {
+                                        seriesIndex
+                                    }) {
+                                        if (seriesIndex === 0) {
+                                            return value.toFixed(0) + " triệu đồng";
+                                        } else {
+                                            return value + " sản phẩm";
+                                        }
+                                    },
+                                },
+                            },
+                            colors: [MofiAdminConfig.primary, "#8D8D8D"],
+                            xaxis: {
+                                labels: {
+                                    style: {
+                                        fontFamily: "Outfit, sans-serif",
+                                        fontWeight: 500,
+                                        colors: "#8D8D8D",
+                                    },
+                                },
+                                axisBorder: {
+                                    show: false,
+                                },
+                            },
+                        };
+                        var chart = new ApexCharts(document.querySelector("#chart-dash-2-line"), options);
+                        chart.render();
+                    });
+                </script>
+
+
                 {{-- <div class="col-xxl-12 col-xl-4 col-lg-7 col-sm-12">
                     <div class="card">
                         <div class="card-header card-no-border pb-0">

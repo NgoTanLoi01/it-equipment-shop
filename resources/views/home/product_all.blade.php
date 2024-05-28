@@ -254,7 +254,7 @@
                                                                                 style="width: {{ $i * 20 }}%;"></span><!-- End .ratings-val -->
                                                                         </span><!-- End .ratings -->
                                                                         <span
-                                                                            class="ratings-text">({{ rand(2, 5) }})</span><!-- Random example count -->
+                                                                            class="ratings-text">({{ rand(2, 8) }})</span><!-- Random example count -->
                                                                     </span><!-- End .rating-container -->
                                                                 </label>
                                                             </div><!-- End .custom-checkbox -->
