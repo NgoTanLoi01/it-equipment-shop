@@ -176,29 +176,29 @@ class CheckoutController extends Controller
         $vnp_Returnurl = "http://127.0.0.1:8000/vnpay_return"; // URL callback chính xác
         $vnp_TmnCode = "YOU17NPC"; // Mã website tại VNPAY
         $vnp_HashSecret = "NMYCLNXMEPBVEJUNUGMDAZXZGHALDDHL"; // Chuỗi bí mật
-    
+
         // Tạo mã đơn hàng
         $vnp_TxnRef = time() . '_' . rand(1000, 9999);
-    
+
         // Thông tin đơn hàng
         $vnp_OrderInfo = 'Thanh toán đơn hàng';
         $vnp_OrderType = 'billpayment';
-    
+
         // Lấy tổng tiền từ giỏ hàng
         $totalAmount = 0;
         $content = Cart::content();
         foreach ($content as $v_content) {
             $totalAmount += $v_content->price * $v_content->qty;
         }
-    
+
         // Chuyển đổi tổng tiền thành đơn vị tiền tệ của VNPAY (VND)
         $vnp_Amount = $totalAmount * 100;
-    
+
         // Thông tin thanh toán
         $vnp_Locale = 'vn';
         $vnp_BankCode = 'NCB';
         $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
-    
+
         // Các tham số thanh toán
         $inputData = array(
             "vnp_Version" => "2.1.0",
@@ -214,13 +214,13 @@ class CheckoutController extends Controller
             "vnp_ReturnUrl" => $vnp_Returnurl,
             "vnp_TxnRef" => $vnp_TxnRef,
         );
-    
+
         if (isset($vnp_BankCode) && $vnp_BankCode != "") {
             $inputData['vnp_BankCode'] = $vnp_BankCode;
         }
-    
+
         ksort($inputData);
-    
+
         // Tạo chuỗi hash
         $query = "";
         $i = 0;
@@ -234,13 +234,13 @@ class CheckoutController extends Controller
             }
             $query .= urlencode($key) . "=" . urlencode($value) . '&';
         }
-    
+
         $vnp_Url = $vnp_Url . "?" . $query;
         if (isset($vnp_HashSecret)) {
             $vnpSecureHash = hash_hmac('sha512', $hashdata, $vnp_HashSecret);
             $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
         }
-    
+
         // Lưu thông tin thanh toán vào bảng payment
         $payment_data = array(
             'vnp_txn_ref' => $vnp_TxnRef,
@@ -249,9 +249,9 @@ class CheckoutController extends Controller
             'vnp_response_code' => '',
             'created_at' => now(),
         );
-    
+
         $payment_id = DB::table('payment')->insertGetId($payment_data);
-    
+
         // Lưu thông tin đơn hàng vào bảng order
         $order_data = array(
             'customer_id' => Session::get('customer_id'),
@@ -262,9 +262,9 @@ class CheckoutController extends Controller
             'delivery_status' => 'Đang giao',
             'created_at' => now(),
         );
-    
+
         $order_id = DB::table('order')->insertGetId($order_data);
-    
+
         // Lưu chi tiết đơn hàng vào bảng order_details
         foreach ($content as $v_content) {
             $order_d_data = array(
@@ -275,45 +275,45 @@ class CheckoutController extends Controller
                 'product_sales_quantity' => $v_content->qty,
                 'tax' => 0,
             );
-    
+
             DB::table('order_details')->insert($order_d_data);
-    
+
             // Giảm số lượng sản phẩm trong CSDL
             $product = DB::table('products')->where('id', $v_content->id)->first();
-    
+
             if ($product && $product->quantity >= $v_content->qty) {
                 DB::table('products')->where('id', $v_content->id)->decrement('quantity', $v_content->qty);
             } else {
                 return response()->json(['error' => 'Sản phẩm không đủ số lượng.']);
             }
         }
-    
+
         // Chuyển hướng người dùng đến trang thanh toán VNPAY
         return redirect()->to($vnp_Url);
     }
-    
+
     // Thêm phương thức callback để xử lý khi thanh toán xong
     public function vnpay_return(Request $request)
     {
         $vnp_TxnRef = $request->vnp_TxnRef;
         $vnp_ResponseCode = $request->vnp_ResponseCode;
-    
+
         if ($vnp_ResponseCode == "00") {
             // Xóa giỏ hàng sau khi thanh toán thành công
             Cart::destroy();
-    
+
             // Cập nhật trạng thái đơn hàng
             $payment_id = DB::table('payment')->where('vnp_txn_ref', $vnp_TxnRef)->value('payment_id');
             DB::table('order')
                 ->where('payment_id', $payment_id)
                 ->update(['order_status' => 'Đơn hàng đã được thanh toán bằng VNPAY', 'delivery_status' => 'Đang giao']);
-    
+
             return view('home.handcash');
         } else {
             return response()->json(['error' => 'Giao dịch không thành công.']);
         }
     }
-    
+
     private $order;
     public function __construct(Order $order)
     {
@@ -685,21 +685,23 @@ class CheckoutController extends Controller
             ->join('customers', 'order.customer_id', '=', 'customers.customer_id')
             ->join('shipping', 'order.shipping_id', '=', 'shipping.shipping_id')
             ->join('order_details', 'order.order_id', '=', 'order_details.order_id')
-            ->select('order.*', 'customers.*', 'shipping.*', 'order_details.*')
+            ->join('products', 'order_details.product_id', '=', 'products.id') // Thêm join với bảng products
+            ->select('order.*', 'customers.*', 'shipping.*', 'order_details.*', 'products.feature_image_path') // Thêm cột feature_image_path
             ->where('order.order_id', $orderId)
-            ->get(); // Sử dụng get() để lấy tất cả bản ghi
+            ->get();
 
         // Kiểm tra xem có bản ghi nào được trả về không
         if ($order_by_id->isNotEmpty()) {
             // Lấy địa chỉ email của khách hàng từ thông tin đơn hàng
             $to_name = "NGO TAN LOI Digital Technologies";
-            $to_email = $order_by_id[0]->customer_email; // Truy cập trực tiếp vào thuộc tính
+            $to_email = $order_by_id[0]->customer_email;
 
             // Tạo dữ liệu cho email
             $data = array(
                 "name" => $to_name,
                 "body" => 'Cảm ơn bạn đã đặt hàng. Đơn hàng của bạn đang được xử lý.',
                 "order" => $order_by_id,
+                "delivery_status" => $order_by_id[0]->delivery_status // Thêm delivery_status vào dữ liệu
             );
 
             // Gửi email
