@@ -680,44 +680,34 @@ class CheckoutController extends Controller
     }
     public function send_mail($orderId)
     {
-        // Lấy thông tin đơn hàng từ bảng order và thông tin khách hàng từ bảng customers
         $order_by_id = DB::table('order')
             ->join('customers', 'order.customer_id', '=', 'customers.customer_id')
             ->join('shipping', 'order.shipping_id', '=', 'shipping.shipping_id')
             ->join('order_details', 'order.order_id', '=', 'order_details.order_id')
-            ->join('products', 'order_details.product_id', '=', 'products.id') // Thêm join với bảng products
-            ->select('order.*', 'customers.*', 'shipping.*', 'order_details.*', 'products.feature_image_path') // Thêm cột feature_image_path
+            ->join('products', 'order_details.product_id', '=', 'products.id')
+            ->select('order.*', 'customers.*', 'shipping.*', 'order_details.*', 'products.feature_image_path')
             ->where('order.order_id', $orderId)
             ->get();
 
-        // Kiểm tra xem có bản ghi nào được trả về không
         if ($order_by_id->isNotEmpty()) {
-            // Lấy địa chỉ email của khách hàng từ thông tin đơn hàng
             $to_name = "NGO TAN LOI Digital Technologies";
             $to_email = $order_by_id[0]->customer_email;
 
-            // Tạo dữ liệu cho email
             $data = array(
                 "name" => $to_name,
                 "body" => 'Cảm ơn bạn đã đặt hàng. Đơn hàng của bạn đang được xử lý.',
                 "order" => $order_by_id,
-                "delivery_status" => $order_by_id[0]->delivery_status // Thêm delivery_status vào dữ liệu
+                "delivery_status" => $order_by_id[0]->delivery_status,
+                "order_id" => $orderId
             );
 
-            // Gửi email
             Mail::send("home.send_mail", $data, function ($message) use ($to_name, $to_email) {
                 $message->to($to_email)->subject('Thông tin đơn hàng');
-                $message->from($to_email, $to_name);
-
-                $message->attach(public_path('UserLTE/assets/images/demos/demo-3/Logo.jpg'), [
-                    'as' => 'logo',
-                    'mime' => 'image/png',
-                ]);
+                $message->from('ngotanloi2424@gmail.com', $to_name);
             });
 
-            return redirect('/manage-order')->with('message', '');
+            return redirect('/manage-order')->with('message', 'Email đã được gửi.');
         } else {
-            // Xử lý khi không tìm thấy đơn hàng
             return redirect('/manage-order')->with('message', 'Đơn hàng không tồn tại.');
         }
     }

@@ -30,7 +30,7 @@
         .logo {
             display: block;
             margin: 0 auto;
-            max-width: 100px;
+            max-width: 80px;
             margin-bottom: 10px;
             border-radius: 50%;
             vertical-align: middle;
@@ -67,15 +67,15 @@
 <body>
     <div style="background-color:#e3e3e3;padding:20px 0px 10px 0px;/* color:#484a4c; */">
         <div class="container">
-            <img class="logo" src="{{ $message->embed(public_path('UserLTE/assets/images/demos/demo-3/Logo.jpg')) }}"
+            <img class="logo" src="https://drive.google.com/uc?export=view&id=1SQUwsN_0rlWdCs3hTQ9tTBVvjqh9ks1R"
                 alt="Logo cửa hàng">
             <h2 style="text-align: center">XÁC NHẬN ĐƠN HÀNG <br> -------oOo-------</h2>
 
             <h2><i>{{ !empty($order) ? $order->first()->customer_name : 'Khách hàng' }} thân mến,</i></h2>
-            <p>Đơn hàng của bạn đang <strong
+            <p>Đơn hàng <span style="color: #ff8401">#{{ $order_id }}</span> của bạn đang <strong
                     style="color: #ff8401">{{ isset($delivery_status) ? $delivery_status : 'đang được xử lý' }}</strong>
             </p>
-            -----------------------------------------------------------------------------------------------------------------------------------------
+            <div style="box-sizing:border-box;width:100%;max-width:600px;border-top:1px solid #e0e0e0"></div>
             <h3>THÔNG TIN ĐƠN HÀNG - DÀNH CHO NGƯỜI MUA</h3>
             @if (!empty($order))
                 <ul>
@@ -120,10 +120,10 @@
                 <p style="clear:both;padding-top:20px;text-align:center">
                     Để theo dõi đơn hàng, thông tin vận chuyển và thời gian giao hàng bạn hãy <br>
                     <a href="{{ URL::to('/customer-account') }}"><span
-                            style="padding:10px 20px;background:#ff8401;line-height:50px;color:white;border-radius:5px">THEO
+                            style="padding:10px 20px;background:#ff8401;line-height:50px;color:white;border-radius:5px; font-weight: bold;">THEO
                             DÕI NGAY</span></a>
                 </p>
-                -----------------------------------------------------------------------------------------------------------------------------------------
+                <div style="box-sizing:border-box;width:100%;max-width:600px;border-top:1px solid #e0e0e0"></div>
             @else
                 <p>Không có thông tin đơn hàng.</p>
             @endif
