@@ -7,6 +7,62 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('home/home.css') }}">
+    <style>
+        .modal-content{
+            width: 862px;
+        }
+        .compare-products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .compare-product-item {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            width: 200px;
+            /* Tăng kích thước chiều rộng */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        .compare-product-item.selected {
+            border-color: #e976a2;
+        }
+
+        .compare-product-item img {
+            max-width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .compare-product-item p {
+            margin: 5px 0;
+        }
+
+        .compare-product-item .product-name {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .compare-product-item .product-price {
+            font-size: 14px;
+            color: #d9534f;
+            text-align: center;
+            display: block; !important
+        }
+
+        /* Đảm bảo khung chứa sản phẩm to hơn và hiển thị được 4 sản phẩm ngang */
+        @media (min-width: 992px) {
+            .compare-products {
+                width: calc(4 * 215px);
+                /* 200px chiều rộng sản phẩm + 15px khoảng cách */
+            }
+        }
+    </style>
 @endsection
 
 @section('js')
@@ -118,9 +174,8 @@
                                                 <a href="#" class="btn-product-icon btn-quickview btn-expandable"
                                                     title="Quick view"><span>Xem nhanh</span></a>
                                                 <a href="#" class="btn-product-icon btn-compare btn-expandable"
-                                                    data-toggle="modal" data-target="#compareModal"
-                                                    title="Compare"><span>So sánh</span></a>
-
+                                                    data-toggle="modal" data-target="#compareModal" title="Compare"
+                                                    data-category-id="{{ $product->category_id }}"><span>So sánh</span></a>
                                             </div><!-- End .product-action-vertical -->
                                             <div class="product-body">
                                                 <h3 class="product-title"><a href="{{ route('detail', $product->slug) }}">
@@ -292,22 +347,24 @@
                     </aside>
                 </div>
             </div>
-            <!-- so sánh sản phẩm-->
+
+
+            <!--So sánh sản phẩm -->
             <div class="modal fade" id="compareModal" tabindex="-1" role="dialog" aria-labelledby="compareModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="compareModalLabel">So sánh sản phẩm</h5>
+                            <h5 class="modal-title" id="compareModalLabel">Chọn sản phẩm cần so sánh</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                        </div>
+                        </div><br>
                         <div class="modal-body">
                             <div class="compare-products">
-                                <!-- Product comparison list will be appended here -->
+                                <!-- Hiển thị sản phảm so sánh -->
                             </div>
-                        </div>
+                        </div><br>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                             <button type="button" class="btn btn-primary" id="compareButton">So sánh</button>
@@ -315,7 +372,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -396,33 +452,59 @@
     document.addEventListener('DOMContentLoaded', function() {
         let selectedProducts = [];
 
+        function numberFormat(number) {
+            return new Intl.NumberFormat('vi-VN').format(number);
+        }
+
         // Event listener for compare buttons
         document.querySelectorAll('.btn-compare').forEach(button => {
             button.addEventListener('click', function(event) {
                 event.preventDefault();
-                const productElement = button.closest('.product');
-                const productId = productElement.getAttribute('data-id');
-                const productName = productElement.querySelector('.product-title a').innerText;
+                const categoryId = button.getAttribute('data-category-id');
 
-                if (selectedProducts.length < 3 && !selectedProducts.includes(productId)) {
-                    selectedProducts.push(productId);
-                    addProductToCompareList(productId, productName);
-                } else if (selectedProducts.includes(productId)) {
-                    alert('Sản phẩm này đã được chọn.');
-                } else {
-                    alert('Bạn chỉ có thể chọn tối đa 3 sản phẩm để so sánh.');
-                }
+                fetch(`/get-products-same-category/${categoryId}`)
+                    .then(response => response.json())
+                    .then(products => {
+                        const compareList = document.querySelector('.compare-products');
+                        compareList.innerHTML = ''; // Clear existing products
+
+                        products.forEach(product => {
+                            const productItem = document.createElement('div');
+                            productItem.className = 'compare-product-item';
+                            productItem.setAttribute('data-id', product.id);
+                            productItem.innerHTML = `
+                            <img src="${product.feature_image_path}" alt="Product image" class="product-image">
+                            <p class="product-name">${product.name}</p>
+                            <p class="product-price">${numberFormat(product.price)} VNĐ</p>
+                        `;
+                            compareList.appendChild(productItem);
+
+                            // Add event listener to the product item
+                            productItem.addEventListener('click', function() {
+                                const productId = product.id;
+                                const productName = product.name;
+
+                                if (selectedProducts.includes(productId)) {
+                                    selectedProducts = selectedProducts
+                                        .filter(id => id !== productId);
+                                    productItem.classList.remove(
+                                        'selected');
+                                } else {
+                                    if (selectedProducts.length < 3) {
+                                        selectedProducts.push(productId);
+                                        productItem.classList.add(
+                                            'selected');
+                                    } else {
+                                        alert(
+                                            'Bạn chỉ có thể chọn tối đa 3 sản phẩm để so sánh.'
+                                            );
+                                    }
+                                }
+                            });
+                        });
+                    });
             });
         });
-
-        function addProductToCompareList(productId, productName) {
-            const compareList = document.querySelector('.compare-products');
-            const productItem = document.createElement('div');
-            productItem.className = 'compare-product-item';
-            productItem.setAttribute('data-id', productId);
-            productItem.innerText = productName;
-            compareList.appendChild(productItem);
-        }
 
         // Event listener for compare button in modal
         document.getElementById('compareButton').addEventListener('click', function() {

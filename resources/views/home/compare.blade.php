@@ -55,7 +55,9 @@
             margin-top: 10px;
             text-align: center;
         }
-        
+        img{
+            display: inline;
+        }
     </style>
 @endsection
 

@@ -41,10 +41,11 @@ Route::get('/about', [HomeAdminController::class, 'about']);
 Route::get('/lien_he', [HomeAdminController::class, 'lien_he']);
 Route::get('/yeu_thich', [HomeAdminController::class, 'yeu_thich']);
 Route::get('/product_all', [HomeAdminController::class, 'product_all'])->name('product_all');
+
+//so sanh san pham
 Route::get('/compare', [HomeAdminController::class, 'compare'])->name('compare');
-Route::get('/products/{categoryId}/same-category', [HomeAdminController::class, 'getProductsSameCategory']);
-
-
+// Route::get('/products/{categoryId}/same-category', [HomeAdminController::class, 'getProductsSameCategory']);
+Route::get('/get-products-same-category/{categoryId}', [HomeAdminController::class, 'getProductsSameCategory']);
 
 //login
 Route::get('/login-checkout', [CheckoutController::class, 'login_checkout']);
