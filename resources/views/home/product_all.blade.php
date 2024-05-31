@@ -35,7 +35,7 @@
             <div class="container">
                 <div class="row">
                     {{-- Hiển thị sản phẩm --}}
-                    <div class="col-lg-9" >
+                    <div class="col-lg-9">
                         <div class="toolbox" style="border: 1px solid #e5e5e5; padding: 10px 15px 10px;">
                             <div class="toolbox-left">
                                 <div class="toolbox-info">
@@ -104,14 +104,24 @@
                             <div class="row">
                                 @foreach ($products as $product)
                                     <div class="col-4">
-                                        <div class="product product-2">
+                                        <div class="product product-2" data-id="{{ $product->id }}">
                                             <figure class="product-media">
                                                 <a href="{{ route('detail', $product->slug) }}">
                                                     <img src="{{ config('app.base_url') . $product->feature_image_path }}"
                                                         alt="Product image" class="product-image">
                                                 </a>
                                             </figure><!-- End .product-media -->
+                                            <div class="product-action-vertical">
+                                                <a href="#"
+                                                    class="btn-product-icon btn-wishlist btn-expandable"><span>Thêm vào yêu
+                                                        thích</span></a>
+                                                <a href="#" class="btn-product-icon btn-quickview btn-expandable"
+                                                    title="Quick view"><span>Xem nhanh</span></a>
+                                                <a href="#" class="btn-product-icon btn-compare btn-expandable"
+                                                    data-toggle="modal" data-target="#compareModal"
+                                                    title="Compare"><span>So sánh</span></a>
 
+                                            </div><!-- End .product-action-vertical -->
                                             <div class="product-body">
                                                 <h3 class="product-title"><a href="{{ route('detail', $product->slug) }}">
                                                         {{ $product->name }}</a>
@@ -144,7 +154,8 @@
                     <aside class="col-lg-3 order-lg-first">
                         <div class="sidebar sidebar-shop">
                             <div class="widget widget-clean"><label>
-                                    <h5 style="font-size: 1.8rem;"><strong><i class="fa fa-filter"></i> BỘ LỌC TÌM KIẾM</strong></h5>
+                                    <h5 style="font-size: 1.8rem;"><strong><i class="fa fa-filter"></i> BỘ LỌC TÌM
+                                            KIẾM</strong></h5>
                                 </label></div><!-- End .widget widget-clean -->
                             <form id="filterForm" action="{{ url('/product_all') }}" method="get">
 
@@ -281,6 +292,30 @@
                     </aside>
                 </div>
             </div>
+            <!-- so sánh sản phẩm-->
+            <div class="modal fade" id="compareModal" tabindex="-1" role="dialog" aria-labelledby="compareModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="compareModalLabel">So sánh sản phẩm</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="compare-products">
+                                <!-- Product comparison list will be appended here -->
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                            <button type="button" class="btn btn-primary" id="compareButton">So sánh</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -356,36 +391,47 @@
     </script>
 @endsection
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-    .btn-filter-price {
-        width: 100%;
-        margin-top: 20px;
-    }
+{{-- So sánh sản phẩm --}}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let selectedProducts = [];
 
-    .input-filter-price {
-        width: 100px;
-        text-align: center;
-        font-size: 14px;
-    }
+        // Event listener for compare buttons
+        document.querySelectorAll('.btn-compare').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const productElement = button.closest('.product');
+                const productId = productElement.getAttribute('data-id');
+                const productName = productElement.querySelector('.product-title a').innerText;
 
-    .widget-body .filter-items {
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-    }
+                if (selectedProducts.length < 3 && !selectedProducts.includes(productId)) {
+                    selectedProducts.push(productId);
+                    addProductToCompareList(productId, productName);
+                } else if (selectedProducts.includes(productId)) {
+                    alert('Sản phẩm này đã được chọn.');
+                } else {
+                    alert('Bạn chỉ có thể chọn tối đa 3 sản phẩm để so sánh.');
+                }
+            });
+        });
 
-    .btn-filter-price {
-        display: block;
-        width: 100%;
-    }
-
-    .alert-filter-price {
-        font-size: 14px;
-    }
-
-    @media (max-width: 576px) {
-        .input-filter-price {
-            width: 80px;
+        function addProductToCompareList(productId, productName) {
+            const compareList = document.querySelector('.compare-products');
+            const productItem = document.createElement('div');
+            productItem.className = 'compare-product-item';
+            productItem.setAttribute('data-id', productId);
+            productItem.innerText = productName;
+            compareList.appendChild(productItem);
         }
-    }
-</style>
+
+        // Event listener for compare button in modal
+        document.getElementById('compareButton').addEventListener('click', function() {
+            if (selectedProducts.length > 1) {
+                // Redirect to compare page or make an AJAX request to get the comparison data
+                window.location.href = `/compare?products=${selectedProducts.join(',')}`;
+            } else {
+                alert('Bạn cần chọn ít nhất 2 sản phẩm để so sánh.');
+            }
+        });
+    });
+</script>

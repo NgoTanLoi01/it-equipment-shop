@@ -72,7 +72,7 @@
             <h2 style="text-align: center">XÁC NHẬN ĐƠN HÀNG <br> -------oOo-------</h2>
 
             <h2><i>{{ !empty($order) ? $order->first()->customer_name : 'Khách hàng' }} thân mến,</i></h2>
-            <p>Đơn hàng <span style="color: #ff8401">#{{ $order_id }}</span> của bạn đang <strong
+            <p>Đơn hàng <span style="color: #ff8401">#{{ $order_id }}</span> của bạn hiện ở trạng thái <strong
                     style="color: #ff8401">{{ isset($delivery_status) ? $delivery_status : 'đang được xử lý' }}</strong>
             </p>
             <div style="box-sizing:border-box;width:100%;max-width:600px;border-top:1px solid #e0e0e0"></div>

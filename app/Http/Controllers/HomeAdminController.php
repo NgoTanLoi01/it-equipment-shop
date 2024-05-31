@@ -14,6 +14,19 @@ use Illuminate\Support\Facades\DB;
 
 class HomeAdminController extends Controller
 {
+    public function compare(Request $request)
+    {
+        $productIds = explode(',', $request->input('products'));
+        $products = Product::whereIn('id', $productIds)->get();
+        return view('home.compare', compact('products'));
+    }
+
+    public function getProductsSameCategory($categoryId)
+    {
+        $products = Product::where('category_id', $categoryId)->get();
+        return response()->json($products);
+    }
+
     public function detail($slug)
     {
         $product = Product::where('slug', $slug)->with('reviews')->firstOrFail();

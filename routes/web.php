@@ -28,7 +28,7 @@ Route::get('/category/{slug}/{id}', [
     'uses' => 'App\Http\Controllers\CategoryAdminController@index'
 ]);
 Route::post('/tim_kiem', [HomeAdminController::class, 'search'])->name('tim_kiem.search');
-Route::get('/product_all', [HomeAdminController::class, 'product_all'])->name('product_all');
+
 
 //chi tiet & review san pham
 Route::get('/detail/{slug}', [HomeAdminController::class, 'detail'])->name('detail');
@@ -40,6 +40,11 @@ Route::get('/blog', [HomeAdminController::class, 'blog']);
 Route::get('/about', [HomeAdminController::class, 'about']);
 Route::get('/lien_he', [HomeAdminController::class, 'lien_he']);
 Route::get('/yeu_thich', [HomeAdminController::class, 'yeu_thich']);
+Route::get('/product_all', [HomeAdminController::class, 'product_all'])->name('product_all');
+Route::get('/compare', [HomeAdminController::class, 'compare'])->name('compare');
+Route::get('/products/{categoryId}/same-category', [HomeAdminController::class, 'getProductsSameCategory']);
+
+
 
 //login
 Route::get('/login-checkout', [CheckoutController::class, 'login_checkout']);
