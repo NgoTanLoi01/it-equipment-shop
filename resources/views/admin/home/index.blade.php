@@ -445,7 +445,6 @@
                         </div>
                     </div>
                 </div>
-
                 <script>
                     document.addEventListener('DOMContentLoaded', function() {
                         var options = {
@@ -490,9 +489,9 @@
                                 opacity: [0, 1],
                             },
                             labels: [
-                                "Tháng 1",  "Tháng 2",  "Tháng 3",  "Tháng 4",  "Tháng 5", 
-                                "Tháng 6",  "Tháng 7",  "Tháng 8",  "Tháng 9",  "Tháng 10", 
-                                "Tháng 11",  "Tháng 12"
+                                "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5",
+                                "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10",
+                                "Tháng 11", "Tháng 12"
                             ],
                             markers: {
                                 size: [3, 0],
@@ -549,30 +548,6 @@
                         chart.render();
                     });
                 </script>
-
-
-                {{-- <div class="col-xxl-12 col-xl-4 col-lg-7 col-sm-12">
-                    <div class="card">
-                        <div class="card-header card-no-border pb-0">
-                            <div class="header-top">
-                                <h4>Doanh Số Bán Hàng</h4>
-                                <div class="dropdown icon-dropdown">
-                                    <button class="btn dropdown-toggle" id="userdropdown6" type="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false"><img
-                                            src="{{ asset('adminmofi/assets/images/icon/more.png') }}" width="16px"
-                                            alt=""></button>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown6"><a
-                                            class="dropdown-item" href="#">Weekly</a><a class="dropdown-item"
-                                            href="#">Monthly</a><a class="dropdown-item" href="#">Yearly</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body pt-0">
-                            <div id="salse-overview"></div>
-                        </div>
-                    </div>
-                </div> --}}
                 {{-- Thong ke so san pham theo danh muc --}}
                 <div class="col-xl-6 col-lg-5 col-sm-6">
                     <div class="card">
@@ -592,11 +567,59 @@
                             </div>
                         </div>
                         <div class="card-body revenue-category">
-                            <div id="pie-chart"></div>
+                            <div id="pie-chart" style="height: 250px;"></div>
                             <div class="donut-legend" id="legend"></div>
                         </div>
                     </div>
                 </div>
+                <script>
+                    //  ========  Morris chart  ========
+                    $(document).ready(function() {
+                        var color_array = [
+                            MofiAdminConfig.primary,
+                            MofiAdminConfig.secondary,
+                            "#C95E9E",
+                            "#D77748",
+                            "#7E6F6A",
+                            "#36AFB2",
+                            "#9c6db2",
+                            "#d24a67",
+                            "#89a958",
+                            "#00739a",
+                            "#BDBDBD",
+                        ];
+
+                        var data = @json($productsSoldPerCategory);
+                        console.log(data); // Kiểm tra dữ liệu
+
+                        var formattedData = data.map(function(item) {
+                            return {
+                                label: item.category,
+                                value: item.total_sold
+                            };
+                        });
+                        console.log(formattedData); // Kiểm tra dữ liệu đã định dạng
+
+                        var browsersChart = Morris.Donut({
+                            element: "pie-chart",
+                            data: formattedData,
+                            colors: color_array,
+                        });
+
+                        browsersChart.options.data.forEach(function(label, i) {
+                            var legendItem = $("<span></span>")
+                                .text(label["label"])
+                                .prepend("<i>&nbsp;</i>");
+                            legendItem
+                                .find("i")
+                                .css("backgroundColor", browsersChart.options.colors[i]);
+                            $("#legend").append(legendItem);
+                        });
+                    });
+                    // ===================
+                </script>
+
+
                 {{-- Thong ke khach hang than thiet --}}
                 <div class="col-xl-6 col-lg-5 col-sm-6">
                     <div class="card">
@@ -812,3 +835,9 @@
     </div>
 @endsection
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<!-- Morris.js and jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">

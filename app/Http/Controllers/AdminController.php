@@ -76,8 +76,11 @@ class AdminController extends Controller
         $donHangGanDay = $this->getDonHangGanDay();
 
         // Lấy dữ liệu theo tháng
-        $monthlyData = Order::selectRaw('MONTH(created_at) as month, SUM(order_total) as totalRevenue, COUNT(order_id) as productCount')
-            ->whereYear('created_at', date('Y'))
+        $monthlyData = DB::table('order')
+            ->join('order_details', 'order.order_id', '=', 'order_details.order_id')
+            ->whereYear('order.created_at', date('Y'))
+            ->whereNull('order.deleted_at')
+            ->selectRaw('MONTH(order.created_at) as month, SUM(order_details.product_sales_quantity) as productCount, SUM(order_details.product_price * order_details.product_sales_quantity) as totalRevenue')
             ->groupBy('month')
             ->get()
             ->keyBy('month')
@@ -86,9 +89,21 @@ class AdminController extends Controller
         $revenueData = [];
         $productData = [];
         for ($i = 1; $i <= 12; $i++) {
-            $revenueData[] = isset($monthlyData[$i]) ? $monthlyData[$i]['totalRevenue'] / 1000000 : 0; // Chuyển đổi sang triệu đồng
-            $productData[] = isset($monthlyData[$i]) ? $monthlyData[$i]['productCount'] : 0;
+            $revenueData[] = isset($monthlyData[$i]) ? $monthlyData[$i]->totalRevenue / 1000000 : 0; // Chuyển đổi sang triệu đồng
+            $productData[] = isset($monthlyData[$i]) ? $monthlyData[$i]->productCount : 0;
         }
+
+        // Lấy số lượng sản phẩm bán được theo danh mục
+        $productsSoldPerCategory = DB::table('order_details')
+            ->join('products', 'order_details.product_id', '=', 'products.id')
+            ->join('categories', 'products.category_id', '=', 'categories.id')
+            ->select(
+                'categories.name as category',
+                DB::raw('SUM(order_details.product_sales_quantity) as total_sold')
+            )
+            ->groupBy('categories.name')
+            ->get();
+
         return view('admin.home.index', compact(
             'productCount',
             'orderCount',
@@ -106,9 +121,11 @@ class AdminController extends Controller
             'bestSellingProducts',
             'bestSellingProduct',
             'revenueData',
-            'productData'
+            'productData',
+            'productsSoldPerCategory'
         ));
     }
+
 
     public function getDonHangGanDay()
     {
@@ -132,13 +149,5 @@ class AdminController extends Controller
             ->get();
 
         return $bestSellingProducts;
-    }
-
-    public function postloginAdmin(Request $request)
-    {
-    }
-
-    public function showDashboard()
-    {
     }
 }

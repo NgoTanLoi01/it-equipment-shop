@@ -44,7 +44,6 @@ Route::get('/product_all', [HomeAdminController::class, 'product_all'])->name('p
 
 //so sanh san pham
 Route::get('/compare', [HomeAdminController::class, 'compare'])->name('compare');
-// Route::get('/products/{categoryId}/same-category', [HomeAdminController::class, 'getProductsSameCategory']);
 Route::get('/get-products-same-category/{categoryId}', [HomeAdminController::class, 'getProductsSameCategory']);
 
 //login
@@ -93,7 +92,6 @@ Route::post('/momo_payment', [CheckoutController::class, 'momo_payment']);
 
 //xu ly admin
 Route::prefix('admin')->group(function () {
-
     //Home
     Route::prefix('home')->group(function () {
         Route::get('/', [
@@ -163,7 +161,6 @@ Route::prefix('admin')->group(function () {
             'middleware' => 'can:menu-delete'
         ]);
     });
-
     //product
     Route::prefix('product')->group(function () {
         Route::get('/', [
@@ -195,7 +192,6 @@ Route::prefix('admin')->group(function () {
             'middleware' => 'can:product-delete'
         ]);
     });
-
     //slider
     Route::prefix('slider')->group(function () {
         Route::get('/', [
@@ -227,7 +223,6 @@ Route::prefix('admin')->group(function () {
             'middleware' => 'can:slider-delete'
         ]);
     });
-
     //setting
     Route::prefix('settings')->group(function () {
         Route::get('/', [
@@ -259,7 +254,6 @@ Route::prefix('admin')->group(function () {
             'middleware' => 'can:slider-delete'
         ]);
     });
-
     //user
     Route::prefix('users')->group(function () {
         Route::get('/', [
@@ -291,7 +285,6 @@ Route::prefix('admin')->group(function () {
             'middleware' => 'can:user-delete'
         ]);
     });
-
     //customer
     Route::prefix('customers')->group(function () {
         Route::get('/', [
@@ -334,7 +327,6 @@ Route::prefix('admin')->group(function () {
             'middleware' => 'can:role-delete'
         ]);
     });
-
     //permissions
     Route::prefix('permissions')->group(function () {
         Route::get('/create', [

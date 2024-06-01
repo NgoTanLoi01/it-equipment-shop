@@ -384,43 +384,43 @@
     admissionRatio.render();
 
     //  ========  Morris chart  ========
-    $(document).ready(function () {
-        var color_array = [
-            MofiAdminConfig.primary,
-            MofiAdminConfig.secondary,
-            "#C95E9E",
-            "#D77748",
-            "#7E6F6A",
-            "#36AFB2",
-            "#9c6db2",
-            "#d24a67",
-            "#89a958",
-            "#00739a",
-            "#BDBDBD",
-        ];
-        var browsersChart = Morris.Donut({
-            element: "pie-chart",
-            data: [
-                { label: "Laptop", value: 8 },
-                { label: "Đồng hồ", value: 5 },
-                { label: "Máy ảnh", value: 4 },
-                { label: "Tai nghe", value: 3 },
-                { label: "Loa", value: 3 },
-                { label: "Chuột", value: 4 },
-                { label: "Phụ kiện", value: 7 },
-            ],
-            colors: color_array,
-        });
-        browsersChart.options.data.forEach(function (label, i) {
-            var legendItem = $("<span></span>")
-                .text(label["label"])
-                .prepend("<i>&nbsp;</i>");
-            legendItem
-                .find("i")
-                .css("backgroundColor", browsersChart.options.colors[i]);
-            $("#legend").append(legendItem);
-        });
-    });
+    // $(document).ready(function () {
+    //     var color_array = [
+    //         MofiAdminConfig.primary,
+    //         MofiAdminConfig.secondary,
+    //         "#C95E9E",
+    //         "#D77748",
+    //         "#7E6F6A",
+    //         "#36AFB2",
+    //         "#9c6db2",
+    //         "#d24a67",
+    //         "#89a958",
+    //         "#00739a",
+    //         "#BDBDBD",
+    //     ];
+
+    //     var data = @json($productsSoldPerCategory);
+
+    //     var formattedData = data.map(function(item) {
+    //         return { label: item.category, value: item.total_sold };
+    //     });
+
+    //     var browsersChart = Morris.Donut({
+    //         element: "pie-chart",
+    //         data: formattedData,
+    //         colors: color_array,
+    //     });
+
+    //     browsersChart.options.data.forEach(function (label, i) {
+    //         var legendItem = $("<span></span>")
+    //             .text(label["label"])
+    //             .prepend("<i>&nbsp;</i>");
+    //         legendItem
+    //             .find("i")
+    //             .css("backgroundColor", browsersChart.options.colors[i]);
+    //         $("#legend").append(legendItem);
+    //     });
+    // });
     // ===================
 
     const Option = {

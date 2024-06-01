@@ -118,7 +118,7 @@
 
                             <!-- Mô tả -->
                             <tr>
-                                <th style="color:black;">Mô tả</th>
+                                <th style="color:black;">Mô tả / <br>Thông số</th>
                                 @foreach ($products as $product)
                                     <td style="vertical-align:unset; color:black;">
                                         <div style="text-align:justify; ">
