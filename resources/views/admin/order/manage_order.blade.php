@@ -10,8 +10,11 @@
     <link rel="stylesheet" href="{{ asset('adminPublic/product/index/view.css') }}">
     <style>
         .cancelled-order {
-            opacity: 0.5;
+            opacity: 1;
+        }
+        .cancelled-order .disabled-action {
             pointer-events: none;
+            opacity: 0.5;
         }
     </style>
 @endsection
@@ -27,8 +30,7 @@
                         </div>
                         <div class="card-body">
                             <div class="list-product">
-                                <div
-                                    class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
+                                <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
                                     <div class="datatable-top">
                                         <div class="datatable">
                                             <label>
@@ -67,25 +69,23 @@
                                                         </td>
                                                         <td>{{ $order->order_status }}</td>
                                                         <td>
-                                                            <form
-                                                                action="{{ url('/update-order-status/' . $order->order_id) }}"
-                                                                method="POST">
+                                                            <form action="{{ url('/update-order-status/' . $order->order_id) }}" method="POST">
                                                                 @csrf
-                                                                <select name="delivery_status" {{ $order->delivery_status == 'Đã hủy' ? 'disabled' : '' }}>
-                                                                    <option value="Chờ xác nhận"
-                                                                        {{ $order->delivery_status == 'Chờ xác nhận' ? 'selected' : '' }}>
-                                                                        Chờ xác nhận</option>
-                                                                    <option value="Đang giao"
-                                                                        {{ $order->delivery_status == 'Đang giao' ? 'selected' : '' }}>
-                                                                        Đang giao</option>
-                                                                    <option value="Đã giao"
-                                                                        {{ $order->delivery_status == 'Đã giao' ? 'selected' : '' }}>
-                                                                        Đã giao</option>
-                                                                    <option value="Đã hủy"
-                                                                        {{ $order->delivery_status == 'Đã hủy' ? 'selected' : '' }}>
-                                                                        Đã hủy</option>
+                                                                <select name="delivery_status" class="{{ $order->delivery_status == 'Đã hủy' ? 'disabled-action' : '' }}" {{ $order->delivery_status == 'Đã hủy' ? 'disabled' : '' }}>
+                                                                    <option value="Chờ xác nhận" {{ $order->delivery_status == 'Chờ xác nhận' ? 'selected' : '' }}>
+                                                                        Chờ xác nhận
+                                                                    </option>
+                                                                    <option value="Đang giao" {{ $order->delivery_status == 'Đang giao' ? 'selected' : '' }}>
+                                                                        Đang giao
+                                                                    </option>
+                                                                    <option value="Đã giao" {{ $order->delivery_status == 'Đã giao' ? 'selected' : '' }}>
+                                                                        Đã giao
+                                                                    </option>
+                                                                    <option value="Đã hủy" {{ $order->delivery_status == 'Đã hủy' ? 'selected' : '' }}>
+                                                                        Đã hủy
+                                                                    </option>
                                                                 </select>
-                                                                <button type="submit" class="btn btn-sm btn-primary" {{ $order->delivery_status == 'Đã hủy' ? 'disabled' : '' }}>
+                                                                <button type="submit" class="btn btn-sm btn-primary disabled-action" {{ $order->delivery_status == 'Đã hủy' ? 'disabled' : '' }}>
                                                                     <img src="{{ asset('AdminMofi/assets/images/icon/save.png') }}" width="16px" alt=""><strong>Lưu</strong>
                                                                 </button>
                                                             </form>

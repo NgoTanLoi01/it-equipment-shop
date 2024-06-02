@@ -341,7 +341,6 @@ class CheckoutController extends Controller
         return Redirect::to('/checkout');
     }
 
-
     public function checkout()
     {
         $customer_id = Session::get('customer_id');

@@ -5,6 +5,46 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('home/home.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .login-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 50px;
+        }
+
+        .login-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 400px;
+            padding: 8px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: black;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .login-btn img {
+            margin-right: 30px;
+        }
+
+        .google-btn .facebook-btn {
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+
+        .google-btn:hover .facebook-btn:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
 @endsection
 
 @section('js')
@@ -64,12 +104,18 @@
                                     </div>
                                 </form>
                                 {{-- end form --}}
-                                <ul>
-                                    <li><a href="{{ route('login-by-google') }}"><img width="60px"
-                                                alt="Đăng nhập với tài khoản Google"
-                                                src="{{ asset('UserLTE/assets/images/icons/google_icon.png') }}">Đăng nhập với Google</a></li>
-                                    <li><a href=""><img src="" alt=""></a></li>
-                                </ul>
+                                <div class="login-buttons">
+                                    <a href="{{ route('login-by-google') }}" class="login-btn google-btn">
+                                        <img src="{{ asset('UserLTE/assets/images/icons/google_icon.png') }}"
+                                            alt="Google Icon" width="30px">
+                                        Đăng nhập với Google
+                                    </a>
+                                    <a href="#" class="login-btn facebook-btn">
+                                        <img src="{{ asset('UserLTE/assets/images/icons/facebook_icon.png') }}"
+                                            alt="Facebook Icon" width="22px">
+                                        Đăng nhập với Facebook 
+                                    </a>
+                                </div>
                             </div><!-- .End .tab-pane -->
                             {{-- Đăng ký --}}
                             <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">

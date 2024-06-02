@@ -68,7 +68,7 @@ Route::get('/checkout', [CheckoutController::class, 'checkout']);
 Route::get('/payment', [CheckoutController::class, 'payment']);
 Route::post('/save-checkout-customer', [CheckoutController::class, 'save_checkout_customer']);
 
-//đơn hàng
+//xu ly don hang
 Route::get('/manage-order', [CheckoutController::class, 'manage_order']);
 Route::get('/view-order/{orderId}', [CheckoutController::class, 'view_order']);
 Route::get('/delete-order/{orderId}', [CheckoutController::class, 'delete_order']);
