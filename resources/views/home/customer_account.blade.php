@@ -10,7 +10,6 @@
 @endsection
 
 <style>
-    
     .table {
         width: 100%;
         border-collapse: collapse;
@@ -20,8 +19,8 @@
 
     .table th,
     .table td {
-        border: 1px solid rgba(249, 140, 140, 0.8); !important
-        vertical-align: middle;
+        border: 1px solid rgba(249, 140, 140, 0.8);
+        !important vertical-align: middle;
         /* Ensures text is centered vertically */
     }
 
@@ -79,8 +78,7 @@
 
 @section('content')
     <main class="main">
-        <div class="page-header text-center"
-            style="background-image: url('{{ asset('UserLTE/assets/images/oso.png') }}')">
+        <div class="page-header text-center" style="background-image: url('{{ asset('UserLTE/assets/images/oso.png') }}')">
             <div class="container">
                 <h1 class="page-title"><strong>Tài khoản</strong></h1>
                 <nav aria-label="breadcrumb">
@@ -194,6 +192,11 @@
                                                             <td style="text-align: center; font-size: 24px">
                                                                 <a href="{{ route('ordered.info', $order->order_id) }}"><i
                                                                         class="bi bi-eye"></i></a>
+                                                                @if ($order->delivery_status == 'Chờ xác nhận')
+                                                                    <a href="#" class="cancel-order"
+                                                                        data-order-id="{{ $order->order_id }}"><i
+                                                                            class="bi bi-trash3"></i></a>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -203,7 +206,7 @@
                                                 {{ $orders->links('pagination::bootstrap-4') }}
                                             </div>
                                         </div>
-
+                                        
                                         {{-- Chờ xác nhận --}}
                                         <div class="tab-pane fade order-tab-content" id="pending-orders" role="tabpanel"
                                             aria-labelledby="pending-orders-tab">
@@ -232,9 +235,12 @@
                                                             <td>{{ $order->delivery_status }}</td>
                                                             <td>{{ number_format(floatval($order->order_total)) }} VNĐ</td>
                                                             <td style="text-align: center; font-size: 24px">
-                                                                <a href="{{ route('ordered.info', $order->order_id) }}"><i class="bi bi-eye"></i></a>
-                                                                <a href="#" class="cancel-order" data-order-id="{{ $order->order_id }}"><i class="bi bi-trash3"></i></a>
-                                                            </td>                                                            
+                                                                <a href="{{ route('ordered.info', $order->order_id) }}"><i
+                                                                        class="bi bi-eye"></i></a>
+                                                                <a href="#" class="cancel-order"
+                                                                    data-order-id="{{ $order->order_id }}"><i
+                                                                        class="bi bi-trash3"></i></a>
+                                                            </td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
@@ -273,7 +279,7 @@
                                                             <td>{{ number_format(floatval($order->order_total)) }} VNĐ</td>
                                                             <td style="text-align: center; font-size: 24px">
                                                                 <a href="{{ route('ordered.info', $order->order_id) }}"><i
-                                                                    class="bi bi-eye"></i></a>
+                                                                        class="bi bi-eye"></i></a>
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -313,7 +319,7 @@
                                                             <td>{{ number_format(floatval($order->order_total)) }} VNĐ</td>
                                                             <td style="text-align: center; font-size: 24px">
                                                                 <a href="{{ route('ordered.info', $order->order_id) }}"><i
-                                                                    class="bi bi-eye"></i></a>
+                                                                        class="bi bi-eye"></i></a>
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -352,7 +358,7 @@
                                                             <td>{{ number_format(floatval($order->order_total)) }} VNĐ</td>
                                                             <td style="text-align: center; font-size: 24px">
                                                                 <a href="{{ route('ordered.info', $order->order_id) }}"><i
-                                                                    class="bi bi-eye"></i></a>
+                                                                        class="bi bi-eye"></i></a>
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -456,9 +462,9 @@
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        document.querySelectorAll('.cancel-order').forEach(function (element) {
-            element.addEventListener('click', function (event) {
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.cancel-order').forEach(function(element) {
+            element.addEventListener('click', function(event) {
                 event.preventDefault();
                 const orderId = this.getAttribute('data-order-id');
 
@@ -473,37 +479,39 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         fetch(`/orders/cancel/${orderId}`, {
-                            method: 'GET',
-                            headers: {
-                                'X-Requested-With': 'XMLHttpRequest',
-                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                            }
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.success) {
-                                Swal.fire({
-                                    title: 'Đã hủy!',
-                                    text: 'Đơn hàng của bạn đã hủy!.',
-                                    icon: 'success'
-                                }).then(() => {
-                                    window.location.reload();
-                                });
-                            } else {
+                                method: 'GET',
+                                headers: {
+                                    'X-Requested-With': 'XMLHttpRequest',
+                                    'X-CSRF-TOKEN': document.querySelector(
+                                        'meta[name="csrf-token"]').getAttribute(
+                                        'content')
+                                }
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    Swal.fire({
+                                        title: 'Đã hủy!',
+                                        text: 'Đơn hàng của bạn đã hủy!.',
+                                        icon: 'success'
+                                    }).then(() => {
+                                        window.location.reload();
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        text: 'There was an error cancelling your order.',
+                                        icon: 'error'
+                                    });
+                                }
+                            })
+                            .catch(error => {
                                 Swal.fire({
                                     title: 'Error!',
                                     text: 'There was an error cancelling your order.',
                                     icon: 'error'
                                 });
-                            }
-                        })
-                        .catch(error => {
-                            Swal.fire({
-                                title: 'Error!',
-                                text: 'There was an error cancelling your order.',
-                                icon: 'error'
                             });
-                        });
                     }
                 });
             });

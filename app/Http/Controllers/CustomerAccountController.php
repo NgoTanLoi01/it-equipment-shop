@@ -72,6 +72,7 @@ class CustomerAccountController extends Controller
         return response()->json(['success' => false]);
     }
 
+    //Cập nhật lại số lượng sản phẩm khi khách hàng hủy đơn hàng
     public function restoreProductQuantities($order_id)
     {
         $orderDetails = DB::table('order_details')->where('order_id', $order_id)->get();
