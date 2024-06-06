@@ -256,11 +256,9 @@
 
                       </div>
                       <ul class="profile-dropdown onhover-show-div">
-                          <li><a href="letter-box.html"><i data-feather="mail"></i><span>Inbox</span></a></li>
-                          <li><a href="task.html"><i data-feather="file-text"></i><span>Taskboard</span></a></li>
-                          <li><a href="edit-profile.html"><i data-feather="settings"></i><span>Settings</span></a>
-                          </li>
                           <li><a href="{{ route('login') }}"><i data-feather="log-in"> </i><span>Đăng nhập</span></a>
+                          </li>
+                          <li><a href="{{ route('logout') }}"><i data-feather="log-out"></i><span>Thoát</span></a>
                           </li>
                   </li>
               </ul>

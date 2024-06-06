@@ -8,9 +8,10 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('home/home.css') }}">
     <style>
-        .modal-content{
+        .modal-content {
             width: 862px;
         }
+
         .compare-products {
             display: flex;
             flex-wrap: wrap;
@@ -52,7 +53,8 @@
             font-size: 14px;
             color: #d9534f;
             text-align: center;
-            display: block; !important
+            display: block;
+            !important
         }
 
         /* Đảm bảo khung chứa sản phẩm to hơn và hiển thị được 4 sản phẩm ngang */
@@ -276,18 +278,18 @@
                                             <div class="filter-items">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <input class="input-filter-price form-control form-control-sm min"
-                                                        type="number" min="0" maxlength="13" placeholder="đ từ"
+                                                        type="text" min="0" maxlength="13" placeholder="đ từ" style="margin-bottom: 0rem"
                                                         value="{{ request('min_price') }}"
                                                         onkeypress="return /[0-9]/i.test(event.key)">
-                                                    <span class="mx-4">-</span>
+                                                    <span class="mx-3"><i class="fa fa-minus"></i></span>
                                                     <input class="input-filter-price form-control form-control-sm max"
-                                                        type="number" min="0" maxlength="13" placeholder="đ đến"
+                                                        type="text" min="0" maxlength="13" placeholder="đ đến" style="margin-bottom: 0rem"
                                                         value="{{ request('max_price') }}"
                                                         onkeypress="return /[0-9]/i.test(event.key)">
                                                 </div>
                                                 <div class="alert-filter-price text-primary mt-2 d-none">Vui lòng điền
                                                     khoảng giá phù hợp</div>
-                                                <button type="button"
+                                                <button type="button" style="width: 100%"
                                                     class="btn-filter-price btn btn-primary btn-sm mt-2">Áp Dụng</button>
                                             </div>
                                         </div><!-- End .widget-body -->
@@ -497,7 +499,7 @@
                                     } else {
                                         alert(
                                             'Bạn chỉ có thể chọn tối đa 3 sản phẩm để so sánh.'
-                                            );
+                                        );
                                     }
                                 }
                             });

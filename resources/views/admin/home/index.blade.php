@@ -343,86 +343,6 @@
                         </div>
                     </div>
                 </div>
-                {{-- Thong ke don hang gan day --}}
-                <div class="col-xxl-12 col-xl-8 col-sm-12">
-                    <div class="card">
-                        <div class="card-header card-no-border pb-0">
-                            <div class="header-top">
-                                <h4>Đơn Hàng Gần Đây</h4>
-                                <div class="dropdown icon-dropdown">
-                                    <button class="btn dropdown-toggle" id="userdropdown5" type="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false"><img
-                                            src="{{ asset('adminmofi/assets/images/icon/more.png') }}" width="16px"
-                                            alt=""></button>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown5"><a
-                                            class="dropdown-item" href="#">Weekly</a><a class="dropdown-item"
-                                            href="#">Monthly</a><a class="dropdown-item" href="#">Yearly</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body pt-0 recent-orders px-0">
-                            <div class="table-responsive theme-scrollbar">
-                                <table class="table display" id="recent-orders" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="">
-                                                    <label class="form-check-label"></label>
-                                                </div>
-                                            </th>
-                                            <th>Tên khách hàng</th>
-                                            <th>Ngày đặt</th>
-                                            <th>QTY</th>
-                                            <th>Customer</th>
-                                            <th style="text-align: center">Giá</th>
-                                            <th>Thông tin thanh toán</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($donHangGanDay as $donHang)
-                                            <tr>
-                                                <td>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="">
-                                                        <label class="form-check-label"></label>
-                                                    </div>
-                                                </td>
-                                                <td>{{ $donHang->customer->customer_name }}</td>
-                                                <td>{{ $donHang->created_at }}</td>
-                                                <td>QTY: 1</td> <!-- Đổi thành số lượng thực tế của đơn hàng -->
-                                                <td class="customer-img">
-                                                    <div class="d-flex align-items-center gap-2">
-                                                        <div class="flex-shrink-0"><img
-                                                                src="{{ asset('adminmofi/assets/images/dashboard-3/user/6.png') }}"
-                                                                alt=""></div>
-                                                        <div class="flex-grow-1">
-                                                            <h6>{{ $donHang->customer->customer_name }}</h6>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <p>{{ number_format($donHang->order_total) }}VNĐ</p>
-                                                </td>
-                                                <td>
-                                                    <div class="status-box">
-                                                        <div class="btn background-light-success font-success f-w-500">
-                                                            <a
-                                                                href="{{ URL::to('/view-order/' . $donHang->order_id) }}">{{ $donHang->order_status }}</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-
-                                    </tbody>
-                                </table>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 {{-- Thong ke doanh so ban hang theo bieu do --}}
                 <div class="col-xxl-12 col-xl-12 box-col-12 proorder-xl-8 proorder-md-9">
                     <div class="card">
@@ -548,6 +468,86 @@
                         chart.render();
                     });
                 </script>
+                {{-- Thong ke don hang gan day --}}
+                <div class="col-xxl-12 col-xl-8 col-sm-12">
+                    <div class="card">
+                        <div class="card-header card-no-border pb-0">
+                            <div class="header-top">
+                                <h4>Đơn Hàng Gần Đây</h4>
+                                <div class="dropdown icon-dropdown">
+                                    <button class="btn dropdown-toggle" id="userdropdown5" type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false"><img
+                                            src="{{ asset('adminmofi/assets/images/icon/more.png') }}" width="16px"
+                                            alt=""></button>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown5"><a
+                                            class="dropdown-item" href="#">Weekly</a><a class="dropdown-item"
+                                            href="#">Monthly</a><a class="dropdown-item" href="#">Yearly</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body pt-0 recent-orders px-0">
+                            <div class="table-responsive theme-scrollbar">
+                                <table class="table display" id="recent-orders" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="">
+                                                    <label class="form-check-label"></label>
+                                                </div>
+                                            </th>
+                                            <th>Tên khách hàng</th>
+                                            <th>Ngày đặt</th>
+                                            <th>QTY</th>
+                                            <th>Customer</th>
+                                            <th style="text-align: center">Giá</th>
+                                            <th>Thông tin thanh toán</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($donHangGanDay as $donHang)
+                                            <tr>
+                                                <td>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="">
+                                                        <label class="form-check-label"></label>
+                                                    </div>
+                                                </td>
+                                                <td>{{ $donHang->customer->customer_name }}</td>
+                                                <td>{{ $donHang->created_at }}</td>
+                                                <td>QTY: 1</td> <!-- Đổi thành số lượng thực tế của đơn hàng -->
+                                                <td class="customer-img">
+                                                    <div class="d-flex align-items-center gap-2">
+                                                        <div class="flex-shrink-0"><img
+                                                                src="{{ asset('adminmofi/assets/images/dashboard-3/user/6.png') }}"
+                                                                alt=""></div>
+                                                        <div class="flex-grow-1">
+                                                            <h6>{{ $donHang->customer->customer_name }}</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p>{{ number_format($donHang->order_total) }}VNĐ</p>
+                                                </td>
+                                                <td>
+                                                    <div class="status-box">
+                                                        <div class="btn background-light-success font-success f-w-500">
+                                                            <a
+                                                                href="{{ URL::to('/view-order/' . $donHang->order_id) }}">{{ $donHang->order_status }}</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 {{-- Thong ke so san pham theo danh muc --}}
                 <div class="col-xl-6 col-lg-5 col-sm-6">
                     <div class="card">
@@ -618,7 +618,6 @@
                     });
                     // ===================
                 </script>
-
 
                 {{-- Thong ke khach hang than thiet --}}
                 <div class="col-xl-6 col-lg-5 col-sm-6">

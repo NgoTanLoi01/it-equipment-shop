@@ -157,7 +157,7 @@ class HomeAdminController extends Controller
         }
 
         // Truy vấn sản phẩm theo các điều kiện lọc và phân trang
-        $products = $query->latest()->paginate(12);
+        $products = $query->latest()->paginate(15);
         $tags = Tag::all();
 
         // Trả về view với biến $products, $tags và $categories
