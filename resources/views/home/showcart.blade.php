@@ -29,6 +29,11 @@
         <div class="page-content">
             <div class="cart">
                 <div class="container">
+                    @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                     <div class="row">
                         <div class="col-lg-9">
                             <?php
@@ -68,21 +73,21 @@
                                                 <div class="cart-product-quantity">
                                                     <form action="{{ URL::to('/update-cart-quantity') }}" method="GET">
                                                         {{ csrf_field() }}
-
+                                            
                                                         <input class="form-control" type="number" name="cart_quantity"
                                                             value="{{ $v_content->qty }}" required autocomplete="off"
                                                             style="padding: 2px 6px; font-size: 10px;" min="1"
-                                                            max="{{ $v_content->qty }}">
+                                                            max="{{ $v_content->options->quantity }}"> <!-- Sử dụng quantity từ tùy chọn -->
                                                         <input type="hidden" value="{{ $v_content->rowId }}"
                                                             name="rowId_cart" class="form-control"
                                                             style="padding: 2px 6px; font-size: 10px;">
                                                         <br>
                                                         <input type="submit" value="Cập nhật" name="update_qty"
                                                             class="form-control" style="padding: 2px 6px; font-size: 10px;">
-
                                                     </form>
-                                                </div><!-- End .cart-product-quantity -->
+                                                </div>
                                             </td>
+                                            
                                             <td class="total-col">{{ number_format($v_content->price * $v_content->qty) }}
                                                 VNĐ</td>
                                             {{-- delete cart --}}
