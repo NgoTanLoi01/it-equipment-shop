@@ -1,15 +1,5 @@
 <footer class="footer" style="background-image: url('http://127.0.0.1:8000/UserLTE/assets/images/about-header-bg.jpg')">
-
     <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
-    {{-- Chat với AI --}}
-    {{-- <img src="{{ asset('UserLTE/assets/images/chatbot/ai.png') }}" alt="Chatbot" class="chatbot-icon" id="chatbot-icon"
-        width="60px" height="" style="padding-bottom: 2px; border-radius: 50%"> --}}
-
-    {{-- Chat với Cửa --}}
-    {{-- <a id="messenger" href="#" title="Chat với cửa hàng">
-        <img src="{{ asset('UserLTE/assets/images/chatbot/real.png') }}" width="60px" height=""
-            style="padding-bottom: 2px; border-radius: 50%">
-    </a> --}}
     <div class="footer-middle">
         <div class="container">
             <div class="row">
@@ -80,16 +70,16 @@
 </footer><!-- End .footer -->
 <!-- Biểu tượng Chatbot và khung chứa iframe -->
 <div class="chatbot-icon-container" id="chatbot-icon-container">
-    <div id="chatbot-tooltip" class="chatbot-tooltip">NgoTanLoi Digital Technology xin chào!</div>
-    <img src="{{ asset('UserLTE/assets/images/chatbot/ai2.png') }}" alt="Chatbot" class="chatbot-icon"
-        id="chatbot-icon" width="60px" height="" style=" cursor: pointer;">
+    <div id="chatbot-tooltip" class="chatbot-tooltip">Chat với trợ lý ảo!</div>
+    <img src="{{ asset('UserLTE/assets/images/chatbot/ai.png') }}" alt="Chatbot" class="chatbot-icon"
+        style="border-radius:50%;" id="chatbot-icon" width="68px" height="" style=" cursor: pointer;">
 </div>
 <div id="chatbot-frame-container" style="display: none;">
     {{-- chatbot tranhoangnam --}}
-    {{-- <iframe src="https://app.chatfly.co/chat/9053d6d7-ed43-4814-ba31-e0c78b47153c" width="450" height="550"
+    {{-- <iframe src="https://app.chatfly.co/chat/9053d6d7-ed43-4814-ba31-e0c78b47153c" width="368px" height="501px"
         style="border:1px solid black; border-radius: 10px;"></iframe> --}}
     {{-- chatbot ngotanloi2424 --}}
-    <iframe src="https://app.chatfly.co/chat/6d58feb0-c166-4ce4-9d7e-63a37e64ec81" width="450" height="550"
+    <iframe src="https://app.chatfly.co/chat/6d58feb0-c166-4ce4-9d7e-63a37e64ec81" width="368px" height="501px"
         style="border:1px solid black; border-radius: 10px;"></iframe>
 
 </div>
@@ -134,8 +124,8 @@
 <style>
     .chatbot-icon-container {
         position: fixed;
-        bottom: 20px;
-        right: 20px;
+        bottom: 100px;
+        right: 28px;
         z-index: 1000;
         display: flex;
         align-items: center;
@@ -143,40 +133,14 @@
 
     #chatbot-frame-container {
         position: fixed;
-        bottom: 90px;
+        bottom: 180px;
+        /* Adjusted to be higher than the chatbot icon */
         right: 20px;
         z-index: 1000;
         background: white;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         border-radius: 10px;
     }
-
-    @keyframes shake {
-        0% {
-            transform: translateX(0);
-        }
-
-        20% {
-            transform: translateX(-10px);
-        }
-
-        40% {
-            transform: translateX(10px);
-        }
-
-        60% {
-            transform: translateX(-10px);
-        }
-
-        80% {
-            transform: translateX(10px);
-        }
-
-        100% {
-            transform: translateX(0);
-        }
-    }
-
     .shaking {
         animation: shake 0.5s;
     }
@@ -187,7 +151,7 @@
         bottom: 10px;
         right: 110%;
         /* Adjust as needed to position the tooltip */
-        background-color: #6517ab;
+        background-color: #5ab2f3;
         color: white;
         padding: 5px 10px;
         border-radius: 5px;
@@ -198,78 +162,6 @@
     }
 </style>
 
-
-
-
 {{-- Chat FPT AI --}}
-{{-- <link href="{{ asset('Bard_ai_clone/css/adminlte.min.css')}}" rel="stylesheet" type="text/css" /> --}}
-{{-- <script>
-    // Configs
-    let liveChatBaseUrl = document.location.protocol + '//' + 'livechat.fpt.ai/v36/src'
-    let LiveChatSocketUrl = 'livechat.fpt.ai:443'
-    let FptAppCode = '321b58316e117218b088763ce405a493'
-    let FptAppName = 'Chatbot Hỗ Trợ'
-    // Define custom styles
-    let CustomStyles = {
-        // header
-        headerBackground: '#3C3737FF',
-        headerTextColor: '#ffffffff',
-        headerLogoEnable: true,
-        headerLogoLink: 'https://chatbot-tools.fpt.ai/livechat-builder/img/theme/digital_agency/logo_head.svg',
-        headerText: 'Chatbot Hỗ Trợ',
-        // main
-        primaryColor: '#EE238FFF',
-        secondaryColor: '#ecececff',
-        primaryTextColor: '#ffffffff',
-        secondaryTextColor: '#000000DE',
-        buttonColor: '#b4b4b4B3',
-        buttonTextColor: '#ffffffff',
-        bodyBackgroundEnable: true,
-        bodyBackgroundLink: 'https://chatbot-tools.fpt.ai/livechat-builder/img/theme/digital_agency/body.png',
-        avatarBot: 'https://chatbot-tools.fpt.ai/livechat-builder/img/theme/digital_agency/bot.svg',
-        sendMessagePlaceholder: 'Nhập tên của bạn',
-        // float button
-        floatButtonLogo: 'https://chatbot-tools.fpt.ai/livechat-builder/img/theme/digital_agency/logo.svg',
-        floatButtonTooltip: 'NgoTanLoi Digital Technology xin chào!',
-        floatButtonTooltipEnable: true,
-        // start screen
-        customerLogo: 'https://chatbot-tools.fpt.ai/livechat-builder/img/theme/digital_agency/logo.svg',
-        customerWelcomeText: 'Vui lòng nhập tên của bạn',
-        customerButtonText: 'Bắt đầu',
-        prefixEnable: false,
-        prefixType: 'radio',
-        prefixOptions: ["Anh", "Chị"],
-        prefixPlaceholder: 'Danh xưng',
-        // custom css
-        css: ''
-    }
-    // Get bot code from url if FptAppCode is empty
-    if (!FptAppCode) {
-        let appCodeFromHash = window.location.hash.substr(1)
-        if (appCodeFromHash.length === 32) {
-            FptAppCode = appCodeFromHash
-        }
-    }
-    // Set Configs
-    let FptLiveChatConfigs = {
-        appName: FptAppName,
-        appCode: FptAppCode,
-        themes: '',
-        styles: CustomStyles
-    }
-    // Append Script
-    let FptLiveChatScript = document.createElement('script')
-    FptLiveChatScript.id = 'fpt_ai_livechat_script'
-    FptLiveChatScript.src = liveChatBaseUrl + '/static/fptai-livechat.js'
-    document.body.appendChild(FptLiveChatScript)
-    // Append Stylesheet
-    let FptLiveChatStyles = document.createElement('link')
-    FptLiveChatStyles.id = 'fpt_ai_livechat_script'
-    FptLiveChatStyles.rel = 'stylesheet'
-    FptLiveChatStyles.href = liveChatBaseUrl + '/static/fptai-livechat.css'
-    document.body.appendChild(FptLiveChatStyles)
-    // Init
-    FptLiveChatScript.onload = function() {
-        fpt_ai_render_chatbox(FptLiveChatConfigs, liveChatBaseUrl, LiveChatSocketUrl)
-    }
-</script> --}}
+<link rel="stylesheet" href="{{ asset('fptchat/main.css') }}">
+<script src="{{ asset('fptchat/main.js') }}"></script>

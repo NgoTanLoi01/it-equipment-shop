@@ -1,0 +1,180 @@
+#fpt_ai_livechat_button {
+    width: 62px !important;
+    height: 62px !important;
+    /* border-radius: 50% !important; */
+    margin: 0 !important;
+    /* box-shadow: inset 0 0.03em 0 #F6FAF9, inset 0 -0.03em 0 #F6FAF9, 0 0.03em 0.03em rgba(0, 0, 0, 0.08); */
+    /* border: 1px solid black; */
+    padding: 0 !important;
+    border: 0 !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    /* background-clip: padding-box !important; */
+    position: fixed !important;
+    bottom: 25px !important;
+    right: 25px !important;
+    user-select: none !important;
+    cursor: pointer !important;
+    outline: none !important;
+    /* background-color: red; */
+    /* background: #FFFFFF url(resource\\logo-FPT.Ai.png) no-repeat; */
+    /* background-color: #FFFFFF !important; */
+    background-repeat: no-repeat !important;
+    background-size: 35px !important;
+    background-position-x: 14px !important;
+    background-position-y: 14px !important;
+    background: linear-gradient(90deg, #6D9CCB 0%, #0cc0df 99.79%);
+    /* background-image: url(https://dev-local-v3.fpt.ai/livechat/src/resource/logo-FPT.Ai.png); */
+    z-index: 2025 !important;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.16) !important;
+    border-radius: 100px 100px 100px 100px !important;
+}
+
+#fpt_ai_livechat_button img {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+@media only screen and (max-width: 500px) {
+    #fpt_ai_livechat_display_container {
+        width: 100% !important;
+        height: 100% !important;
+        position: fixed !important;
+        z-index: 2500 !important;
+        bottom: 0 !important;
+        right: 0 !important;
+        /* box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12) !important; */
+        box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff !important;
+        border-radius: 10px !important;
+        overflow-x: hidden !important;
+        overflow-y: hidden !important;
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 500px) {
+    #fpt_ai_livechat_display_container {
+        width: 368px !important;
+        height: 501px !important;
+        position: fixed !important;
+        z-index: 1500 !important;
+        bottom: 99px !important;
+        right: 26px !important;
+        /* box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12) !important; */
+        box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff !important;
+        border-radius: 10px !important;
+        overflow-x: hidden !important;
+        overflow-y: hidden !important;
+        display: none;
+        border: 1px solid #DFDFDF !important;
+        box-sizing: border-box !important;
+    }
+}
+
+#fpt_ai_livechat_display_container.fullscreen {
+    width: 100% !important;
+    height: 100% !important;
+    left: 0 !important;
+    top: 0 !important;
+    right: auto !important;
+    bottom: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    z-index: 9999 !important;
+}
+
+
+#fpt_ai_livechat_display_container #fpt_ai_livechat_container_header {
+    z-index: 10 !important;
+    width: 100% !important;
+    top: 0 !important;
+    position: absolute !important;
+    padding: 0 16px 0 16px !important;
+    color: white;
+    display: flex !important;
+    align-items: center;
+    float: none !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    background: linear-gradient(246.7deg, #0cc0df 0.85%, #3353a2 98.94%);
+    height: 50px !important;
+    line-height: 50px !important;
+    background-size: cover !important;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    cursor: pointer;
+    box-sizing: border-box !important;
+}
+
+#fpt_ai_livechat_display_container .fpt_ai_livechat_header_name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#fpt_ai_livechat_display_container #fpt_ai_livechat_container_header button {
+    padding: 0 0 0 8px !important;
+    border: 0 !important;
+    background: none !important;
+    cursor: pointer !important;
+    line-height: 1 !important;
+}
+
+#fpt_ai_livechat_display_container button.fpt_ai_livechat_container_header_fullscreen_button {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: none !important;
+    cursor: pointer !important;
+    line-height: 1 !important;
+    z-index: 99 !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+#fpt_ai_livechat_display_container.fullscreen button.fpt_ai_livechat_container_header_fullscreen_button {
+    -webkit-transform: rotate(-180deg) !important;
+    -moz-transform: rotate(-180deg) !important;
+    -ms-transform: rotate(-180deg) !important;
+    -o-transform: rotate(-180deg) !important;
+    transform: rotate(-180deg) !important;
+}
+
+.fpt_ai_livechat_container_header_close_button {
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+#fpt_ai_livechat_display_container #fpt_ai_livechat_container_iframe {
+    width: 100% !important;
+    height: calc(100% - 50px) !important;
+    position: relative !important;
+    top: 50px !important;
+}
+
+.fpt_ai_livechat_button_tooltip {
+    max-width: 0;
+    height: 34px;
+    padding: 0 10px;
+    border-radius: 34px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    bottom: 39px;
+    right: 50px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+}
+
+.fpt_ai_livechat_button_tooltip.active {
+    max-width: 500px;
+    right: 100px;
+}

@@ -142,7 +142,7 @@
                         </div>
                     </form>
 
-                    <form action="{{ url('/momo_payment') }}" method="POST">
+                    {{-- <form action="{{ url('/momo_payment') }}" method="POST">
                         <div class="momo-btn">
                             @csrf
                             <input type="hidden" name="total_momo" id="">
@@ -152,7 +152,7 @@
                                     Với MOMO</strong>
                             </button>
                         </div>
-                    </form>
+                    </form> --}}
                 </div>
             </div>
         </div>

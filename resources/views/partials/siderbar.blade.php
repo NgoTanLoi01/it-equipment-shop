@@ -36,9 +36,10 @@
           font-size: 18px;
           /* Điều chỉnh kích thước của dòng chữ */
       }
-      h6{
-        font-size: 11px;
-        color: #fff;
+
+      h6 {
+          font-size: 11px;
+          color: #fff;
       }
   </style>
 
@@ -49,7 +50,9 @@
                   <div class="rounded-image">
                       <img src="{{ asset('AdminMofi/assets/images/logo/Logo_NTL.jpg') }}" width="40px" alt="">
                   </div>
-                  <span class="company-name"><strong>Ngo Tan Loi</strong><br><h6>Digital Technologies</h6></span>
+                  <span class="company-name"><strong>Ngo Tan Loi</strong><br>
+                      <h6>Digital Technologies</h6>
+                  </span>
                   <br>
               </div>
               <div class="back-btn"><i class="fa fa-angle-left"></i></div>
@@ -90,8 +93,7 @@
                                   <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
                               </svg><strong>Thống Kê</strong></a>
                       </li>
-                      <li class="sidebar-list"><a class="sidebar-link sidebar-title"
-                              href="{{ route('slider.index') }}">
+                      <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="{{ route('slider.index') }}">
                               <svg class="stroke-icon">
                                   <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-project') }}">
                                   </use>
@@ -126,14 +128,25 @@
                               <svg class="fill-icon">
                                   <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
                               </svg><strong>Setting</strong></a>
-                      <li class="sidebar-list"><a
-                              class="sidebar-link sidebar-title link-nav" href="{{ URL::to('/manage-order') }}">
+                      </li>
+                      <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav"
+                              href="{{ URL::to('/manage-order') }}">
                               <svg class="stroke-icon">
                                   <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-board') }}"></use>
                               </svg>
                               <svg class="fill-icon">
                                   <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
                               </svg><strong>Đơn Hàng</strong></a>
+                      </li>
+                      <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
+                              href="{{ route('customers.index') }}">
+                              <svg class="stroke-icon">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-email') }}"></use>
+                              </svg>
+                              <svg class="fill-icon">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                              </svg><strong>Danh Sách Khách Hàng</strong></a>
+                      </li>
                       <li class="sidebar-list"> <a class="sidebar-link sidebar-title"
                               href="{{ route('users.index') }}">
                               <svg class="stroke-icon">
@@ -144,14 +157,6 @@
                                   <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
                               </svg><strong>Danh Sách Thành Viên</strong></a>
                       </li>
-                      <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
-                              href="{{ route('customers.index') }}">
-                              <svg class="stroke-icon">
-                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-email') }}"></use>
-                              </svg>
-                              <svg class="fill-icon">
-                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
-                              </svg><strong>Danh Sách Khách Hàng</strong></a>
                       <li class="sidebar-list"> <a class="sidebar-link sidebar-title"
                               href="{{ route('roles.index') }}">
                               <svg class="stroke-icon">

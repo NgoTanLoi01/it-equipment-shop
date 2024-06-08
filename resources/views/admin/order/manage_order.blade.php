@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('adminPublic/setting/index/index.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('AdminMofi/assets/css/vendors/js-datatables/style.css') }}">
     <link rel="stylesheet" href="{{ asset('adminPublic/product/index/view.css') }}">
+    <script src="{{ asset('AdminMofi/assets/js/search.js') }}"></script>
     <style>
         .cancelled-order {
             opacity: 1;
@@ -35,10 +36,10 @@
                                         <div class="datatable">
                                             <label>
                                                 <select class="datatable-selector">
-                                                    <option value="10" selected="">8</option>
-                                                    <option value="15">10</option>
-                                                    <option value="20">15</option>
-                                                    <option value="25">20</option>
+                                                    <option value="10" selected="">10</option>
+                                                    <option value="15">15</option>
+                                                    <option value="20">20</option>
+                                                    <option value="25">25</option>
                                                 </select> trên mỗi trang
                                             </label>
                                         </div>

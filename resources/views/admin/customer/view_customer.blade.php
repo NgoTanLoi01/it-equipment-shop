@@ -56,7 +56,7 @@
                                         <table class="table datatable-table" id="project-status">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col"><strong> Tên người nhận hàng</strong></th>
+                                                    <th scope="col"><strong> Tên người nhận</strong></th>
                                                     <th scope="col"><strong> Địa chỉ giao hàng</strong></th>
                                                     <th scope="col"><strong> Số điện thoại</strong></th>
                                                     <th scope="col"><strong> Ghi chú</strong></th>
