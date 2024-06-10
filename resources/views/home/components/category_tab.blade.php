@@ -62,23 +62,34 @@
                             }'>
                             @foreach ($categoryItemProduct->products as $productItemTabs)
                                 <div class="product {{ $indexCategoryProduct == 0 ? 'product-2' : '' }}">
+
                                     <figure class="product-media">
                                         <a href="{{ route('detail', $productItemTabs->slug) }}">
                                             <img src="{{ config('app.base_url') . $productItemTabs->feature_image_path }}"
                                                 alt="Product image" class="product-image">
                                         </a>
-
+                                        @if ($productItemTabs->price > $productItemTabs->sale_price)
+                                            @php
+                                                $discount_percentage = round(
+                                                    (($productItemTabs->price - $productItemTabs->sale_price) /
+                                                        $productItemTabs->price) *
+                                                        100,
+                                                );
+                                            @endphp
+                                            <span
+                                                class="product-label label-circle label-sale">-{{ $discount_percentage }}%
+                                            </span>
+                                        @endif
                                         <div class="product-action-vertical">
                                             <a href="#"
-                                                class="btn-product-icon btn-wishlist btn-expandable"><span>Danh sách yêu
-                                                    thích</span></a>
+                                                class="btn-product-icon btn-wishlist btn-expandable"><span>Danh sách
+                                                    yêu thích</span></a>
                                         </div><!-- End .product-action -->
-
                                     </figure><!-- End .product-media -->
-
                                     <div class="product-body">
                                         <div class="product-cat">
-                                            <a href="{{ route('detail', $productItemTabs->slug) }}"> <!-- Thêm đường dẫn tương ứng -->
+                                            <a href="{{ route('detail', $productItemTabs->slug) }}">
+                                                <!-- Thêm đường dẫn tương ứng -->
                                                 {{ $productItemTabs->category_name }}
                                             </a>
                                         </div><!-- End .product-cat -->
@@ -88,10 +99,19 @@
                                             </a>
                                         </h3><!-- End .product-title -->
                                         <div class="product-price">
-                                            <span class="old-price">Gốc:<del> {{ number_format($productItemTabs->price) }} VNĐ </del></span>
-                                            <br>
-                                            <span class="new-price">{{ number_format($productItemTabs->sale_price) }} VNĐ </span>
-                                        </div>
+                                            @if ($productItemTabs->price != $productItemTabs->sale_price)
+                                                <span class="old-price" style="font-size: 14px"> Gốc:
+                                                    <del>{{ number_format($productItemTabs->price) }}
+                                                        VNĐ</del></span>
+                                                <span
+                                                    class="new-price">{{ number_format($productItemTabs->sale_price) }}
+                                                    VNĐ</span>
+                                            @else
+                                                <span
+                                                    class="new-price">{{ number_format($productItemTabs->price) }}
+                                                    VNĐ</span>
+                                            @endif
+                                        </div><!-- End .product-price -->
                                     </div><!-- End .product-body -->
                                 </div><!-- End .product -->
                             @endforeach

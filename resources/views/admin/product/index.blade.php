@@ -67,7 +67,7 @@
                                                 <th scope="col"><strong>STT</strong></th>
                                                 <th scope="col"><strong>Tên Sản Phẩm</strong></th>
                                                 <th scope="col"><strong>Giá Gốc</strong></th>
-                                                <th scope="col"><strong>Phần Trăm Giảm Giá</strong></th>
+                                                <th scope="col"><strong>Giảm Giá (%)</strong></th>
                                                 <th scope="col"><strong>Giá Sau Giảm</strong></th>
                                                 <th scope="col"><strong>Hình Ảnh</strong></th>
                                                 <th scope="col"><strong>Danh Mục</strong></th>
@@ -80,7 +80,7 @@
                                                         <td>{{ $productItem->id }}</td>
                                                         <td>{{ $productItem->name }}</td>
                                                         <td>{{ number_format(floatval($productItem->price)) }} VNĐ</td>
-                                                        <td>{{ $productItem->sale_percentage }}</td>
+                                                        <td style="text-align: center"><strong>{{ $productItem->sale_percentage }}</strong></td>
                                                         <td style="color: red">
                                                             {{ number_format(floatval($productItem->sale_price)) }} VNĐ
                                                         </td>

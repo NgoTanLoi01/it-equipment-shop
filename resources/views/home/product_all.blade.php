@@ -168,6 +168,18 @@
                                                     <img src="{{ config('app.base_url') . $product->feature_image_path }}"
                                                         alt="Product image" class="product-image">
                                                 </a>
+                                                @if ($product->price > $product->sale_price)
+                                                    @php
+                                                        $discount_percentage = round(
+                                                            (($product->price - $product->sale_price) /
+                                                                $product->price) *
+                                                                100,
+                                                        );
+                                                    @endphp
+                                                    <span
+                                                        class="product-label label-circle label-sale">-{{ $discount_percentage }}%
+                                                        </span>
+                                                @endif
                                             </figure><!-- End .product-media -->
                                             <div class="product-action-vertical">
                                                 <a href="#"
@@ -185,10 +197,15 @@
                                                 </h3>
                                                 <!-- End .product-title -->
                                                 <div class="product-price">
-                                                    <span class="old-price">Gốc: <del>{{ number_format($product->price) }}
-                                                            VNĐ </del></span>
-                                                    <span class="new-price">{{ number_format($product->sale_price) }}
-                                                        VNĐ</span>
+                                                    @if ($product->price > $product->sale_price)
+                                                        <span class="old-price">Gốc:
+                                                            <del>{{ number_format($product->price) }} VNĐ</del></span>
+                                                        <span class="new-price">{{ number_format($product->sale_price) }}
+                                                            VNĐ</span>
+                                                    @else
+                                                        <span class="new-price">{{ number_format($product->price) }}
+                                                            VNĐ</span>
+                                                    @endif
                                                 </div><!-- End .product-price -->
                                             </div><!-- End .product-body -->
                                         </div><!-- End .product -->
@@ -205,6 +222,7 @@
                                 </ul>
                             </nav>
                         </div><!-- End .products -->
+
                     </div>
 
                     {{-- Lọc sản phẩm new --}}
@@ -278,13 +296,13 @@
                                             <div class="filter-items">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <input class="input-filter-price form-control form-control-sm min"
-                                                        type="text" min="0" maxlength="13" placeholder="đ từ" style="margin-bottom: 0rem"
-                                                        value="{{ request('min_price') }}"
+                                                        type="text" min="0" maxlength="13" placeholder="đ từ"
+                                                        style="margin-bottom: 0rem" value="{{ request('min_price') }}"
                                                         onkeypress="return /[0-9]/i.test(event.key)">
                                                     <span class="mx-3"><i class="fa fa-minus"></i></span>
                                                     <input class="input-filter-price form-control form-control-sm max"
-                                                        type="text" min="0" maxlength="13" placeholder="đ đến" style="margin-bottom: 0rem"
-                                                        value="{{ request('max_price') }}"
+                                                        type="text" min="0" maxlength="13" placeholder="đ đến"
+                                                        style="margin-bottom: 0rem" value="{{ request('max_price') }}"
                                                         onkeypress="return /[0-9]/i.test(event.key)">
                                                 </div>
                                                 <div class="alert-filter-price text-primary mt-2 d-none">Vui lòng điền

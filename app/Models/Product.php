@@ -15,6 +15,13 @@ class Product extends Model
     ];
 
     protected $guarded = [];
+    public function getDiscountPercentageAttribute()
+    {
+        if ($this->price > 0 && $this->sale_price < $this->price) {
+            return round((($this->price - $this->sale_price) / $this->price) * 100, 2);
+        }
+        return 0;
+    }
     public function images()
     {
         return $this->hasMany(ProductImage::class, 'product_id');

@@ -126,7 +126,7 @@
     <script src="https://cdn.tiny.cloud/1/jlj6iu2nqcxzcnx68yjsq7ca1jz9ps3y2cae1mahhq1vdup0/tinymce/6/tinymce.min.js"
         referrerpolicy="origin"></script>
     <!-- Place the following <script>
-        and < textarea > tags your HTML 's <body> --> <
-        script src = "{{ asset('tinymce/tiny.js') }}" >
+        and < textarea > tags your HTML 's <body> --> 
+            <script src = "{{ asset('tinymce/tiny.js') }}" >
     </script>
 @endsection

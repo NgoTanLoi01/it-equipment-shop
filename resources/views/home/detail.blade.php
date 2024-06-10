@@ -82,17 +82,26 @@
                                     <div class="product-details product-details-sidebar">
                                         <h1 style="font-size: 18px; font-weight: bold;">{{ $product->name }}</h1>
                                         <!-- End .product-title -->
+                                        <div class="product-price">
+                                            @if ($product->price > $product->sale_price)
+                                                @php
+                                                    $discount_percentage = round(
+                                                        (($product->price - $product->sale_price) / $product->price) *
+                                                            100,
+                                                    );
+                                                @endphp
+                                                <span class="old-price" style="font-size: 14px;"> Gốc:
+                                                    <del>{{ number_format($product->price) }} VNĐ</del></span><br>
+                                                <span class="new-price"
+                                                    style="font-size: 20px;">{{ number_format($product->sale_price) }}
+                                                    VNĐ</span>
+                                            @else
+                                                <br><span class="new-price"
+                                                    style="font-size: 20px;">{{ number_format($product->price) }}
+                                                    VNĐ</span>
+                                            @endif
+                                        </div><!-- End .product-price -->
 
-                                        <div class="product-price">
-                                            <span class="old-price" style="font-size: 20px;"> Gốc:
-                                                <del>{{ number_format($product->price) }}
-                                                    VNĐ</del></span>
-                                        </div><!-- End .product-price -->
-                                        <div class="product-price">
-                                            <span class="new-price"
-                                                style="font-size: 20px;">{{ number_format($product->sale_price) }}
-                                                VNĐ</span>
-                                        </div><!-- End .product-price -->
                                         <label for="qty">{{ $product->quantity }} sản phẩm có sẵn</label><br>
                                         {{-- <label for="qty">{{ $productSalesQuantity[$product->id] ?? 0 }} sản phẩm đã bán</label> --}}
                                         <div class="product-details-action">
@@ -119,7 +128,8 @@
                                             <div class="details-action-wrapper">
                                                 <a href="#" class="btn-product btn-wishlist"
                                                     title="Wishlist"><span>Thêm vào yêu thích</span></a>
-                                                <a href="#" class="btn-product btn-compare" title="Compare"><span>So
+                                                <a href="#" class="btn-product btn-compare"
+                                                    title="Compare"><span>So
                                                         sánh sản phẩm</span></a>
                                             </div><!-- End .details-action-wrapper -->
                                         </div><!-- End .product-details-action -->
@@ -141,6 +151,7 @@
                                 </div><!-- End .col-md-6 -->
                             </div><!-- End .row -->
                         </div><!-- End .product-details-top -->
+
 
                         {{-- Mô tả sản phẩm --}}
                         <div class="product-details-tab">
@@ -320,10 +331,19 @@
 
                                             <div class="product-body">
                                                 <h5 class="product-title"><a
-                                                        href="{{ route('detail', $product->slug) }}">{{ $product->name }}</a></h5><!-- End .product-title -->
+                                                        href="{{ route('detail', $product->slug) }}">{{ $product->name }}</a>
+                                                </h5><!-- End .product-title -->
                                                 <div class="product-price">
-                                                    <span class="new-price">{{ number_format($product->sale_price) }}</span>
-                                                    <span class="old-price"><del>{{ number_format($product->price) }}</span>
+                                                    @if ($product->price != $product->sale_price)
+                                                        <span class="old-price" style="font-size: 14px"> Gốc:
+                                                            <del>{{ number_format($product->price) }}
+                                                                VNĐ</del></span>
+                                                        <span class="new-price">{{ number_format($product->sale_price) }}
+                                                            VNĐ</span>
+                                                    @else
+                                                        <span class="new-price">{{ number_format($product->price) }}
+                                                            VNĐ</span>
+                                                    @endif
                                                 </div><!-- End .product-price -->
                                             </div><!-- End .product-body -->
                                         </div><!-- End .product product-sm -->
@@ -352,30 +372,30 @@
                     <h2 class="title text-center mb-4">Bạn Cũng Có Thể Thích</h2><!-- End .title text-center -->
                     <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl"
                         data-owl-options='{
-                        "nav": false, 
-                        "dots": true,
-                        "margin": 20,
-                        "loop": false,
-                        "responsive": {
-                            "0": {
-                                "items":1
-                            },
-                            "480": {
-                                "items":2
-                            },
-                            "768": {
-                                "items":3
-                            },
-                            "992": {
-                                "items":4
-                            },
-                            "1200": {
-                                "items":4,
-                                "nav": true,
-                                "dots": false
+                            "nav": false, 
+                            "dots": true,
+                            "margin": 20,
+                            "loop": false,
+                            "responsive": {
+                                "0": {
+                                    "items":1
+                                },
+                                "480": {
+                                    "items":2
+                                },
+                                "768": {
+                                    "items":3
+                                },
+                                "992": {
+                                    "items":4
+                                },
+                                "1200": {
+                                    "items":4,
+                                    "nav": true,
+                                    "dots": false
+                                }
                             }
-                        }
-                    }'>
+                        }'>
                         @foreach ($related as $keySelling => $productsSellingItem)
                             <div class="product product-7 text-center">
                                 <figure class="product-media">
@@ -383,18 +403,21 @@
                                         <img src="{{ config('app.base_url') . $productsSellingItem->feature_image_path }}"
                                             alt="Product image" class="product-image">
                                     </a>
-
+                                    @if ($productsSellingItem->price > $productsSellingItem->sale_price)
+                                        @php
+                                            $discount_percentage = round(
+                                                (($productsSellingItem->price - $productsSellingItem->sale_price) /
+                                                    $productsSellingItem->price) *
+                                                    100,
+                                            );
+                                        @endphp
+                                        <span class="product-label label-circle label-sale">-{{ $discount_percentage }}%
+                                        </span>
+                                    @endif
                                     <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>Thêm
-                                                vào
-                                                danh sách yêu thích</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
-                                            title="Xem nhanh"><span>Xem nhanh</span></a>
-                                    </div><!-- End .product-action-vertical -->
-
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart"><span>Thêm vào giỏ
-                                                hàng</span></a>
+                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>Danh
+                                                sách
+                                                yêu thích</span></a>
                                     </div><!-- End .product-action -->
                                 </figure><!-- End .product-media -->
 
@@ -404,11 +427,16 @@
                                     </h3>
                                     <!-- End .product-title -->
                                     <div class="product-price">
-                                        <span class="old-price"> Gốc:
-                                            <del>{{ number_format($productsSellingItem->price) }}
-                                                VNĐ</del></span>
-                                        <span class="new-price">{{ number_format($productsSellingItem->sale_price) }}
-                                            VNĐ</span>
+                                        @if ($productsSellingItem->price != $productsSellingItem->sale_price)
+                                            <span class="old-price" style="font-size: 14px"> Gốc:
+                                                <del>{{ number_format($productsSellingItem->price) }}
+                                                    VNĐ</del></span>
+                                            <span class="new-price">{{ number_format($productsSellingItem->sale_price) }}
+                                                VNĐ</span>
+                                        @else
+                                            <span class="new-price">{{ number_format($productsSellingItem->price) }}
+                                                VNĐ</span>
+                                        @endif
                                     </div><!-- End .product-price -->
                                 </div><!-- End .product-body -->
                             </div><!-- End .product -->

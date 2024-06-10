@@ -99,19 +99,28 @@
             }'>
                 @foreach ($productsSelling as $product)
                     <div class="product product-2">
+
                         <figure class="product-media">
                             <a href="{{ route('detail', $product->slug) }}">
                                 <img src="{{ config('app.base_url') . $product->feature_image_path }}"
                                     alt="Product image" class="product-image">
                             </a>
-
+                            @if ($product->price > $product->sale_price)
+                                @php
+                                    $discount_percentage = round(
+                                        (($product->price - $product->sale_price) /
+                                            $product->price) *
+                                            100,
+                                    );
+                                @endphp
+                                <span class="product-label label-circle label-sale">-{{ $discount_percentage }}%
+                                </span>
+                            @endif
                             <div class="product-action-vertical">
-                                <a href="#" class="btn-product-icon btn-wishlist btn-expandable">
-                                    <span>Danh sách yêu thích</span>
-                                </a>
+                                <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>Danh sách
+                                        yêu thích</span></a>
                             </div><!-- End .product-action -->
                         </figure><!-- End .product-media -->
-
                         <div class="product-body">
                             {{-- <div class="product-cat">
                                 <a href="{{ route('detail', $product->slug) }}">{{ $product->name }}</a>
@@ -119,13 +128,19 @@
                             <h3 class="product-title">
                                 <a href="{{ asset('UserLTE/product') }}">{{ $product->name }}</a>
                             </h3><!-- End .product-title -->
-                            <div class="product-price">
-                                <span class="old-price">
-                                    Gốc: <del>{{ number_format($product->price) }} VNĐ</del>
-                                </span>
-                                <span class="new-price">{{ number_format($product->sale_price) }} VNĐ</span>
-                            </div><!-- End .product-price -->
 
+                            <div class="product-price">
+                                @if ($product->price != $product->sale_price)
+                                    <span class="old-price"> Gốc:
+                                        <del>{{ number_format($product->price) }}
+                                            VNĐ</del></span>
+                                    <span class="new-price">{{ number_format($product->sale_price) }}
+                                        VNĐ</span>
+                                @else
+                                    <span class="new-price">{{ number_format($product->price) }}
+                                        VNĐ</span>
+                                @endif
+                            </div><!-- End .product-price -->
                             <h6>Số lượng đã bán: {{ $productSalesQuantity[$product->id] ?? 0 }}</h6>
                         </div><!-- End .product-body -->
                     </div><!-- End .product -->

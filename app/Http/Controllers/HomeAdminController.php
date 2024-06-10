@@ -94,18 +94,27 @@ class HomeAdminController extends Controller
             ->take(12)
             ->get();
 
-
         // Lấy số lượng sản phẩm đã bán cho mỗi sản phẩm cụ thể và lưu vào một mảng kết hợp
         $productSalesQuantity = [];
         foreach ($productsSelling as $product) {
             $productSalesQuantity[$product->id] = $product->total_sold;
         }
-        //dd($productSalesQuantity);
+
+        // Lấy danh sách các sản phẩm đang giảm giá
+        $productsOnSale = Product::whereColumn('sale_price', '<', 'price')->get();
+
         // Trả về view home và truyền các biến dữ liệu cần thiết
-        return view("home.home", compact("sliders", "categorys", "products", "productsSelling", "categorysLimit", "productsFeatures", "productSalesQuantity"));
+        return view("home.home", compact(
+            "sliders",
+            "categorys",
+            "products",
+            "productsSelling",
+            "categorysLimit",
+            "productsFeatures",
+            "productSalesQuantity",
+            "productsOnSale"
+        ));
     }
-
-
     public function search(Request $request)
     {
         $keywords = $request->keywords_submit;
