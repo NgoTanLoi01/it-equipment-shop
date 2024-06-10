@@ -110,11 +110,11 @@
                                             alt="Google Icon" width="30px">
                                         Đăng nhập với Google
                                     </a>
-                                    <a href="#" class="login-btn facebook-btn">
+                                    {{-- <a href="#" class="login-btn facebook-btn">
                                         <img src="{{ asset('UserLTE/assets/images/icons/facebook_icon.png') }}"
                                             alt="Facebook Icon" width="22px">
                                         Đăng nhập với Facebook 
-                                    </a>
+                                    </a> --}}
                                 </div>
                             </div><!-- .End .tab-pane -->
                             {{-- Đăng ký --}}

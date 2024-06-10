@@ -55,8 +55,8 @@
 
 @media only screen and (min-width: 500px) {
     #fpt_ai_livechat_display_container {
-        width: 368px !important;
-        height: 501px !important;
+        width: 430px !important;
+        height: 541px !important;
         position: fixed !important;
         z-index: 1500 !important;
         bottom: 99px !important;

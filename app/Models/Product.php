@@ -11,8 +11,9 @@ class Product extends Model
     use SoftDeletes;
     use HasFactory;
     protected $fillable = [
-        'name', 'price', 'sale_price', 'content', 'user_id', 'category_id', 'quantity', 'slug', 'feature_image_name', 'feature_image_path', 'sold_quantity'
+        'name', 'price', 'sale_price', 'sale_percentage', 'feature_image_path', 'feature_image_name', 'content', 'user_id', 'slug', 'category_id', 'view_count', 'quantity', 'created_at', 'updated_at', 'delete_at'
     ];
+
     protected $guarded = [];
     public function images()
     {
@@ -45,6 +46,6 @@ class Product extends Model
     public function orders()
     {
         return $this->belongsToMany(Order::class, 'order_product', 'product_id', 'order_id')
-                    ->withPivot('quantity', 'price'); // Thêm thông tin chi tiết về quantity và price nếu có
+            ->withPivot('quantity', 'price'); // Thêm thông tin chi tiết về quantity và price nếu có
     }
 }

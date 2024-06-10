@@ -9,6 +9,7 @@
     <link href="{{ asset('adminPublic/product/add/add.css') }}" rel="stylesheet" />
 @endsection
 
+
 @section('content')
     <div class="page-body">
         <div class="container-fluid">
@@ -37,11 +38,17 @@
                                         </div>
                                         <br>
                                         <div class="form-group">
-                                            <label><strong>Giá sản phẩm sau khi giảm</strong></label>
-                                            <input name="sale_price" type="text" class="form-control"
-                                                placeholder="Nhập giá sản phẩm sau khi giảm"
-                                                value="{{ $product->sale_price }}">
+                                            <label><strong>Chọn phần trăm giảm giá</strong></label>
+                                            <select name="sale_percentage" class="form-control">
+                                                <option value="">Không giảm giá</option>
+                                                @for ($i = 5; $i <= 75; $i += 5)
+                                                    <option value="{{ $i }}"
+                                                        {{ $product->sale_percentage == $i ? 'selected' : '' }}>
+                                                        {{ $i }}</option>
+                                                @endfor
+                                            </select>
                                         </div>
+
                                         <br>
                                         <div class="form-group">
                                             <label><strong>Ảnh đại diện</strong></label>
@@ -101,7 +108,7 @@
                                         <br>
                                         <button type="submit" class="btn btn-primary"><img
                                                 src="{{ asset('AdminMofi/assets/images/icon/success.png') }}"
-                                                width="16px" alt=""></i><strong>Gửi</strong></button>
+                                                width="16px" alt=""><strong>Gửi</strong></button>
                                     </form>
                                 </div>
                             </div>
@@ -112,11 +119,14 @@
         </div>
     </div>
 @endsection
+
 @section('js')
     <script src="{{ asset('vendors/select2/select2.min.js') }}"></script>
     <script src="{{ asset('adminPublic/product/add/add.js') }}"></script>
     <script src="https://cdn.tiny.cloud/1/jlj6iu2nqcxzcnx68yjsq7ca1jz9ps3y2cae1mahhq1vdup0/tinymce/6/tinymce.min.js"
         referrerpolicy="origin"></script>
-    <!-- Place the following <script> and <textarea> tags your HTML's <body> -->
-    <script src="{{ asset('tinymce/tiny.js') }}"></script>
+    <!-- Place the following <script>
+        and < textarea > tags your HTML 's <body> --> <
+        script src = "{{ asset('tinymce/tiny.js') }}" >
+    </script>
 @endsection

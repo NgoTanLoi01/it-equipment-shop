@@ -45,13 +45,18 @@
                                         @enderror
                                         <br>
                                         <div class="form-group">
-                                            <label><strong>Giá sản phẩm sau khi giảm</strong></label>
-                                            <input name="sale_price" type="text"
-                                                class="form-control @error('sale_price') is-invalid @enderror"
-                                                placeholder="Nhập giá sản phẩm sau khi giảm"
-                                                value="{{ old('sale_price') }}">
+                                            <label><strong>Chọn phần trăm giảm giá</strong></label>
+                                            <select name="sale_percentage"
+                                                class="form-control @error('sale_percentage') is-invalid @enderror">
+                                                <option value="">Không giảm giá</option>
+                                                @for ($i = 5; $i <= 75; $i += 5)
+                                                    <option value="{{ $i }}"
+                                                        {{ old('sale_percentage') == $i ? 'selected' : '' }}>
+                                                        {{ $i }}%</option>
+                                                @endfor
+                                            </select>
                                         </div>
-                                        @error('sale_price')
+                                        @error('sale_percentage')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                         <br>
@@ -117,6 +122,8 @@
     <script src="{{ asset('adminPublic/product/add/add.js') }}"></script>
     <script src="https://cdn.tiny.cloud/1/jlj6iu2nqcxzcnx68yjsq7ca1jz9ps3y2cae1mahhq1vdup0/tinymce/6/tinymce.min.js"
         referrerpolicy="origin"></script>
-<!-- Place the following <script> and <textarea> tags your HTML's <body> -->
-    <script src="{{ asset('tinymce/tiny.js') }}"></script>
+    <!-- Place the following <script>
+        and < textarea > tags your HTML 's <body> --> <
+            script src = "{{ asset('tinymce/tiny.js') }}" >
+    </script>
 @endsection

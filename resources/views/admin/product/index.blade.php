@@ -35,8 +35,9 @@
                             <div class="list-product-header">
                                 <div>
                                     <a class="btn btn-primary" href="{{ route('product.create') }}"><img
-                                        src="{{ asset('AdminMofi/assets/images/icon/add.png') }}" width="16px" alt=""><strong>Thêm Sản
-                                        Phẩm</strong></a>
+                                            src="{{ asset('AdminMofi/assets/images/icon/add.png') }}" width="16px"
+                                            alt=""><strong>Thêm Sản
+                                            Phẩm</strong></a>
                                 </div>
                                 <div class="collapse" id="collapseProduct">
                                 </div>
@@ -66,12 +67,12 @@
                                                 <th scope="col"><strong>STT</strong></th>
                                                 <th scope="col"><strong>Tên Sản Phẩm</strong></th>
                                                 <th scope="col"><strong>Giá Gốc</strong></th>
-                                                <th scope="col"><strong>Giá Khuyến Mãi</strong></th>
+                                                <th scope="col"><strong>Phần Trăm Giảm Giá</strong></th>
+                                                <th scope="col"><strong>Giá Sau Giảm</strong></th>
                                                 <th scope="col"><strong>Hình Ảnh</strong></th>
                                                 <th scope="col"><strong>Danh Mục</strong></th>
                                                 <th scope="col"><strong>Kho</strong></th>
                                                 <th scope="col"><strong>Hành Động</strong></th>
-                                                </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($products as $productItem)
@@ -79,6 +80,7 @@
                                                         <td>{{ $productItem->id }}</td>
                                                         <td>{{ $productItem->name }}</td>
                                                         <td>{{ number_format(floatval($productItem->price)) }} VNĐ</td>
+                                                        <td>{{ $productItem->sale_percentage }}</td>
                                                         <td style="color: red">
                                                             {{ number_format(floatval($productItem->sale_price)) }} VNĐ
                                                         </td>
@@ -87,16 +89,19 @@
                                                                 src="{{ $productItem->feature_image_path }}"
                                                                 alt="">
                                                         </td>
+                                                        
                                                         <td>{{ optional($productItem->category)->name }}</td>
                                                         <td>{{ $productItem->quantity }}</td>
                                                         <td>
                                                             <a href="{{ route('product.edit', ['id' => $productItem->id]) }}"
                                                                 class="btn btn-sm btn-warning"><img
-                                                                src="{{ asset('AdminMofi/assets/images/icon/edit.png') }}" width="16px" alt=""><strong>Sửa</strong></a>
+                                                                    src="{{ asset('AdminMofi/assets/images/icon/edit.png') }}"
+                                                                    width="16px" alt=""><strong>Sửa</strong></a>
                                                             <br><br>
                                                             <a href="" class="btn btn-sm btn-danger action_delete"
                                                                 data-url="{{ route('product.delete', ['id' => $productItem->id]) }}"><img
-                                                                src="{{ asset('AdminMofi/assets/images/icon/delete.png') }}" width="16px" alt=""><strong>Xóa</strong></a>
+                                                                    src="{{ asset('AdminMofi/assets/images/icon/delete.png') }}"
+                                                                    width="16px" alt=""><strong>Xóa</strong></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
