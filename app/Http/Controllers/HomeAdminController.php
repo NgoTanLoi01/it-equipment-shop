@@ -39,13 +39,29 @@ class HomeAdminController extends Controller
             ->get();
         $customer_id = Session::get('customer_id');
         $shipping_info = DB::table('shipping')->where('customer_id', $customer_id)->first();
-        // Kiểm tra session customer_id để đảm bảo tồn tại trước khi truy vấn dữ liệu
         $customer_info = $customer_id ? Customer::where('customer_id', $customer_id)->first() : null;
 
-        //Lấy sản phẩm thường được mua cùng
-        $productsFeatures = Product::orderBy('views_count', 'desc')->take(5)->get();
+        // Lấy sản phẩm thường được mua cùng
+        $productsBoughtTogether = DB::table('order_details as od1')
+            ->join('order_details as od2', 'od1.order_id', '=', 'od2.order_id')
+            ->where('od1.product_id', $product->id)
+            ->where('od2.product_id', '!=', $product->id)
+            ->select('od2.product_id', DB::raw('count(*) as total'))
+            ->groupBy('od2.product_id')
+            ->orderByDesc('total')
+            ->take(5)
+            ->get()
+            ->pluck('product_id')
+            ->toArray();
 
-        return view('home.detail', compact('product', 'related', 'shipping_info', 'customer_info', 'productsFeatures'));
+        if (empty($productsBoughtTogether)) {
+            // Nếu không có sản phẩm thường được mua cùng, lấy sản phẩm phổ biến
+            $productsBoughtTogether = Product::orderBy('views_count', 'desc')->take(5)->get();
+        } else {
+            $productsBoughtTogether = Product::whereIn('id', $productsBoughtTogether)->get();
+        }
+
+        return view('home.detail', compact('product', 'related', 'shipping_info', 'customer_info', 'productsBoughtTogether'));
     }
 
     public function storeReview(Request $request)

@@ -95,7 +95,7 @@
                       </li>
                       <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="{{ route('slider.index') }}">
                               <svg class="stroke-icon">
-                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-project') }}">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#header-bookmark') }}">
                                   </use>
                               </svg>
                               <svg class="fill-icon">
@@ -105,7 +105,8 @@
                       <li class="sidebar-list"> <a class="sidebar-link sidebar-title"
                               href="{{ route('categories.index') }}">
                               <svg class="stroke-icon">
-                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-widget') }}"></use>
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#product-category') }}">
+                                  </use>
                               </svg>
                               <svg class="fill-icon">
                                   <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
@@ -114,7 +115,7 @@
                       <li class="sidebar-list"> <a class="sidebar-link sidebar-title"
                               href="{{ route('product.index') }}">
                               <svg class="stroke-icon">
-                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-layout') }}"></use>
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#product-detail') }}"></use>
                               </svg>
                               <svg class="fill-icon">
                                   <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
@@ -123,7 +124,7 @@
                       <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
                               href="{{ route('settings.index') }}">
                               <svg class="stroke-icon">
-                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-file') }}"></use>
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#setting') }}"></use>
                               </svg>
                               <svg class="fill-icon">
                                   <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
@@ -132,7 +133,7 @@
                       <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav"
                               href="{{ URL::to('/manage-order') }}">
                               <svg class="stroke-icon">
-                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-board') }}"></use>
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#orders') }}"></use>
                               </svg>
                               <svg class="fill-icon">
                                   <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
@@ -141,7 +142,7 @@
                       <li class="sidebar-list"> <a class="sidebar-link sidebar-title link-nav"
                               href="{{ route('customers.index') }}">
                               <svg class="stroke-icon">
-                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-email') }}"></use>
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#customers') }}"></use>
                               </svg>
                               <svg class="fill-icon">
                                   <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
@@ -150,7 +151,7 @@
                       <li class="sidebar-list"> <a class="sidebar-link sidebar-title"
                               href="{{ route('users.index') }}">
                               <svg class="stroke-icon">
-                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-ecommerce') }}">
+                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-user') }}">
                                   </use>
                               </svg>
                               <svg class="fill-icon">
@@ -166,22 +167,6 @@
                                   <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
                               </svg><strong>Danh Sách Vai Trò</strong></a>
                       </li>
-                      {{-- <li class="sidebar-list"> <a class="sidebar-link sidebar-title" href="javascript:void(0)">
-                              <svg class="stroke-icon">
-                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-user') }}"></use>
-                              </svg>
-                              <svg class="fill-icon">
-                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
-                              </svg><strong>Thống kê</strong></a>
-                      </li>
-                      <li class="sidebar-list"> <a class="sidebar-link sidebar-title" href="javascript:void(0)">
-                              <svg class="stroke-icon">
-                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#stroke-charts') }}"></use>
-                              </svg>
-                              <svg class="fill-icon">
-                                  <use href="{{ asset('AdminMofi/assets/svg/icon-sprite.svg#fill-home') }}"></use>
-                              </svg><strong>Thống kê</strong></a>
-                      </li> --}}
               </div>
           </nav>
       </div>

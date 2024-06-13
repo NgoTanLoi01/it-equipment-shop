@@ -319,7 +319,7 @@
                             <div class="widget widget-products">
                                 <h5 style="font-size: 14px; font-weight: bold;"><strong>Sản Phẩm Thường Được Mua
                                         Cùng</strong></h5>
-                                @foreach ($productsFeatures as $product)
+                                @foreach ($productsBoughtTogether as $product)
                                     <div class="products">
                                         <div class="product product-sm">
                                             <figure class="product-media">
@@ -336,8 +336,7 @@
                                                 <div class="product-price">
                                                     @if ($product->price != $product->sale_price)
                                                         <span class="old-price" style="font-size: 14px"> Gốc:
-                                                            <del>{{ number_format($product->price) }}
-                                                                VNĐ</del></span>
+                                                            <del>{{ number_format($product->price) }} VNĐ</del></span>
                                                         <span class="new-price">{{ number_format($product->sale_price) }}
                                                             VNĐ</span>
                                                     @else
@@ -365,6 +364,8 @@
                             </div><!-- End .widget -->
                         </div><!-- End .sidebar sidebar-product -->
                     </aside><!-- End .col-lg-3 -->
+
+
                 </div><!-- End .row -->
 
                 <div class="col-12">
