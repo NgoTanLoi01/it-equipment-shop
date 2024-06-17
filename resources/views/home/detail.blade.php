@@ -93,17 +93,17 @@
                                                 <span class="old-price" style="font-size: 14px;"> Gốc:
                                                     <del>{{ number_format($product->price) }} VNĐ</del></span><br>
                                                 <span class="new-price"
-                                                    style="font-size: 20px;">{{ number_format($product->sale_price) }}
+                                                    style="font-size: 20px; font-weight: bold">{{ number_format($product->sale_price) }}
                                                     VNĐ</span>
                                             @else
                                                 <br><span class="new-price"
-                                                    style="font-size: 20px;">{{ number_format($product->price) }}
+                                                    style="font-size: 20px; font-weight: bold">{{ number_format($product->price) }}
                                                     VNĐ</span>
                                             @endif
                                         </div><!-- End .product-price -->
 
-                                        <label for="qty">{{ $product->quantity }} sản phẩm có sẵn</label><br>
-                                        {{-- <label for="qty">{{ $productSalesQuantity[$product->id] ?? 0 }} sản phẩm đã bán</label> --}}
+                                        <strong>Đã Bán: </strong><label for="qty" style="color: #982029">{{ $totalSold }}  sản phẩm </label><br>
+                                        <strong>Còn Lại: </strong><label for="qty" style="color: #982029">{{ $product->quantity }} sản phẩm</label><br>
                                         <div class="product-details-action">
                                             <div class="details-action-col">
                                                 <form action="{{ URL::to('/save-cart') }}" method="POST">
@@ -151,8 +151,6 @@
                                 </div><!-- End .col-md-6 -->
                             </div><!-- End .row -->
                         </div><!-- End .product-details-top -->
-
-
                         {{-- Mô tả sản phẩm --}}
                         <div class="product-details-tab">
                             <ul class="nav nav-pills justify-content-center" role="tablist">

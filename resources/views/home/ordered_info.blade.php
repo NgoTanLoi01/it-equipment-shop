@@ -219,7 +219,7 @@
                                             <td class="text-right">{{ number_format($order->order_total) }}đ</td>
                                         </tr>
                                         <tr class="shipping">
-                                            <td>Phí vận chuyển (Miễn phí cho đơn hàng trên 1.000.000đ)</td>
+                                            <td>Phí vận chuyển (Miễn phí)</td>
                                             <td class="text-right">
                                                 Miễn phí </td>
                                         </tr>

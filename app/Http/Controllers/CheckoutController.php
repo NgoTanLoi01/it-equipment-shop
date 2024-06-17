@@ -12,12 +12,16 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
-
 session_start();
 
 class CheckoutController extends Controller
 {
-    // CheckoutController.php
+    protected $order;
+
+    public function __construct(Order $order)
+    {
+        $this->order = $order;
+    }
     public function ordered_info($order_id)
     {
         // Lấy thông tin đơn hàng và chi tiết đơn hàng
@@ -314,11 +318,6 @@ class CheckoutController extends Controller
         }
     }
 
-    private $order;
-    public function __construct(Order $order)
-    {
-        $this->order = $order;
-    }
     public function login_checkout()
     {
         return view('home.login_checkout');
@@ -709,5 +708,9 @@ class CheckoutController extends Controller
         } else {
             return redirect('/manage-order')->with('message', 'Đơn hàng không tồn tại.');
         }
+    }
+
+    public function send_sms($order_id)
+    {
     }
 }

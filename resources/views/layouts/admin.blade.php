@@ -7,16 +7,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('title')
 
-    {{-- <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/fontawesome-free/css/all.min.css') }}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('AdminLTE/dist/css/adminlte.min.css') }}"> --}}
-    <!-- Google Font: Source Sans Pro -->
-    {{-- <link rel="stylesheet"
-        href="{{ asset('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback') }}"> --}}
-    <!-- fullCalendar -->
-    {{-- <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/fullcalendar/main.css') }}"> --}}
-
     {{-- Admin Mofi css --}}
     <link rel="icon" href="{{ asset('AdminMofi/assets/images/favicon.png') }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ asset(' AdminMofi/assets/images/favicon.png') }}" type="image/x-icon">
@@ -94,23 +84,6 @@
             </div>
         </div>
     </div>
-    {{-- <!-- jQuery -->
-    <script src="{{ asset('AdminLTE/plugins/jquery/jquery.min.js') }}"></script>
-    <!-- Bootstrap 4 -->
-    <script src="{{ asset('AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ asset('AdminLTE/dist/js/adminlte.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('ckeditor_4.22.1_full/ckeditor/ckeditor.js') }}"></script>
-
-    <script src="{{ asset('AdminLTE/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
-    <!-- fullCalendar 2.2.5 -->
-    <script src="{{ asset('AdminLTE/plugins/moment/moment.min.js') }}"></script>
-    <script src="{{ asset('AdminLTE/plugins/fullcalendar/main.js') }}"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="{{ asset('AdminLTE/dist/js/demo.js') }}"></script>
-
-    <script src="{{ asset('AdminLTE/plugins/chart.js/Chart.min.js') }}"></script> --}}
-    <!-- End AdminLTE App -->
 
     {{-- AdminMofi Scrpit --}}
     <!-- latest jquery-->

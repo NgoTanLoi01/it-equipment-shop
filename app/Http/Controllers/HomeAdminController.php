@@ -29,19 +29,21 @@ class HomeAdminController extends Controller
 
     public function detail($slug)
     {
-        $product = Product::where('slug', $slug)->with('reviews')->firstOrFail();
+        $product = Product::where('slug', $slug)->with('reviews', 'images')->firstOrFail();
 
-        // Tăng lượt xem lên 1
+        // Increment view count
         $product->increment('views_count');
 
+        // Related products
         $related = Product::where('category_id', $product->category_id)
             ->where('id', '!=', $product->id)
             ->get();
+
         $customer_id = Session::get('customer_id');
         $shipping_info = DB::table('shipping')->where('customer_id', $customer_id)->first();
         $customer_info = $customer_id ? Customer::where('customer_id', $customer_id)->first() : null;
 
-        // Lấy sản phẩm thường được mua cùng
+        // Products often bought together
         $productsBoughtTogether = DB::table('order_details as od1')
             ->join('order_details as od2', 'od1.order_id', '=', 'od2.order_id')
             ->where('od1.product_id', $product->id)
@@ -55,29 +57,17 @@ class HomeAdminController extends Controller
             ->toArray();
 
         if (empty($productsBoughtTogether)) {
-            // Nếu không có sản phẩm thường được mua cùng, lấy sản phẩm phổ biến
             $productsBoughtTogether = Product::orderBy('views_count', 'desc')->take(5)->get();
         } else {
             $productsBoughtTogether = Product::whereIn('id', $productsBoughtTogether)->get();
         }
 
-        return view('home.detail', compact('product', 'related', 'shipping_info', 'customer_info', 'productsBoughtTogether'));
-    }
+        // Get total sold quantity for this product
+        $totalSold = DB::table('order_details')
+            ->where('product_id', $product->id)
+            ->sum('product_sales_quantity');
 
-    public function storeReview(Request $request)
-    {
-        $request->validate([
-            'product_id' => 'required|exists:products,id',
-            'reviewer_name' => 'required|string|max:255',
-            'reviewer_phone' => 'required|string|max:20',
-            'rating' => 'required|integer|min:1|max:5',
-            'review_title' => 'required|string|max:255',
-            'review_text' => 'required|string|max:1500',
-        ]);
-
-        ProductReview::create($request->all());
-
-        return redirect()->back()->with('success', 'Đánh giá của bạn đã được gửi thành công!');
+        return view('home.detail', compact('product', 'related', 'shipping_info', 'customer_info', 'productsBoughtTogether', 'totalSold'));
     }
 
     public function index()
@@ -131,6 +121,22 @@ class HomeAdminController extends Controller
             "productsOnSale"
         ));
     }
+    public function storeReview(Request $request)
+    {
+        $request->validate([
+            'product_id' => 'required|exists:products,id',
+            'reviewer_name' => 'required|string|max:255',
+            'reviewer_phone' => 'required|string|max:20',
+            'rating' => 'required|integer|min:1|max:5',
+            'review_title' => 'required|string|max:255',
+            'review_text' => 'required|string|max:1500',
+        ]);
+
+        ProductReview::create($request->all());
+
+        return redirect()->back()->with('success', 'Đánh giá của bạn đã được gửi thành công!');
+    }
+
     public function search(Request $request)
     {
         $keywords = $request->keywords_submit;

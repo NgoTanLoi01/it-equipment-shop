@@ -82,6 +82,7 @@ Route::get('/orders/cancel/{order_id}', [CustomerAccountController::class, 'canc
 
 //gui mail
 Route::get('send-mail/{orderId}', [CheckoutController::class, 'send_mail']);
+Route::get('/send-sms/{order_id}', [CheckoutController::class, 'send_sms']);
 
 //cong thanh toan
 Route::post('/vnpay_payment', [CheckoutController::class, 'vnpay_payment']);

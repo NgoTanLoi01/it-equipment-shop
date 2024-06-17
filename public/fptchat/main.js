@@ -12,7 +12,7 @@ let CustomStyles = {
     headerTextColor: "#ffffffff",
     headerLogoEnable: true,
     headerLogoLink:
-        "http://127.0.0.1:8000/UserLTE/assets/images/chatbot/nhanvien.png",
+        "http://127.0.0.1:8000/UserLTE/assets/images/chatbot/nhanvien_remove_background.png",
     headerText: "Chat với nhân viên tư vấn",
     // main
     primaryColor: "#5AB2F3FF",
@@ -25,16 +25,16 @@ let CustomStyles = {
     bodyBackgroundLink:
         "https://chatbot-tools.fpt.ai/livechat-builder/img/theme/medical/body.png",
     avatarBot:
-        "http://127.0.0.1:8000/UserLTE/assets/images/chatbot/nhanvien.png",
+        "http://127.0.0.1:8000/UserLTE/assets/images/chatbot/nhanvien_remove_background.png",
     sendMessagePlaceholder: "Nhập tin nhắn của bạn",
     // float button
     floatButtonLogo:
-        "http://127.0.0.1:8000/UserLTE/assets/images/chatbot/nhanvien.png",
+        "http://127.0.0.1:8000/UserLTE/assets/images/chatbot/nhanvien1.png",
     floatButtonTooltip: "Chat với nhân viên tư vấn!",
     floatButtonTooltipEnable: true,
     // // start screen
     // customerLogo:
-    //     "http://127.0.0.1:8000/UserLTE/assets/images/chatbot/nhanvien.png",
+    //     "http://127.0.0.1:8000/UserLTE/assets/images/chatbot/nhanvien1.png",
     customerWelcomeText: "Nhập tên của bạn",
     customerButtonText: "Bắt đầu",
     prefixEnable: true,

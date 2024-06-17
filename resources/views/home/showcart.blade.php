@@ -68,7 +68,7 @@
                                                     </h3><!-- End .product-title -->
                                                 </div><!-- End .product -->
                                             </td>
-                                            <td class="price-col">{{ number_format($v_content->price) }} VNĐ</td>
+                                            <td class="price-col">{{ number_format($v_content->price) }}đ</td>
                                             <td class="quantity-col">
                                                 <div class="cart-product-quantity">
                                                     <form action="{{ URL::to('/update-cart-quantity') }}" method="GET">
@@ -89,7 +89,7 @@
                                             </td>
                                             
                                             <td class="total-col">{{ number_format($v_content->price * $v_content->qty) }}
-                                                VNĐ</td>
+                                               đ</td>
                                             {{-- delete cart --}}
                                             <td class="remove-col"><a
                                                     href="{{ URL::to('/delete-to-cart/' . $v_content->rowId) }}"
@@ -107,7 +107,7 @@
                                     <tbody>
                                         <tr class="summary-subtotal">
                                             <td>Tổng tiền sản phẩm:</td>
-                                            <td>{{ Cart::subtotal() }} VNĐ</td>
+                                            <td>{{ Cart::subtotal() }}đ</td>
                                         </tr><!-- End .summary-subtotal -->
 
                                         <tr class="summary-shipping-row">
@@ -119,11 +119,11 @@
                                                         chuyển</label>
                                                 </div><!-- End .custom-control -->
                                             </td>
-                                            <td>0 VNĐ</td>
+                                            <td>0đ</td>
                                         </tr><!-- End .summary-shipping-row -->
                                         <tr class="summary-total">
                                             <td>Tổng tiền phải trả:</td>
-                                            <td>{{ Cart::subtotal() }} VNĐ</td>
+                                            <td>{{ Cart::subtotal() }}đ</td>
                                         </tr><!-- End .summary-total -->
                                     </tbody>
                                 </table><!-- End .table table-summary -->
