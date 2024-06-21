@@ -178,7 +178,7 @@
                                                     @endphp
                                                     <span
                                                         class="product-label label-circle label-sale">-{{ $discount_percentage }}%
-                                                        </span>
+                                                    </span>
                                                 @endif
                                             </figure><!-- End .product-media -->
                                             <div class="product-action-vertical">
@@ -339,8 +339,9 @@
                                                                             <span class="ratings-val"
                                                                                 style="width: {{ $i * 20 }}%;"></span><!-- End .ratings-val -->
                                                                         </span><!-- End .ratings -->
-                                                                        <span
-                                                                            class="ratings-text">({{ rand(2, 8) }})</span><!-- Random example count -->
+                                                                        <span class="ratings-text">
+                                                                            ({{ $ratingCounts[$i] ?? 0 }})
+                                                                        </span><!-- End .ratings-text -->
                                                                     </span><!-- End .rating-container -->
                                                                 </label>
                                                             </div><!-- End .custom-checkbox -->

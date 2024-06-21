@@ -102,8 +102,10 @@
                                             @endif
                                         </div><!-- End .product-price -->
 
-                                        <strong>Đã Bán: </strong><label for="qty" style="color: #982029">{{ $totalSold }}  sản phẩm </label><br>
-                                        <strong>Còn Lại: </strong><label for="qty" style="color: #982029">{{ $product->quantity }} sản phẩm</label><br>
+                                        <strong>Đã Bán: </strong><label for="qty"
+                                            style="color: #982029">{{ $totalSold }} sản phẩm </label><br>
+                                        <strong>Còn Lại: </strong><label for="qty"
+                                            style="color: #982029">{{ $product->quantity }} sản phẩm</label><br>
                                         <div class="product-details-action">
                                             <div class="details-action-col">
                                                 <form action="{{ URL::to('/save-cart') }}" method="POST">
@@ -301,13 +303,17 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <button class="btn btn-dark" type="submit">Gửi đánh giá</button>
+                                                @if ($can_review)
+                                                    <button class="btn btn-dark" type="submit">Gửi đánh giá</button>
+                                                @else
+                                                    <strong style="font-size: 18px; color: #fcb941">Bạn chỉ có thể đánh
+                                                        giá sản phẩm sau khi đã mua.</strong>
+                                                @endif
                                             </div>
                                         </form>
                                     </div>
 
                                 </div>
-
                             </div><!-- End .tab-content -->
                         </div><!-- End .product-details-tab -->
                     </div><!-- End .col-lg-9 -->

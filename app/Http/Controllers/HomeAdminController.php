@@ -11,6 +11,8 @@ use App\Models\ProductReview;
 use Illuminate\Http\Request;
 use App\Models\Slider;
 use Illuminate\Support\Facades\DB;
+use App\Models\Order;
+use App\Models\OrderDetail;
 
 class HomeAdminController extends Controller
 {
@@ -67,7 +69,19 @@ class HomeAdminController extends Controller
             ->where('product_id', $product->id)
             ->sum('product_sales_quantity');
 
-        return view('home.detail', compact('product', 'related', 'shipping_info', 'customer_info', 'productsBoughtTogether', 'totalSold'));
+        // Check if the customer can review the product
+        $can_review = false;
+        if ($customer_id) {
+            $orderDetails = DB::table('order_details')
+                ->join('order', 'order_details.order_id', '=', 'order.order_id')
+                ->where('order.customer_id', $customer_id)
+                ->where('order_details.product_id', $product->id)
+                ->where('order.delivery_status', 'Đã giao') // Assuming 'delivered' is the status for completed orders
+                ->exists();
+            $can_review = $orderDetails;
+        }
+
+        return view('home.detail', compact('product', 'related', 'shipping_info', 'customer_info', 'productsBoughtTogether', 'totalSold', 'can_review'));
     }
 
     public function index()
@@ -132,6 +146,19 @@ class HomeAdminController extends Controller
             'review_text' => 'required|string|max:1500',
         ]);
 
+        // Kiểm tra xem khách hàng đã mua sản phẩm và đơn hàng đã giao chưa
+        $orders = Order::where('customer_id', $request->customer_id)
+            ->where('delivery_status', 'Đã giao')
+            ->pluck('order_id');
+
+        $orderDetails = OrderDetail::whereIn('order_id', $orders)
+            ->where('product_id', $request->product_id)
+            ->exists();
+
+        if (!$orderDetails) {
+            return redirect()->back()->with('error', 'Bạn chỉ có thể đánh giá sản phẩm sau khi đơn hàng đã được giao.');
+        }
+
         ProductReview::create($request->all());
 
         return redirect()->back()->with('success', 'Đánh giá của bạn đã được gửi thành công!');
@@ -142,10 +169,12 @@ class HomeAdminController extends Controller
         $keywords = $request->keywords_submit;
         $productsSelling = Product::latest('views_count', 'desc')->take(12)->get();
         $search_product = DB::table('products')->where('name', 'like', '%' . $keywords . '%')->get();
-        return view("home.search", compact("productsSelling"))->with('search_product', $search_product);
+
+        // Check if any products were found
+        $noResults = $search_product->isEmpty();
+
+        return view("home.search", compact("productsSelling", "search_product", "keywords", "noResults"));
     }
-
-
     public function product_all(Request $request)
     {
         // Truy vấn danh sách các danh mục sản phẩm
@@ -160,7 +189,7 @@ class HomeAdminController extends Controller
             $query->whereIn('category_id', $selectedCategories);
         }
 
-        // Xử lý lọc theo giá 
+        // Xử lý lọc theo giá
         if ($request->has('price_range') && !in_array('0-100000000', $request->price_range)) {
             $priceRange = $request->price_range;
             $query->where(function ($query) use ($priceRange) {
@@ -171,7 +200,7 @@ class HomeAdminController extends Controller
             });
         }
 
-        // Xử lý lọc theo tag sản phẩm 
+        // Xử lý lọc theo tag sản phẩm
         if ($request->has('product_tags')) {
             $tagIds = $request->product_tags;
             $query->whereHas('tags', function ($query) use ($tagIds) {
@@ -191,11 +220,15 @@ class HomeAdminController extends Controller
         $products = $query->latest()->paginate(15);
         $tags = Tag::all();
 
-        // Trả về view với biến $products, $tags và $categories
-        return view('home.product_all', compact('products', 'tags', 'categories', 'request'));
+        // Lấy số lượng đánh giá cho mỗi mức đánh giá
+        $ratingCounts = ProductReview::select('rating', DB::raw('count(*) as count'))
+            ->groupBy('rating')
+            ->pluck('count', 'rating')
+            ->toArray();
+
+        // Trả về view với biến $products, $tags, $categories và $ratingCounts
+        return view('home.product_all', compact('products', 'tags', 'categories', 'ratingCounts', 'request'));
     }
-
-
     public function yeu_thich()
     {
         return view('home.yeu_thich');
