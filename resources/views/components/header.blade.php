@@ -94,7 +94,18 @@
                     </a>
                 </div><!-- End .compare-dropdown -->
 
-                <div class="wishlist">
+                <div class="dropdown cart-dropdown">
+                    <a href="{{ URL::to('/show-cart') }}" class="dropdown-toggle" data-display="static">
+                        <div class="icon">
+                            <i class="icon-shopping-cart"></i>
+                            <span class="cart-count">{{ $cart->count() }}</span>
+                        </div>
+                        <p>Giỏ hàng</p>
+                    </a>
+                </div>
+                
+
+                {{-- <div class="wishlist">
                     <a href="{{ URL::to('/show-cart') }}">
                         <div class="icon">
                             <i class="icon-shopping-cart"></i>
@@ -102,7 +113,7 @@
                         </div>
                         <p>Giỏ hàng</p>
                     </a>
-                </div><!-- End .cart-dropdown -->
+                </div> --}}
 
             </div><!-- End .header-right -->
         </div><!-- End .container -->

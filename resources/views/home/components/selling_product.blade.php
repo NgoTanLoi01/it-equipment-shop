@@ -61,7 +61,7 @@
         </div><!-- End .row -->
 
         <div class="more-container text-center mt-1 mb-5">
-            <a href="#" class="btn btn-outline-dark-2 btn-round btn-more"><span>Shop more Outlet deals</span><i
+            <a href="{{ URL::to('/product_all') }}" class="btn btn-outline-dark-2 btn-round btn-more"><span>Xem thêm sản phẩm</span><i
                     class="icon-long-arrow-right"></i></a>
         </div><!-- End .more-container -->
     </div><!-- End .container -->

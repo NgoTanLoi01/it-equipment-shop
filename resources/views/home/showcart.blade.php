@@ -56,10 +56,7 @@
                                                 <div class="product">
                                                     <figure class="product-media">
                                                         <a href="#">
-
-
-                                                            <img src=" {{ config('app.base_url') . $v_content->options->feature_image_path }}"
-                                                                alt="Product image">
+                                                            <img src="{{ config('app.base_url') . $v_content->options->feature_image_path }}" alt="Product image">
                                                         </a>
                                                     </figure>
 
@@ -73,27 +70,16 @@
                                                 <div class="cart-product-quantity">
                                                     <form action="{{ URL::to('/update-cart-quantity') }}" method="GET">
                                                         {{ csrf_field() }}
-                                            
-                                                        <input class="form-control" type="number" name="cart_quantity"
-                                                            value="{{ $v_content->qty }}" required autocomplete="off"
-                                                            style="padding: 2px 6px; font-size: 10px;" min="1"
-                                                            max="{{ $v_content->options->quantity }}"> <!-- Sử dụng quantity từ tùy chọn -->
-                                                        <input type="hidden" value="{{ $v_content->rowId }}"
-                                                            name="rowId_cart" class="form-control"
-                                                            style="padding: 2px 6px; font-size: 10px;">
+                                                        <input class="form-control" type="number" name="cart_quantity" value="{{ $v_content->qty }}" required autocomplete="off" style="padding: 2px 6px; font-size: 10px;" min="1" max="{{ $v_content->options->quantity }}"> <!-- Sử dụng quantity từ tùy chọn -->
+                                                        <input type="hidden" value="{{ $v_content->rowId }}" name="rowId_cart" class="form-control" style="padding: 2px 6px; font-size: 10px;">
                                                         <br>
-                                                        <input type="submit" value="Cập nhật" name="update_qty"
-                                                            class="form-control" style="padding: 2px 6px; font-size: 10px;">
+                                                        <input type="submit" value="Cập nhật" name="update_qty" class="form-control" style="padding: 2px 6px; font-size: 10px;">
                                                     </form>
                                                 </div>
                                             </td>
-                                            
-                                            <td class="total-col">{{ number_format($v_content->price * $v_content->qty) }}
-                                               đ</td>
+                                            <td class="total-col">{{ number_format($v_content->price * $v_content->qty) }}đ</td>
                                             {{-- delete cart --}}
-                                            <td class="remove-col"><a
-                                                    href="{{ URL::to('/delete-to-cart/' . $v_content->rowId) }}"
-                                                    class="btn-remove"><i class="icon-close"></i></a></td>
+                                            <td class="remove-col"><a href="{{ URL::to('/delete-to-cart/' . $v_content->rowId) }}" class="btn-remove"><i class="icon-close"></i></a></td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -113,10 +99,8 @@
                                         <tr class="summary-shipping-row">
                                             <td>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="free-shipping" name="shipping"
-                                                        class="custom-control-input">
-                                                    <label class="custom-control-label" for="free-shipping">Phí vận
-                                                        chuyển</label>
+                                                    <input type="radio" id="free-shipping" name="shipping" class="custom-control-input">
+                                                    <label class="custom-control-label" for="free-shipping">Phí vận chuyển</label>
                                                 </div><!-- End .custom-control -->
                                             </td>
                                             <td>0đ</td>
@@ -130,24 +114,27 @@
 
                                 <?php
                                 $customer_id = Session::get('customer_id');
-                                if ($customer_id != null) {
-                                ?>
-                                <a href="{{ URL::to('/checkout') }}" class="btn btn-outline-primary-2 btn-order btn-block">
-                                    <span class="btn-text">Thanh toán</span>
-                                    <span class="btn-hover-text">Kiểm tra thông tin thanh toán</span>
-                                </a>
-                                <?php
-                                }else {
-                                ?>
-                                <a href="{{ URL::to('/login-checkout') }}"
-                                    class="btn btn-outline-primary-2 btn-order btn-block">
-                                    <span class="btn-text">Thanh toán</span>
-                                    <span class="btn-hover-text">Kiểm tra thông tin thanh toán</span>
-                                </a>
-                                <?php
-                                } 
+                                $cart_count = Cart::count();
                                 ?>
 
+                                @if ($cart_count > 0)
+                                    @if ($customer_id != null)
+                                    <a href="{{ URL::to('/checkout') }}" class="btn btn-outline-primary-2 btn-order btn-block">
+                                        <span class="btn-text">Thanh toán</span>
+                                        <span class="btn-hover-text">Kiểm tra thông tin thanh toán</span>
+                                    </a>
+                                    @else
+                                    <a href="{{ URL::to('/login-checkout') }}" class="btn btn-outline-primary-2 btn-order btn-block">
+                                        <span class="btn-text">Thanh toán</span>
+                                        <span class="btn-hover-text">Kiểm tra thông tin thanh toán</span>
+                                    </a>
+                                    @endif
+                                @else
+                                    <a href="#" class="btn btn-outline-primary-2 btn-order btn-block disabled" aria-disabled="true">
+                                        <span class="btn-text">Thanh toán</span>
+                                        <span class="btn-hover-text">Giỏ hàng của bạn trống</span>
+                                    </a>
+                                @endif
                             </div><!-- End .summary -->
                         </aside><!-- End .col-lg-3 -->
                     </div><!-- End .row -->

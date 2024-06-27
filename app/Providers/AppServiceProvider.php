@@ -25,10 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer("*", function ($view){
-            $view->with([
-                'cart'=> new Cart()
-            ]);
+        view()->composer('*', function ($view) {
+            $view->with('cart', new Cart());
         });
         Schema::defaultStringLength(191);
     }

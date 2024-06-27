@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Helpers;
+use Gloudemans\Shoppingcart\Facades\Cart as ShoppingCart;
 
 class Cart
 {
@@ -34,15 +35,6 @@ class Cart
         session(['cart' => $this->items]);
     }
 
-    //Cập nhật giỏ hàng
-
-
-    //Xóa sản phẩm khỏi giỏ hàng
-
-
-    //Xóa hết sản phẩm khỏi giỏ hàng
-
-
     //Phương thức lấy về tổng tiền
     public function getTotalPrice()
     {
@@ -62,5 +54,9 @@ class Cart
         }
 
         return $total;
+    }
+    public function count()
+    {
+        return ShoppingCart::count();
     }
 }

@@ -353,7 +353,6 @@
                                     </div><!-- End .widget -->
                                     {{-- Các phần lọc khác --}}
                                 </form>
-
                                 {{-- Banner --}}
                                 <div class="widget widget-banner-sidebar">
                                     <div class="banner-sidebar banner-overlay">
