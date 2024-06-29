@@ -27,7 +27,10 @@ Route::get('/category/{slug}/{id}', [
     'as' => 'category.product',
     'uses' => 'App\Http\Controllers\CategoryAdminController@index'
 ]);
+
+//tim kiem san pham
 Route::post('/tim_kiem', [HomeAdminController::class, 'search'])->name('tim_kiem.search');
+Route::get('/tim_kiem/suggestions', [HomeAdminController::class, 'suggestions'])->name('tim_kiem.suggestions');
 
 
 //chi tiet & review san pham

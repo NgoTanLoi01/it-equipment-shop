@@ -175,6 +175,31 @@ class HomeAdminController extends Controller
 
         return view("home.search", compact("productsSelling", "search_product", "keywords", "noResults"));
     }
+
+    public function suggestions(Request $request)
+    {
+        $query = $request->get('query');
+        $products = Product::where('name', 'LIKE', "%{$query}%")->get();
+    
+        if ($products->isEmpty()) {
+            return response()->json('<div class="suggest_search"><div class="suggest_item titlee">Không có kết quả phù hợp</div></div>');
+        }
+    
+        $output = '<div class="suggest_search">';
+        $output .= '<div class="suggest_item titlee">Sản phẩm gợi ý</div>';
+        foreach ($products as $product) {
+            $output .= '<div class="suggest_item">';
+            $output .= '<img src="' . asset($product->feature_image_path) . '" alt="' . $product->name . '" class="product-image">';
+            $output .= '<a href="/detail/' . $product->slug . '">' . $product->name . '</a>';
+            $output .= '</div>';
+        }
+        $output .= '</div>';
+    
+        return response()->json($output);
+    }
+    
+
+
     public function product_all(Request $request)
     {
         // Truy vấn danh sách các danh mục sản phẩm

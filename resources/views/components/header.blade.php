@@ -4,10 +4,10 @@
             <div class="header-left">
                 <a href="tel:#"><i
                         class="icon-phone"></i>{{ getConfigValueFromSettingTable('Phone_contact') }}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </div><!-- End .header-left -->
+            </div>
             <div class="header-left">
                 <a href="tel:#"><i class="icon-envelope"></i>{{ getConfigValueFromSettingTable('Email') }}</a>
-            </div><!-- End .header-left -->
+            </div>
             <div class="header-right">
                 <ul class="top-menu">
                     <li>
@@ -37,10 +37,10 @@
                             ?>
                         </ul>
                     </li>
-                </ul><!-- End .top-menu -->
-            </div><!-- End .header-right -->
-        </div><!-- End .container -->
-    </div><!-- End .header-top -->
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <div class="header-middle">
         <div class="container">
@@ -57,7 +57,7 @@
                     <p>Digital Technologies</p>
                 </a>
 
-            </div><!-- End .header-left -->
+            </div>
 
             <div class="header-center">
                 <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
@@ -70,11 +70,11 @@
                                     class="icon-search"></i></button>
                             <input type="search" class="form-control" name="keywords_submit" id="q"
                                 placeholder="Tìm kiếm sản phẩm ..." required>
-                        </div><!-- End .header-search-wrapper -->
+                            <div id="suggestions" class="suggestions"></div>
+                        </div>
                     </form>
-                </div><!-- End .header-search -->
+                </div>
             </div>
-
             <div class="header-right">
                 <div class="wishlist">
                     <a href="{{ URL::to('/customer-account') }}" title="My account">
@@ -83,16 +83,15 @@
                         </div>
                         <p>Tài khoản</p>
                     </a>
-                </div><!-- End .compare-dropdown -->
+                </div>
                 <div class="wishlist">
                     <a href="{{ URL::to('/yeu_thich') }}">
                         <div class="icon">
                             <i class="icon-heart-o"></i>
-                            {{-- <span class="wishlist-count badge">3</span> --}}
                         </div>
                         <p>Yêu thích</p>
                     </a>
-                </div><!-- End .compare-dropdown -->
+                </div>
 
                 <div class="dropdown cart-dropdown">
                     <a href="{{ URL::to('/show-cart') }}" class="dropdown-toggle" data-display="static">
@@ -103,21 +102,9 @@
                         <p>Giỏ hàng</p>
                     </a>
                 </div>
-                
-
-                {{-- <div class="wishlist">
-                    <a href="{{ URL::to('/show-cart') }}">
-                        <div class="icon">
-                            <i class="icon-shopping-cart"></i>
-
-                        </div>
-                        <p>Giỏ hàng</p>
-                    </a>
-                </div> --}}
-
-            </div><!-- End .header-right -->
-        </div><!-- End .container -->
-    </div><!-- End .header-middle -->
+            </div>
+        </div>
+    </div>
 
     <div class="header-bottom sticky-header">
         <div class="container">
@@ -130,6 +117,104 @@
                 <p>Khai trương<span class="highlight">&nbsp;<span style="color: red; font-size: 20px">SỐC</span> không
                         giảm giá!</span></p>
             </div>
-        </div><!-- End .container -->
-    </div><!-- End .header-bottom -->
-</header><!-- End .header -->
+        </div>
+    </div>
+</header>
+<script>
+    $(document).ready(function() {
+        $('#q').on('keyup', function() {
+            var query = $(this).val();
+            if (query.length > 2) {
+                $.ajax({
+                    url: "{{ route('tim_kiem.suggestions') }}",
+                    type: "GET",
+                    data: {
+                        'query': query
+                    },
+                    success: function(data) {
+                        $('#suggestions').html(data).show();
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr);
+                    }
+                });
+            } else {
+                $('#suggestions').hide();
+            }
+        });
+
+        $(document).on('click', function(e) {
+            if (!$(e.target).closest('.header-search-wrapper').length) {
+                $('#suggestions').hide();
+            }
+        });
+    });
+</script>
+
+<style>
+    .suggestions {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #fff;
+        max-height: auto;
+        overflow-x: hidden;
+        z-index: 1000;
+        box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+        color: #000;
+        border-radius: 8px;
+        padding: 0 10px;
+    }
+
+    .suggest_search {
+        margin: 0;
+        padding: 0;
+    }
+
+    .suggest_item {
+        padding: 4px;
+        border-bottom: 1px solid #ddd;
+        color: inherit;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .suggest_item:last-child {
+        border-bottom: none;
+    }
+
+    .suggest_item a {
+        color: inherit;
+        text-decoration: none;
+        margin-left: 10px;
+        flex: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .suggest_item .product-image {
+        max-width: 50px;
+        max-height: 50px;
+        object-fit: cover;
+        margin-right: 10px;
+        border-radius: 5px;
+    }
+
+    .suggest_item:hover {
+        background-color: #f1f1f1;
+    }
+
+    .suggest_item.titlee {
+        background: #f5f5f5;
+        font-size: 14px;
+        color: #666;
+        font-weight: 600;
+        padding: 10px;
+        margin: 0 -10px 10px -10px;
+        border-radius: 8px 8px 0 0;
+        text-align: center;
+    }
+</style>

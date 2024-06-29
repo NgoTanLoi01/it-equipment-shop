@@ -1223,7 +1223,7 @@ blockquote.text-white cite span {
 .header-search {
     position: relative;
     margin: 0;
-    font-size: 0;
+    font-size: 14px;
     line-height: 1;
     padding: 0;
     border: none
