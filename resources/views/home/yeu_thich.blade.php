@@ -14,7 +14,7 @@
 @section('content')
     <main class="main">
         <div class="page-header text-center"
-            style="background-image: url('{{ asset('UserLTE/assets/images/demos/demo-3/slider/slideStore.jpg') }}')">
+            style="background-image: url('{{ asset('UserLTE/assets/images/oso.png') }}')">
             <div class="container">
                 <h1 class="page-title"><strong>Danh Sách Yêu Thích</strong></h1>
                 <nav aria-label="breadcrumb">
@@ -45,17 +45,17 @@
                                 <div class="product">
                                     <figure class="product-media">
                                         <a href="#">
-                                            <img src="{{ asset('UserLTE/assets/images/products/table/product-1.jpg') }}"
+                                            <img src="{{ asset('UserLTE/assets/images/demos/demo-3/products/1.png') }}"
                                                 alt="Product image">
                                         </a>
                                     </figure>
 
                                     <h3 class="product-title">
-                                        <a href="#">Beige knitted elastic runner shoes</a>
+                                        <a href="#">Đồng hồ thông minh Apple Watch</a>
                                     </h3><!-- End .product-title -->
                                 </div><!-- End .product -->
                             </td>
-                            <td class="price-col">150,000 VND</td>
+                            <td class="price-col">4,480,000 VNĐ</td>
                             <td class="stock-col"><span class="in-stock">10 sản phẩm có sẵn</span></td>
                             <td class="action-col">
                                 <div class="dropdown">
@@ -77,17 +77,17 @@
                                 <div class="product">
                                     <figure class="product-media">
                                         <a href="#">
-                                            <img src="{{ asset('UserLTE/assets/images/products/table/product-2.jpg') }}"
+                                            <img src="{{ asset('UserLTE/assets/images/demos/demo-3/products/2.jpg') }}"
                                                 alt="Product image">
                                         </a>
                                     </figure>
 
                                     <h3 class="product-title">
-                                        <a href="#">Blue utility pinafore denim dress</a>
+                                        <a href="#">Đồng Hồ Thông Minh Y33h 4G</a>
                                     </h3><!-- End .product-title -->
                                 </div><!-- End .product -->
                             </td>
-                            <td class="price-col">150,000 VND</td>
+                            <td class="price-col">900,000 VNĐ</td>
                             <td class="stock-col"><span class="in-stock">10 sản phẩm có sẵn</span></td>
                             <td class="action-col">
                                 <button class="btn btn-block btn-outline-primary-2"><i class="icon-cart-plus"></i>Thêm vào giỏ hàng</button>
@@ -99,17 +99,17 @@
                                 <div class="product">
                                     <figure class="product-media">
                                         <a href="#">
-                                            <img src="{{ asset('UserLTE/assets/images/products/table/product-3.jpg') }}"
+                                            <img src="{{ asset('UserLTE/assets/images/demos/demo-3/products/3.jpg') }}"
                                                 alt="Product image">
                                         </a>
                                     </figure>
 
                                     <h3 class="product-title">
-                                        <a href="#">Orange saddle lock front chain cross body bag</a>
+                                        <a href="#">Loa Bluetooth Không dây Marshall WOBURN III</a>
                                     </h3><!-- End .product-title -->
                                 </div><!-- End .product -->
                             </td>
-                            <td class="price-col">150,000 VND</td>
+                            <td class="price-col">5,960,000 VNĐ</td>
                             <td class="stock-col"><span class="out-of-stock">0 sản phẩm có sẵn</span></td>
                             <td class="action-col">
                                 <button class="btn btn-block btn-outline-primary-2 disabled">Hết hàng</button>

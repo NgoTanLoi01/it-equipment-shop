@@ -159,7 +159,7 @@
         right: 0;
         background-color: #fff;
         max-height: auto;
-        overflow-x: hidden;
+        /* overflow-x: hidden; */
         z-index: 1000;
         box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
         color: #000;
@@ -191,7 +191,7 @@
         margin-left: 10px;
         flex: 1;
         white-space: nowrap;
-        overflow: hidden;
+        /* overflow: hidden; */
         text-overflow: ellipsis;
     }
 

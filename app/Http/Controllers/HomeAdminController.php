@@ -175,7 +175,6 @@ class HomeAdminController extends Controller
 
         return view("home.search", compact("productsSelling", "search_product", "keywords", "noResults"));
     }
-
     public function suggestions(Request $request)
     {
         $query = $request->get('query');
@@ -197,9 +196,6 @@ class HomeAdminController extends Controller
     
         return response()->json($output);
     }
-    
-
-
     public function product_all(Request $request)
     {
         // Truy vấn danh sách các danh mục sản phẩm
