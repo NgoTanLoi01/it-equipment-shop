@@ -34,8 +34,8 @@
 
     .table th,
     .table td {
-        border: 1px solid rgba(249, 140, 140, 0.8); !important
-        vertical-align: middle;
+        border: 1px solid rgba(249, 140, 140, 0.8);
+        !important vertical-align: middle;
         /* Ensures text is centered vertically */
     }
 
@@ -137,8 +137,7 @@
 
 @section('content')
     <main class="main">
-        <div class="page-header text-center"
-            style="background-image: url('{{ asset('UserLTE/assets/images/oso.png') }}')">
+        <div class="page-header text-center" style="background-image: url('{{ asset('UserLTE/assets/images/oso.png') }}')">
             <div class="container">
                 <h1 class="page-title"><strong>Chi Tiết Đơn Hàng</strong></h1>
                 <nav aria-label="breadcrumb">
@@ -162,7 +161,7 @@
                         <ul class="shipping-list list-address">
                             <li class="cus-radio align-items-center" style="font-size:20px;">
                                 <span class="mr-2">{{ $shipping_info->shipping_name }}</span>&nbsp&nbsp&nbsp
-                                <span class="mr-2">{{ $shipping_info->shipping_phone }}</span>&nbsp&nbsp&nbsp   
+                                <span class="mr-2">{{ $shipping_info->shipping_phone }}</span>&nbsp&nbsp&nbsp
                                 <span>{{ $shipping_info->shipping_address }}</span>
                             </li>
                         </ul>
@@ -191,12 +190,12 @@
                                 </td>
                                 <td class="product">
                                     <h3 class="product-title">
-                                        <a href="#">{{ $detail->product_name }}</a>
+                                        <a
+                                            href="{{ route('detail', ['slug' => $detail->product->slug]) }}">{{ $detail->product_name }}</a>
                                     </h3>
                                 </td>
                                 <td class="price">{{ number_format($detail->product_price) }} VND</td>
-                                <td class="quantity">{{ $detail->product_sales_quantity }}
-                                </td>
+                                <td class="quantity">{{ $detail->product_sales_quantity }}</td>
                                 <td class="total">
                                     {{ number_format($detail->product_price * $detail->product_sales_quantity) }} VND</td>
                             </tr>
@@ -230,7 +229,8 @@
                                         </tr>
                                         <tr>
                                             <td style="color: red" width="70%">Thành tiền</td>
-                                            <td style="color: red" class="text-right totalBill">{{ number_format($order->order_total) }}đ</td>
+                                            <td style="color: red" class="text-right totalBill">
+                                                {{ number_format($order->order_total) }}đ</td>
                                         </tr>
                                     </tbody>
                                 </table>

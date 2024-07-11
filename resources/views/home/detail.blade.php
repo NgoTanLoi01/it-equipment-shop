@@ -13,8 +13,7 @@
 
 @section('content')
     <main class="main">
-        <div class="page-header text-center"
-            style="background-image: url('{{ asset('UserLTE/assets/images/oso.png') }}')">
+        <div class="page-header text-center" style="background-image: url('{{ asset('UserLTE/assets/images/oso.png') }}')">
             <div class="container">
                 <h1 class="page-title"><strong>Chi Tiết Sản Phẩm</strong></h1>
                 <nav aria-label="breadcrumb">
@@ -304,12 +303,18 @@
 
                                             <div class="form-group">
                                                 @if ($can_review)
-                                                    <button class="btn btn-dark" type="submit">Gửi đánh giá</button>
+                                                    @if (!$product->reviews->where('customer_id', $customer_info->customer_id)->count())
+                                                        <button class="btn btn-dark" type="submit">Gửi đánh giá</button>
+                                                    @else
+                                                        <strong style="font-size: 18px; color: #fcb941">Bạn đã đánh giá sản
+                                                            phẩm này rồi.</strong>
+                                                    @endif
                                                 @else
-                                                    <strong style="font-size: 18px; color: #fcb941">Bạn chỉ có thể đánh
-                                                        giá sản phẩm sau khi đã mua.</strong>
+                                                    <strong style="font-size: 18px; color: #fcb941">Bạn chỉ có thể đánh giá
+                                                        sản phẩm sau khi đã mua.</strong>
                                                 @endif
                                             </div>
+
                                         </form>
                                     </div>
 

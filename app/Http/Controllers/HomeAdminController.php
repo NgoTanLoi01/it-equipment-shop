@@ -159,10 +159,20 @@ class HomeAdminController extends Controller
             return redirect()->back()->with('error', 'Bạn chỉ có thể đánh giá sản phẩm sau khi đơn hàng đã được giao.');
         }
 
+        // Kiểm tra xem khách hàng đã đánh giá sản phẩm này chưa
+        $hasReviewed = ProductReview::where('product_id', $request->product_id)
+            ->where('customer_id', $request->customer_id)
+            ->exists();
+
+        if ($hasReviewed) {
+            return redirect()->back()->with('error', 'Bạn chỉ có thể đánh giá sản phẩm này một lần.');
+        }
+
         ProductReview::create($request->all());
 
         return redirect()->back()->with('success', 'Đánh giá của bạn đã được gửi thành công!');
     }
+
 
     public function search(Request $request)
     {
@@ -179,11 +189,11 @@ class HomeAdminController extends Controller
     {
         $query = $request->get('query');
         $products = Product::where('name', 'LIKE', "%{$query}%")->get();
-    
+
         if ($products->isEmpty()) {
             return response()->json('<div class="suggest_search"><div class="suggest_item titlee">Không có kết quả phù hợp</div></div>');
         }
-    
+
         $output = '<div class="suggest_search">';
         $output .= '<div class="suggest_item titlee">Sản phẩm gợi ý</div>';
         foreach ($products as $product) {
@@ -193,7 +203,7 @@ class HomeAdminController extends Controller
             $output .= '</div>';
         }
         $output .= '</div>';
-    
+
         return response()->json($output);
     }
     public function product_all(Request $request)
