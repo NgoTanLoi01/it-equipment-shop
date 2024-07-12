@@ -69,11 +69,11 @@
 
 </footer><!-- End .footer -->
 <!-- Biểu tượng Chatbot và khung chứa iframe -->
-{{-- <div class="chatbot-icon-container" id="chatbot-icon-container">
+<div class="chatbot-icon-container" id="chatbot-icon-container">
     <div id="chatbot-tooltip" class="chatbot-tooltip">Chat với trợ lý ảo!</div>
     <img src="{{ asset('UserLTE/assets/images/chatbot/ai.png') }}" alt="Chatbot" class="chatbot-icon"
         style="border-radius:50%;" id="chatbot-icon" width="68px" height="" style=" cursor: pointer;">
-</div> --}}
+</div>
 <div id="chatbot-frame-container" style="display: none;">
     {{-- chatbot tranhoangnam --}}
     {{-- <iframe src="https://app.chatfly.co/chat/9053d6d7-ed43-4814-ba31-e0c78b47153c" width="440px" height="541px"
@@ -164,5 +164,5 @@
 </style>
 
 {{-- Chat FPT AI --}}
-{{-- <link rel="stylesheet" href="{{ asset('fptchat/main.css') }}">
-<script src="{{ asset('fptchat/main.js') }}"></script> --}}
+<link rel="stylesheet" href="{{ asset('fptchat/main.css') }}">
+<script src="{{ asset('fptchat/main.js') }}"></script>

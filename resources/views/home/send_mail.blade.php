@@ -69,7 +69,7 @@
         <div class="container">
             <img class="logo" src="https://drive.google.com/uc?export=view&id=1SQUwsN_0rlWdCs3hTQ9tTBVvjqh9ks1R"
                 alt="Logo cửa hàng">
-            <h2 style="text-align: center">XÁC NHẬN ĐƠN HÀNG <br> -------oOo-------</h2>
+            <h2 style="text-align: center">XÁC NHẬN ĐƠN HÀNG <br> -------oOo------- </h2>
 
             <h2><i>{{ !empty($order) ? $order->first()->customer_name : 'Khách hàng' }} thân mến,</i></h2>
             <p>Đơn hàng <span style="color: #ff8401">#{{ $order_id }}</span> của bạn hiện ở trạng thái <strong
@@ -81,7 +81,7 @@
                 <ul>
                     @php
                         $totalAmount = 0;
-                        $orderStatus = $order->first()->order_status; // Lấy trạng thái đơn hàng từ bản ghi đầu tiên
+                        $orderStatus = $order->first()->order_status;
                     @endphp
                     @foreach ($order as $index => $item)
                         <li>

@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Twilio\Rest\Client;
+
 
 session_start();
 
@@ -710,7 +712,47 @@ class CheckoutController extends Controller
         }
     }
 
-    public function send_sms($order_id)
+    public function send_sms($orderId)
     {
+        $order_by_id = DB::table('order')
+            ->join('customers', 'order.customer_id', '=', 'customers.customer_id')
+            ->join('shipping', 'order.shipping_id', '=', 'shipping.shipping_id')
+            ->join('order_details', 'order.order_id', '=', 'order_details.order_id')
+            ->join('products', 'order_details.product_id', '=', 'products.id')
+            ->select('order.*', 'customers.*', 'shipping.*', 'order_details.*', 'products.feature_image_path')
+            ->where('order.order_id', $orderId)
+            ->get();
+
+        if ($order_by_id->isNotEmpty()) {
+            $customer_phone = $order_by_id[0]->customer_phone;
+
+            // Chuyển đổi số điện thoại sang định dạng quốc tế (+84) nếu cần thiết
+            if (strpos($customer_phone, '0') === 0) {
+                $customer_phone = '+84' . substr($customer_phone, 1);
+            }
+
+            $order_details = "Mã đơn hàng: $orderId\n";
+            foreach ($order_by_id as $item) {
+                $order_details .= "Sản phẩm: {$item->product_name}, Số lượng: {$item->product_sales_quantity}\n";
+            }
+            $sms_body = "Đơn hàng của bạn đang được xử lý.\n$order_details\nCảm ơn bạn đã đặt hàng.";
+
+            $sid    = env('TWILIO_SID');
+            $token  = env('TWILIO_AUTH_TOKEN');
+            $twilio = new Client($sid, $token);
+
+            $message = $twilio->messages
+                ->create(
+                    $customer_phone,
+                    array(
+                        "from" => env('TWILIO_PHONE_NUMBER'),
+                        "body" => $sms_body
+                    )
+                );
+
+            return redirect('/manage-order')->with('message', 'SMS đã được gửi.');
+        } else {
+            return redirect('/manage-order')->with('message', 'Đơn hàng không tồn tại.');
+        }
     }
 }
