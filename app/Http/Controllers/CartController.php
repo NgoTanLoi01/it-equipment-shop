@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
-session_start();
+
+// session_start();
 class CartController extends Controller
 {
     public function save_cart(Request $request)
@@ -33,6 +35,10 @@ class CartController extends Controller
 
     public function show_cart()
     {
+        $customer_id = Session::get('customer_id');
+        if (!$customer_id) {
+            return Redirect::route('customer.login')->with('error', 'Bạn cần đăng nhập để truy cập vào trang này.');
+        }
         return view('home.showcart');
     }
 

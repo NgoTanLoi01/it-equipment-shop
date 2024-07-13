@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Customer;
 use App\Models\Order;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
 
 class CustomerAccountController extends Controller
 {
     public function customer_account()
     {
+        $customer_id = Session::get('customer_id');
+        if (!$customer_id) {
+            return Redirect::route('customer.login')->with('error', 'Bạn cần đăng nhập để truy cập vào trang này.');
+        }
         $customer = Auth::guard('customer')->user(); // Lấy thông tin khách hàng đã đăng nhập
 
         $customer_id = session('customer_id');

@@ -54,7 +54,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-            
+                                        <br>
                                         <button type="submit" class="btn btn-primary"><img
                                             src="{{ asset('AdminMofi/assets/images/icon/success.png') }}" width="16px" alt=""><strong>Gửi</strong></button>
                                     </form>

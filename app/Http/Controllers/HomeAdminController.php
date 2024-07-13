@@ -13,6 +13,7 @@ use App\Models\Slider;
 use Illuminate\Support\Facades\DB;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use Illuminate\Support\Facades\Redirect;
 
 class HomeAdminController extends Controller
 {
@@ -31,21 +32,26 @@ class HomeAdminController extends Controller
 
     public function detail($slug)
     {
+        // Kiểm tra xem người dùng đã đăng nhập chưa
+        $customer_id = Session::get('customer_id');
+        if (!$customer_id) {
+            return Redirect::route('customer.login')->with('error', 'Bạn cần đăng nhập để truy cập vào trang này.');
+        }
+
         $product = Product::where('slug', $slug)->with('reviews', 'images')->firstOrFail();
 
-        // Increment view count
+        // Tăng lượt xem
         $product->increment('views_count');
 
-        // Related products
+        // Sản phẩm liên quan
         $related = Product::where('category_id', $product->category_id)
             ->where('id', '!=', $product->id)
             ->get();
 
-        $customer_id = Session::get('customer_id');
         $shipping_info = DB::table('shipping')->where('customer_id', $customer_id)->first();
-        $customer_info = $customer_id ? Customer::where('customer_id', $customer_id)->first() : null;
+        $customer_info = Customer::where('customer_id', $customer_id)->first();
 
-        // Products often bought together
+        // Sản phẩm thường được mua cùng
         $productsBoughtTogether = DB::table('order_details as od1')
             ->join('order_details as od2', 'od1.order_id', '=', 'od2.order_id')
             ->where('od1.product_id', $product->id)
@@ -64,19 +70,19 @@ class HomeAdminController extends Controller
             $productsBoughtTogether = Product::whereIn('id', $productsBoughtTogether)->get();
         }
 
-        // Get total sold quantity for this product
+        // Lấy tổng số lượng đã bán của sản phẩm này
         $totalSold = DB::table('order_details')
             ->where('product_id', $product->id)
             ->sum('product_sales_quantity');
 
-        // Check if the customer can review the product
+        // Kiểm tra xem người dùng có thể đánh giá sản phẩm không
         $can_review = false;
         if ($customer_id) {
             $orderDetails = DB::table('order_details')
                 ->join('order', 'order_details.order_id', '=', 'order.order_id')
                 ->where('order.customer_id', $customer_id)
                 ->where('order_details.product_id', $product->id)
-                ->where('order.delivery_status', 'Đã giao') // Assuming 'delivered' is the status for completed orders
+                ->where('order.delivery_status', 'Đã giao') // Assuming 'Đã giao' is the status for completed orders
                 ->exists();
             $can_review = $orderDetails;
         }
@@ -262,6 +268,10 @@ class HomeAdminController extends Controller
     }
     public function yeu_thich()
     {
+        $customer_id = Session::get('customer_id');
+        if (!$customer_id) {
+            return Redirect::route('customer.login')->with('error', 'Bạn cần đăng nhập để truy cập vào trang này.');
+        }
         return view('home.yeu_thich');
     }
 

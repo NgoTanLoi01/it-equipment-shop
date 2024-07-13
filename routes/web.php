@@ -50,7 +50,8 @@ Route::get('/compare', [HomeAdminController::class, 'compare'])->name('compare')
 Route::get('/get-products-same-category/{categoryId}', [HomeAdminController::class, 'getProductsSameCategory']);
 
 //login
-Route::get('/login-checkout', [CheckoutController::class, 'login_checkout']);
+// Route::get('/login-checkout', [CheckoutController::class, 'login_checkout']);
+Route::get('/login-checkout', [CheckoutController::class, 'login_checkout'])->name('customer.login');
 Route::get('/logout-checkout', [CheckoutController::class, 'logout_checkout']);
 
 //login with google

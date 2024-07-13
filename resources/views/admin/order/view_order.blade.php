@@ -41,7 +41,7 @@
                                             alt=""><strong>&nbsp;Gửi Email thông báo</strong>
                                     </a>
                                     <a href="{{ url('/send-sms/' . $order_by_id->first()->order_id) }}"
-                                        class="btn btn-sm btn-outline-warning float-right m-2">
+                                        class="btn btn-sm btn-outline-success float-right m-2">
                                         <img src="{{ asset('AdminMofi/assets/images/icon/sms.png') }}" width="16px"
                                             alt=""><strong>&nbsp;Gửi SMS thông báo</strong>
                                     </a>
