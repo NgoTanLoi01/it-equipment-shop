@@ -76,11 +76,11 @@
 </div>
 <div id="chatbot-frame-container" style="display: none;">
     {{-- chatbot tranhoangnam --}}
-    {{-- <iframe src="https://app.chatfly.co/chat/9053d6d7-ed43-4814-ba31-e0c78b47153c" width="440px" height="541px"
-        style="border:1px solid black; border-radius: 10px;"></iframe> --}}
-    {{-- chatbot ngotanloi2424 --}}
-    <iframe src="https://app.chatfly.co/chat/6d58feb0-c166-4ce4-9d7e-63a37e64ec81" width="440px" height="541px"
+    <iframe src="https://app.chatfly.co/chat/" width="440px" height="541px"
         style="border:1px solid black; border-radius: 10px;"></iframe>
+    {{-- chatbot ngotanloi2424 --}}
+    {{-- <iframe src="https://app.chatfly.co/chat/" width="440px" height="541px"
+        style="border:1px solid black; border-radius: 10px;"></iframe> --}}
 
 </div>
 
@@ -114,9 +114,9 @@
 <script>
     window.chatbotConfig = {
         //bot_id tranhoannam
-        bot_id: "9053d6d7-ed43-4814-ba31-e0c78b47153c",
+        bot_id: "",
         //bot_id ngotanloi
-        // bot_id: "6d58feb0-c166-4ce4-9d7e-63a37e64ec81",
+        // bot_id: "",
     };
 </script>
 <script src="https://app.chatfly.co/Chat.js"></script>

@@ -178,8 +178,6 @@ class HomeAdminController extends Controller
 
         return redirect()->back()->with('success', 'Đánh giá của bạn đã được gửi thành công!');
     }
-
-
     public function search(Request $request)
     {
         $keywords = $request->keywords_submit;

@@ -10,8 +10,6 @@ use App\Http\Controllers\CustomerAccountController;
 use App\Http\Controllers\LoginGoogleFaceBookController;
 use Illuminate\Support\Facades\Route;
 
-
-
 //man hinh admin
 Route::get('/admin', [AdminController::class, 'loginAdmin'])->name('loginAdmin');
 Route::get('/login', [UserController::class, 'login'])->name('login');
@@ -32,11 +30,9 @@ Route::get('/category/{slug}/{id}', [
 Route::post('/tim_kiem', [HomeAdminController::class, 'search'])->name('tim_kiem.search');
 Route::get('/tim_kiem/suggestions', [HomeAdminController::class, 'suggestions'])->name('tim_kiem.suggestions');
 
-
 //chi tiet & review san pham
 Route::get('/detail/{slug}', [HomeAdminController::class, 'detail'])->name('detail');
 Route::post('/detail/{slug}/review', [HomeAdminController::class, 'storeReview'])->name('detail.storeReview');
-
 
 //man hinh user page
 Route::get('/blog', [HomeAdminController::class, 'blog']);
@@ -50,7 +46,6 @@ Route::get('/compare', [HomeAdminController::class, 'compare'])->name('compare')
 Route::get('/get-products-same-category/{categoryId}', [HomeAdminController::class, 'getProductsSameCategory']);
 
 //login
-// Route::get('/login-checkout', [CheckoutController::class, 'login_checkout']);
 Route::get('/login-checkout', [CheckoutController::class, 'login_checkout'])->name('customer.login');
 Route::get('/logout-checkout', [CheckoutController::class, 'logout_checkout']);
 
@@ -88,13 +83,10 @@ Route::get('/orders/cancel/{order_id}', [CustomerAccountController::class, 'canc
 Route::get('send-mail/{orderId}', [CheckoutController::class, 'send_mail']);
 Route::get('/send-sms/{order_id}', [CheckoutController::class, 'send_sms']);
 
-
 //cong thanh toan
 Route::post('/vnpay_payment', [CheckoutController::class, 'vnpay_payment']);
 Route::get('/vnpay_return', [CheckoutController::class, 'vnpay_return']);
 Route::post('/momo_payment', [CheckoutController::class, 'momo_payment']);
-
-
 
 //xu ly admin
 Route::prefix('admin')->group(function () {
